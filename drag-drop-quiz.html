@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Drag & Drop Quiz</title>
+  <style>
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+.draggable, .file {
+  min-width: 2.5rem;
+  /* height: 200px; */
+  margin: 6px;
+  text-align: center;
+
+  padding: 10px;
+  cursor: pointer;
+  user-select: none;
+
+  font: 18px sans-serif;
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+  background-color: lightgrey;
+  border: 2px solid dimgrey;
+  border-top: none;
+  border-left: none;
+  border-radius: 10px;
+
+  white-space: pre;
+
+  z-index: 2;
+}
+
+.fixed {
+  background-color: grey;
+}
+
+.draggable.yes {
+  background-color: lightgreen;
+}
+.draggable.no {
+  background-color: pink;
+}
+
+.dropzone, .home {
+  min-width: 3.5rem;
+  min-height: 3.5rem;
+  margin: 6px;
+  padding: 2px;
+
+  box-shadow: inset 2px 2px 2px dimgrey;
+  background-color: darkgrey;
+  border-radius: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+.dropzone:hover {
+  background-color: grey;
+}
+
+.home {
+  min-width: 300px;
+}
+.draghome {
+  display: inline-block;
+  min-width: 2.5rem;
+}
+
+button {
+  appearance: none;
+  margin: 10px;
+  padding: 12px 24px;
+  font: 1.5rem sans-serif;
+  cursor: pointer;
+  background: lightgreen;
+  border: 2px solid dimgrey;
+  border-top: none;
+  border-left: none;
+  border-radius: 10px;
+}
+button:active {
+  background-color: limegreen;
+  border: none;
+  transform: translate(2px, 2px);
+}
+
+.draggable.d1 {
+  text-align: center;
+}
+
+/* .q2 .home {
+  display: flex;
+  flex-direction: column;
+} */
+
+.draggable.d2 {
+  font-size: 18px;
+}
+.q2 .dropzone, .draggable .dropzone {
+  min-width: 16rem;
+  min-height: 3rem;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+}
+.heading .dropzone {
+  min-width: 4rem;
+}
+.page {
+  font: 18px sans-serif;
+}
+
+.question {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.question.visible {
+  display: block;
+  opacity: 1;
+}
+
+.bom {
+  padding: 0 5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+}
+.margin.bom {
+  background-color: #f9cc9d;
+}
+.border.bom {
+  background-color: #fddd9b;
+  padding: 0 2rem 2rem;
+}
+.padding.bom {
+  background-color: #c3d08b;
+}
+.content.bom {
+  background-color: #8cb6c0;
+  padding: 1rem;
+}
+.bom .dropzone {
+  margin: 2rem;
+  min-width: 5rem;
+}
+.border > .dropzone {
+  margin: -0.75rem;
+  z-index: 1;
+}
+
+.example {
+  width: fit-content;
+}
+.example div {
+  background-color: thistle;
+  padding: 10px;
+  margin: 10px 0;
+}
+.example span {
+  background-color: grey;
+  padding: 2px 16px;
+  margin: 4px;
+  line-height: 30px;
+}
+.example .s {
+  background-color: indigo;
+}
+.display-answer {
+  font: 18px sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 6px;
+  padding: 4px 16px;
+  width: fit-content;
+}
+.display-answer .dropzone {
+  margin: 8px 0 8px 16px;
+  min-width: 8rem;
+  min-height: 3rem;
+  color: black;
+}
+.display-answer.block {
+  background-color: thistle;
+}
+.display-answer.inline {
+  background-color: indigo;
+  color: white;
+}
+
+.dropzone.sm {
+  min-width: 4rem;
+}
+.draggable.folder {
+  background-color: bisque;
+  position: relative;
+}
+.draggable.folder::before {
+  content: "";
+  background-color: bisque;
+  width: 42px;
+  height: 8px;
+  display: block;
+  position: absolute;
+  z-index: 3;
+  top: -6px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.draggable.folder.yes,
+.draggable.file.yes,
+.draggable.folder.yes::before {
+  background-color: lightgreen;
+}
+.draggable.folder.no,
+.draggable.file.no,
+.draggable.folder.no::before {
+  background-color: pink;
+}
+
+.file {
+  background-color: darkgrey;
+  position: relative;
+  cursor: default;
+}
+.file::before {
+  content: "";
+  background-color: lightgrey;
+  background-image: linear-gradient(45deg, grey 50%, transparent 50%);
+  position: absolute;
+  display: block;
+  width: 16px;
+  height: 12px;
+  top: 0;
+  right: -4px;
+}
+.draggable.file {
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+.draggable.file::before {
+  background-color: darkgrey;
+  background-image: linear-gradient(45deg, lightgrey 50%, transparent 50%);
+}
+.dropzone:hover .draggable.file::before {
+  background-color: grey;
+}
+.draggable.file.yes::before {
+  background-image: linear-gradient(45deg, green 50%, transparent 50%);
+}
+.draggable.file.no::before {
+  background-image: linear-gradient(45deg, red 50%, transparent 50%);
+}
+
+.home.light {
+  background-color: lightgrey;
+  min-width: 14rem;
+}
+h3 {
+  font: 18px sans-serif;
+  margin: 10px 10px 0;
+}
+.home.light > .dropzone {
+  min-width: 8rem;
+}
+
+.progress {
+  position: fixed;
+  background-color: #ffa852;
+  bottom: 0;
+  right: 0;
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 5px 5px 5px #0007;
+}
+.progress .outer {
+  width: 250px;
+  height: 50px;
+  background-color: grey;
+}
+.progress .inner {
+  width: 0;
+  height: 50px;
+  background-color: green;
+}
+  </style>
+</head>
+<body>
+  <div class="progress">
+    <label>Progress:</label>
+    <div class="outer">
+      <div class="inner"></div>
+    </div>
+    <div class="output">0 / 5 questions.</div>
+  </div>
+  <div class="question q1 visible" data-question="1">
+    <h2>Question 1. CSS</h2>
+    <p>Drag the text into the correct boxes to produce valid CSS.</p>
+    <div class="home">
+      <div class="draghome" data-home="{">
+        <div class="draggable d1">{</div>
+      </div>
+      <div class="draghome" data-home="}">
+        <div class="draggable d1">}</div>
+      </div>
+      <div class="draghome" data-home=";">
+        <div class="draggable d1">;</div>
+      </div>
+      <div class="draghome" data-home=":">
+        <div class="draggable d1">:</div>
+      </div>
+      <div class="draghome" data-home="h1">
+        <div class="draggable d1">h1</div>
+      </div>
+      <div class="draghome" data-home="color">
+        <div class="draggable d1">color</div>
+      </div>
+      <div class="draghome" data-home="red">
+        <div class="draggable d1">red</div>
+      </div>
+    </div>
+    <div>
+      <div class="dropzone" data-answer="h1"></div>
+      <div class="dropzone" data-answer="{"></div>
+    </div>
+    <div>
+      <div class="dropzone" style="margin-left: 50px;" data-answer="color"></div>
+      <div class="dropzone" data-answer=":"></div>
+      <div class="dropzone" data-answer="red"></div>
+      <div class="dropzone" data-answer=";"></div>
+    </div>
+    <div>
+      <div class="dropzone" data-answer="}"></div>
+    </div>
+    <button style="display: none;" data-continue="q2">Success! Go to question 2.</button>
+  </div>
+
+  <div class="question q2"  data-question="2">
+    <h2>Question 2. HTML</h2>
+    <p>Drag the text into the correct boxes to produce valid HTML.</p>
+    <div class="home">
+      <div class="draghome" data-home="h1s">
+        <div class="draggable d2" data-content="h1s">&lt;h1&gt;</div>
+      </div>
+      <div class="draghome" data-home="h1e">
+        <div class="draggable d2" data-content="h1e">&lt;/h1&gt;</div>
+      </div>
+      <div class="draghome" data-home="style">
+        <div class="draggable d2" data-content="style">&lt;link rel="stylesheet" href="styles.css"&gt;</div>
+      </div>
+      <div class="draghome" data-home="head">
+        <div class="draggable d2" data-content="head">&lt;head&gt;
+  &lt;title&gt;Page Title&lt;/title&gt;
+<div class="dropzone" data-answer="style"></div>
+&lt;/head&gt;</div>
+      </div>
+      <div class="draghome" data-home="body">
+        <div class="draggable d2" data-content="body">&lt;body&gt;<div class="heading">
+          <div class="dropzone" data-answer="h1s" style="margin-left: 2rem;"></div>Heading<div class="dropzone" data-answer="h1e"></div>
+        </div>&lt;p&gt;
+        Text text text text text text text text
+        text text text text text text text text
+        text text text text text text text text
+        text text text text text text text text
+    &lt;/p&gt;
+&lt;/body&gt;</div>
+      </div>
+      <div class="draghome" data-home="html">
+      </div>
+    </div>
+    <br>
+    <div class="dropzone" data-answer="html" style="min-width: 18rem; min-height: 16rem;">
+      <div class="draggable d2 yes" data-content="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  <div class="dropzone" data-answer="head" style="min-height: 5rem;"></div>
+  <div class="dropzone" data-answer="body" style="min-height: 5rem;"></div>
+&lt;/html&gt;</div>
+    </div>
+    <br>
+    <button style="display: none;" data-continue="q3">Success! Go to question 3.</button>
+  </div>
+
+  <div class="question q3" data-question="3">
+    <h2>Question 3. Box model</h2>
+    <p>Drag the labels into the right spot on the diagram.</p>
+    <div class="home">
+      <div class="draghome" data-home="margin">
+        <div class="draggable">margin</div>
+      </div>
+      <div class="draghome" data-home="padding">
+        <div class="draggable">padding</div>
+      </div>
+      <div class="draghome" data-home="border">
+        <div class="draggable">border</div>
+      </div>
+      <div class="draghome" data-home="content">
+        <div class="draggable">content</div>
+      </div>
+    </div>
+    <div class="margin bom">
+      <div class="dropzone" data-answer="margin"></div>
+      <div class="border bom">
+        <div class="dropzone" data-answer="border"></div>
+        <div class="padding bom">
+          <div class="dropzone" data-answer="padding"></div>
+          <div class="content bom">
+            <div class="dropzone" data-answer="content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button style="display: none;" data-continue="q4">Success! Go to question 4.</button>
+  </div>
+
+  <div class="question q4" data-question="4">
+    <h2>Question 4. Display</h2>
+    <p>Answer the questions about this diagram.</p>
+
+    <div class="example">
+      <div>
+        <span>&nbsp;</span><span class="s">&nbsp;&nbsp;</span><span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;</span>
+        <span>&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;</span>
+        <br>
+        <span>&nbsp;&nbsp;</span><span>&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;</span>
+        <span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;</span><span class="s">&nbsp;&nbsp;</span><span>&nbsp;</span>
+        <br>
+        <span>&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;</span>
+        <span>&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;</span>
+        <br>
+      </div>
+      <div>
+        <span>&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;</span>
+        <span>&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;</span>
+        <br>
+        <span>&nbsp;&nbsp;</span><span>&nbsp;</span><span>&nbsp;&nbsp;</span><span class="s">&nbsp;&nbsp;&nbsp;</span>
+        <span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;</span>
+        <br>
+        <span>&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;</span>
+        <span>&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;</span>
+        <br>
+      </div>
+      <div>
+        <span>&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;</span>
+        <span>&nbsp;</span><span>&nbsp;&nbsp;</span><span class="s">&nbsp;&nbsp;</span><span>&nbsp;</span>
+        <br>
+        <span>&nbsp;&nbsp;</span><span>&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;</span>
+        <span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;</span>
+        <br>
+        <span>&nbsp;</span><span>&nbsp;&nbsp;</span><span class="s">&nbsp;</span><span>&nbsp;&nbsp;&nbsp;</span>
+        <span>&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span><span>&nbsp;</span>
+        <br>
+      </div>
+    </div>
+
+    <div class="home">
+      <div class="draghome" data-home="inline">
+        <div class="draggable" data-content="inline">display: inline;</div>
+      </div>
+      <div class="draghome" data-home="block">
+        <div class="draggable" data-content="block">display: block;</div>
+      </div>
+    </div>
+
+    <div class="display-answer block">
+      What display type does this colour have?
+      <div class="dropzone" data-answer="block"></div>
+    </div>
+    <div class="display-answer inline">
+      What display type does this colour have?
+      <div class="dropzone" data-answer="inline"></div>
+    </div>
+
+    <button style="display: none;" data-continue="q5">Success! Go to question 5.</button>
+  </div>
+
+  
+  <div class="question q5" data-question="5">
+    <h2>Question 5. Folders</h2>
+    <p>
+      Drag the folders and files so that
+      all the text inside the files points to a file.
+    </p>
+
+    <div class="home">
+      <div class="draghome" data-home="images">
+        <div class="draggable folder" data-content="images">images
+<div class="dropzone sm" data-answer="kiwi"></div></div>
+      </div>
+      <div class="draghome" data-home="images">
+        <div class="draggable folder" data-content="images">images
+<div class="dropzone sm" data-answer="kiwi"></div></div>
+      </div>
+      <div class="draghome" data-home="css">
+        <div class="draggable folder" data-content="css">css
+<div class="dropzone sm" data-answer="styles-folder"></div></div>
+      </div>
+      <div class="draghome" data-home="kiwi">
+        <div class="draggable file" data-content="kiwi">picture.jpg</div>
+      </div>
+      <div class="draghome" data-home="kiwi">
+        <div class="draggable file" data-content="kiwi">picture.jpg</div>
+      </div>
+      <div class="draghome" data-home="styles-folder">
+        <div class="draggable file" data-content="styles-folder">styles.css
+  "../images/picture.jpg"</div>
+      </div>
+      <div class="draghome" data-home="styles-self">
+        <div class="draggable file" data-content="styles-self">styles.css
+  "images/picture.jpg"</div>
+      </div>
+    </div>
+    <br>
+
+    <div class="home light">
+      <h3>Folder 1</h3>
+      <div class="file">index.html
+  "styles.css"
+  "images/picture.jpg"</div>
+      <br>
+      <div class="dropzone" data-answer="images styles-self"></div>
+      <br>
+      <div class="dropzone" data-answer="styles-self images"></div>
+    </div>
+    <div class="home light">
+      <h3>Folder 2</h3>
+      <div class="file">index.html
+  "css/styles.css"
+  "images/picture.jpg"</div>
+      <br>
+      <div class="dropzone" data-answer="images css"></div>
+      <br>
+      <div class="dropzone" data-answer="css images"></div>
+    </div>
+    <br>
+    <button style="display: none;" data-continue="q1">Success! That's all the questions.</button>
+  </div>
+
+  <script>
+let qs = Array(5).fill(false);
+
+// Select all elements with the class 'draggable' and store them in a list.
+let draggables = document.querySelectorAll('.draggable');
+
+// For each element in the list, listen for the 'mousedown' event,
+//  and run the function 'handleMousedown' when it happens.
+for (let draggable of draggables) {
+  draggable.addEventListener('mousedown', handleMousedown);
+}
+
+// This will run when 'mousedown' happens:
+function handleMousedown(event) {
+  event.stopPropagation();
+
+  // 'event.currentTarget' is the element that was clicked.
+  let draggable = event.currentTarget;
+
+  // If the element is NOT inside the 'dropzone',
+  //  then we want to make a copy of it instead of moving the original.
+  if (!draggable.closest('.dropzone')) {
+    // draggable = draggable.cloneNode(true);
+  }
+
+  // Get the starting position of the element and the mouse,
+  //  so that we can position the copy in the correct place.
+  let draggablePosition = event.currentTarget.getBoundingClientRect();
+  let startingX = event.clientX - draggablePosition.x;
+  let startingY = event.clientY - draggablePosition.y;
+  
+  // Add our copy to the document <body> so it will appear on the page.
+  document.body.append(draggable);
+  
+  // Set some new CSS styles on the copy:
+  //  'position: absolute' means that we can give the element 'left' and 'top' pixel values,
+  //  and 'pointer-events: none' means the mouse will be able to interact with elements underneath it.
+  draggable.style.margin = '0';
+  draggable.style.pointerEvents = 'none';
+  draggable.style.position = 'absolute';
+  // Set the top and left positions of the copy to the page position minus the starting position.
+  draggable.style.left = event.pageX - startingX + 'px';
+  draggable.style.top = event.pageY - startingY + 'px';
+
+  // Listen for the 'mousemove' and 'mouseup' events,
+  //  and run the functions 'handleMousemove' and 'handleMouseup' when they happen.
+  document.addEventListener('mousemove', handleMousemove);
+  document.addEventListener('mouseup', handleMouseup);
+
+  // This will run when 'mousemove' happens:
+  function handleMousemove(event) {
+    // Set the top and left positions of the copy to the mouse position minus the starting position.
+    draggable.style.left = event.pageX - startingX + 'px';
+    draggable.style.top = event.pageY - startingY + 'px';
+  }
+
+  // This will run when 'mouseup' happens:
+  function handleMouseup(event) {
+    // Stop listening for the 'mousemove' and 'mouseup' events.
+    document.removeEventListener('mousemove', handleMousemove);
+    document.removeEventListener('mouseup', handleMouseup);
+
+    // Find the element under the current mouse position.
+    let target = document.elementFromPoint(event.clientX, event.clientY);
+    // If it exists,
+    if (target) {
+      // Find the closest parent element that is a 'dropzone'.
+      let dropzone = target.closest('.dropzone');
+      // If that exists,
+      if (dropzone) {
+        // Remove the extra styles we added to our copy.
+        draggable.style = '';
+        // Make our copy listen for 'mousedown' events.
+        draggable.addEventListener('mousedown', handleMousedown);
+        
+        // [...dropzone.children].forEach(el => el.remove());
+        [...dropzone.children].forEach(goHome);
+
+        // Append our copy to the 'dropzone' element.
+        dropzone.append(draggable);
+
+        // ↓↓ HERE IS WHERE YOUR CUSTOM CODE GOES ↓↓
+
+        if (dropzone.dataset.answer.includes(draggable.dataset.content || draggable.textContent)) {
+          draggable.classList.remove('no');
+          draggable.classList.add('yes');
+        } else {
+          draggable.classList.remove('yes');
+          draggable.classList.add('no');
+        }
+        
+        let question = draggable.closest('.question');
+        if (question) {
+          let q = question.dataset.question;
+          if ([...question.querySelectorAll('.dropzone[data-answer]')].every(d => d.querySelector('.yes'))) {
+            question.querySelector('button').style.display = '';
+            qs[q-1] = true;
+          } else {
+            question.querySelector('button').style.display = 'none';
+            qs[q-1] = false;
+          }
+          let correct = qs.reduce((acc, q) => acc + q);
+          document.querySelector('.progress .output').textContent = `${correct} / 5 questions.`;
+          document.querySelector('.progress .inner').style.width = `${correct * 20}%`;
+        }
+
+        // ↑↑ HERE IS WHERE YOUR CUSTOM CODE GOES ↑↑
+
+      } else {
+        // If the element is not in a dropzone, remove it.
+        // draggable.remove();
+        goHome(draggable);
+      }
+    } else {
+      // If there is no element under the mouse, remove it.
+      // draggable.remove();
+        goHome(draggable);
+    }
+  }
+}
+
+//document.querySelectorAll('.draghome').forEach(el => el.style.width = el.getBoundingClientRect().width + 'px');
+
+document.querySelectorAll('button').forEach(button => button.addEventListener('click', event => {
+  let next = document.querySelector(`.${button.dataset.continue}`);
+  next.classList.add('visible');
+  next.scrollIntoView();
+}));
+
+function goHome(el) {
+  let draghome = document.querySelector(`.draghome[data-home="${el.dataset.content || el.textContent}"]`);
+
+  let { x: startingX, y: startingY } = el.getBoundingClientRect();
+  let { x: endingX, y: endingY } = draghome.getBoundingClientRect();
+
+  startingX += window.pageXOffset;
+  endingX += window.pageXOffset;
+  startingY += window.pageYOffset;
+  endingY += window.pageYOffset;
+
+  el.classList.remove('yes');
+  el.classList.remove('no');
+
+  el.style.margin = '0';
+  el.style.pointerEvents = 'none';
+  el.style.position = 'absolute';
+  el.style.left = startingX + 'px';
+  el.style.top = startingY + 'px';
+  document.body.append(el);
+
+  let t = 0, duration = 150, start;
+  requestAnimationFrame(function loop(now) {
+    start = start || now;
+    t = (now - start) / duration;
+
+    el.style.left = startingX * (1 - t) + endingX * t + 'px';
+    el.style.top = startingY * (1 - t) + endingY * t + 'px';
+
+    if (now - start < duration) {
+      requestAnimationFrame(loop);
+    } else {
+      el.style.margin = '';
+      el.style.pointerEvents = '';
+      el.style.position = '';
+      el.style.left = '';
+      el.style.top = '';
+      draghome.append(el);
+    }
+  });
+}
+  </script>
+</body>
+</html>
