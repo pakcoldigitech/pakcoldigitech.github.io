@@ -291,6 +291,12 @@ h3 {
   width: 0;
   height: 50px;
   background-color: green;
+  background-image: repeating-linear-gradient(105deg,
+    green, green 20px, lightgreen 30px, lightgreen 32px, green 42px);
+}
+.progress .inner.finished {
+  background-image: repeating-linear-gradient(105deg,
+    indigo, indigo 20px, thistle 30px, thistle 32px,indigo 42px);
 }
   </style>
 </head>
@@ -646,8 +652,13 @@ function handleMousedown(event) {
             qs[q-1] = false;
           }
           let correct = qs.reduce((acc, q) => acc + q);
-          document.querySelector('.progress .output').textContent = `${correct} / 5 questions.`;
+          document.querySelector('.progress .output').textContent = `${correct == 5 ? 'Great job! 5' : correct} / 5 questions.`;
           document.querySelector('.progress .inner').style.width = `${correct * 20}%`;
+          if (correct == 5) {
+            document.querySelector('.progress .inner').classList.add('finished');
+          } else {
+            document.querySelector('.progress .inner').classList.remove('finished');
+          }
         }
 
         // ↑↑ HERE IS WHERE YOUR CUSTOM CODE GOES ↑↑
