@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>CYOA</title>
+    <meta name="description" content="Choose Your Own Adventure">
+    <title>Haque.rs | CYOA</title>
     <link rel="icon" href="data:,">
     <style>
 html {
@@ -39,10 +40,10 @@ body {
   white-space: pre-wrap;
   overflow-y: scroll;
   scrollbar-width: thin;
-  scrollbar-color: grey transparent;
+  scrollbar-color: #aaa transparent;
 }
 .terminal output::-webkit-scrollbar { width: 0.5rem; }
-.terminal output::-webkit-scrollbar-thumb { background-color: grey; }
+.terminal output::-webkit-scrollbar-thumb { background-color: #aaa; }
 .terminal output::-webkit-scrollbar-track { background-color: transparent; }
 .terminal output .action {
   color: lime;
@@ -53,10 +54,10 @@ body {
 .terminal > label {
   font-style: italic;
   margin-top: 1rem;
-  color: grey;
+  color: #aaa;
 }
 .terminal .input {
-  border-top: 1px solid grey;
+  border-top: 1px solid #aaa;
   padding: 0.25rem;
   display: flex;
 }
@@ -158,6 +159,7 @@ dialog.settings .main {
 }
 dialog.settings .main div {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
 }
@@ -1591,6 +1593,8 @@ document.querySelector('button[data-type="save"]').addEventListener('click', () 
 
 input.value = '';
 input.focus();
+
+settingsDialog.showModal();
     </script>
   </head>
   <body>
@@ -1604,7 +1608,7 @@ input.focus();
       </div>
     </form>
     <output class="hud"></output>
-    <button class="settings"><img alt="settings" src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Wikipedia_interwiki_section_gear_icon.svg"></button>
+    <button class="settings"><img alt="settings" width="32" height="32" src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Wikipedia_interwiki_section_gear_icon.svg"></button>
     <dialog class="settings">
       <div class="wrapper">
         <form method="dialog" class="meta">
