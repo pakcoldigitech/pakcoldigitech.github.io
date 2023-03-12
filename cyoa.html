@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CYOA</title>
+    <link rel="icon" href="data:,">
+    <style>
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+* {
+  box-sizing: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  scroll-behavior: inherit;
+}
+body {
+  background-color: #ccc;
+  margin: 0;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+.terminal {
+  display: flex;
+  flex-direction: column;
+  width: clamp(70%, 36rem, 100%);
+  margin: auto;
+  background-color: #333;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0 1rem black;
+  font-family: Courier, monospace;
+}
+.terminal output {
+  height: 16rem;
+  white-space: pre-wrap;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: grey transparent;
+}
+.terminal output::-webkit-scrollbar { width: 0.5rem; }
+.terminal output::-webkit-scrollbar-thumb { background-color: grey; }
+.terminal output::-webkit-scrollbar-track { background-color: transparent; }
+.terminal output .action {
+  color: lime;
+}
+.terminal output :last-child {
+  min-height: 16rem;
+}
+.terminal > label {
+  font-style: italic;
+  margin-top: 1rem;
+  color: grey;
+}
+.terminal .input {
+  border-top: 1px solid grey;
+  padding: 0.25rem;
+  display: flex;
+}
+.terminal .input label {
+  margin: 0 0.25rem 0 -0.25rem;
+  color: lime;
+}
+.terminal input {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  color: lime;
+  flex-grow: 1;
+  min-width: 0;
+}
+.terminal input:focus {
+  outline: none;
+}
+.terminal button {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  color: lime;
+  width: min-content;
+  cursor: pointer;
+}
+.terminal button:hover {
+  outline: 1px solid lime;
+}
+.hud {
+  display: block;
+  width: clamp(70%, 36rem, 100%);
+  margin: auto;
+  padding: 0.5rem;
+  white-space: pre-wrap;
+}
+.hud button[data-cmd] {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-weight: bold;
+  padding: 0;
+}
+.hud button[data-cmd]:hover {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+.hud button[data-cmd]:active {
+  color: lime;
+}
+button.settings {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 1.5rem 2rem;
+}
+button.settings img {
+  width: 2rem;
+  transition: 3s;
+}
+button.settings img:hover {
+  transform: rotate(360deg);
+}
+dialog.settings {
+  border: none;
+  box-shadow: 0 0 1rem black;
+  border-radius: 0.5rem;
+  padding: 0;
+  width: clamp(calc(100% - 10rem), 36rem, calc(100% - 2rem));
+  height: calc(100% - 4rem);
+}
+dialog.settings::backdrop {
+  background-color: #3339;
+}
+dialog.settings .wrapper {
+  padding: 1rem;
+  position: relative;
+}
+dialog.settings .meta {
+  display: flex;
+  gap: 0.5rem;
+  position: sticky;
+  top: 0;
+  background-color: #ccc;
+  margin: -1rem;
+  padding: 1rem;
+  box-shadow: 0 0 0.5rem black;
+}
+dialog.settings .meta div {
+  flex: 1;
+}
+dialog.settings .main {
+  margin-top: 2rem;
+}
+dialog.settings .main div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+dialog.settings .main label {
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+}
+dialog.settings .main div.rooms,
+dialog.settings .main div.actions {
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 1rem;
+}
+dialog.settings .main div.rooms {
+  background-color: #eee;
+}
+dialog.settings .main div.actions {
+  background-color: white;
+}
+dialog.settings .main select {
+  width: min-content;
+}
+dialog.settings .main button[data-type^="add"] {
+  margin-top: 0.5rem;
+}
+dialog.settings .main button:is([data-type="add-room"], [data-type="add-action"]) {
+  margin: 0 0 0.5rem;
+}
+dialog.settings .main input[name=default-value] {
+  width: 64ch;
+}
+dialog.settings .main textarea {
+  width: 64ch;
+}
+
+dialog.settings .main label.hidden {
+  display: none;
+}
+    </style>
+    <script type="module">
+const terminal = document.querySelector('.terminal');
+const input = document.querySelector('.terminal input');
+const output = document.querySelector('.terminal output');
+const hud = document.querySelector('.hud');
+const settingsButton = document.querySelector('button.settings');
+const settingsDialog = document.querySelector('dialog');
+
+let settings = {
+  defaults: {
+    "go": "You can't go that way.",
+    "take": "There isn't any % here to take.",
+    "use": "You can't use any % because you don't have it.",
+    "attack": "There isn't any % here to attack.",
+    other: "Sorry, but I don't understand '%'.",
+  },
+  collections: {
+    "Inventory": [],
+  },
+  scores: {
+    "Health": 5,
+    "Coins": 0,
+  },
+  startingRoom: "Entrance",
+  rooms: {
+    "Entrance": {
+      text: "You are at the entrance.\nGo north to the kitchen.",
+      conditionalText: [],
+      conditions: [],
+      actions: {
+        "go": {
+          "north": [
+            { event: "log", text: "You go north." },
+            { event: "enter", room: "Kitchen" },
+          ],
+        },
+      },
+    },
+    "Kitchen": {
+      text: "You are in the kitchen.\nGo south to the entrance or down to the basement.",
+      conditionalText: [],
+      conditions: ["Torch"],
+      actions: {
+        "go": {
+          "south": [
+            { event: "enter", room: "Entrance" },
+          ],
+          "down": [
+            { event: "enter", room: "Basement" },
+          ],
+        },
+      },
+    },
+    "Basement": {
+      text: "You are in the basement.",
+      conditionalText: [
+        { condition: "Dark", value: true, text: "It is so dark that you can't see anything." },
+        { condition: "Dark", value: false, text: "Go up to the kitchen. Go west to the dungeon." },
+      ],
+      conditions: ["Dark"],
+      actions: {
+        "go": {
+          "up": [
+            { event: "enter", room: "Kitchen" },
+          ],
+          "west": [
+            { event: "checkRoom", condition: "Dark", value: false },
+            { event: "log", text: "You enter a room with a large monster." },
+            { event: "enter", room: "Dungeon" },
+            { event: "run", code: "document.body.style.backgroundImage = '';" },
+          ],
+        },
+      },
+    },
+    "Dungeon": {
+      text: "You are in the dungeon.\nThere is a cave to the west. The basement is back to the east.",
+      conditionalText: [
+        { condition: "Monster", value: true, text: "There is a large monster in the room." },
+        { condition: "Monster", value: false, text: "It looks like a battle took place here." },
+      ],
+      conditions: ["Monster"],
+      actions: {
+        "go": {
+          "west": [
+            { event: "enter", room: "Cave" },
+          ],
+          "east": [
+            { event: "enter", room: "Basement" },
+          ],
+        },
+        "attack": {
+          "monster": [
+            { event: "checkRoom", condition: "Monster", value: true },
+            { event: "checkCollection", collection: "Inventory", item: "sword", text: "Your attack bounces meaninglessly off the monster." },
+            { event: "log", text: "You manage to destroy the monster with your sword." },
+            { event: "toggleRoom", condition: "Monster", value: false },
+            { event: "log", text: "The monster was carrying a key, which you take off him." },
+            { event: "addCollection", collection: "Inventory", item: "Key" },
+          ],
+        },
+      },
+    },
+    "Cave": {
+      text: "You are in a damp cave.\nThere is a dungeon to your east and a maze to the north.",
+      conditionalText: [
+        { condition: "Sword", value: true, text: "There is a sword on the ground." },
+      ],
+      conditions: ["Sword"],
+      actions: {
+        "go": {
+          "east": [
+            { event: "enter", room: "Dungeon" },
+          ],
+          "north": [
+            { event: "checkRoom", room: "Dungeon", condition: "Monster", value: false,
+              text: "The howling of the monster makes it hard to concentrate, and you can't find your way through the maze."
+            },
+            { event: "log", text: "You find your way through the maze." },
+            { event: "enter", room: "Maze" },
+          ],
+        },
+        "take": {
+          "sword": [
+            { event: "checkRoom", condition: "Sword", value: true },
+            { event: "log", text: "You take the sword." },
+            { event: "addCollection", collection: "Inventory", item: "Sword" },
+            { event: "toggleRoom", condition: "Sword", value: false },
+          ],
+        },
+      },
+    },
+    "Maze": {
+      text: "You are in a labyrinth of tunnels.",
+      conditionalText: [
+        { condition: "Locked", value: true, text: "There is a locked chest in the middle of the room." },
+        { condition: "Locked", value: false, text: "There is an empty chest lying open in the middle of the room." },
+      ],
+      conditions: ["Locked"],
+      actions: {
+        "use": {
+          "key": [
+            { event: "checkCollection", collection: "Inventory", item: "key", value: true },
+            { event: "log", text: "You use the key you got from the monster to open the chest." },
+            { event: "toggleRoom", condition: "Locked", value: false },
+            { event: "log", text: "There are 10 coins inside." },
+            { event: "setScore", score: "Coins", value: 10 },
+          ],
+        },
+      },
+    },
+  },
+  anyRoom: {
+    conditionalText: [
+      { condition: "Torch", value: true, text: "There is a torch in here." },
+    ],
+    actions: {
+      "take": {
+        "torch": [
+          { event: "checkRoom", condition: "Torch", value: true },
+          { event: "log", text: "You take the torch." },
+          { event: "addCollection", collection: "Inventory", item: "Torch" },
+          { event: "toggleRoom", condition: "Torch", value: false },
+        ],
+      },
+      "drop": {
+        "torch": [
+          { event: "checkCollection", collection: "Inventory", item: "Torch", },
+          { event: "removeCollection", collection: "Inventory", item: "Torch" },
+          { event: "toggleRoom", condition: "Torch", value: true },
+          { event: "toggleRoom", room: "Basement", condition: "Dark", value: true },
+          { event: "run", code: "document.body.style.backgroundImage = '';" },
+        ],
+      },
+      "use": {
+        "torch": [
+          { event: "checkCollection", collection: "Inventory", item: "Torch", value: true },
+          { event: "toggleRoom", room: "Basement", condition: "Dark", value: false },
+          { event: "log", text: "You turn on the torch." },
+          { event: "run", code: "document.body.style.backgroundImage = 'radial-gradient(lemonchiffon, transparent)';" },
+        ],
+      },
+    },
+  },
+  always: [
+    [
+      { event: "checkRoom", condition: "Monster", value: true, hidden: true },
+      { event: "log", text: "The monster attacks you!" },
+      { event: "addScore", score: "Health", value: -1 },
+    ], [
+      { event: "checkScore", score: "Health", check: "lte", value: 0, hidden: true },
+      { event: "setScore", score: "Health", value: 0 },
+      { event: "log", text: "You are now dead." },
+      { event: "lose" },
+    ], [
+      { event: "checkScore", score: "Coins", check: "gt", value: 5, hidden: true },
+      { event: "log", text: "Now you can retire because you are rich." },
+      { event: "win" },
+    ],
+  ],
+};
+
+function caseless(o) {
+  let lowerkeys = {};
+  for (const k in o) {
+    lowerkeys[k.toLowerCase()] = k;
+  }
+  return new Proxy(o, {
+    get(target, key, receiver) {
+      if (Array.isArray(target) && key == 'includes') {
+        return value => target.map(v => v.toLowerCase()).includes(value.toLowerCase());
+      }
+      let result = Reflect.get(target, lowerkeys[key.toLowerCase?.()] || key, receiver);
+      return typeof result == "object" ? caseless(result) : result;
+    },
+    set(target, key, value, receiver) {
+      return Reflect.set(target, lowerkeys[key.toLowerCase?.()] || key, value, receiver);
+    },
+  });
+}
+let game = caseless(settings);
+
+let responseCount = 0;
+let currentRoom = game.startingRoom;
+let hasWon = false;
+let hasLost = false;
+let history = [];
+let historyIndex = 0;
+
+function refreshDisplay(resultText = '') {
+  resultText += game.rooms[currentRoom].text + '\n';
+  for (let e of game.rooms[currentRoom].conditionalText.concat(game.anyRoom.conditionalText)) {
+    if (game.rooms[currentRoom].conditions.includes(e.condition) == e.value) {
+      resultText += e.text + '\n';
+    }
+  }
+  resultText += '\n';
+
+  let result = `<div data-response="${responseCount}">${resultText}</div>`;
+  output.innerHTML += result;
+  output.querySelector(`[data-response="${responseCount}"]`).scrollIntoView(true);
+
+  hud.innerHTML = `${hasWon ? 'YOU WIN!' : hasLost ? 'YOU LOSE!' : ''}
+Available commands: ${Object.keys(game.defaults).filter(c => c != 'other').map(k => (
+  `<button data-cmd="${k}">${k}</button>`
+)).join(', ')}
+Current Room: ${currentRoom}
+${Object.entries(game.collections).map(([k,v]) => `${k}: ${v.length ? v.join(', ') : 'Nothing.'}`).join('\n')}
+${Object.entries(game.scores).map(([k,v]) => `${k}: ${v}`).join('\n')}
+`;
+  hud.querySelectorAll('button[data-cmd]').forEach(button => {
+    button.addEventListener('click', () => {
+      input.value = button.dataset.cmd + ' ';
+      input.focus();
+    });
+  });
+}
+
+refreshDisplay();
+
+terminal.addEventListener('submit', e => {
+  e.preventDefault();
+  let action = input.value;
+  let resultText = `<span class="action">&gt; ${action}</span>\n`;
+  responseCount++;
+
+  history.push(action);
+  historyIndex = history.length;
+
+  let [actionKey, ...actionValue] = action.split(' ');
+  actionValue = actionValue.join(' ').trim();
+
+  let eventList = [];
+
+  if (game.anyRoom.actions[actionKey]?.[actionValue] || game.rooms[currentRoom].actions[actionKey]?.[actionValue]) {
+    eventList = [(game.anyRoom.actions[actionKey]?.[actionValue] || []).concat(game.rooms[currentRoom].actions[actionKey]?.[actionValue] || [])];
+  } else if (game.defaults[actionKey]) {
+    resultText += game.defaults[actionKey].replace('%', actionValue) + '\n';
+  } else {
+    resultText += game.defaults.other.replace('%', action) + '\n';
+  }
+  for (let events of eventList.concat(game.always)) {
+    actionLoop: {
+      for (let e of events) {
+        if (e.event == "log") {
+          resultText += e.text + '\n';
+        } else if (e.event == "enter") {
+          currentRoom = e.room;
+        } else if (e.event == "win") {
+          hasLost = false;
+          hasWon = true;
+        } else if (e.event == "lose") {
+          hasWon = false;
+          hasLost = true;
+        } else if (e.event == "checkRoom") {
+          if (game.rooms[e.room || currentRoom].conditions.includes(e.condition) != e.value) {
+            if (!e.hidden) {
+              resultText += (e.text || game.defaults[actionKey].replace('%', actionValue)) + '\n';
+            }
+            break actionLoop;
+          }
+        } else if (e.event == "toggleRoom") {
+          if (e.value) {
+            game.rooms[e.room || currentRoom].conditions.push(e.condition);
+          } else {
+            game.rooms[e.room || currentRoom].conditions = game.rooms[e.room || currentRoom].conditions.filter(c => c != e.condition);
+          }
+        } else if (e.event == "checkCollection") {
+          if (!game.collections[e.collection]?.includes(e.item)) {
+            if (!e.hidden) {
+              resultText += (e.text || game.defaults[actionKey].replace('%', actionValue)) + '\n';
+            }
+            break actionLoop;
+          }
+        } else if (e.event == "addCollection") {
+          game.collections[e.collection]?.push(e.item);
+        } else if (e.event == "removeCollection") {
+          game.collections[e.collection] = game.collections[e.collection]?.filter(i => i != e.item);
+        } else if (e.event == "checkScore") {
+          if (!({
+            'lte': game.scores[e.score] <= e.value,
+            'lt': game.scores[e.score] < e.value,
+            'gte': game.scores[e.score] >= e.value,
+            'gt': game.scores[e.score] > e.value,
+            'eq': game.scores[e.score] == e.value,
+          })[e.check]) {
+            if (!e.hidden) {
+              resultText += (e.text || game.defaults[actionKey].replace('%', actionValue)) + '\n';
+            }
+            break actionLoop;
+          }
+        } else if (e.event == "addScore") {
+          game.scores[e.score] += e.value;
+        } else if (e.event == "setScore") {
+          game.scores[e.score] = e.value;
+        } else if (e.event == "run") {
+          eval(e.code);
+        }
+      }
+    }
+  }
+
+  refreshDisplay(resultText);
+
+  input.value = '';
+  input.focus();
+});
+
+input.addEventListener('keydown', e => {
+  if (e.key == 'ArrowUp') {
+    e.preventDefault();
+    historyIndex--;
+    if (historyIndex < 0) {
+      historyIndex = 0;
+    }
+    input.value = history[historyIndex] || '';
+  } else if (e.key == 'ArrowDown') {
+    e.preventDefault();
+    historyIndex++;
+    if (historyIndex > history.length) {
+      historyIndex = history.length;
+    }
+    input.value = history[historyIndex] || '';
+  }
+});
+
+settingsButton.addEventListener('click', () => {
+  settingsDialog.showModal();
+  function close(event) {
+    if (!event.target.closest('dialog.settings .wrapper') && !event.target.closest('button.settings')) {
+      settingsDialog.close();
+      window.removeEventListener('click', close);
+    }
+  }
+  window.addEventListener('click', close, true);
+});
+
+function refreshSettingsDialog() {
+  settingsDialog.querySelector('.main').innerHTML = `
+  <fieldset>
+    <legend>Scores</legend>
+    ${Object.entries(settings.scores).map(([k, v], i) => (
+      `<div>
+        <button type="button" data-type="remove-score" data-score="${k}">x</button>
+        <label>Name<input name="score-name" value="${k}" data-scoreindex="${i}"></label>
+        <label>Starting value<input name="score-value" value="${v}" data-scoreindex="${i}" inputmode="numeric"></label>
+      </div>`
+    )).join('')}
+    <button type="button" data-type="add-score">Add score</button>
+  </fieldset>
+  <fieldset>
+    <legend>Collections</legend>
+    ${Object.entries(settings.collections).map(([k, v], i) => (
+      `<div>
+        <button type="button" data-type="remove-collection" data-collection="${k}">x</button>
+        <label>Name<input name="collection-name" value="${k}" data-collindex="${i}"></label>
+        <label>Starting items<input name="collection-value" value="${v.join(', ')}" data-collindex="${i}"></label>
+      </div>`
+    )).join('')}
+    <button type="button" data-type="add-collection">Add collection</button>
+  </fieldset>
+  <fieldset>
+    <legend>Default Responses</legend>
+    ${Object.entries(settings.defaults).map(([k, v], i) => (
+      `<div>
+        <button type="button" data-type="remove-default" data-default="${k}">x</button>
+        <label>Action<input name="default-name" value="${k}" ${k == 'other' ? 'disabled' : ''} data-defaultindex="${i}"></label>
+        <label>Default response<input name="default-value" value="${v}" data-defaultindex="${i}"></label>
+      </div>`
+    )).join('')}
+    <button type="button" data-type="add-default">Add default response</button>
+  </fieldset>
+  <fieldset>
+    <label>
+      Starting Room
+      <select name="starting-room">
+        ${Object.entries(settings.rooms).map(([k, v]) => (
+          `<option ${k == settings.startingRoom ? 'selected' : ''}>${k}</option>`
+        )).join('')}
+      </select>
+    </label>
+  </fieldset>
+  <fieldset>
+    <legend>Rooms</legend>
+    ${Object.entries(settings.rooms).map(([k, v]) => (
+      `<div class="rooms">
+        <div>
+          <button type="button" data-type="remove-room" data-room="${k}">x</button>
+          <label>Room name<input name="room-name" value="${k}" data-room="${k}"></label>
+          <label>Text<textarea name="room-text" data-room="${k}">${v.text}</textarea></label>
+          <label>Starting conditions<input name="room-conditions" value="${v.conditions.join(', ')}" data-room="${k}"></label>
+        </div>
+        <fieldset>
+          <legend>Conditional Text</legend>
+          ${v.conditionalText.map((ct, i) => (
+            `<div>
+              <button type="button" data-type="remove-ctext" data-ctextindex="${i}" data-room="${k}">x</button>
+              <label>Condition<input name="ctext-condition" value="${ct.condition}" data-ctextindex="${i}" data-room="${k}"></label>
+              <label>&nbsp;<input type="checkbox" name="ctext-value" ${ct.value ? 'checked' : ''} data-ctextindex="${i}" data-room="${k}" aria-label="true or false"></label>
+              <label>Text<textarea name="ctext-text" data-ctextindex="${i}" data-room="${k}">${ct.text}</textarea></label>
+            </div>`
+          )).join('')}
+          <button type="button" data-type="add-ctext" data-room="${k}">Add conditional text</button>
+        </fieldset>
+        <fieldset>
+          <legend>Actions</legend>
+          ${Object.entries(v.actions).map(([ak,av]) => (
+            Object.entries(av).map(([ek,ev]) => (
+              `<div class="actions">
+                <div>
+                  <button type="button" data-type="remove-action" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">x</button>
+                  <label>
+                    Action
+                    <select name="action-key" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                      <option hidden disabled ${ak == '' ? 'selected' : ''} value=""></option>
+                      ${Object.keys(settings.defaults).filter(k => k != 'other').map(k => (
+                        `<option ${k == ak ? 'selected' : ''}>${k}</option>`
+                      )).join('')}
+                      <option value="custom" ${(Object.keys(settings.defaults).includes(ak) || ak == '') ? '' : 'selected'}>custom</option>
+                    </select>
+                  </label>
+                  <label ${(Object.keys(settings.defaults).includes(ak) || ak == '') ? 'class="hidden"' : ''}>&nbsp;
+                    <input aria-label="custom action" type="${
+                      (Object.keys(settings.defaults).includes(ak) || ak == '') ? 'hidden' : 'text'
+                    }" name="action-key" value="${Object.keys(settings.defaults).includes(ak) ? '' : ak}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                  </label>
+                  <label>&nbsp;<input name="action-value" value="${ek}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}" aria-label="action"></label>
+                </div>
+                <fieldset>
+                  <legend>Events</legend>
+                  ${ev.map((e, i) => (
+                  `<div>
+                    <button type="button" data-type="remove-event" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">x</button>
+                    <label>
+                      Event
+                      <select name="event-name" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                        <option hidden disabled ${e.event ? '' : 'selected'} value=""></option>
+                        ${[
+                          ['log','Log'],
+                          ['enter','Enter room'],
+                          ['win','Win'],
+                          ['lose','Lose'],
+                          ['checkRoom','Check room condition'],
+                          ['toggleRoom','Toggle room condition'],
+                          ['checkCollection','Check collection'],
+                          ['addCollection','Add to collection'],
+                          ['removeCollection','Remove from collection'],
+                          ['checkScore','Check score'],
+                          ['addScore','Alter score'],
+                          ['setScore','Set score'],
+                          ['run','Custom'],
+                        ].map(([k, v]) => (
+                          `<option value="${k}" ${k == e.event ? 'selected' : ''}>${v}</option>`
+                        )).join('')}
+                      </select>
+                    </label>
+                    ${({
+                      'log': `<label>Text<textarea name="event-text" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">${e.text}</textarea></label>`,
+                      'enter': `<label>
+                          Room
+                          <select name="event-room" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                            ${Object.entries(settings.rooms).map(([k, v]) => (
+                              `<option ${k == e.room ? 'selected' : ''}>${k}</option>`
+                            )).join('')}
+                          </select>
+                        </label>`,
+                      'win': '',
+                      'lose': '',
+                      'checkRoom': `
+                        <label>Condition<input name="event-condition" value="${e.condition}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}"></label>
+                        <input aria-label="true or false" type="checkbox" ${e.value ? 'checked' : ''} name="event-bool" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                        <label>
+                          Room
+                          <select name="event-roomplus" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                            <option value="currentRoom" ${e.room ? '' : 'selected'}>Current Room</option>
+                            ${Object.entries(settings.rooms).map(([k, v]) => (
+                              `<option ${k == e.room ? 'selected' : ''}>${k}</option>`
+                            )).join('')}
+                          </select>
+                        </label>
+                        <label>
+                          Fail text override
+                          <input name="event-textminus" value="${e.text || ''}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                        </label>
+                      `,
+                      'toggleRoom': `
+                        <label>Condition<input name="event-condition" value="${e.condition}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}"></label>
+                        <input aria-label="true or false" type="checkbox" name="event-bool" ${e.value ? 'checked' : ''} data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                        <label>
+                          Room
+                          <select name="event-roomplus" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                            <option value="currentRoom" ${e.room ? '' : 'selected'}>Current Room</option>
+                            ${Object.entries(settings.rooms).map(([k, v]) => (
+                              `<option ${k == e.room ? 'selected' : ''}>${k}</option>`
+                            )).join('')}
+                          </select>
+                        </label>
+                      `,
+                      'checkCollection': `
+                        <label>
+                          Collection
+                          <select name="event-collection" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                            ${Object.keys(settings.collections).map(k => (
+                              `<option ${k == e.collection ? 'selected' : ''}>${k}</option>`
+                            )).join('')}
+                          </select>
+                        </label>
+                        <label>Item<input name="event-item" value="${e.item}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}"></label>
+                        <label>
+                          Fail text override
+                          <input name="event-textminus" value="${e.text || ''}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                        </label>
+                      `,
+                      'addCollection': `
+                        <label>
+                          Collection
+                          <select name="event-collection" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                            ${Object.keys(settings.collections).map(k => (
+                              `<option ${k == e.collection ? 'selected' : ''}>${k}</option>`
+                            )).join('')}
+                          </select>
+                        </label>
+                        <label>Item<input name="event-item" value="${e.item}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}"></label>
+                      `,
+                      'removeCollection': `
+                        <label>
+                          Collection
+                          <select name="event-collection" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                            ${Object.keys(settings.collections).map(k => (
+                              `<option ${k == e.collection ? 'selected' : ''}>${k}</option>`
+                            )).join('')}
+                          </select>
+                        </label>
+                        <label>Item<input name="event-item" value="${e.item}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}"></label>
+                      `,
+                      'checkScore': `
+                        <label>
+                          Score
+                          <select name="event-score" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                            ${Object.keys(settings.scores).map(k => (
+                              `<option ${k == e.score ? 'selected' : ''}>${k}</option>`
+                            )).join('')}
+                          </select>
+                        </label>
+                        <label>
+                          Check
+                          <select name="event-check" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                            ${[
+                              ['lt', '&lt;'],
+                              ['gt', '&gt;'],
+                              ['lte', '&lt='],
+                              ['gte', '&gt='],
+                              ['eq', '=='],
+                            ].map(([k, v]) => (
+                              `<option ${k == e.check ? 'selected' : ''} value="${k}">${v}</option>`
+                            )).join('')}
+                          </select>
+                        </label>
+                        <label>Value<input name="event-value" value="${e.value}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}"></label>
+                        <label>
+                          Fail text override
+                          <input name="event-textminus" value="${e.text || ''}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                        </label>
+                      `,
+                      'addScore': `
+                        <label>
+                          Score
+                          <select name="event-score" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                            ${Object.keys(settings.scores).map(k => (
+                              `<option ${k == e.score ? 'selected' : ''}>${k}</option>`
+                            )).join('')}
+                          </select>
+                        </label>
+                        <label>Value<input name="event-value" value="${e.value}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}"></label>
+                      `,
+                      'setScore': `
+                        <label>
+                          Score
+                          <select name="event-score" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">
+                            ${Object.keys(settings.scores).map(k => (
+                              `<option ${k == e.score ? 'selected' : ''}>${k}</option>`
+                            )).join('')}
+                          </select>
+                        </label>
+                        <label>Value<input name="event-value" value="${e.value}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}"></label>
+                      `,
+                      'run': `<label>Code<textarea name="event-code" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">// Available variables:
+// action: The command entered by the player
+// resultText: The output to append to
+// currentRoom: The current room name
+// hasWon: boolean; hasLost: boolean
+// game.collections[key]: A list of items in the collection 'key'
+// game.scores[key]: The value of the score 'key'
+// game.rooms[key].conditions: A list of conditions set on the room 'key'
+${
+                        e.code
+                      }</textarea></label>`,
+                    })[e.event] || ''}
+                  </div>`
+                  )).join('')}
+                  <button type="button" data-type="add-event" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="${k}">Add event</button>
+                </fieldset>
+              </div>`
+            )).join('')
+          )).join('')}
+          <button type="button" data-type="add-action" data-room="${k}">Add action</button>
+        </fieldset>
+      </div>`
+    )).join('')}
+    <button type="button" data-type="add-room">Add room</button>
+    <div class="rooms">
+      <label>Room name<input value="Any Room" disabled></label>
+      <fieldset>
+        <legend>Conditional Text</legend>
+        ${settings.anyRoom.conditionalText.map((ct, i) => (
+          `<div>
+            <button type="button" data-type="remove-ctext" data-ctextindex="${i}" data-room="any">x</button>
+            <label>Condition<input name="ctext-condition" value="${ct.condition}" data-ctextindex="${i}" data-room="any"></label>
+            <label>&nbsp;<input type="checkbox" name="ctext-value" ${ct.value ? 'checked' : ''} data-ctextindex="${i}" data-room="any" aria-label="true or false"></label>
+            <label>Text<textarea name="ctext-text" data-ctextindex="${i}" data-room="any">${ct.text}</textarea></label>
+          </div>`
+        )).join('')}
+        <button type="button" data-type="add-ctext" data-room="any">Add conditional text</button>
+      </fieldset>
+      <fieldset>
+        <legend>Actions</legend>
+        ${Object.entries(settings.anyRoom.actions).map(([ak,av]) => (
+          Object.entries(av).map(([ek,ev]) => (
+            `<div class="actions">
+              <div>
+                <button type="button" data-type="remove-action" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">x</button>
+                <label>
+                  Action
+                  <select name="action-name" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                    <option hidden disabled ${ak == '' ? 'selected' : ''} value=""></option>
+                    ${Object.keys(settings.defaults).filter(k => k != 'other').map(k => (
+                      `<option ${k == ak ? 'selected' : ''}>${k}</option>`
+                    )).join('')}
+                    <option value="custom" ${(Object.keys(settings.defaults).includes(ak) || ak == '') ? '' : 'selected'}>custom</option>
+                  </select>
+                </label>
+                <label ${(Object.keys(settings.defaults).includes(ak) || ak == '') ? 'class="hidden"' : ''}>&nbsp;
+                  <input aria-label="custom action" type="${
+                    (Object.keys(settings.defaults).includes(ak) || ak == '') ? 'hidden' : 'text'
+                  }" name="action-name" value="${Object.keys(settings.defaults).includes(ak) ? '' : ak}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                </label>
+                <label>&nbsp;<input name="action-value" value="${ek}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any" aria-label="action"></label>
+              </div>
+              <fieldset>
+                <legend>Events</legend>
+                ${ev.map((e, i) => (
+                `<div>
+                  <button type="button" data-type="remove-event" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">x</button>
+                  <label>
+                    Event
+                    <select name="event-name" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                      <option hidden disabled ${e.event ? '' : 'selected'} value=""></option>
+                      ${[
+                        ['log','Log'],
+                        ['enter','Enter room'],
+                        ['win','Win'],
+                        ['lose','Lose'],
+                        ['checkRoom','Check room condition'],
+                        ['toggleRoom','Toggle room condition'],
+                        ['checkCollection','Check collection'],
+                        ['addCollection','Add to collection'],
+                        ['removeCollection','Remove from collection'],
+                        ['checkScore','Check score'],
+                        ['addScore','Alter score'],
+                        ['setScore','Set score'],
+                        ['run','Custom'],
+                      ].map(([k, v]) => (
+                        `<option value="${k}" ${k == e.event ? 'selected' : ''}>${v}</option>`
+                      )).join('')}
+                    </select>
+                  </label>
+                  ${({
+                    'log': `<label>Text<textarea name="event-text" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">${e.text}</textarea></label>`,
+                    'enter': `<label>
+                        Room
+                        <select name="event-room" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                          ${Object.entries(settings.rooms).map(([k, v]) => (
+                            `<option ${k == e.room ? 'selected' : ''}>${k}</option>`
+                          )).join('')}
+                        </select>
+                      </label>`,
+                    'win': '',
+                    'lose': '',
+                    'checkRoom': `
+                      <label>Condition<input name="event-condition" value="${e.condition}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any"></label>
+                      <input aria-label="true or false" type="checkbox" ${e.value ? 'checked' : ''} name="event-bool" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                      <label>
+                        Room
+                        <select name="event-roomplus" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                          <option value="currentRoom" ${e.room ? '' : 'selected'}>Current Room</option>
+                          ${Object.entries(settings.rooms).map(([k, v]) => (
+                            `<option ${k == e.room ? 'selected' : ''}>${k}</option>`
+                          )).join('')}
+                        </select>
+                      </label>
+                      <label>
+                        Fail text override
+                        <input name="event-textminus" value="${e.text || ''}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                      </label>
+                    `,
+                    'toggleRoom': `
+                      <label>Condition<input name="event-condition" value="${e.condition}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any"></label>
+                      <input aria-label="true or false" type="checkbox" name="event-bool" ${e.value ? 'checked' : ''} data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                      <label>
+                        Room
+                        <select name="event-roomplus" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                          <option value="currentRoom" ${e.room ? '' : 'selected'}>Current Room</option>
+                          ${Object.entries(settings.rooms).map(([k, v]) => (
+                            `<option ${k == e.room ? 'selected' : ''}>${k}</option>`
+                          )).join('')}
+                        </select>
+                      </label>
+                    `,
+                    'checkCollection': `
+                      <label>
+                        Collection
+                        <select name="event-collection" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                          ${Object.keys(settings.collections).map(k => (
+                            `<option ${k == e.collection ? 'selected' : ''}>${k}</option>`
+                          )).join('')}
+                        </select>
+                      </label>
+                      <label>Item<input name="event-item" value="${e.item}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any"></label>
+                      <label>
+                        Fail text override
+                        <input name="event-textminus" value="${e.text || ''}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                      </label>
+                    `,
+                    'addCollection': `
+                      <label>
+                        Collection
+                        <select name="event-collection" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                          ${Object.keys(settings.collections).map(k => (
+                            `<option ${k == e.collection ? 'selected' : ''}>${k}</option>`
+                          )).join('')}
+                        </select>
+                      </label>
+                      <label>Item<input name="event-item" value="${e.item}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any"></label>
+                    `,
+                    'removeCollection': `
+                      <label>
+                        Collection
+                        <select name="event-collection" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                          ${Object.keys(settings.collections).map(k => (
+                            `<option ${k == e.collection ? 'selected' : ''}>${k}</option>`
+                          )).join('')}
+                        </select>
+                      </label>
+                      <label>Item<input name="event-item" value="${e.item}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any"></label>
+                    `,
+                    'checkScore': `
+                      <label>
+                        Score
+                        <select name="event-score" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                          ${Object.keys(settings.scores).map(k => (
+                            `<option ${k == e.score ? 'selected' : ''}>${k}</option>`
+                          )).join('')}
+                        </select>
+                      </label>
+                      <label>
+                        Check
+                        <select name="event-check" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                          ${[
+                            ['lt', '<'],
+                            ['gt', '>'],
+                            ['lte', '<='],
+                            ['gte', '>='],
+                            ['eq', '=='],
+                          ].map(([k, v]) => (
+                            `<option ${k == e.check ? 'selected' : ''} value="${k}">${v}</option>`
+                          )).join('')}
+                        </select>
+                      </label>
+                      <label>Value<input name="event-value" value="${e.value}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any"></label>
+                      <label>
+                        Fail text override
+                        <input name="event-textminus" value="${e.text || ''}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                      </label>
+                    `,
+                    'addScore': `
+                      <label>
+                        Score
+                        <select name="event-score" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                          ${Object.keys(settings.scores).map(k => (
+                            `<option ${k == e.score ? 'selected' : ''}>${k}</option>`
+                          )).join('')}
+                        </select>
+                      </label>
+                      <label>Value<input name="event-value" value="${e.value}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any"></label>
+                    `,
+                    'setScore': `
+                      <label>
+                        Score
+                        <select name="event-score" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">
+                          ${Object.keys(settings.scores).map(k => (
+                            `<option ${k == e.score ? 'selected' : ''}>${k}</option>`
+                          )).join('')}
+                        </select>
+                      </label>
+                      <label>Value<input name="event-value" value="${e.value}" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any"></label>
+                    `,
+                    'run': `<label>Code<textarea name="event-code" data-eventindex="${i}" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">// Available variables:
+// action: The command entered by the player
+// resultText: The output to append to
+// currentRoom: The current room name
+// hasWon: boolean; hasLost: boolean
+// game.collections[key]: A list of items in the collection 'key'
+// game.scores[key]: The value of the score 'key'
+// game.rooms[key].conditions: A list of conditions set on the room 'key'
+${
+                        e.code
+                      }</textarea></label>`,
+                  })[e.event] || ''}
+                </div>`
+                )).join('')}
+                <button type="button" data-type="add-event" data-actionkey="${ak}" data-actionvalue="${ek}" data-room="any">Add event</button>
+              </fieldset>
+            </div>`
+          )).join('')
+        )).join('')}
+        <button type="button" data-type="add-action" data-room="any">Add action</button>
+      </fieldset>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Always Run</legend>
+    ${settings.always.map((al, i) => (
+      `<div>
+        <button type="button" data-type="remove-action" data-actionindex="${i}" data-room="always">x</button>
+        <fieldset>
+          <legend>Events</legend>
+          ${al.map((e, j) => (
+          `<div>
+            <button type="button" data-type="remove-event" data-actionindex="${i}" data-eventindex="${j}" data-room="always">x</button>
+            <label>
+              Event
+              <select name="event-name" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                <option hidden disabled ${e.event ? '' : 'selected'} value=""></option>
+                ${[
+                  ['log','Log'],
+                  ['enter','Enter room'],
+                  ['win','Win'],
+                  ['lose','Lose'],
+                  ['checkRoom','Check room condition'],
+                  ['toggleRoom','Toggle room condition'],
+                  ['checkCollection','Check collection'],
+                  ['addCollection','Add to collection'],
+                  ['removeCollection','Remove from collection'],
+                  ['checkScore','Check score'],
+                  ['addScore','Alter score'],
+                  ['setScore','Set score'],
+                  ['run','Custom'],
+                ].map(([k, v]) => (
+                  `<option value="${k}" ${k == e.event ? 'selected' : ''}>${v}</option>`
+                )).join('')}
+              </select>
+            </label>
+            ${({
+              'log': `<label>Text<textarea name="event-text" data-actionindex="${i}" data-eventindex="${j}" data-room="always">${e.text}</textarea></label>`,
+              'enter': `<label>
+                  Room
+                  <select name="event-room" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                    ${Object.entries(settings.rooms).map(([k, v]) => (
+                      `<option ${k == e.room ? 'selected' : ''}>${k}</option>`
+                    )).join('')}
+                  </select>
+                </label>`,
+              'win': '',
+              'lose': '',
+              'checkRoom': `
+                <label>Condition<input name="event-condition" value="${e.condition}" data-actionindex="${i}" data-eventindex="${j}" data-room="always"></label>
+                <input aria-label="true or false" type="checkbox" ${e.value ? 'checked' : ''} name="event-bool" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                <label>
+                  Room
+                  <select name="event-roomplus" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                    <option value="currentRoom" ${e.room ? '' : 'selected'}>Current Room</option>
+                    ${Object.entries(settings.rooms).map(([k, v]) => (
+                      `<option ${k == e.room ? 'selected' : ''}>${k}</option>`
+                    )).join('')}
+                  </select>
+                </label>
+                <label>
+                  Fail text override
+                  <input name="event-textminus" value="${e.text || ''}" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                </label>
+              `,
+              'toggleRoom': `
+                <label>Condition<input name="event-condition" value="${e.condition}" data-actionindex="${i}" data-eventindex="${j}" data-room="always"></label>
+                <input aria-label="true or false" type="checkbox" name="event-bool" ${e.value ? 'checked' : ''} data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                <label>
+                  Room
+                  <select name="event-roomplus" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                    <option value="currentRoom" ${e.room ? '' : 'selected'}>Current Room</option>
+                    ${Object.entries(settings.rooms).map(([k, v]) => (
+                      `<option ${k == e.room ? 'selected' : ''}>${k}</option>`
+                    )).join('')}
+                  </select>
+                </label>
+              `,
+              'checkCollection': `
+                <label>
+                  Collection
+                  <select name="event-collection" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                    ${Object.keys(settings.collections).map(k => (
+                      `<option ${k == e.collection ? 'selected' : ''}>${k}</option>`
+                    )).join('')}
+                  </select>
+                </label>
+                <label>Item<input name="event-item" value="${e.item}" data-actionindex="${i}" data-eventindex="${j}" data-room="always"></label>
+                <label>
+                  Fail text override
+                  <input name="event-textminus" value="${e.text || ''}" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                </label>
+              `,
+              'addCollection': `
+                <label>
+                  Collection
+                  <select name="event-collection" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                    ${Object.keys(settings.collections).map(k => (
+                      `<option ${k == e.collection ? 'selected' : ''}>${k}</option>`
+                    )).join('')}
+                  </select>
+                </label>
+                <label>Item<input name="event-item" value="${e.item}" data-actionindex="${i}" data-eventindex="${j}" data-room="always"></label>
+              `,
+              'removeCollection': `
+                <label>
+                  Collection
+                  <select name="event-collection" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                    ${Object.keys(settings.collections).map(k => (
+                      `<option ${k == e.collection ? 'selected' : ''}>${k}</option>`
+                    )).join('')}
+                  </select>
+                </label>
+                <label>Item<input name="event-item" value="${e.item}" data-actionindex="${i}" data-eventindex="${j}" data-room="always"></label>
+              `,
+              'checkScore': `
+                <label>
+                  Score
+                  <select name="event-score" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                    ${Object.keys(settings.scores).map(k => (
+                      `<option ${k == e.score ? 'selected' : ''}>${k}</option>`
+                    )).join('')}
+                  </select>
+                </label>
+                <label>
+                  Check
+                  <select name="event-check" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                    ${[
+                      ['lt', '<'],
+                      ['gt', '>'],
+                      ['lte', '<='],
+                      ['gte', '>='],
+                      ['eq', '=='],
+                    ].map(([k, v]) => (
+                      `<option ${k == e.check ? 'selected' : ''} value="${k}">${v}</option>`
+                    )).join('')}
+                  </select>
+                </label>
+                <label>Value<input name="event-value" value="${e.value}" data-actionindex="${i}" data-eventindex="${j}" data-room="always"></label>
+                <label>
+                  Fail text override
+                  <input name="event-textminus" value="${e.text || ''}" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                </label>
+              `,
+              'addScore': `
+                <label>
+                  Score
+                  <select name="event-score" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                    ${Object.keys(settings.scores).map(k => (
+                      `<option ${k == e.score ? 'selected' : ''}>${k}</option>`
+                    )).join('')}
+                  </select>
+                </label>
+                <label>Value<input name="event-value" value="${e.value}" data-actionindex="${i}" data-eventindex="${j}" data-room="always"></label>
+              `,
+              'setScore': `
+                <label>
+                  Score
+                  <select name="event-score" data-actionindex="${i}" data-eventindex="${j}" data-room="always">
+                    ${Object.keys(settings.scores).map(k => (
+                      `<option ${k == e.score ? 'selected' : ''}>${k}</option>`
+                    )).join('')}
+                  </select>
+                </label>
+                <label>Value<input name="event-value" value="${e.value}" data-actionindex="${i}" data-eventindex="${j}" data-room="always"></label>
+              `,
+              'run': `<label>Code<textarea name="event-code" data-actionindex="${i}" data-eventindex="${j}" data-room="always">// Available variables:
+// action: The command entered by the player
+// resultText: The output to append to
+// currentRoom: The current room name
+// hasWon: boolean; hasLost: boolean
+// game.collections[key]: A list of items in the collection 'key'
+// game.scores[key]: The value of the score 'key'
+// game.rooms[key].conditions: A list of conditions set on the room 'key'
+${
+                        e.code
+                      }</textarea></label>`,
+            })[e.event] || ''}
+          </div>`
+          )).join('')}
+          <button type="button" data-type="add-event" data-actionindex=${i} data-room="always">Add event</button>
+        </fieldset>
+      </div>`
+    )).join('')}
+    <button type="button" data-type="add-action" data-room="always">Add event group</button>
+  </fieldset>`;
+
+  // Reset game:
+  output.innerHTML = '';
+  game = caseless(settings);
+  responseCount = 0;
+  currentRoom = game.startingRoom;
+  hasWon = false;
+  hasLost = false;
+  history = [];
+  historyIndex = 0;
+  refreshDisplay();
+
+  // 'ADD' buttons:
+  document.querySelector('button[data-type="add-score"]').addEventListener('click', () => {
+    settings.scores[""] = 0;
+    refreshSettingsDialog();
+  });
+  document.querySelector('button[data-type="add-collection"]').addEventListener('click', () => {
+    settings.collections[""] = [];
+    refreshSettingsDialog();
+  });
+  document.querySelector('button[data-type="add-default"]').addEventListener('click', () => {
+    settings.defaults[""] = "";
+    refreshSettingsDialog();
+  });
+  document.querySelector('button[data-type="add-room"]').addEventListener('click', () => {
+    settings.rooms[""] = {
+      text: "",
+      conditionalText: [],
+      conditions: [],
+      actions: {},
+    };
+    refreshSettingsDialog();
+  });
+  document.querySelectorAll('button[data-type="add-ctext"]').forEach(button => button.addEventListener('click', () => {
+    if (button.dataset.room == 'any') {
+      settings.anyRoom.conditionalText.push({ condition: "", value: true, text: "" });
+    } else {
+      settings.rooms[button.dataset.room].conditionalText.push({ condition: "", value: true, text: "" });
+    }
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('button[data-type="add-action"]').forEach(button => button.addEventListener('click', () => {
+    if (button.dataset.room == 'always') {
+      settings.always.push([]);
+    } else if (button.dataset.room == 'any') {
+      settings.anyRoom.actions[""] = { "": [] };
+    } else {
+      settings.rooms[button.dataset.room].actions[""] = { "": [] };
+    }
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('button[data-type="add-event"]').forEach(button => button.addEventListener('click', () => {
+    if (button.dataset.room == 'always') {
+      settings.always[button.dataset.actionindex].push({ event: "", hidden: true });
+    } else if (button.dataset.room == 'any') {
+      settings.anyRoom.actions[""] = { "": [] };
+    } else {
+      settings.rooms[button.dataset.room].actions[""] = { "": [] };
+    }
+    refreshSettingsDialog();
+  }));
+
+  // 'REMOVE' buttons:
+  document.querySelectorAll('button[data-type="remove-score"]').forEach(button => button.addEventListener('click', e => {
+    delete settings.scores[button.dataset.score];
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('button[data-type="remove-collection"]').forEach(button => button.addEventListener('click', () => {
+    delete settings.collections[button.dataset.collection];
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('button[data-type="remove-default"]').forEach(button => button.addEventListener('click', () => {
+    delete settings.defaults[button.dataset.default];
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('button[data-type="remove-room"]').forEach(button => button.addEventListener('click', () => {
+    delete settings.rooms[button.dataset.room];
+    requestAnimationFrame(() => {
+      settings.startingRoom = document.querySelector('select[name=starting-room]').value;
+    });
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('button[data-type="remove-ctext"]').forEach(button => button.addEventListener('click', () => {
+    if (button.dataset.room == 'any') {
+      settings.anyRoom.conditionalText.splice(button.dataset.ctextindex, 1);
+    } else {
+      settings.rooms[button.dataset.room].conditionalText.splice(button.dataset.ctextindex, 1);
+    }
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('button[data-type="remove-action"]').forEach(button => button.addEventListener('click', () => {
+    if (button.dataset.room == 'always') {
+      settings.always.splice(button.dataset.actionindex, 1);
+    } else if (button.dataset.room == 'any') {
+      delete settings.anyRoom.actions[button.dataset.actionkey][button.dataset.actionvalue];
+    } else {
+      delete settings.rooms[button.dataset.room].actions[button.dataset.actionkey][button.dataset.actionvalue];
+    }
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('button[data-type="remove-event"]').forEach(button => button.addEventListener('click', () => {
+    if (button.dataset.room == 'always') {
+      settings.always[button.dataset.actionindex].splice(button.dataset.eventindex, 1);
+    } else if (button.dataset.room == 'any') {
+      settings.anyRoom.actions[button.dataset.actionkey][button.dataset.actionvalue].splice(button.dataset.eventindex, 1);
+    } else {
+      settings.rooms[button.dataset.room].actions[button.dataset.actionkey][button.dataset.actionvalue].splice(button.dataset.eventindex, 1);
+    }
+    refreshSettingsDialog();
+  }));
+  // Global inputs
+  document.querySelectorAll('input[name=score-name]').forEach(input => input.addEventListener('change', () => {
+    settings.scores = Object.fromEntries(Object.entries(settings.scores).map(([k, v], i) => [i == input.dataset.scoreindex ? input.value : k, v]));
+    refreshSettingsDialog();
+    //document.querySelector(`input[name=score-name][data-scoreindex="${input.dataset.scoreindex}"]`).focus();
+  }));
+  document.querySelectorAll('input[name=score-value]').forEach(input => input.addEventListener('change', () => {
+    settings.scores = Object.fromEntries(Object.entries(settings.scores).map(([k, v], i) => [k, i == input.dataset.scoreindex ? +input.value : v]));
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=collection-name]').forEach(input => input.addEventListener('change', () => {
+    settings.collections = Object.fromEntries(Object.entries(settings.collections).map(([k, v], i) => [i == input.dataset.collindex ? input.value : k, v]));
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=collection-value]').forEach(input => input.addEventListener('change', () => {
+    settings.collections = Object.fromEntries(Object.entries(settings.collections).map(([k, v], i) => [k, i == input.dataset.collindex ? (
+      input.value.split(',').map(s => s.trim())
+    ) : v]));
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=default-name]').forEach(input => input.addEventListener('change', () => {
+    settings.defaults = Object.fromEntries(Object.entries(settings.defaults).map(([k, v], i) => [i == input.dataset.defaultindex ? input.value : k, v]));
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=default-value]').forEach(input => input.addEventListener('change', () => {
+    settings.defaults = Object.fromEntries(Object.entries(settings.defaults).map(([k, v], i) => [k, i == input.dataset.defaultindex ? input.value : v]));
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('select[name=starting-room]').forEach(input => input.addEventListener('change', () => {
+    settings.startingRoom = input.value;
+    refreshSettingsDialog();
+  }));
+  // Room inputs
+  document.querySelectorAll('input[name=room-name]').forEach(input => input.addEventListener('change', () => {
+    settings.rooms = Object.fromEntries(Object.entries(settings.rooms).map(([k, v], i) => [k == input.dataset.room ? input.value : k, v]));
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('textarea[name=room-text]').forEach(input => input.addEventListener('change', () => {
+    settings.rooms[input.dataset.room].text = input.value;
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=room-conditions]').forEach(input => input.addEventListener('change', () => {
+    settings.rooms[input.dataset.room].conditions = input.value.split(',').map(s => s.trim());
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=ctext-condition]').forEach(input => input.addEventListener('change', () => {
+    (settings.rooms[input.dataset.room] || settings.anyRoom).conditionalText.splice(input.dataset.ctextindex, 1, {
+      ...(settings.rooms[input.dataset.room] || settings.anyRoom).conditionalText[input.dataset.ctextindex],
+      condition: input.value,
+    });
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=ctext-value]').forEach(input => input.addEventListener('change', () => {
+    (settings.rooms[input.dataset.room] || settings.anyRoom).conditionalText.splice(input.dataset.ctextindex, 1, {
+      ...(settings.rooms[input.dataset.room] || settings.anyRoom).conditionalText[input.dataset.ctextindex],
+      value: input.checked,
+    });
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('textarea[name=ctext-text]').forEach(input => input.addEventListener('change', () => {
+    (settings.rooms[input.dataset.room] || settings.anyRoom).conditionalText.splice(input.dataset.ctextindex, 1, {
+      ...(settings.rooms[input.dataset.room] || settings.anyRoom).conditionalText[input.dataset.ctextindex],
+      text: input.value,
+    });
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('select[name=action-key]').forEach(input => input.addEventListener('change', () => {
+    let customInput = document.querySelector(
+      `input[name=action-key][data-actionkey="${input.dataset.actionkey}"][data-actionvalue="${input.dataset.actionvalue}"][data-room="${input.dataset.room}"]`
+    );
+    if (input.value == 'custom') {
+      customInput.type = 'text';
+    } else {
+      customInput.type = 'hidden';
+    }
+    // TODO: Changes the action order
+    (settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.value] = {
+      ...((settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.value] || {}),
+      [input.dataset.actionvalue]: (settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.dataset.actionkey][input.dataset.actionvalue],
+    };
+    delete (settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.dataset.actionkey][input.dataset.actionvalue];
+    if (!Object.keys((settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.dataset.actionkey]).length) {
+      delete (settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.dataset.actionkey];
+    }
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=action-key]').forEach(input => input.addEventListener('change', () => {
+    let customSelect = document.querySelector(
+      `select[name=action-key][data-actionkey="${input.dataset.actionkey}"][data-actionvalue="${input.dataset.actionvalue}"][data-room="${input.dataset.room}"]`
+    );
+    if (customSelect.value != 'custom') {
+      input.type = 'hidden';
+      input.value = '';
+      return;
+    }
+    // TODO: Changes the action order
+    (settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.value] = {
+      ...((settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.value] || {}),
+      [input.dataset.actionvalue]: (settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.dataset.actionkey][input.dataset.actionvalue],
+    };
+    delete (settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.dataset.actionkey][input.dataset.actionvalue];
+    if (!Object.keys((settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.dataset.actionkey]).length) {
+      delete (settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.dataset.actionkey];
+    }
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=action-value]').forEach(input => input.addEventListener('change', () => {
+    // TODO: Changes the action order
+    (settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.dataset.actionkey][input.value] = (
+      (settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.dataset.actionkey][input.dataset.actionvalue]
+    );
+    delete (settings.rooms[input.dataset.room] || settings.anyRoom).actions[input.dataset.actionkey][input.dataset.actionvalue];
+    refreshSettingsDialog();
+  }));
+  // Event inputs
+  function getSetting(input) {
+    if (input.dataset.room == 'any') {
+      return settings.anyRoom.actions[input.dataset.actionkey][input.dataset.actionvalue];
+    } else if (input.dataset.room == 'always') {
+      return settings.always[input.dataset.actionindex];
+    } else {
+      return settings.rooms[input.dataset.room].actions[input.dataset.actionkey][input.dataset.actionvalue];
+    }
+  }
+  document.querySelectorAll('select[name=event-name]').forEach(input => input.addEventListener('change', () => {
+    getSetting(input)[input.dataset.eventindex] = {
+      event: input.value,
+      ...(['log'].includes(input.value) ? { text: '' } : {}),
+      ...(['enter'].includes(input.value) ? { room: '' } : {}),
+      ...(['checkRoom', 'toggleRoom'].includes(input.value) ? {
+        condition: '',
+        value: true,
+      } : {}),
+      ...(['checkCollection', 'addCollection', 'removeCollection'].includes(input.value) ? {
+        collection: Object.keys(settings.collections)[0] || '',
+        item: '',
+      } : {}),
+      ...(['checkScore', 'addScore', 'setScore'].includes(input.value) ? {
+        score: Object.keys(settings.scores)[0] || '',
+        value: 0,
+      } : {}),
+      ...(['checkScore'].includes(input.value) ? { check: 'eq' } : {}),
+      ...(['run'].includes(input.value) ? { code: '' } : {}),
+    };
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('textarea[name=event-text]').forEach(input => input.addEventListener('change', () => {
+    getSetting(input)[input.dataset.eventindex].text = input.value;
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('select[name=event-room]').forEach(input => input.addEventListener('change', () => {
+    getSetting(input)[input.dataset.eventindex].room = input.value;
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=event-condition]').forEach(input => input.addEventListener('change', () => {
+    getSetting(input)[input.dataset.eventindex].condition = input.value;
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=event-bool]').forEach(input => input.addEventListener('change', () => {
+    getSetting(input)[input.dataset.eventindex].value = input.checked;
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('select[name=event-roomplus]').forEach(input => input.addEventListener('change', () => {
+    if (input.value == 'currentRoom') {
+      delete getSetting(input)[input.dataset.eventindex].room;
+    } else {
+      getSetting(input)[input.dataset.eventindex].room = input.value;
+    }
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=event-textminus]').forEach(input => input.addEventListener('change', () => {
+    if (input.value) {
+      getSetting(input)[input.dataset.eventindex].text = input.value;
+    } else {
+      delete getSetting(input)[input.dataset.eventindex].text;
+    }
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('select[name=event-collection]').forEach(input => input.addEventListener('change', () => {
+    getSetting(input)[input.dataset.eventindex].collection = input.value;
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=event-item]').forEach(input => input.addEventListener('change', () => {
+    getSetting(input)[input.dataset.eventindex].item = input.value;
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('select[name=event-score]').forEach(input => input.addEventListener('change', () => {
+    getSetting(input)[input.dataset.eventindex].score = input.value;
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=event-value]').forEach(input => input.addEventListener('change', () => {
+    getSetting(input)[input.dataset.eventindex].value = +input.value;
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('select[name=event-check]').forEach(input => input.addEventListener('change', () => {
+    getSetting(input)[input.dataset.eventindex].check = input.value;
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('textarea[name=event-code]').forEach(input => input.addEventListener('change', () => {
+    getSetting(input)[input.dataset.eventindex].code = input.value;
+    refreshSettingsDialog();
+  }));
+
+}
+
+refreshSettingsDialog();
+
+document.querySelector('button[data-type="load"]').addEventListener('click', () => {
+  let fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.addEventListener('input', () => {
+    if (fileInput.files?.[0]) {
+      let fileReader = new FileReader();
+      fileReader.addEventListener('load', e => {
+        settings = JSON.parse(e.target.result);
+        refreshSettingsDialog();
+      });
+      fileReader.readAsText(fileInput.files[0]);
+    }
+  });
+  fileInput.click();
+});
+document.querySelector('button[data-type="save"]').addEventListener('click', () => {
+  let a = document.createElement('a');
+  a.href = "data:application/json," + JSON.stringify(settings, undefined, " ").replaceAll("\n", "%0A") + "%0A";
+  a.download = "cyoa.json";
+  a.click();
+});
+
+input.value = '';
+input.focus();
+    </script>
+  </head>
+  <body>
+    <form class="terminal">
+      <output></output>
+      <label>What would you like to do?</label>
+      <div class="input">
+        <label>&gt;</label>
+        <input aria-label="action" id="action" autocomplete="off">
+        <button type="submit">Enter</button>
+      </div>
+    </form>
+    <output class="hud"></output>
+    <button class="settings"><img alt="settings" src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Wikipedia_interwiki_section_gear_icon.svg"></button>
+    <dialog class="settings">
+      <div class="wrapper">
+        <form method="dialog" class="meta">
+          <button type="button" data-type="load">Load Game Settings</button>
+          <button type="button" data-type="save">Save Game Settings</button>
+          <div></div>
+          <button class="close">X</button>
+        </form>
+        <form method="dialog" class="main"></form>
+      </div>
+    </dialog>
+  </body>
+</html>
