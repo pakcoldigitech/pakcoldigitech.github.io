@@ -443,7 +443,7 @@ function refreshDisplay(resultText = '') {
 
   hud.innerHTML = `${hasWon ? 'YOU WIN!' : hasLost ? 'YOU LOSE!' : ''}
 Available commands: ${Object.keys(game.defaults).filter(c => c != 'other').map(k => (
-  `<button data-cmd="${k}">${k}</button>`
+  `<button type="button" data-cmd="${k}">${k}</button>`
 )).join(', ')}
 Current Room: ${currentRoom}
 ${Object.entries(game.collections).map(([k,v]) => `${k}: ${v.length ? v.join(', ') : 'Nothing.'}`).join('\n')}
@@ -1606,14 +1606,14 @@ input.focus();
       </div>
     </form>
     <output class="hud"></output>
-    <button class="settings"><img alt="settings" width="32" height="32" src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Wikipedia_interwiki_section_gear_icon.svg"></button>
+    <button type="button" class="settings"><img alt="settings" width="32" height="32" src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Wikipedia_interwiki_section_gear_icon.svg"></button>
     <dialog class="settings">
       <div class="wrapper">
         <form method="dialog" class="meta">
           <button type="button" data-type="load">Load Game Settings</button>
           <button type="button" data-type="save">Save Game Settings</button>
           <div></div>
-          <button class="close">X</button>
+          <button type="submit" class="close">X</button>
         </form>
         <form method="dialog" class="main"></form>
       </div>
