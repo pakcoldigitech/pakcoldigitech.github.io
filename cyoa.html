@@ -1586,7 +1586,7 @@ document.querySelector('button[data-type="load"]').addEventListener('click', () 
 });
 document.querySelector('button[data-type="save"]').addEventListener('click', () => {
   let a = document.createElement('a');
-  a.href = "data:application/json," + JSON.stringify(settings, undefined, " ").replaceAll("\n", "%0A") + "%0A";
+  a.href = "data:application/json," + JSON.stringify(settings, undefined, " ").replaceAll("\n", "%0A").replaceAll(" ", "%20") + "%0A";
   a.download = "cyoa.json";
   a.click();
 });
