@@ -216,6 +216,13 @@ let settings = {
     "attack": "There isn't any % here to attack.",
     other: "Sorry, but I don't understand '%'.",
   },
+  defaultIncompletes: {
+    "go": "Go ... where?",
+    "take": "Take ... what?",
+    "use": "Use ... what?",
+    "attack": "Attack ... what?",
+  },
+  defaultAction: "go",
   collections: {
     "Inventory": [],
   },
@@ -427,12 +434,15 @@ let hasWon = false;
 let hasLost = false;
 let history = [];
 let historyIndex = 0;
+let actionIncomplete = "";
 
 function refreshDisplay(resultText = '') {
-  resultText += game.rooms[currentRoom].text + '\n';
-  for (let e of game.rooms[currentRoom].conditionalText.concat(game.anyRoom.conditionalText)) {
-    if (game.rooms[currentRoom].conditions.includes(e.condition) == e.value) {
-      resultText += e.text + '\n';
+  if (!actionIncomplete) {
+    resultText += game.rooms[currentRoom].text + '\n';
+    for (let e of game.rooms[currentRoom].conditionalText.concat(game.anyRoom.conditionalText)) {
+      if (game.rooms[currentRoom].conditions.includes(e.condition) == e.value) {
+        resultText += e.text + '\n';
+      }
     }
   }
   resultText += '\n';
@@ -471,71 +481,100 @@ terminal.addEventListener('submit', e => {
   let [actionKey, ...actionValue] = action.split(' ');
   actionValue = actionValue.join(' ').trim();
 
-  let eventList = [];
-
-  if (game.anyRoom.actions[actionKey]?.[actionValue] || game.rooms[currentRoom].actions[actionKey]?.[actionValue]) {
-    eventList = [(game.anyRoom.actions[actionKey]?.[actionValue] || []).concat(game.rooms[currentRoom].actions[actionKey]?.[actionValue] || [])];
-  } else if (game.defaults[actionKey]) {
-    resultText += game.defaults[actionKey].replace('%', actionValue) + '\n';
-  } else {
-    resultText += game.defaults.other.replace('%', action) + '\n';
+  if (actionIncomplete) {
+    // If the new attempted action exists, ignore the saved incomplete action
+    if (
+      !game.anyRoom.actions[actionKey]?.[actionValue] &&
+      !game.rooms[currentRoom].actions[actionKey]?.[actionValue] &&
+      !game.defaultIncompletes[actionKey]
+    ) {
+      actionKey = actionIncomplete;
+      actionValue = action;
+    }
+    actionIncomplete = "";
   }
-  for (let events of eventList.concat(game.always)) {
-    actionLoop: {
-      for (let e of events) {
-        if (e.event == "log") {
-          resultText += e.text + '\n';
-        } else if (e.event == "enter") {
-          currentRoom = e.room;
-        } else if (e.event == "win") {
-          hasLost = false;
-          hasWon = true;
-        } else if (e.event == "lose") {
-          hasWon = false;
-          hasLost = true;
-        } else if (e.event == "checkRoom") {
-          if (game.rooms[e.room || currentRoom].conditions.includes(e.condition) != e.value) {
-            if (!e.hidden) {
-              resultText += (e.text || game.defaults[actionKey].replace('%', actionValue)) + '\n';
+  if (!actionValue.trim()) {
+    // There is no second word,
+    if (game.defaultIncompletes[actionKey]) {
+      // and the first word is a keyword
+      actionIncomplete = actionKey;
+      resultText += game.defaultIncompletes[actionKey] + '\n';
+    } else if (game.anyRoom.actions[game.defaultAction]?.[actionKey] || game.rooms[currentRoom].actions[game.defaultAction]?.[actionKey]) {
+      // and the first word is not a keyword,
+      // but creates a valid command if it is treated like a value of the default keyword
+      actionValue = actionKey;
+      actionKey = game.defaultAction;
+    }
+  }
+
+  if (!actionIncomplete) {
+
+    let eventList = [];
+
+    if (game.anyRoom.actions[actionKey]?.[actionValue] || game.rooms[currentRoom].actions[actionKey]?.[actionValue]) {
+      eventList = [(game.anyRoom.actions[actionKey]?.[actionValue] || []).concat(game.rooms[currentRoom].actions[actionKey]?.[actionValue] || [])];
+    } else if (game.defaults[actionKey]) {
+      resultText += game.defaults[actionKey].replace('%', actionValue) + '\n';
+    } else {
+      resultText += game.defaults.other.replace('%', action) + '\n';
+    }
+    for (let events of eventList.concat(game.always)) {
+      actionLoop: {
+        for (let e of events) {
+          if (e.event == "log") {
+            resultText += e.text + '\n';
+          } else if (e.event == "enter") {
+            currentRoom = e.room;
+          } else if (e.event == "win") {
+            hasLost = false;
+            hasWon = true;
+          } else if (e.event == "lose") {
+            hasWon = false;
+            hasLost = true;
+          } else if (e.event == "checkRoom") {
+            if (game.rooms[e.room || currentRoom].conditions.includes(e.condition) != e.value) {
+              if (!e.hidden) {
+                resultText += (e.text || game.defaults[actionKey].replace('%', actionValue)) + '\n';
+              }
+              break actionLoop;
             }
-            break actionLoop;
-          }
-        } else if (e.event == "toggleRoom") {
-          if (e.value) {
-            game.rooms[e.room || currentRoom].conditions.push(e.condition);
-          } else {
-            game.rooms[e.room || currentRoom].conditions = game.rooms[e.room || currentRoom].conditions.filter(c => c != e.condition);
-          }
-        } else if (e.event == "checkCollection") {
-          if (!game.collections[e.collection]?.includes(e.item)) {
-            if (!e.hidden) {
-              resultText += (e.text || game.defaults[actionKey].replace('%', actionValue)) + '\n';
+          } else if (e.event == "toggleRoom") {
+            if (e.value) {
+              game.rooms[e.room || currentRoom].conditions.push(e.condition);
+            } else {
+              game.rooms[e.room || currentRoom].conditions = game.rooms[e.room || currentRoom].conditions.filter(c => c != e.condition);
             }
-            break actionLoop;
-          }
-        } else if (e.event == "addCollection") {
-          game.collections[e.collection]?.push(e.item);
-        } else if (e.event == "removeCollection") {
-          game.collections[e.collection] = game.collections[e.collection]?.filter(i => i != e.item);
-        } else if (e.event == "checkScore") {
-          if (!({
-            'lte': game.scores[e.score] <= e.value,
-            'lt': game.scores[e.score] < e.value,
-            'gte': game.scores[e.score] >= e.value,
-            'gt': game.scores[e.score] > e.value,
-            'eq': game.scores[e.score] == e.value,
-          })[e.check]) {
-            if (!e.hidden) {
-              resultText += (e.text || game.defaults[actionKey].replace('%', actionValue)) + '\n';
+          } else if (e.event == "checkCollection") {
+            if (!game.collections[e.collection]?.includes(e.item)) {
+              if (!e.hidden) {
+                resultText += (e.text || game.defaults[actionKey].replace('%', actionValue)) + '\n';
+              }
+              break actionLoop;
             }
-            break actionLoop;
+          } else if (e.event == "addCollection") {
+            game.collections[e.collection]?.push(e.item);
+          } else if (e.event == "removeCollection") {
+            game.collections[e.collection] = game.collections[e.collection]?.filter(i => i != e.item);
+          } else if (e.event == "checkScore") {
+            if (!({
+              'lte': game.scores[e.score] <= e.value,
+              'lt': game.scores[e.score] < e.value,
+              'gte': game.scores[e.score] >= e.value,
+              'gt': game.scores[e.score] > e.value,
+              'eq': game.scores[e.score] == e.value,
+            })[e.check]) {
+              if (!e.hidden) {
+                resultText += (e.text || game.defaults[actionKey].replace('%', actionValue)) + '\n';
+              }
+              break actionLoop;
+            }
+          } else if (e.event == "addScore") {
+            game.scores[e.score] += e.value;
+          } else if (e.event == "setScore") {
+            game.scores[e.score] = e.value;
+          } else if (e.event == "run") {
+            eval(e.code);
           }
-        } else if (e.event == "addScore") {
-          game.scores[e.score] += e.value;
-        } else if (e.event == "setScore") {
-          game.scores[e.score] = e.value;
-        } else if (e.event == "run") {
-          eval(e.code);
         }
       }
     }
@@ -607,9 +646,22 @@ function refreshSettingsDialog() {
         <button type="button" data-type="remove-default" data-default="${k}">x</button>
         <label>Action<input name="default-name" value="${k}" ${k == 'other' ? 'disabled' : ''} data-defaultindex="${i}"></label>
         <label>Default response<input name="default-value" value="${v}" data-defaultindex="${i}"></label>
+        ${k == 'other' ? '' :
+          `<label>Incomplete hint<input name="default-incomplete" value="${settings.defaultIncompletes[k] || ''}" data-defaultkey="${k}"></label>`
+        }
       </div>`
     )).join('')}
     <button type="button" data-type="add-default">Add default response</button>
+    <label>
+      <span>&nbsp;</span>
+      Default action to attempt if none specified
+      <select name="default-action" value="${settings.defaultAction}">
+        ${Object.keys(settings.defaults).filter(k => k != 'other').map(k => (
+          `<option ${k == settings.defaultAction ? 'selected' : ''}>${k}</option>`
+        )).join('')}
+        <option value="" ${settings.defaultAction ? '' : 'selected'}>none</option>
+      </select>
+    </label>
   </fieldset>
   <fieldset>
     <label>
@@ -1383,11 +1435,21 @@ ${
     refreshSettingsDialog();
   }));
   document.querySelectorAll('input[name=default-name]').forEach(input => input.addEventListener('change', () => {
+    let key = Object.keys(settings.defaults)[input.dataset.defaultindex];
     settings.defaults = Object.fromEntries(Object.entries(settings.defaults).map(([k, v], i) => [i == input.dataset.defaultindex ? input.value : k, v]));
+    settings.defaultIncompletes = Object.fromEntries(Object.entries(settings.defaultIncompletes).map(([k, v]) => [k == key ? input.value : k, v]));
     refreshSettingsDialog();
   }));
   document.querySelectorAll('input[name=default-value]').forEach(input => input.addEventListener('change', () => {
     settings.defaults = Object.fromEntries(Object.entries(settings.defaults).map(([k, v], i) => [k, i == input.dataset.defaultindex ? input.value : v]));
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('input[name=default-incomplete]').forEach(input => input.addEventListener('change', () => {
+    settings.defaultIncompletes[input.dataset.defaultkey] = input.value;
+    refreshSettingsDialog();
+  }));
+  document.querySelectorAll('select[name=default-action]').forEach(input => input.addEventListener('change', () => {
+    settings.defaultAction = input.value;
     refreshSettingsDialog();
   }));
   document.querySelectorAll('select[name=starting-room]').forEach(input => input.addEventListener('change', () => {
@@ -1577,6 +1639,12 @@ document.querySelector('button[data-type="load"]').addEventListener('click', () 
       let fileReader = new FileReader();
       fileReader.addEventListener('load', e => {
         settings = JSON.parse(e.target.result);
+
+        // defaultIncompletes & defaultAction are v0.2 settings
+        // Leaving them blank like this creates the same behaviour as v0.1
+        settings.defaultIncompletes ||= Object.fromEntries(Object.entries(settings.defaults).map(k => [k, ""]));
+        settings.defaultAction ||= "";
+
         refreshSettingsDialog();
       });
       fileReader.readAsText(fileInput.files[0]);
