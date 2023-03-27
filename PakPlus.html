@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Futuristic Club</title>
+  <style>
+	/* Reset Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styles*/
+
+body {
+font-family: Arial, sans-serif;
+font-size: 16px;
+color: #fff;
+background-color: #000;
+}
+
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 20px 50px;
+background-color: #222;
+}
+
+nav ul {
+display: flex;
+}
+
+nav li {
+margin-left: 20px;
+}
+
+nav a {
+color: #fff;
+text-decoration: none;
+font-weight: bold;
+}
+
+nav a:hover {
+color: #0f0;
+}
+
+.container {
+max-width: 1000px;
+margin: 0 auto;
+padding: 50px;
+}
+
+#hero {
+background-image: url('https://cdn.pixabay.com/photo/2016/02/08/23/32/digital-background-1181363_960_720.jpg');
+background-size: cover;
+background-position: center;
+height: 500px;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+
+#hero h2 {
+font-size: 48px;
+margin-bottom: 20px;
+}
+
+#hero p {
+font-size: 24px;
+margin-bottom: 40px;
+}
+
+.cta-btn {
+display: inline-block;
+padding: 15px 30px;
+background-color: #0f0;
+color: #fff;
+text-decoration: none;
+border-radius: 5px;
+transition: background-color 0.2s ease-in-out;
+}
+
+.cta-btn:hover {
+background-color: #090;
+}
+
+#features {
+background-color: #111;
+}
+
+#features h3 {
+font-size: 36px;
+margin-bottom: 40px;
+}
+
+#features ul {
+display: flex;
+flex-wrap: wrap;
+list-style: none;
+}
+
+#features li {
+width: 50%;
+padding: 20px;
+}
+
+#events {
+background-color: #222;
+}
+
+#events h3 {
+font-size: 36px;
+margin-bottom: 40px;
+}
+
+#events ul {
+display: flex;
+flex-wrap: wrap;
+list-style: none;
+}
+
+#events li {
+width: 33.33%;
+padding: 20px;
+text-align: center;
+}
+
+#events h4 {
+font-size: 24px;
+margin-bottom: 20px;
+}
+
+#events p {
+font-size: 16px;
+margin-bottom: 20px;
+}
+
+#contact {
+background-color: #111;
+}
+
+#contact h3 {
+font-size: 36px;
+margin-bottom: 40px;
+}
+
+form label {
+display: block;
+font-size: 18px;
+margin-bottom: 10px;
+}
+
+form input,
+form textarea {
+width: 100%;
+padding: 10px;
+margin-bottom: 20px;
+border-radius: 5px;
+border: none;
+}
+
+form button {
+display: block;
+padding: 15px 30px;
+background-color: #0f0;
+color: #fff;
+text-decoration: none;
+border-radius: 5px;
+transition: background-color 0.2s ease-in-out;
+border: none;
+}
+
+form button:hover {
+background-color: #090;
+}
+
+footer {
+background-color: #222;
+padding: 20px;
+text-align: center;
+font-size: 14px;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 768px) {
+header {
+flex-direction: column;
+align-items: flex-start;
+}
+
+nav ul {
+margin-top: 20px;
+}
+
+nav li {
+margin-left: 0;
+margin-right: 20px;
+}
+
+#hero h2 {
+font-size: 36px;
+}
+
+#hero p {
+font-size: 20px;
+margin-bottom: 30px;
+}
+
+#features li {
+width: 100%;
+}
+
+#events li {
+width: 100%;
+margin-bottom: 20px;
+}
+
+form label {
+font-size: 16px;
+}
+
+form input,
+form textarea {
+font-size: 16px;
+margin-bottom: 10px;
+}
+
+form button {
+font-size: 16px;
+}
+}
+
+@media only screen and (max-width: 500px) {
+#hero h2 {
+font-size: 24px;
+}
+
+#hero p {
+font-size: 16px;
+margin-bottom: 20px;
+}
+
+form label {
+font-size: 14px;
+}
+
+form input,
+form textarea {
+font-size: 14px;
+margin-bottom: 10px;
+}
+
+form button {
+font-size: 14px;
+}
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Digital Council</h1>
+  </header>
+
+  <main>
+    <section id="hero">
+      <div class="container">
+        <h2>Welcome to the Digital Council</h2>
+        <p>Improving the digital compitency at pakuranga collage. Join us today!</p>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <h3>Our Goals</h3>
+        <ul>
+          <li>Improve the digital competency at pakuranga collage</li>
+          <li>help build competency in a fun way</li>
+          <li>giving people a fun way to help the school</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="events">
+      <div class="container">
+        <h3>Upcoming Events</h3>
+        <ul>
+          <li>
+            <h4>Pak+</h4>
+            <p>An event with a fun activity for everyone to play</p>
+          </li>
+          <li>
+            <h4>Digital Scavenger Hunt</h4>
+            <p>Explore the school and learn how to stay safe on the internet.</p>
+          </li>
+          <li>
+            <h4>Haque.rs</h4>
+            <p>A new site that anyone can use to learn to stay safe online at pakuranga collage</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h3>Contact Us</h3>
+        <form action="https://formsubmit.co/bailivingst@student.pakuranga.school.nz" method="POST">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+
+          <button type="submit" class="cta-btn">Submit</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Copyright © 2023 Futuristic Club.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
