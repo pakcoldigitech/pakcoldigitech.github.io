@@ -1359,9 +1359,9 @@ ${
     if (button.dataset.room == 'always') {
       settings.always[button.dataset.actionindex].push({ event: "", hidden: true });
     } else if (button.dataset.room == 'any') {
-      settings.anyRoom.actions[""] = { "": [] };
+      settings.anyRoom.actions[button.dataset.actionkey][button.dataset.actionvalue].push({ event: "" });
     } else {
-      settings.rooms[button.dataset.room].actions[""] = { "": [] };
+      settings.rooms[button.dataset.room].actions[button.dataset.actionkey][button.dataset.actionvalue].push({ event: "" });
     }
     refreshSettingsDialog();
   }));
