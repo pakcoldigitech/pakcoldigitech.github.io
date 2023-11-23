@@ -10,17 +10,24 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="/img/manifest/icon-maskable.png">
     <style>
+html {
+  box-sizing: border-box;
+}
+* {
+  box-sizing: inherit;
+}
 body {
   margin: 0;
   background-image: linear-gradient(#fccc00 50%, #007c5a 50%); /* Flag of the Hague */
   background-image: linear-gradient(#86cdf2, #6a9fee);
+  min-width: 100dvw;
+  min-height: 100dvh;
 }
 svg {
-  width: 100vw;
-  height: 100vh;
   width: 100dvw;
   height: 100dvh;
   display: block;
+  position: fixed;
 }
 #ck {
   opacity: 0;
@@ -36,11 +43,111 @@ svg {
 #rs:hover, #poster:hover {
   opacity: 0;
 }
+
+@font-face {
+  font-family: garamond-bold;
+  src: local('GaramondBold'), url(garamond-bold.woff2);
+  font-display: swap;
+  font-weight: bold;
+}
+main {
+  position: fixed;
+  right: 0;
+  width: max(100dvw - 1535 / 2048 * 4 / 3 * 100dvh, 25dvw);
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+}
+nav {
+  background-color: #444;
+  color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 2rem;
+  width: 100%;
+  height: calc(100% - 4rem);
+  max-width: 24rem;
+  box-shadow: 0 0.5rem 1rem #0006;
+  display: flex;
+  flex-flow: column wrap;
+}
+h1 {
+  font-family: garamond-bold, 'Garamond', serif;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  line-height: 1.25;
+  text-align: center;
+  border-bottom: 1px solid currentColor;
+}
+a {
+  font-family: garamond-bold, 'Garamond', serif;
+  font-weight: bold;
+  display: block;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.25rem;
+  padding: 0.75rem 0;
+  transition: all 0.3s ease;
+  border: 0.25rem outset transparent;
+}
+a:hover, a:focus-visible {
+  background-color: #666;
+  border-color: #888;
+  color: #86cdf2;
+}
+a:focus-visible {
+  outline: 2px solid yellow;
+  border-radius: 1px;
+}
+a:active {
+  background-color: #555;
+  border-color: #777;
+  color: dodgerblue;
+}
+a span {
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+a:hover span, a:focus-visible span {
+  transform: translateY(-2px);
+}
+a span::after {
+  content: "";
+  border-bottom: 1px solid currentColor;
+  display: block;
+  margin: auto;
+  transition: width 0.3s ease;
+  width: 0;
+}
+a:hover span::after, a:focus-visible span::after {
+  width: 100%;
+}
+a svg {
+  width: 1rem;
+  height: 1rem;
+  display: inline;
+  position: unset;
+  margin-left: 0.5ch;
+}
+
+@media (max-aspect-ratio: 2048 / 1535) {
+  main {
+    width: 100dvw;
+    height: max(100dvh - 1535 / 2048 * 3 / 4 * 100dvw, 25dvh);
+  }
+  nav {
+    max-width: unset;
+  }
+}
     </style>
     <script type="module">navigator.serviceWorker.register('/sw.js');</script>
   </head>
   <body>
-    <svg viewBox="0 0 2048 1535" preserveAspectRatio="xMinYMax meet">
+    <svg role="img" aria-labelledby="#haque-desc" viewBox="0 0 2048 1535" preserveAspectRatio="xMinYMax meet">
+      <desc id="haque-desc">The Haque building with the letters R S appended to the word Haque so it looks like it says Hackers</desc>
       <defs>
         <clipPath clipPathUnits="userSpaceOnUse" id="building">
           <path d="m 0.02077,484.50002 10.23961,-0.23427 c 5.63179,-0.12886 118.01462,-5.63437 249.73958,-12.23449 131.725,-6.60011 299.8,-14.93997 373.5,-18.53301 145.2267,-7.08014 135.8637,-6.57352 527.05004,-28.51768 146.8775,-8.2393 269.2901,-14.98055 272.0279,-14.98055 h 4.978 L 1539.8815,1067.5 1554.0446,1534.75 0,1536 Z"/>
@@ -51,5 +158,22 @@ svg {
       <image id="rs" x="1229.9088" y="435.141926" width="189" height="256" href="img/rs.webp"/>
       <image id="ck" x="866.70453" y="478.73346" width="255" height="193" href="img/ck.webp"/>
     </svg>
+    <main>
+      <nav>
+        <h1>Links</h1>
+        <a href="https://editor.gdevelop.io/?project=https://resources.gdevelop-app.com/examples/platformer/platformer.json" target="_blank">
+          <span>
+            GDevelop Platformer
+            <svg role="presentation" width="10" height="10" viewBox="0 0 20 20"><path d="M7 3h-6v16h16v-6M9,11 18,2M13 1h6v6" fill="none" stroke="currentColor" stroke-linecap="square" stroke-width="2"/></svg>
+          </span>
+        </a>
+        <a href="https://docs.google.com/document/d/1ljVCGPm7oaHQq3tXcmF50-ycjsNhpBJkK5T5AevPX84/view" target="_blank">
+          <span>
+            Farm Cove Orientation
+            <svg role="presentation" width="10" height="10" viewBox="0 0 20 20"><path d="M7 3h-6v16h16v-6M9,11 18,2M13 1h6v6" fill="none" stroke="currentColor" stroke-linecap="square" stroke-width="2"/></svg>
+          </span>
+        </a>
+      </nav>
+    </main>
   </body>
 </html>
