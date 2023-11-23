@@ -132,6 +132,20 @@ a svg {
   position: unset;
   margin-left: 0.5ch;
 }
+a:hover svg {
+  animation: spin 0.6s ease;
+}
+@keyframes spin {
+  0% {
+    transform: perspective(8rem)rotateY(0deg);
+  }
+  50% {
+    transform: perspective(8rem)rotateY(270deg)scale(1.5);
+  }
+  100% {
+    transform: perspective(8rem)rotateY(360deg);
+  }
+}
 
 @media (max-aspect-ratio: 2048 / 1535) {
   main {
