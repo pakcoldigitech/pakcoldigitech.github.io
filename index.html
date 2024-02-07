@@ -6,7 +6,7 @@
     <meta name="description" content="Haquers">
     <meta name="theme-color" content="#77c4d6">
     <title>Haque.rs</title>
-    <link rel="icon" href="data:,">
+    <link rel="icon" href="img/manifest/icon-192.png">
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="/img/manifest/icon-maskable.png">
     <style>
@@ -158,6 +158,13 @@ a:hover svg {
 }
     </style>
     <script type="module">navigator.serviceWorker.register('/sw.js');</script>
+    <script type="module">
+addEventListener('mousemove', e => {
+  document.body.style.backgroundImage =
+    `radial-gradient(circle 50vmin at ${e.pageX}px ${e.pageY}px, #fffacd99, transparent),
+    linear-gradient(#86cdf2, #6a9fee)`;
+});
+    </script>
   </head>
   <body>
     <svg role="img" aria-labelledby="#haque-desc" viewBox="0 0 2048 1535" preserveAspectRatio="xMinYMax meet">
@@ -175,6 +182,12 @@ a:hover svg {
     <main>
       <nav>
         <h1>Links</h1>
+        <a href="showcase">
+          <span>
+            Year 10 Websites
+            <svg role="presentation" width="10" height="10" viewBox="0 0 20 20"><path d="M7 3h-6v16h16v-6M9,11 18,2M13 1h6v6" fill="none" stroke="currentColor" stroke-linecap="square" stroke-width="2"/></svg>
+          </span>
+        </a>
         <a href="https://editor.gdevelop.io/?project=https://resources.gdevelop-app.com/examples/platformer/platformer.json" target="_blank">
           <span>
             GDevelop Platformer
