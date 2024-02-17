@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Brainstorm">
   <title>Brainstorm</title>
   <link rel="icon" href="data:,">
   <style>
@@ -231,10 +232,10 @@ document.querySelector('#save').addEventListener('click', e=> {
   <template>
     <section>
       <nav>
-        <button class="new">➕︎</button>
-        <input type="color" value="#fffacd" list="colors">
-        <button class="edit">🔓︎</button>
-        <button class="close">✖</button>
+        <button class="new" aria-label="New">➕︎</button>
+        <input type="color" value="#fffacd" list="colors" aria-label="Color">
+        <button class="edit" aria-label="Toggle Editing">🔓︎</button>
+        <button class="close" aria-label="Close">✖</button>
       </nav>
       <div contenteditable>
         <h1>New Note</h1>
