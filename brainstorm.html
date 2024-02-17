@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Brainstorm</title>
+  <link rel="icon" href="data:,">
+  <style>
+:root {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+* {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+}
+main, main > div {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  /* outline: 10px dashed red; */
+}
+
+body > nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  button {
+    cursor: pointer;
+    border: 0;
+    font-family: cursive;
+    padding: 0.5rem 0.75rem;
+    background-color: darkorange;
+    border-radius: 2px;
+    box-shadow: 1px 1px 4px #0007;
+    transition: translate 200ms;
+    &:hover {
+      translate: 0 -2px;
+    }
+    &:active {
+      background-color: orange;
+    }
+  }
+}
+section {
+  position: absolute;
+  display: flex;
+  /* background-color: #911; */
+  width: 300px;
+  height: 250px;
+  resize: both;
+  overflow: auto;
+  box-shadow: 2px 2px 6px #0007;
+}
+section > nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+}
+section > nav button {
+  border: 0;
+  background-color: khaki;
+  color: darkgoldenrod;
+  padding: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  background-color: #0001;
+  color: #0007;
+  backdrop-filter: saturate(2);
+  &:hover {
+    background-color: darkkhaki;
+    background-color: #0003;
+  }
+}
+section > div {
+  background-color: lemonchiffon;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 0.5rem;
+  font-family: cursive;
+  font-style: italic;
+  &:not([contenteditable]) {
+    user-select: none;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+section > div * {
+  max-width: 100%;
+  max-height: 100%;
+  pointer-events: none;
+}
+section > div h1:first-child {
+  margin: 0.5rem 0;
+}
+input[type=color] {
+  border: 0;
+  background-color: khaki;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><text x-fill="darkgoldenrod" opacity="0.5" x="10" y="10" text-anchor="middle" dominant-baseline="central">🎨︎</text></svg>');
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  background-color: #0001;
+  backdrop-filter: saturate(2);
+  &:hover {
+    background-color: darkkhaki;
+    background-color: #0003;
+  }
+}
+::-moz-color-swatch {
+  display: none;
+}
+::-webkit-color-swatch {
+  display: none;
+}
+[list]::-webkit-calendar-picker-indicator{
+   -webkit-appearance: none;
+  appearance: none;
+  display: none !important;
+  width: 0;
+}
+[list]::-webkit-list-button {
+   -webkit-appearance: none;
+  appearance: none;
+  display: none !important;
+  width: 0;
+}
+  </style>
+  <script type="module">
+let template = document.querySelector('template');
+let outer = document.querySelector('main');
+let inner = document.querySelector('main > div');
+
+outer.style.scale ||= 1;
+
+function newNote() {
+  let section = template.content.firstElementChild.cloneNode(true);
+  let i = inner.getBoundingClientRect();
+  let o = outer.getBoundingClientRect();
+  section.style.left = (innerWidth - 300) / 2 - (i.x - o.x) / outer.style.scale + 'px';
+  section.style.top = (innerHeight - 250) / 2 - (i.y - o.y) / outer.style.scale + 'px';
+  inner.append(section);
+  hydrateSection(section);
+};
+
+function hydrateSection(section) {
+  let div = section.querySelector('div');
+  let edit = section.querySelector('.edit');
+  let color = section.querySelector('input');
+  section.querySelector('.close').addEventListener('click', e => section.remove());
+  section.querySelector('.new').addEventListener('click', newNote);
+  edit.addEventListener('click', e => {
+    div.toggleAttribute('contenteditable');
+    edit.textContent = edit.textContent == '🔒︎' ? '🔓︎' : '🔒︎';
+  });
+  color.addEventListener('input', e => {
+    div.style.backgroundColor = color.value;
+  });
+  div.addEventListener('mousedown', e => {
+    inner.append(section); // Bring to top
+    let offset = inner.getBoundingClientRect();
+    let rect = section.getBoundingClientRect();
+    let startX = (e.clientX - rect.x + offset.x) / outer.style.scale;
+    let startY = (e.clientY - rect.y + offset.y) / outer.style.scale;
+    section.style.left = e.pageX / outer.style.scale - startX + 'px';
+    section.style.top  = e.pageY / outer.style.scale - startY + 'px';
+    function m(e) {
+      section.style.left = e.pageX / outer.style.scale - startX + 'px';
+      section.style.top  = e.pageY / outer.style.scale - startY + 'px';
+    }
+    document.addEventListener('mousemove', m);
+    document.addEventListener('mouseup', function u() {
+      document.removeEventListener('mousemove', m);
+      document.removeEventListener('mouseup', u);
+    });
+  });
+}
+
+document.querySelector('#new').addEventListener('click', newNote);
+document.querySelectorAll('section').forEach(hydrateSection);
+if (!document.querySelector('section')) { newNote(); }
+
+addEventListener('wheel', e => {
+  outer.style.scale = Math.max(0.1, outer.style.scale - e.deltaY / innerHeight);
+});
+
+addEventListener('mousedown', e => {
+  if (e.target.contains(inner)) {
+    let offset = outer.getBoundingClientRect();
+    let rect = inner.getBoundingClientRect();
+    let startX = (e.clientX - rect.x + offset.x) / outer.style.scale;
+    let startY = (e.clientY - rect.y + offset.y) / outer.style.scale;
+    inner.style.left = e.pageX / outer.style.scale - startX + 'px';
+    inner.style.top  = e.pageY / outer.style.scale - startY + 'px';
+    function m(e) {
+      inner.style.left = e.pageX / outer.style.scale - startX + 'px';
+      inner.style.top  = e.pageY / outer.style.scale - startY + 'px';
+    }
+    document.addEventListener('mousemove', m);
+    document.addEventListener('mouseup', function u() {
+      document.removeEventListener('mousemove', m);
+      document.removeEventListener('mouseup', u);
+    });
+  }
+});
+
+document.querySelector('#save').addEventListener('click', e=> {
+  let a = document.createElement("a");
+  a.download = 'Brainstorm.html';
+  a.href = 'data:text/html,<!DOCTYPE html>' + encodeURIComponent(document.documentElement.outerHTML);
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+});
+  </script>
+  <template>
+    <section>
+      <nav>
+        <button class="new">➕︎</button>
+        <input type="color" value="#fffacd" list="colors">
+        <button class="edit">🔓︎</button>
+        <button class="close">✖</button>
+      </nav>
+      <div contenteditable>
+        <h1>New Note</h1>
+      </div>
+    </section>
+  </template>
+</head>
+<body>
+  <nav>
+    <button id="new">New Note ➕︎</button>
+    <button id="save">Save 💾︎</button>
+  </nav>
+  <main><div></div></main>
+  <datalist id="colors">
+    <option>#ffe4f1</option>
+    <option>#ffe4b5</option>
+    <option>#fffacd</option>
+    <option>#e4f9e0</option>
+    <option>#e2f1ff</option>
+    <option>#f1e5fe</option>
+    <option>#f3f2f1</option>
+  </datalist>
+</body>
+</html>
