@@ -1,0 +1,139 @@
+body {
+    background-color:rgb(154, 216, 216);
+    background: size cover;
+    background-attachment: fixed;
+}
+
+nav{
+    background-color:rgb(154, 216, 216);
+    padding:10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%
+}
+
+nav a{ 
+    display: inline-block;
+    background-color: rgb(175, 100, 137);
+    margin:0px;
+    padding:10px;
+    border-radius: 2px;
+    color: black;
+    text-decoration:underline ;
+    
+    
+}
+nav a:hover {
+
+background-color: brown;
+translate: 0 -3px 
+}
+h1{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 50px;
+    color:rgb(175, 100, 137);
+    font-family: monospace;
+    text-shadow: 5px 5px 9px rgb(175, 100, 137);
+}
+
+h2{
+    color:rgb(175, 100, 137);
+    font-size: 30px;
+    font-family: monospace;
+}
+p{
+    color:black;
+    font-size: 20px;
+    font-family: monospace;
+}
+ul{
+    color:black;
+    font-size: 20px;
+    font-family: monospace;
+}
+h3{
+    color:black;
+    font-family: monospace;
+}
+div{
+   background-image: linear-gradient(rgb(175, 100, 137) rgb(154, 216, 216));
+    width: 75%;
+    margin:auto;
+    padding: 20px;
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 80px;
+
+    box-shadow: 10px 10px 10px rgb(175, 100, 137);
+}
+.wolf-page {
+    background-color: lavender;    
+}
+
+.wolf-page h1 {
+    color: grey;
+    margin-top: 50px;
+    text-align: center;
+    font-size: 50px;
+    color:rgb(175, 100, 137);
+    font-family:cursive;
+    text-shadow: 5px 5px 9px rgb(175, 100, 137);
+}
+
+.wolf-page h2 {
+    color: grey;
+    font-size: 30px;
+    color:rgb(175, 100, 137);
+    font-family:cursive;
+    text-shadow: 5px 5px 9px rgb(175, 100, 137);
+}
+
+.wolf-page p{
+    color:black;
+    font-size: 20px;
+    font-family: cursive;
+}
+
+.wolf-page nav a:hover {
+
+    background-color:rgb(175, 100, 137);
+    translate: 0 -3px 
+}
+
+.wolf-page nav a{
+        
+display: inline-block;
+background-color:lavender;
+margin:0px;
+padding:10px;
+border-radius: 2px;
+color: black;
+text-decoration:underline ;  
+ }
+
+ .wolf-page nav{
+background-color:lavender;
+padding:10px;
+position: fixed;
+top: 0;
+left: 0;
+width:100%
+}
+
+.wolf-page div{
+    background-image: linear-gradient(rgb(170,115,214,0.74));
+     width: 75%;
+     margin:auto;
+     padding: 20px;
+ 
+     border-width: 5px;
+     border-style:solid;
+     border-color: black;
+     border-radius: 80px;
+ 
+     box-shadow: 10px 10px 10px rgb(175, 100, 137);
+ }

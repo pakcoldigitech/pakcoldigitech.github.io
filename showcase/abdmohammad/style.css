@@ -1,0 +1,82 @@
+body{
+    background-color: rgb(243, 102, 125);
+    background-image: url("https://t3.ftcdn.net/jpg/06/06/68/38/240_F_606683890_Iad0gczDtpiQFWo7bc45FgpPOqx6ordf.jpg");
+}
+
+h1 {
+    text-align:center ;
+    font-size: 50px;
+    color:blue;
+    text-shadow: 6px 4px 5px #df0b30;
+    margin-top: 100px;
+}
+h2 {
+      color: red
+}
+p {
+   color: blue
+}
+.subheading {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 50px;
+    text-shadow: 0 0 black;
+    text-shadow: 0 0 black;
+
+}
+.cats-page .subheading {
+    color: black
+}
+div {
+    background-color: aqua;
+    background-image: radial-gradient(yellow, pink);
+    width: 75%;
+    margin: auto;
+    padding: 20px;
+
+    border-width: 2px;
+    border-style:solid;
+    border-color:black;
+
+    border:2px soild black;
+
+    border-radius: 10%;
+
+    box-shadow: 10px 10px blueviolet;
+    text-shadow: 0 0 blue;
+}
+body {
+    background-color: pink;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+.cats-page {
+    background-color: rgb(16, 16, 247);
+    background-image: none;
+}
+.cats-page h1 {
+    color: pink;
+    font-family: "Broadway"Asans-serif;
+    font-family: "Protest Revolution", sans-serif;
+}
+nav  {
+    background-color: white;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+}
+
+nav a {
+    display: inline-block;
+
+    background-color: pink;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    color: black;
+    text-decoration: none;
+} 

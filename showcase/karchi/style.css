@@ -1,0 +1,89 @@
+.Homepage{
+    background-image:url("images/animalwallpaper.png");
+}
+.Homepage nav{
+    background-color: rgba(190 204 179);
+}
+.Homepage nav a{
+    background-color: rgba(240 227 222);
+    color: rgba(148, 115, 54, 0.993);
+}
+.Homepage a{
+    color: black;
+    text-decoration: solid;
+}
+
+.The-Fish{
+    background-image: url("Images/fishwallpaper.png");
+}
+.The-Fish nav{
+    background-color: rgba(216, 192, 148, 0.993);
+}
+.The-Fish nav a{
+    background-color: rgb(196,156,83,0.993);
+    color: rgba(148, 115, 54, 0.993);
+}
+.The-Fish h1{
+    text-shadow: 8px 8px 12px rgb(187, 142, 90);
+}
+.The-Fish h5{
+    text-shadow: 4px 4px 12px rgb(187, 142, 90)
+}
+.The-Fish div{
+    box-shadow: 10px 10px 10px rgb(82, 55, 24);
+}
+
+body {
+    background-image: url("Images/kiwiwallpaper.png");
+    background-color:rgb(201, 201, 201)
+    
+}
+h1{
+    text-align: center;
+    font-size: 40px;
+    text-shadow: 8px 8px 12px rgb(97, 97, 97);
+    margin-top: 65px;
+}
+h2{
+    color: rgb(53, 53, 53);
+}
+h5{
+    text-align: center;
+    text-shadow: 4px 4px 12px rgb(97, 97, 97);
+}
+p{
+    color: rgb(80, 80, 80);
+}
+div{
+    background-color: rgb(250, 250, 250);
+    width: 75%;
+    margin: auto;
+    padding: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    border: 2px;
+    border-radius:3.14px;
+    border-style:ridge;
+    box-shadow: 10px 10px 10px rgb(73, 73, 73);
+}
+nav{
+    background-color: rgb(241, 241, 241);
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+nav a{
+    background-color: rgb(194, 190, 187);
+    margin: 5px;
+    padding: 10px;
+    border-radius: 3.14px;
+    color: rgb(73, 71, 66);
+    text-decoration: solid;
+}
+nav a:hover{
+    background-color: blue;
+    translate: 0 -3px;
+}

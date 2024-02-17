@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Informative page about Fantails</title>
+
+        <meta charset="utf-8">
+
+        <link rel="stylesheet"  href="fantail.css">
+
+        <script>
+
+            window.onscroll = function() {scrolling()};
+
+            function scrolling() {
+                if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80){
+
+                    document.getElementById("topBar").style.padding = "0.8%";
+                    setTimeout(() => {document.getElementById("1").style.fontSize = "17px";}, 400)
+                    setTimeout(() => {document.getElementById("2").style.fontSize = "17px";}, 300)
+                    setTimeout(() => {document.getElementById("3").style.fontSize = "17px";}, 200)
+                    setTimeout(() => {document.getElementById("4").style.fontSize = "17px";}, 100)
+                    
+                    
+                    
+                } else {
+
+                    document.getElementById("topBar").style.padding = "1.5%";
+                    setTimeout(() => {document.getElementById("1").style.fontSize = "20px";}, 400)
+                    setTimeout(() => {document.getElementById("2").style.fontSize = "20px";}, 300)
+                    setTimeout(() => {document.getElementById("3").style.fontSize = "20px";}, 200)
+                    setTimeout(() => {document.getElementById("4").style.fontSize = "20px";}, 100)
+                    
+                    
+                    
+                }
+            }
+
+
+        </script>
+
+
+
+    </head>
+
+
+    <body>
+
+        <div id="everything">
+            <nav id="topBar">
+                
+                    <a id="1" href="kiwi.html">Kiwi</a>
+                    <a id="2"  href="fantail.html">Fantail</a>
+                    <a id="3"  href="#extraInfo">Bottom</a>
+                    <a id="4"  href="kiwi.html">Contact</a>
+                
+            </nav>                                                         
+
+            
+            <h1 id="mainTitle">
+                The Fantail
+            </h1>
+
+            <img id="Kiwi" alt="Kiwi image" src="images/fantail.jpg">
+
+            <p id="subtext">New Zealand's national bird.</p>
+
+            <div id="stuff">
+                <h3 class="Sections">Features</h3>
+                
+                <p class="info">The fantail (or pīwakawaka) is one of the most easily recognised birds in the forest with its distinctive fan-shaped tail, darting flight, and frequent chittering “cheep cheep” calls. Adults have a grey/black head with a white eyebrow, a black-brown back, orange/yellow underparts and a black-and-white tail.
+                </p>
+                
+                <h3 class="Sections">Breeding</h3>
+                
+                <p class="info">The timing of fantail breeding varies with location and weather conditions. Those at southern localities (Southland) and offshore islands (Chathams) have shorter breeding seasons than those further north. The nest is constructed of fine materials (mosses, dried rotten wood fibres, hair, dried grasses, fern scales) tightly woven with cobwebs. Most nests are sheltered from above by foliage, and often include a ‘tail’ of material below the base of the nest. Two to five eggs are laid, with both adults taking turns on the nest through the approximately 14-day incubation period. Likewise, both male and female brood and feed the young during the approximately 14-day nestling period. Recent fledglings have short tails and often remain together, often perched side by side. The male looks after the fledglings when the female starts building the next nest. One monitored pair reared five broods in a season, totalling 15 fledglings. 
+                </p>
+                
+                <h3 class="Sections">Habitat</h3>
+                
+                <p class="info">Fantails occur widely from Northland to Stewart Island, and on some islands of the Chathams group (Chatham, Pitt, Rangatira, Mangere, Little Mangere). They colonised the Snares group during 1977-81, but disappeared during a severe storm in 2001.
+
+                    The widespread distribution of the fantail can be attributed to its utilisation of a wide variety of habitats, including both native and exotic forest and shrubland habitats. It is widespread in extensive native forest blocks, small forest patches, scrubland, exotic plantations, farm shelterbelts, orchards, and well-treed suburban parks and gardens.
+                </p>
+                
+                <h3 class="Sections">Species</h3>
+                
+                <h4 id="listInfo">There are many species of fantails, a few are:</h4>
+                    <ul class="info">
+                        <li class="list">the New Zealand Fantail</li>
+                        <li class="list">the Malasian pied fantail</li>
+                        <li class="list">Mangrove Fantail</li>
+                        <li class="list">Grey Fantail</li>
+                        <li class="list">Northern Fantail</li>
+
+                    </ul>
+
+                <a id="extraInfo" href="https://nzbirdsonline.org.nz/species/new-zealand-fantail">Click here to learn more about Fantails</a>
+
+            </div>
+
+        </div>
+
+
+    </body>
+
+
+
+
+</html>

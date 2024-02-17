@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Informative page about Kiwis</title>
+
+        <meta charset="utf-8">
+
+        <link rel="stylesheet"  href="kiwi.css">
+
+        <script>
+
+            window.onscroll = function() {scrolling()};
+
+            function scrolling() {
+                if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80){
+
+                    document.getElementById("topBar").style.padding = "0.8%";
+                    setTimeout(() => {document.getElementById("1").style.fontSize = "17px";}, 400)
+                    setTimeout(() => {document.getElementById("2").style.fontSize = "17px";}, 300)
+                    setTimeout(() => {document.getElementById("3").style.fontSize = "17px";}, 200)
+                    setTimeout(() => {document.getElementById("4").style.fontSize = "17px";}, 100)
+                    
+                    
+                    
+                } else {
+
+                    document.getElementById("topBar").style.padding = "1.5%";
+                    setTimeout(() => {document.getElementById("1").style.fontSize = "20px";}, 400)
+                    setTimeout(() => {document.getElementById("2").style.fontSize = "20px";}, 300)
+                    setTimeout(() => {document.getElementById("3").style.fontSize = "20px";}, 200)
+                    setTimeout(() => {document.getElementById("4").style.fontSize = "20px";}, 100)
+                    
+                    
+                    
+                }
+            }
+
+
+        </script>
+
+
+
+    </head>
+
+
+    <body>
+
+        <div id="everything">
+            <nav id="topBar">
+                
+                    <a id="1" href="kiwi.html">Kiwi</a>
+                    <a id="2"  href="fantail.html">Fantail</a>
+                    <a id="3"  href="#extraInfo">Bottom</a>
+                    <a id="4"  href="kiwi.html">Contact</a>
+                
+            </nav>                                                         
+
+            
+            <h1 id="mainTitle">
+                The Kiwi
+            </h1>
+
+            <img id="Kiwi" alt="Kiwi image" src="images/kiwibirdgeno.jpg">
+
+            <p id="subtext">New Zealand's national bird.</p>
+
+            <div id="stuff">
+                <h3 class="Sections">Features</h3>
+                
+                <p class="info">Kiwis are not your typical bird. They are sometimes called
+                ‘honorary mammals’ because of their strange mammalian traits.
+                Unlike most birds, kiwis have heavy bones filled with marrow.
+                Their powerful legs make up a third of their body weight
+                and allow them to run as fast as a human.
+                Kiwis also have cat-like whiskers and shaggy plumage
+                that is more like hair than feathers.
+                </p>
+                
+                <h3 class="Sections">Senses</h3>
+                
+                <p class="info">Kiwis have highly developed senses of smell and touch,
+                whereas most birds rely on sight as their primary sense.
+                They are the only bird in the world to have nostrils at the end of their beak,
+                which enables them to sniff out food in leaf litter and even beneath the soil.
+                </p>
+                
+                <h3 class="Sections">Eggs</h3>
+                
+                <p class="info">Kiwi birds put a lot of energy into incubating eggs -
+                it takes around 80 days for them to hatch.
+                This is more than twice the typical length of time for birds,
+                closer to the gestation period of small mammals.
+                Once the female kiwi lays her egg, the male sits on the egg
+                until it hatches so the female can forage for food.
+                Because the egg has taken up so much room in her body,
+                her stomach has shrunken so much that she desperately needs to replenish herself.
+                </p>
+                
+                <h3 class="Sections">Species</h3>
+                
+                <h4 id="listInfo">There are five species of kiwi:</h4>
+                    <ul class="info">
+                        <li class="list">the tokoeka</li>
+                        <li class="list">the rowi</li>
+                        <li class="list">the roroa or great spotted kiwi</li>
+                        <li class="list">the pukapuka or little spotted kiwi</li>
+                        <li class="list">and the North Island brown kiwi</li>
+
+                    </ul>
+
+                <a id="extraInfo" href="https://www.doc.govt.nz/nature/native-animals/birds/birds-a-z/kiwi/">Click here to learn more about kiwis</a>
+
+            </div>
+
+        </div>
+
+
+    </body>
+
+
+
+
+</html>
+
+

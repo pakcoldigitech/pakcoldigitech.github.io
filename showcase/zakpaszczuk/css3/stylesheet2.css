@@ -1,0 +1,102 @@
+
+body {    
+     background-color:blue;
+     background-image: url();
+     background-size: contain;
+     background-attachment: fixed;
+}
+
+.cats-page {
+     background-color: burlywood;
+     background-image: url();
+}
+ 
+ nav {
+      background-color: orange;
+      padding: 10px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 98.9%;
+
+      border: 2px solid black;
+      border-radius: 10px;
+ }
+ 
+ h1 {
+     color:black;
+     text-align: center;
+     text-shadow: 6px 4px 6px;
+     margin: 100px;
+ }
+ 
+ nav a {
+ display: inline-block;
+
+ background-color: yellow;
+ margin: 5px;
+ padding: 10px;
+ border-radius: 2px;
+ color: black;
+ text-decoration: none;
+ 
+ transition-duration: 500ms;
+ }
+
+ nav a:hover {
+      background-color: red;
+      translate: 0 -3px;
+ }
+ 
+ strong {
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+ }
+ 
+ h4 {
+      font-family: 'Rajdhani', sans-serif;
+ font-family: 'Rubik Vinyl', cursive;
+ text-align: center;
+ }
+ 
+ h3 {
+      font-family: 'Rajdhani', sans-serif;
+ font-family: 'Rubik Vinyl', cursive;
+ text-align: center;
+ }
+ 
+ h1 {
+      font-family: 'Rajdhani', sans-serif;
+ font-family: 'Rubik Vinyl', cursive;
+ text-align: center;
+ }
+ 
+ body {
+      font-family: 'Rajdhani', sans-serif;
+ font-family: 'Rubik Vinyl', cursive;
+ }
+ 
+ p {
+      font-family: 'Rajdhani', sans-serif;
+ font-family: 'Rubik Vinyl', cursive;
+ text-align: center;
+ }
+ 
+ strong {
+      font-family: 'Rajdhani', sans-serif;
+ font-family: 'Rubik Vinyl', cursive;
+ 
+ }
+ 
+ div{
+      background-image: linear-gradient(orange, yellow); 
+ 
+      background-color: turquoise;
+      width: 100%;
+      margin: auto;
+      
+ 
+ border: 2px solid black;
+ border-radius: 10px
+ 
+ }

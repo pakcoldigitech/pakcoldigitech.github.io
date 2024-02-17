@@ -1,0 +1,97 @@
+html {
+    scroll-behavior: smooth;
+}
+
+#everything{
+
+    background-image: linear-gradient(rgba(255, 255, 255, 0.397), rgba(255, 255, 255, 0.863));
+    background-size: cover;
+    background-attachment: sticky;
+
+    padding-bottom: 50px;
+
+}
+
+
+#topBar{
+    position: fixed;
+    width: 100%;
+    background-image: linear-gradient( rgba(200, 182, 219, 0.596), rgba(4, 17, 77, 0.753));
+    padding: 1.5%;
+    top: 0px;
+    left: 0px;
+
+}
+
+nav a{
+    margin:10px;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(33, 179, 118);
+    font-weight: bold;
+    display: inline-block;
+    transition-duration: 250ms;
+}
+
+nav a:hover{
+    
+    color: rgb(100, 237, 123);
+    font-style: oblique;
+    transform: translate(0- 3px);
+}
+
+#Kiwi{
+    z-index: 1;
+    opacity: 1;
+    width: 100%;
+    border-radius: 100px;
+}
+
+#subtext{
+    padding-left: 15px;
+}
+
+.info{
+    color: rgb(43, 40, 44);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2.5%;
+
+}
+
+.Sections{
+
+    margin-left: 3.5%;
+
+}
+
+#mainTitle{
+
+    text-align:center;
+    font-family: Seif;
+    margin-top: 100px;
+
+
+}
+
+#listInfo{
+    margin-left: 2.5%;
+}
+
+.list{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#extraInfo{
+    padding-left: 4%;
+    padding-bottom: 100px;
+}
+
+body{
+    background-image: url("images/fantailBackground2.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+
+    
+}
