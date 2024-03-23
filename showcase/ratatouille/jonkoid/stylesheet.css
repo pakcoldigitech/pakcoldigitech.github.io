@@ -1,0 +1,197 @@
+div {
+    display: flex;
+    flex-direction: row;
+   text-align: center;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+   
+    }
+
+    .border {
+flex-direction: column;
+padding-left: 100px;
+
+    }
+.background {
+    background-color: lightgray;
+    border: 5px solid gray;
+    padding: 25px;
+    
+}
+
+.border2 {
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    width: 304px;
+    border-radius: 20px;
+    height: 700px;
+    border: 3px solid gray;
+}
+
+body {
+    background-color: bisque;
+}
+
+.border3 {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.border4 {
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    width: 204px;
+    border-radius: 20px;
+    height: 600px;
+    margin: auto;
+    border: 3px solid gray;
+}
+
+.border5 {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 250px;
+}
+
+nav {
+    background-color: black;
+    padding: 15px;
+   
+    border: 2px solid gray ;
+    border-style: solid;
+    position:fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+  }
+  
+  nav a {
+    color: black;
+    margin: 3px;
+    text-decoration: none;
+    transition: 2s;
+    background-color: lightgray;
+    border: 2px solid gray;
+    padding: 7px;
+    border-radius: 10px;
+  }
+
+  header {
+    margin-top: 50px;
+  }
+  .reviews {
+    background-color: white;
+    border-radius: 25px;
+    
+    text-align: left;
+    
+    border: 4px solid gray;
+    font-size: medium;
+    padding: 15px;
+  }
+
+
+h2.padding {
+    padding-left: 10px;
+}
+img {
+    border-radius: 10px;
+}
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 10000px;
+  position: relative;
+  margin: auto;
+  background-color: white;
+  text-align: center;
+  padding: 45px;
+  border-radius: 20px;
+ border: 3px solid grey;
+ justify-content: center;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev {
+    left:0;
+    border-radius: 0 3px 3px 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+  color:#f2f2f2
+}
+
+/* Caption text */
+.text {
+  color: white;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: white;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }

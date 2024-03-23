@@ -1,0 +1,32 @@
+.row {
+    background-color: bisque;
+    display: flex;
+    align-items: start;
+    gap: 50px;
+    padding: auto;
+    flex-wrap: wrap;
+}
+
+.col {
+    background-color: burlywood;
+    padding: 10px;
+    width: 30%
+}
+
+body {
+    background-color: bisque;
+    font-family: "Comic Sans MS"
+}
+
+.col2 {
+    background-color: burlywood;
+    padding: 10px;
+
+    width: calc(33% - 70px);
+}
+
+.col3 {
+    background-color: burlywood;
+    padding: 10px;
+    width: 100%;
+}
