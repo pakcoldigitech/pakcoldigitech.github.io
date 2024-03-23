@@ -1,0 +1,14 @@
+body {
+    background-image: url ();
+}
+
+h1 {
+    font-size:20px;
+text-align:center;
+}
+div {
+    background-color: rgb(154, 154, 216);
+margin:100px;
+border-radius:30px;
+box-shadow: 10px 10px 10px rgb(255, 195, 195);
+}

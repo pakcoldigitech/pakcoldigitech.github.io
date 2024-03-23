@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div class="title">
+        <title> Sports Sense</title>
+        <link rel="stylesheet" href="Sports.css">
+</head>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+<body>
+
+    <nav>
+        <a href="Sports.html"> Home </a>
+        <a href="Football.html"> Football </a>
+        <a href="Basketball.html">  Basketball</a>
+        <a href="Baseball.html"> Baseball</a>
+        <a href="American-Football.html">American Football</a>
+    </nav>
+
+    
+
+<div class="starting-title">
+<h1>Sport Sense</h1>
+
+<img class="sports-balls" src="https://harakahdaily.org/wp-content/uploads/2021/10/25102021sports.jpg" alt="Sport_balls">
+</div>
+
+<div class="Intro">
+<p>Welcome to Sport Sense, your ultimate destination for all things sports! Whether you're a die-hard fan, a casual
+observer, or someone just dipping their toes into the world of athletics, we've got you covered. From the
+adrenaline-pumping action of professional leagues to the heartwarming stories of grassroots movements, we strive to
+capture the essence of what makes sports so captivating.</p>
+
+<p>At Sport Sense, we believe that sports transcend mere competition; they're a celebration of human achievement,
+teamwork, and the unyielding spirit of perseverance. Our platform serves as a hub where enthusiasts from all walks of
+life can come together to share their passion, knowledge, and love for the game.</p>
+
+<p> So, join us on this exhilarating journey through the world of sports. Whether you're cheering from the sidelines or
+chasing your own athletic dreams, let Sport Sense be your trusted companion in this thrilling adventure. Welcome
+aboard, sports aficionados!</p>
+</div>
+
+
+
+<!-- Slideshow container -->
+<div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 4</div>
+      <img src="https://img.olympics.com/images/image/private/t_s_pog_staticContent_hero_xl_2x/f_auto/primary/ngdjbafv3twathukjbq2" style="width:100%">
+      <div class="text">Football</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 4</div>
+      <img src="https://img.lemde.fr/2023/05/13/0/0/2875/1917/664/0/75/0/cdd504f_e40d958709564c408ece9588f23f9455-0-f8962548b813450bb82604f0cbe49d68.jpg" style="width:100%">
+      <div class="text">Basketball</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 4</div>
+      <img src="https://hips.hearstapps.com/hmg-prod/images/shohei-ohtani-of-the-los-angeles-angels-bats-in-the-third-news-photo-1690816729.jpg" style="width:100%">
+      <div class="text">Baseball</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">4 / 4</div>
+      <img src="https://images.sidearmdev.com/crop?url=https%3a%2f%2fdxbhsrqyrr690.cloudfront.net%2fsidearm.nextgen.sites%2fgostanford.com%2fimages%2f2024%2f2%2f12%2fimg_22501426__1_.jpg&height=608&width=1080&type=jpeg&gravity=smart" style="width:100%">
+      <div class="text">American Football</div>
+    </div>
+
+
+
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+  
+  <!-- The dots/circles -->
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+  </div>
+
+
+  <script>
+    let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+</body>
+</html>

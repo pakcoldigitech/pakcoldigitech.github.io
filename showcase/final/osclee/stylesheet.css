@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+nav {
+
+    position: fixed;
+
+}
+header {
+    background-color: rgb(22, 158, 22);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/1b/Logo_Brasil.png");
+    background-repeat: no-repeat;
+    background-size: 110px;
+    background-position: 40px 20px;
+    padding: 3rem;
+
+    border: 5px solid yellow;
+    border-color: yellow;
+    border-radius: 10px;
+
+    
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    margin-top: 200px;
+}
+
+main {
+   padding: 5%;
+   text-align: center;font-family: "Mallanna", sans-serif;
+   font-weight: 400;
+   font-style: normal;
+}
+
+main h2 {
+    margin-top: 0;
+}
+
+img {
+
+    src: url(neymarimages.jpg); 
+    padding: 10;
+    height:5%; 
+
+}
+img {
+
+    src: url(neymar\ 2.jpg); 
+    padding: 10;
+    height:5%; 
+
+}
+
+
+footer {
+    background-color: #8f8585;
+    padding: 1rem;
+    text-align: center;
+}
+
+head {
+position: fixed;
+
+}

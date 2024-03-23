@@ -1,0 +1,99 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding: 100px;
+}
+
+body {
+    background-image: url();   
+    margin: 25px;
+
+
+    background-image: linear-gradient(45deg, black 25%, transparent 25%), linear-gradient(-45deg, black 25%, transparent 25%), linear-gradient(45deg, transparent 75%, black 75%), linear-gradient(-45deg, transparent 75%, black 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+nav {
+    background-color: black;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+nav a {
+    display: inline-block;
+   
+    background-color: lightgrey;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 2px;
+    color: black;
+    text-decoration: none;
+    
+    transition-duration: 500ms;
+}
+
+nav a:hover {
+    background-color: whitesmoke;
+    translate: 0 -3px;
+}
+
+.nav {
+    padding: 15px;
+}
+
+.rowlogo {
+    display: flex;
+    background-color: white;
+    margin-top: 60px;
+    border-radius: 5px;
+    border-color: darkgrey;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.collogo {
+    margin-top: 30px;
+
+    background-color: white;
+    margin: 10px;
+}
+
+.copyright {
+    text-align: center;
+  }
+
+.energy {
+    width: 300px;
+    max-width: 100%;
+    display: block;
+    border-radius: 8px;
+}
+
+.body {
+    background-color: white;
+    margin-top: 60px;
+    border-radius: 5px;
+    box-shadow: 2px 4px 2px grey;
+
+    padding: 15px;
+}
+
+.whatrow {
+    display: flex;
+    background-color: white;
+    margin-top: 60px;
+    border-radius: 5px;
+    border-color: darkgrey;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.whatcol {
+    margin-top: 30px;
+
+    background-color: white;
+    margin: 10px;
+}

@@ -1,0 +1,124 @@
+body {
+    background-color: blueviolet;
+    margin:0;
+  color:black ;
+  text-align: center;
+  }
+  h1{
+    color: black;
+  
+  }
+      
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+  
+  .active {
+    background-color: #04AA6D;
+  }
+  
+      .main-div {
+        background-color: red;
+        width: 65%;
+        margin: auto;
+        margin-top: 100px;
+        padding: 20px;
+  
+        border-width: 2px;
+        border-style: solid;
+        border-color: black;
+  
+  border: 2px solid black;
+  
+  border-radius: 30px;
+  box-shadow: 10px 10px 10px grey;
+      }
+  
+  
+      .img{
+        width: auto;
+      }
+
+
+      
+      /* === removing default button style ===*/
+.button-liverpool {
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+/* button styling */
+.button-liverpool {
+  --border-right: 6px;
+  --text-stroke-color: rgba(255,255,255,0.6);
+  --animation-color: #37FF8B;
+  --fs-size: 2em;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: "Arial";
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+/* this is the text, when you hover on button */
+.hover-text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: var(--animation-color);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+/* hover */
+.button:hover .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color))
+}
+  
+.song{
+  background-color: red;
+        width: 65%;
+        margin: auto;
+        margin-top: 100px;
+        padding: 20px;
+  
+        border-width: 2px;
+        border-style: solid;
+        border-color: black;
+  
+  border: 2px solid black;
+  
+  border-radius: 30px;
+  box-shadow: 10px 10px 10px grey;
+}
+  

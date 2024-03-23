@@ -1,0 +1,438 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding: top;
+}
+
+
+
+
+body{
+    background-color: ghostwhite;
+}
+
+
+.Heads{
+    color: red;
+    text-align: center;
+}
+
+h1{
+  text-align: center;
+}
+p{
+  font-size: 20px;
+}
+
+img{
+  float: right;
+  margin: 0px 0px 15px 20px;
+}
+.pad{
+  margin-top: 300px;
+}
+
+.pad img{
+  float: left;
+}
+.bt{
+  background-color: black;
+  margin-top: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  text-align: center;
+  color: white;
+}
+.pad1{
+  padding-left: 20px;
+  padding-bottom: 200px;
+}
+
+.pad2{
+  padding-left: 20px;
+}
+.b1{
+  margin-top: 250px;
+}
+
+.dd{
+  text-align: center;
+}
+
+.pad img{
+  padding-right: 20px;
+}
+/* tHIS IS WHERE ALL MY COLMUNS AND ROWS GO  */
+.col {
+  
+  padding: 50px;
+  box-shadow: 50%;
+  width: 25%;
+  margin: 10px;
+  align-items: stretch;
+  font-size: 15px;
+  box-shadow: 10%;
+  width: calc(33% - 120px);
+  border-radius: 15px;
+}
+
+
+.row{
+  display: flex;
+  width: 100%;
+  table-layout: fixed ;
+  align-items: stretch;
+  background-color: black;
+  color: white;
+}
+
+@media (width < 600px){
+  .row{
+      flex-wrap: wrap;
+      align-items: stretch;
+      
+  }
+}
+
+.coll {
+  background-color: rgb(255, 255, 255);
+  padding: 50px;
+  box-shadow: 50%;
+  width: 25%;
+  margin: 10px;
+  align-items: stretch;
+  font-size: 15px;
+  box-shadow: 10%;
+  width: calc(33% - 120px);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+}
+
+.roww2{
+  display: flex;
+  width: 100%;
+  table-layout: fixed ;
+  align-items: stretch;
+  padding-top: 250px;
+  color: black;
+}
+
+@media (width < 600px){
+  .roww2{
+      flex-wrap: wrap;
+      align-items: stretch;
+      padding-top: 250px;
+      
+  }
+}
+
+.cc{
+  color: black;
+}
+/* This is the end of the rows and the columns */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  background-color: white;
+}
+
+/* Begging of Navbar */
+.logo {
+    font-size: 32px;
+    color: gray;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: "Open Sans";
+    
+}
+
+.navbar a {
+    font-size: 18px;
+    color:  gray;
+    font-weight: 500;
+    text-decoration: none;
+    margin: 40px;
+    
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: .3s;
+
+}
+
+.navbar a:hover::before{
+    width: 100%;
+    translate: 0 -3px;
+}
+/* Here is the of the navbar */
+
+
+/*The Hero Image*/
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-image {
+  
+  height: 75%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("Imagess/pexels-flo-maderebner-869258.jpg");
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 35px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/* This is the end of the Hero image */
+
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* Hre is the begging of the Carosuel */
+
+.slideshow-container * {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 10000px;
+  position: relative;
+  margin: auto;
+
+  background-color: ghostwhite;
+  padding: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 40px;
+    border-radius: 15px;
+  padding-top: 150px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.slideshow-container p {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  background-color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+
+.rot{
+  display: flex;
+  width: 100%;
+  table-layout: fixed ;
+  align-items: stretch;
+  text-align: center;
+  justify-content: center;
+}
+
+@media (width < 600px){
+  .rot{
+      flex-wrap: wrap;
+      align-items: stretch;
+      text-align: center;
+  justify-content: center;
+  }
+}
+.cot img{
+  max-width: 50%;
+  margin: auto;
+  display: block;
+  padding: 15px;
+  width: 150px;
+  height: auto;
+
+}
+.cot {
+  background-color: rgb(255, 255, 255);
+  padding: 50px;
+  box-shadow: 50%;
+  width: 25%;
+  margin: 10px;
+  align-items: stretch;
+  font-size: 15px;
+  box-shadow: 10%;
+  width: calc(33% - 120px);
+  border-radius: 15px;
+}
+
+/* This is a test for forms/nz.co */
+
+.container * {box-sizing:border-box}
+
+  
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  .container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 400px;
+    margin: auto;
+}
+  
+  .coll-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  .coll-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  
+  .roww {
+    display: flex;
+    width: 100%;
+    table-layout: fixed;
+    align-items: stretch;
+    padding-top: 25px;
+}
+  /* Clear floats after the columns */
+  .roww::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .coll-25, .coll-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+
+

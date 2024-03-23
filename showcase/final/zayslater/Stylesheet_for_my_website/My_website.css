@@ -1,0 +1,70 @@
+html{
+    scroll-behavior:smooth
+}
+body{
+    background-color: rgb(187, 143, 206);
+    text-align: center;
+    margin: 20px;
+}
+nav{
+    background-color:rgba(146, 82, 148, 0);
+    padding:10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%
+}
+
+nav a{ 
+    display: inline-block;
+    background-color:rgb(146, 82, 148);
+    margin:0px;
+    padding:10px;
+    border-radius: 2px;
+    color: black;
+    text-decoration:underline ;
+}
+nav a:hover {
+
+    background-color: rgb(211, 121, 214);
+    translate: 0 -3px 
+}
+h1{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 50px;
+    color:black;
+    font-family: monospace;
+    text-shadow: 5px 5px 9px rgb(146, 82, 148);
+}
+
+div{
+    background-image: linear-gradient(rgb(211, 121, 214))rgb(146, 82, 148);
+    width: 75%;
+    margin:auto;
+    padding:20px;
+
+    border-width: 2px;
+    border-style:solid;
+    border-color:black;
+    border-radius:80px;
+    box-shadow:10px 10px 10px(rgb(211, 121, 214));
+}
+h2{
+    font-family: monospace;
+    text-decoration: underline;
+}
+
+h3{
+    font-family:monospace;
+    text-decoration:underline;
+}
+p {
+    font-family:monospace;
+    font-size:15px;
+}
+ul{
+    color:black;
+    font-size: 15px;
+    font-family: monospace;
+}

@@ -1,0 +1,136 @@
+body{
+    background-color: #9aabd8;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8BZBGfrN5SkNgDUHOBt7hwo7p5uVzJ_igmDFlQdlBTKmy_EPmzRcfUQzWPhLN_J7-rJE&usqp=CAU");
+    background-size:210px;
+    background-attachment:fixed;
+}
+
+h1{
+    text-align:center ;
+font-size: 40px;
+text-shadow: 8px 8px 12px rgb(60, 47, 173);
+margin-top: 110px;
+}
+
+h2{
+color: rgb(44, 34, 128);
+}
+p{
+color: rgb(0, 0, 0);
+}
+h1{color:rgb(44, 51, 116) ;}
+
+
+div{
+    background-color: #b9c3e0;
+    width:75%;
+    margin: auto;
+    padding: 20px;
+
+ border-width:1px;
+border-style: solid;
+border-color: rgb(87, 94, 126);
+
+border-radius: 30px;
+  
+box-shadow: 15px 10px 10px rgb(69, 73, 114);
+}
+
+h5{ 
+    text-align: center;
+    text-shadow:6px 5px 6px rgb(44, 34, 128) ;
+}
+
+
+
+nav{
+    background-color: #9aabd8;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+nav a{
+    display: inline-block;
+
+    background-color: #7388c2;
+    margin:5px;
+    padding: 10px;
+    border-radius: 5px;
+    color: rgb(86, 21, 148);
+    text-decoration:solid;
+
+}
+
+nav a:hover{
+    background-color: rgb(141, 96, 179);
+    translate: 0 -3px;
+}
+
+.cats-page{
+    background-color: rgb(131, 98, 74);
+    background-image: url("https://w0.peakpx.com/wallpaper/317/687/HD-wallpaper-cat-art-minimalism-vector.jpg");
+    background-size:170px;
+    background-attachment:fixed;
+}
+
+.cats-page h1{
+color: rgb(68, 105, 63);
+text-shadow: 8px 7px 12px#9b711e;
+font-family:serif ;
+}
+
+.cats-page h5{ 
+    text-shadow:6px 5px 6px #9b711e;
+}
+
+.cats-page h2{
+    color: rgb(0, 0, 0);
+}
+
+.cats-page h2{
+    color: rgb(75, 44, 8);
+    }
+
+.cats-page nav{
+    background-color: rgb(216, 163, 93);
+}
+
+.cats-page div{
+background-color: rgb(230, 205, 168);
+box-shadow: 15px 10px 10px rgb(189, 136, 66);
+border-color: rgb(167, 113, 42);
+}
+
+.cats-page nav a{
+    display: inline-block;
+
+    background-color: rgb(97, 134, 93);
+    margin:5px;
+    padding: 10px;
+    border-radius: 5px;
+    color: rgb(102, 45, 155);
+    text-decoration:solid;
+
+}
+.Homepage{
+    background-image: url("https://www.creativefabrica.com/wp-content/uploads/2021/11/29/Flower-Cute-Vintage-Pattern-Graphics-20919103-1-580x387.jpg");
+    background-size: 330px;
+}
+
+.Homepage div{
+    background-color: #b9c3e0;
+    width:75%;
+    margin: auto;
+    padding: 20px;
+
+ border-width:1px;
+border-style: solid;
+border-color: rgb(87, 94, 126);
+
+border-radius: 30px;
+  
+box-shadow: 15px 10px 10px rgb(69, 73, 114);
+}
