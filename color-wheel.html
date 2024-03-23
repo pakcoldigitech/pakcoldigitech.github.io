@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Named Colors Wheel">
+<title>Named Colors Wheel</title>
+<style>
+body {
+  font-family: sans-serif;
+  text-align: center;
+}
+.swatch {
+  display: inline-block;
+  min-width: 5em;
+}
+
+#about-link {
+  margin: 1ex;
+  position: absolute;
+  right: 0;
+  text-decoration: none;
+  top: 0;
+}
+#about {
+  background: white;
+  border: 2px solid black;
+  display: none;
+  color: black;
+  left: 0;
+  margin: 0 25%;
+  padding: 0 1ex;
+  position: fixed;
+  text-align: left;
+  top: 7em;
+}
+#about:target {
+  display: block;
+}
+#about .close {
+  color: black;
+  float: right;
+  margin: 1ex 0 1ex 1ex;
+  text-decoration: none;
+}
+
+svg {
+  /* Or, put these on the paths */
+  stroke-width: 1px;
+  stroke-linejoin: round;
+  fill: currentColor;
+  /* stroke: currentColor; */
+  /* stroke: black; */
+}
+
+.swatch {
+  border: 8px outset white;
+  border-bottom-color: black;
+  border-left-color: gray;
+}
+
+menu {
+  list-style: none;
+  position: fixed;
+  top: 0; left: 0;
+  margin: 1rem;
+  border: 1px solid black;
+  padding: 1rem;
+  background: #fff7;
+  li, label {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-block: 0.25rem;
+  }
+  li:has(input[name=greys]) {
+    + li, + li + li {
+      display: none;
+    }
+  }
+  li:has(input[name=greys]:checked) {
+    + li, + li + li {
+      display: flex;
+    }
+  }
+}
+
+output {
+  position: fixed;
+  top: 0; right: 0;
+  margin: 1rem;
+  text-align: start;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  p {
+    margin: 0;
+  }
+}
+</style>
+</head>
+<body>
+<menu>
+  <li><label>Border<input type="color" name="stroke"></label><label><input type="checkbox" name="current" checked>None</label></li>
+  <li><label>Show positioning<input type="checkbox" name="circles"></label></li>
+  <li><label>Scale<input type="range" name="padding" min="0.1" max="2" step="0.05" value="0.95" list="ones">% radius</label></li>
+  <li><label>Add Value to Saturation<input type="range" name="v-off" min="-1" max="1" step="0.1" value="0.2" list="ones">%</label><label><input type="checkbox" name="vo-rand">Random</label></li>
+  <li><label>Add Value to Hue<input type="range" name="v-twist" min="-180" max="180" step="5" value="35" list="angs">deg</label><label><input type="checkbox" name="vt-rand">Random</label></li>
+  <li><label>Include greys<input type="checkbox" name="greys" checked></label></li>
+  <li><label>Start Hue for greys<input type="range" name="g-off" min="0" max="360" step="5" value="0" list="angs">deg</li>
+  <li><label>Add grey Value to Hue<input type="range" name="g-twist" min="-2" max="2" step="0.1" value="1" list="ones">%</label><label><input type="checkbox" name="gt-rand">Random</label></li>
+</menu>
+<output></output>
+<!-- <datalist id="ones"><option>-2</option><option>-1</option><option>0</option><option>1</option><option>2</option></datalist> -->
+<!-- <datalist id="angs"><option>-180</option><option>-90</option><option>0</option><option>90</option><option>180</option><option>270</option><option>360</option></datalist> -->
+
+<svg viewbox="-0.5 -0.5 1025 1025" width="600" height="600" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>
+
+<!-- https://github.com/gorhill/Javascript-Voronoi -->
+<script src="https://arantius.github.io/web-color-wheel/rhill-voronoi-core.min.js"></script>
+
+<script>
+// Based on https://developer.mozilla.org/en-US/docs/Web/CSS/named-color .
+const colors = {
+
+  'black': [0, 0, 0],
+  'silver': [192, 192, 192],
+  'grey': [128, 128, 128],
+  'darkgrey': [169, 169, 169],
+  'dimgrey': [105, 105, 105],
+  'gainsboro': [220, 220, 220],
+  'lightgrey': [211, 211, 211],
+  'whitesmoke': [245, 245, 245],
+  
+  'white': [255, 255, 255],
+  'maroon': [128, 0, 0],
+  'red': [255, 0, 0],
+  'purple': [128, 0, 128],
+  'magenta': [255, 0, 255],
+  'green': [0, 128, 0],
+  'lime': [0, 255, 0],
+  'olive': [128, 128, 0],
+  'yellow': [255, 255, 0],
+  'navy': [0, 0, 128],
+  'blue': [0, 0, 255],
+  'teal': [0, 128, 128],
+  'cyan': [0, 255, 255],
+
+  'orange': [255, 165, 0],
+  'aliceblue': [240, 248, 255],
+  'antiquewhite': [250, 235, 215],
+  'aquamarine': [127, 255, 212],
+  'azure': [240, 255, 255],
+  'beige': [245, 245, 220],
+  'bisque': [255, 228, 196],
+  'blanchedalmond': [255, 235, 205],
+  'blueviolet': [138, 43, 226],
+  'brown': [165, 42, 42],
+  'burlywood': [222, 184, 135],
+  'cadetblue': [95, 158, 160],
+  'chartreuse': [127, 255, 0],
+  'chocolate': [210, 105, 30],
+  'coral': [255, 127, 80],
+  'cornflowerblue': [100, 149, 237],
+  'cornsilk': [255, 248, 220],
+  'crimson': [220, 20, 60],
+  'darkblue': [0, 0, 139],
+  'darkcyan': [0, 139, 139],
+  'darkgoldenrod': [184, 134, 11],
+  'darkgreen': [0, 100, 0],
+  'darkkhaki': [189, 183, 107],
+  'darkmagenta': [139, 0, 139],
+  'darkolivegreen': [85, 107, 47],
+  'darkorange': [255, 140, 0],
+  'darkorchid': [153, 50, 204],
+  'darkred': [139, 0, 0],
+  'darksalmon': [233, 150, 122],
+  'darkseagreen': [143, 188, 143],
+  'darkslateblue': [72, 61, 139],
+  'darkslategrey': [47, 79, 79],
+  'darkturquoise': [0, 206, 209],
+  'darkviolet': [148, 0, 211],
+  'deeppink': [255, 20, 147],
+  'deepskyblue': [0, 191, 255],
+  'dodgerblue': [30, 144, 255],
+  'firebrick': [178, 34, 34],
+  'floralwhite': [255, 250, 240],
+  'forestgreen': [34, 139, 34],
+  'ghostwhite': [248, 248, 255],
+  'gold': [255, 215, 0],
+  'goldenrod': [218, 165, 32],
+  'greenyellow': [173, 255, 47],
+  'honeydew': [240, 255, 240],
+  'hotpink': [255, 105, 180],
+  'indianred': [205, 92, 92],
+  'indigo': [75, 0, 130],
+  'ivory': [255, 255, 240],
+  'khaki': [240, 230, 140],
+  'lavender': [230, 230, 250],
+  'lavenderblush': [255, 240, 245],
+  'lawngreen': [124, 252, 0],
+  'lemonchiffon': [255, 250, 205],
+  'lightblue': [173, 216, 230],
+  'lightcoral': [240, 128, 128],
+  'lightcyan': [224, 255, 255],
+  'lightgoldenrodyellow': [250, 250, 210],
+  'lightgreen': [144, 238, 144],
+  'lightpink': [255, 182, 193],
+  'lightsalmon': [255, 160, 122],
+  'lightseagreen': [32, 178, 170],
+  'lightskyblue': [135, 206, 250],
+  'lightslategrey': [119, 136, 153],
+  'lightsteelblue': [176, 196, 222],
+  'lightyellow': [255, 255, 224],
+  'limegreen': [50, 205, 50],
+  'linen': [250, 240, 230],
+  'mediumaquamarine': [102, 205, 170],
+  'mediumblue': [0, 0, 205],
+  'mediumorchid': [186, 85, 211],
+  'mediumpurple': [147, 112, 219],
+  'mediumseagreen': [60, 179, 113],
+  'mediumslateblue': [123, 104, 238],
+  'mediumspringgreen': [0, 250, 154],
+  'mediumturquoise': [72, 209, 204],
+  'mediumvioletred': [199, 21, 133],
+  'midnightblue': [25, 25, 112],
+  'mintcream': [245, 255, 250],
+  'mistyrose': [255, 228, 225],
+  'moccasin': [255, 228, 181],
+  'navajowhite': [255, 222, 173],
+  'oldlace': [253, 245, 230],
+  'olivedrab': [107, 142, 35],
+  'orangered': [255, 69, 0],
+  'orchid': [218, 112, 214],
+  'palegoldenrod': [238, 232, 170],
+  'palegreen': [152, 251, 152],
+  'paleturquoise': [175, 238, 238],
+  'palevioletred': [219, 112, 147],
+  'papayawhip': [255, 239, 213],
+  'peachpuff': [255, 218, 185],
+  'peru': [205, 133, 63],
+  'pink': [255, 192, 203],
+  'plum': [221, 160, 221],
+  'powderblue': [176, 224, 230],
+  'rosybrown': [188, 143, 143],
+  'royalblue': [65, 105, 225],
+  'saddlebrown': [139, 69, 19],
+  'salmon': [250, 128, 114],
+  'sandybrown': [244, 164, 96],
+  'seagreen': [46, 139, 87],
+  'seashell': [255, 245, 238],
+  'sienna': [160, 82, 45],
+  'skyblue': [135, 206, 235],
+  'slateblue': [106, 90, 205],
+  'slategrey': [112, 128, 144],
+  'snow': [255, 250, 250],
+  'springgreen': [0, 255, 127],
+  'steelblue': [70, 130, 180],
+  'tan': [210, 180, 140],
+  'thistle': [216, 191, 216],
+  'tomato': [255, 99, 71],
+  'turquoise': [64, 224, 208],
+  'violet': [238, 130, 238],
+  'wheat': [245, 222, 179],
+  'yellowgreen': [154, 205, 50],
+  'rebeccapurple': [102, 51, 153],
+};
+
+// Based on https://stackoverflow.com/a/54070620/91238 .
+// input: r,g,b in [0,1], out: h in [0,360) and s,v in [0,1]
+function rgb2hsv(r,g,b) {
+  let v=Math.max(r,g,b), c=v-Math.min(r,g,b);
+  let h= c && ((v==r) ? (g-b)/c : ((v==g) ? 2+(b-r)/c : 4+(r-g)/c));
+  return [60*(h<0?h+6:h), v&&c/v, v];
+}
+
+// For the whole color wheel, radius and center x/y.
+const radius = 512;
+const cx = radius;
+const cy = radius;
+
+const svg = document.querySelector('svg');
+const styleSheet = document.styleSheets[0];
+
+function renderWheel() {
+  svg.innerHTML = '';
+  svg.setAttribute('stroke', document.querySelector('[name=current]').checked ? 'currentColor' : document.querySelector('[name=stroke]').value);
+
+  let colorsBySite = {};
+  let sites = [];
+  Object.entries(colors).forEach(([name, color]) => {
+    let [r, g, b] = color;
+    let [h, s, v] = rgb2hsv(r/255, g/255, b/255);
+    // if(!s){h=v*360}
+    // if(!s){h=Math.random()*360}
+    if (!s && v!=1) {
+      if (!document.querySelector('[name=greys]').checked) {
+        return;
+      }
+      h = ((
+        document.querySelector('[name=gt-rand]').checked ? Math.random() : v * document.querySelector('[name=g-twist]').value
+      ) * 360 + (
+        document.querySelector('[name=gt-rand]').checked ? 0 : +document.querySelector('[name=g-off]').value)
+      ) % 360;
+    }
+
+    // Based on https://stackoverflow.com/a/54522007/91238 .
+    // I've tweaked it to spread out some of the colors (especially the greys)
+    // that don't fit well into a true H/S wheel.
+    // (Pushes higher V (more colour less black) to the outside - S in HSV doesn't include whites like HSL)
+    // let colorRadius = (s + v/5)*0.75 * radius;
+    // let colorRadius = (s + v*(Math.random()*0.5))*0.75 * radius;
+    let colorRadius = (s + v * (
+      document.querySelector('[name=vo-rand]').checked ? Math.random()*0.5 : +document.querySelector('[name=v-off]').value
+    )) * (
+      document.querySelector('[name=padding]').value / Math.max(1, 1 + (
+        document.querySelector('[name=vo-rand]').checked ? 0.5 : +document.querySelector('[name=v-off]').value
+      ))
+    ) * radius;
+    // let colorAngle = h/360 * 2 * Math.PI + (v-1)*0.1;
+    // let colorAngle = h/360 * 2 * Math.PI + (v-1)*(Math.random()-0.5);
+    let colorAngle = h / 180 * Math.PI + (v - 1) * (
+      document.querySelector('[name=vt-rand]').checked ? (Math.random() - 0.5) : document.querySelector('[name=v-twist]').value/360
+    );
+
+    let x = Math.cos(colorAngle) * colorRadius + cx;
+    let y = Math.sin(colorAngle) * colorRadius + cy;
+    sites.push({x: x, y: y});
+    colorsBySite[[x, y]] = name;
+  });
+
+  // http://www.kevlindev.com/gui/math/intersection/#Anchor-intersectCircleLin-40934
+  intersectCircleLine = function(c, r, a1, a2) {
+    let result = [];
+    let a  = (a2.x - a1.x) * (a2.x - a1.x) + (a2.y - a1.y) * (a2.y - a1.y);
+    let b  = 2 * ( (a2.x - a1.x) * (a1.x - c.x) + (a2.y - a1.y) * (a1.y - c.y)   );
+    let cc = c.x*c.x + c.y*c.y + a1.x*a1.x + a1.y*a1.y - 2 * (c.x * a1.x + c.y * a1.y) - r*r;
+    let deter = b*b - 4*a*cc;
+    if ( deter < 0 ) {
+      // Line is outside circle (?)
+    } else if ( deter == 0 ) {
+      // Line is tangent to circle (Don't need to calc?)
+      return [a1];
+    } else {
+      let e  = Math.sqrt(deter);
+      let u1 = ( -b + e ) / ( 2*a );
+      let u2 = ( -b - e ) / ( 2*a );
+
+      if ( (u1 < 0 || u1 > 1) && (u2 < 0 || u2 > 1) ) {
+        if ( (u1 < 0 && u2 < 0) || (u1 > 1 && u2 > 1) ) {
+          // Line is outside circle (?)
+        } else {
+          // Line is fully inside circle (?)
+        }
+      } else {
+        if (0 <= u1 && u1 <= 1) {
+          // Point2D.prototype.lerp=function(that,t){return new Point2D(this.x+(that.x-this.x)*t,this.y+(that.y-this.y)*t);};
+          // result.push( a1.lerp(a2, u1) );
+          result.push( { x: a1.x+(a2.x-a1.x)*u1, y: a1.y+(a2.y-a1.y)*u1 } );
+        }
+        if (0 <= u2 && u2 <= 1) {
+          // result.push( a1.lerp(a2, u2) );
+          result.push( { x: a1.x+(a2.x-a1.x)*u2, y: a1.y+(a2.y-a1.y)*u2 } );
+        }
+      }
+    }
+    if (result.length !== 1) {
+      console.warn("Number of intersections wasn't exactly 1 as expected: ", result.length, result);
+      if (!result.length) { return [a1]; }
+    }
+    return result;
+  };
+
+  let voronoi = new Voronoi().compute(sites, {xl: 0, xr: 1024, yt: 0, yb: 1024});
+  voronoi.cells.forEach(cell => {
+    if (cell.closeMe) {
+      // Happens because point is outside bounds?
+      console.warn('cell', cell, 'needs closing');
+      return;
+    }
+    let colorName = colorsBySite[[cell.site.x, cell.site.y]];
+    let [r, g, b] = colors[colorName];
+
+    let points = '';
+    let data = 'M';
+    let prev = cell.halfedges.at(-1)?.getStartpoint();;
+    let m = {x:0,y:0};
+    cell.halfedges.forEach(edge => {
+      let s = edge.getStartpoint();
+      let e = edge.getEndpoint();
+      let inCircle = p => ((p.x - cx)**2 + (p.y - cy)**2)**0.5 < radius;
+      if (inCircle(s)) {
+        if (!inCircle(prev)) {
+          let i = intersectCircleLine({x: cx, y: cy}, radius, s, prev)[0];
+          points += `${i.x} ${i.y}, `;
+          if (data == 'M') { m = i; }
+          data += `${i.x},${i.y}L`;
+        }
+        points += `${s.x} ${s.y}, `;
+        if (data == 'M') { m = s; }
+        data += `${s.x},${s.y} `;
+      } else {
+        if (inCircle(prev)) {
+          let i = intersectCircleLine({x: cx, y: cy}, radius, s, prev)[0];
+          points += `${i.x} ${i.y}, `;
+          if (data == 'M') { m = i; }
+          data += `${i.x},${i.y}A${radius},${radius} 0 0 0 `;
+        }
+      }
+      prev = s;
+    });
+    points = points.replace(/, $/, '').split(/ ?, ?/).flatMap(s=>s.split(' ')).map(n=>+n);
+    data += `${m.x},${m.y}z`;
+
+    // svg.appendChild(c);
+    svg.innerHTML += `<path color="${colorName}" data-area="${areaFromCoords(points)|0 || 0}" d="${data}">`;
+
+    if (document.querySelector('[name=circles]').checked) {
+      svg.innerHTML += `<circle cx="${cell.site.x}" cy="${cell.site.y}" r="4" stroke-width="2" stroke="black" fill="none"/>`;
+    }
+  });
+
+  function areaFromCoords(coordArray) {
+    let x = coordArray;
+    let a = 0;
+    if (x.length % 2) return;
+    for (var i = 0, iLen = x.length - 2; i < iLen; i += 2) {
+      a += x[i] * x[i + 3] - x[i + 2] * x[i + 1];
+    }
+    a += x.at(-2) * x[1] - x.at(-1) * x[0];
+
+    return Math.abs(a / 2);
+  }
+
+  let areas = Object.entries(colors).filter(
+    ([_, [r,g,b]]) => !(r==g&&g==b && r!=255 && !document.querySelector('[name=greys]').checked)
+  ).map(([name, _]) => {
+    let p = document.querySelector(`path[color=${name}]`);
+    return [name, +p?.dataset.area || 0];
+  });
+  areas = areas.sort(([_,a],[__,b]) => a - b);
+  let only = areas.map(a => a[1]);
+  let mean = only.reduce((s,a)=>s+a) / only.length;
+  document.querySelector('output').innerHTML =
+    `Min (high=good): ${only[0]}<br>Max (low=good): ${only.at(-1)}<br>Mean (high=good): ${mean|0}<br>
+    Stdev (low=good): ${(only.reduce((s,a)=>s+(a-mean)**2,0)/only.length)**0.5|0}<br><br>` +
+    areas.map(([name, area]) => area ? `<p data-color="${name}">${name}: ${area} px²</p>` : `<p data-color="${name}"><mark>${name}: ${area} px²</mark></p>`).join('');
+    document.querySelectorAll('p').forEach(p => p.addEventListener('click', e => {
+      activateColor(document.querySelector(`path[color=${p.dataset.color}]`) || null);
+      e.stopPropagation();
+    }));
+}
+renderWheel();
+
+document.querySelectorAll('menu input').forEach(i => i.addEventListener('input', renderWheel));
+
+function activateColor(el) {
+  renderPreview(el.getAttribute('color'));
+  // Move the SVG node to the end, so it(s stroke) will draw above all others.
+  el.parentNode.appendChild(el);
+  // Force its stroke to be black.  (Doing this with CSS doesn't work; the
+  // hover state is broken by mutating the DOM.)
+  el.style.stroke = 'black';
+  el.style.strokeWidth = '5px';
+}
+
+// https://stackoverflow.com/a/5624139/91238
+function componentToHex(c) {
+  var hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
+function rgbToHex(r, g, b) {
+  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
+let previewLocked = false;
+function renderPreview(color) {
+  if (!color) {
+    document.getElementById('preview').innerHTML = '';
+    return;
+  }
+  let [r, g, b] = colors[color];
+
+  document.getElementById('preview').innerHTML = `
+      ${color}
+       <span class="swatch" style="background-color: ${rgbToHex(r, g, b)};">&nbsp;</span>
+      ${rgbToHex(r, g, b).toUpperCase()}
+      `;
+}
+
+svg.addEventListener('mouseover', e => {
+  let el = e.target;
+  if (el.tagName != 'path') return;
+  if (!el.nextElementSibling) return;
+
+  if (!previewLocked) {
+    activateColor(el);
+  }
+});
+svg.addEventListener('mouseout', e => {
+  let el = e.target;
+  if (el.tagName != 'path') return;
+  if (!previewLocked) {
+    renderPreview(null);
+    // Reset forced stroke from mouseover.
+    el.removeAttribute('style');
+  }
+});
+document.body.addEventListener('click', e => {
+  let el = e.target;
+
+  // Ignore clicks, i.e. to select, in the preview.
+  if (document.getElementById('preview').contains(el)) return;
+
+  // Remove possible forced stroke from previously-locked color.
+  document.querySelectorAll('path[style]').forEach(el => {
+    el.removeAttribute('style');
+  });
+
+  if (el.tagName != 'path') {
+    previewLocked = false;
+    renderPreview(null);
+    return;
+  }
+
+  previewLocked = true;
+  activateColor(el);
+});
+
+// https://stackoverflow.com/questions/540014/compute-the-area-of-intersection-between-a-circle-and-a-triangle/567392
+
+
+</script>
+<h1 id="preview">&nbsp;</h1>
+
+<a id='about-link' href='#about'>❓</a>
+<div id='about'>
+  <a class='close' href='#'>❌</a>
+  <p>Fork of <a href="https://arantius.github.io/web-color-wheel/">https://arantius.github.io/web-color-wheel/</a> by Tony Lieuallen,
+    with minimal editing to allow adjusting parameters.</p>
+  <p>Original notes (by Tony) below:</p>
+  <p>This "color wheel" arrangement is a compact and visual way to represent a whole range of colors.  I was reminded of the named/web colors by <a href="https://news.ycombinator.com/item?id=33647207">a recent Hacker News comment thread</a>, and thought again of arranging them into a color wheel.</p>
+  <p>So here it is: a color wheel, with only "web colors" on it.  Each color is placed on the wheel, then grown to a polygon to fill the wheel with a Voronoi diagram.</p>
+  <p>Hover colors to see their name (plus extra preview color swatch and hex code).  Click one to "lock" it.  The idea is when picking colors for a design, choose visually here from these few (139 distinct) colors, rather than trying to choose from the millions that are actually available.  And you can refer to them by name in your CSS!</p>
+  <p>The arrangement of the wheel has been tweaked from a pure <a href="https://en.wikipedia.org/wiki/HSL_and_HSV">HSV</a> interpretation, to make sure all names have a distinct location.  List of colors from <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/named-color">Mozilla documentation</a>.</p>
+</div>
+</body>
+</html>
