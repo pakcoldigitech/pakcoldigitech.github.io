@@ -61,10 +61,10 @@ uniform vec3 u_cameraTarget;
 
 in vec4 a_position;
 in vec4 a_color;
-// in vec2 a_texcoord;
+in vec2 a_texcoord;
 
 out vec4 v_color;
-// out vec2 v_textcoord;
+out vec2 v_texcoord;
 
 void main() {
   vec3 up = vec3(0., 1., 0.);
@@ -76,29 +76,31 @@ void main() {
 
   gl_Position = u_projectionMatrix * u_viewMatrix * a_position;
   v_color = a_color;
-  // v_texcoord = a_texcoord;
+  v_texcoord = a_texcoord;
 }
   </script>
   <script id="fragmentShader" type="x-shader/x-fragment">
 #version 300 es
 precision mediump float;
 
-// uniform sampler2D u_texture;
+uniform sampler2D u_texture;
+uniform bool u_usingTexture;
 
 in vec4 v_color;
-// in vec2 v_texcoord;
+in vec2 v_texcoord;
 
 out vec4 fragColor;
 
 void main() {
-  fragColor = v_color;
-  // fragColor = texture(u_texture, v_texcoord);
+  fragColor = u_usingTexture ? texture(u_texture, v_texcoord) : v_color;
 }
   </script>
   <script type="module">
 const gl = document.querySelector('canvas.maze').getContext('webgl2', { premultipliedAlpha: false });
 const map1 = document.querySelector('canvas.map1').getContext('2d');
 const map2 = document.querySelector('canvas.map2').getContext('2d');
+const minimapCheckbox = document.querySelector('input.minimap');
+const textureCheckbox = document.querySelector('input.texture');
 
 const program = gl.createProgram();
 function createShader(type, source) {
@@ -172,6 +174,7 @@ addEventListener('keyup', e => {
 
 let vertices = [];
 let colors = [];
+let texcoords = [];
 let count = 0;
 
 let walls = [];
@@ -190,13 +193,14 @@ let maze2 = [];
 function resetMazes(test) {
   vertices = [];
   colors = [];
+  texcoords = [];
   count = 0;
   
   walls = [];
   elevators = [];
   elevatorVs = [];
 
-  position = [-1, 0.5, 1.5];
+  position = [-1, 0.6, 1.5];
   angle = Math.PI/2;
   swapping = false;
   ground = true;
@@ -467,7 +471,7 @@ function resetMazes(test) {
         vertices.push(
           x, y, z, x, y+1, z, x+1, y, z, x, y+1, z, x+1, y+1, z, x+1, y, z,
           x, y, z+1, x+1, y, z+1, x, y+1, z+1, x, y+1, z+1, x+1, y, z+1, x+1, y+1, z+1,
-          x, y+1, z, x, y+1, z+1, x+1, y+1, z, x, y+1, z+1, x+1, y+1, z+1, x+1, y+1, z,
+          // x, y+1, z, x, y+1, z+1, x+1, y+1, z, x, y+1, z+1, x+1, y+1, z+1, x+1, y+1, z,
           // x, y, z, x+1, y, z, x, y, z+1, x, y, z+1, x+1, y, z, x+1, y, z+1,
           x, y, z, x, y, z+1, x, y+1, z, x, y, z+1, x, y+1, z+1, x, y+1, z,
           x+1, y, z, x+1, y+1, z, x+1, y, z+1, x+1, y, z+1, x+1, y+1, z, x+1, y+1, z+1,
@@ -475,12 +479,18 @@ function resetMazes(test) {
         colors.push(...[
           Array(6).fill([77,121,255]).flat(), // N
           Array(6).fill([50,100,255]).flat(), // S
-          Array(6).fill([0,64,255]).flat(), // T
+          // Array(6).fill([0,64,255]).flat(), // T
           // Array(6).fill([0,0,0]).flat(), // B
           Array(6).fill([26,83,255]).flat(), // W
           Array(6).fill([26,83,255]).flat(), // E
         ].flat());
-        count += 5;
+        texcoords.push(
+          1, 0.25, 1, 0, 0, 0.25, 1, 0, 0, 0, 0, 0.25, // N
+          0, 0.25, 1, 0.25, 0, 0, 0, 0, 1, 0.25, 1, 0, // S
+          0, 0.25, 1, 0.25, 0, 0, 1, 0.25, 1, 0, 0, 0, // W
+          1, 0.25, 1, 0, 0, 0.25, 0, 0.25, 1, 0, 0, 0, // E
+        );
+        count += 4;
       }
       if (cell == '.') {
         let [x,y,z] = [j, 0, i];
@@ -492,6 +502,10 @@ function resetMazes(test) {
           Array(6).fill([102,140,255]).flat(), // B inward
           Array(6).fill([102,140,255]).flat(), // T inward
         ].flat());
+        texcoords.push(
+          0, 0.25, 0, 0.5, 1, 0.25, 0, 0.5, 1, 0.5, 1, 0.25, // B inward
+          0, 0.75, 1, 0.75, 0, 0.5, 0, 0.5, 1, 0.75, 1, 0.5, // T inward
+        );
         count += 2;
       }
       if (cell == '$') {
@@ -501,10 +515,10 @@ function resetMazes(test) {
         vertices.push(
           x, y, z, x, y, z+1, x+1, y, z, x, y, z+1, x+1, y, z+1, x+1, y, z,
           x, y-0.001, z, x, y-0.001, z+1, x+1, y-0.001, z, x, y-0.001, z+1, x+1, y-0.001, z+1, x+1, y-0.001, z,
-          x, y+1, z+1, x, y+1.2, z+1, x+1, y+1, z+1, x, y+1.2, z+1, x+1, y+1.2, z+1, x+1, y+1, z+1,
-          x, y+1, z, x+1, y+1, z, x, y+1.2, z, x, y+1.2, z, x+1, y+1, z, x+1, y+1.2, z,
-          x+1, y+1, z, x+1, y+1, z+1, x+1, y+1.2, z, x+1, y+1, z+1, x+1, y+1.2, z+1, x+1, y+1.2, z,
-          x, y+1, z, x, y+1.2, z, x, y+1, z+1, x, y+1, z+1, x, y+1.2, z, x, y+1.2, z+1,
+          x, y+1, z+1, x, y+1.25, z+1, x+1, y+1, z+1, x, y+1.25, z+1, x+1, y+1.25, z+1, x+1, y+1, z+1,
+          x, y+1, z, x+1, y+1, z, x, y+1.25, z, x, y+1.25, z, x+1, y+1, z, x+1, y+1.25, z,
+          x+1, y+1, z, x+1, y+1, z+1, x+1, y+1.25, z, x+1, y+1, z+1, x+1, y+1.25, z+1, x+1, y+1.25, z,
+          x, y+1, z, x, y+1.25, z, x, y+1, z+1, x, y+1, z+1, x, y+1.25, z, x, y+1.25, z+1,
         );
         colors.push(...[
           Array(6).fill([255,0,0]).flat(), // B inward (red)
@@ -514,6 +528,14 @@ function resetMazes(test) {
           Array(6).fill([0,64,255]).flat(), // E inward
           Array(6).fill([0,64,255]).flat(), // W inward
         ].flat());
+        texcoords.push(
+          0, 0.75, 0, 1, 1, 0.75, 0, 1, 1, 1, 1, 0.75, // B inward
+          0, 0.25, 0, 0.5, 1, 0.25, 0, 0.5, 1, 0.5, 1, 0.25, // B inward
+          1, 0.25, 1, 0.1875, 0, 0.25, 1, 0.1875, 0, 0.1875, 0, 0.25, // S inward
+          0, 0.25, 1, 0.25, 0, 0.1875, 0, 0.1875, 1, 0.25, 1, 0.1875, // N inward
+          0, 0.25, 1, 0.25, 0, 0.1875, 1, 0.25, 1, 0.1875, 0, 0.1875, // E inward
+          1, 0.25, 1, 0.1875, 0, 0.25, 0, 0.25, 1, 0.1875, 0, 0.1875, // W inward
+        );
         count += 6;
       }
     });
@@ -522,10 +544,10 @@ function resetMazes(test) {
   // Walls between levels
   let width = maze1.length;
   vertices.push(
-    0, 1, 0, 0, 1.2, 0, width, 1, 0, 0, 1.2, 0, width, 1.2, 0, width, 1, 0,
-    0, 1, width, width, 1, width, 0, 1.2, width, 0, 1.2, width, width, 1, width, width, 1.2, width,
-    0, 1, 0, 0, 1, width, 0, 1.2, 0, 0, 1, width, 0, 1.2, width, 0, 1.2, 0,
-    width, 1, 0, width, 1.2, 0, width, 1, width, width, 1, width, width, 1.2, 0, width, 1.2, width,
+    0, 1, 0, 0, 1.25, 0, width, 1, 0, 0, 1.25, 0, width, 1.25, 0, width, 1, 0,
+    0, 1, width, width, 1, width, 0, 1.25, width, 0, 1.25, width, width, 1, width, width, 1.25, width,
+    0, 1, 0, 0, 1, width, 0, 1.25, 0, 0, 1, width, 0, 1.25, width, 0, 1.25, 0,
+    width, 1, 0, width, 1.25, 0, width, 1, width, width, 1, width, width, 1.25, 0, width, 1.25, width,
   );
   colors.push(...[
     Array(6).fill([77,121,255]).flat(), // N
@@ -533,17 +555,23 @@ function resetMazes(test) {
     Array(6).fill([26,83,255]).flat(), // W
     Array(6).fill([26,83,255]).flat(), // E
   ].flat());
+  texcoords.push(
+    width, 0.25, width, 0.1875, 0, 0.25, width, 0.1875, 0, 0.1875, 0, 0.25, // N
+    0, 0.25, width, 0.25, 0, 0.1875, 0, 0.1875, width, 0.25, width, 0.1875, // S
+    0, 0.25, width, 0.25, 0, 0.1875, width, 0.25, width, 0.1875, 0, 0.1875, // W
+    width, 0.25, width, 0.1875, 0, 0.25, 0, 0.25, width, 0.1875, 0, 0.1875, // E
+  );
   count += 4;
 
   maze2.forEach((row, i) => {
     row.forEach((cell, j) => {
       if (cell == '#') {
         walls.push([j,1,i]);
-        let [x,y,z] = [j, 1.2, i];
+        let [x,y,z] = [j, 1.25, i];
         vertices.push(
           x, y, z, x, y+1, z, x+1, y, z, x, y+1, z, x+1, y+1, z, x+1, y, z,
           x, y, z+1, x+1, y, z+1, x, y+1, z+1, x, y+1, z+1, x+1, y, z+1, x+1, y+1, z+1,
-          x, y+1, z, x, y+1, z+1, x+1, y+1, z, x, y+1, z+1, x+1, y+1, z+1, x+1, y+1, z,
+          // x, y+1, z, x, y+1, z+1, x+1, y+1, z, x, y+1, z+1, x+1, y+1, z+1, x+1, y+1, z,
           // x, y, z, x+1, y, z, x, y, z+1, x, y, z+1, x+1, y, z, x+1, y, z+1,
           x, y, z, x, y, z+1, x, y+1, z, x, y, z+1, x, y+1, z+1, x, y+1, z,
           x+1, y, z, x+1, y+1, z, x+1, y, z+1, x+1, y, z+1, x+1, y+1, z, x+1, y+1, z+1,
@@ -551,15 +579,21 @@ function resetMazes(test) {
         colors.push(...[
           Array(6).fill([77,121,255]).flat(), // N
           Array(6).fill([50,100,255]).flat(), // S
-          Array(6).fill([0,64,255]).flat(), // T
+          // Array(6).fill([0,64,255]).flat(), // T
           // Array(6).fill([0,0,0]).flat(), // B
           Array(6).fill([26,83,255]).flat(), // W
           Array(6).fill([26,83,255]).flat(), // E
         ].flat());
-        count += 5;
+        texcoords.push(...[
+          1, 0, 1, 0.25, 0, 0, 1, 0.25, 0, 0.25, 0, 0, // N
+          0, 0, 1, 0, 0, 0.25, 0, 0.25, 1, 0, 1, 0.25, // S
+          0, 0, 1, 0, 0, 0.25, 1, 0, 1, 0.25, 0, 0.25, // W
+          1, 0, 1, 0.25, 0, 0, 0, 0, 1, 0.25, 0, 0.25, // E
+        ]);
+        count += 4;
       }
       if (cell == '.') {
-        let [x,y,z] = [j, 1.2, i];
+        let [x,y,z] = [j, 1.25, i];
         vertices.push(
           x, y, z, x, y, z+1, x+1, y, z, x, y, z+1, x+1, y, z+1, x+1, y, z,
           x, y+1, z, x+1, y+1, z, x, y+1, z+1, x, y+1, z+1, x+1, y+1, z, x+1, y+1, z+1,
@@ -568,16 +602,23 @@ function resetMazes(test) {
           Array(6).fill([102,140,255]).flat(), // B inward
           Array(6).fill([102,140,255]).flat(), // T inward
         ].flat());
+        texcoords.push(
+          0, 0.75, 0, 0.5, 1, 0.75, 0, 0.5, 1, 0.5, 1, 0.75, // B inward
+          0, 0.25, 1, 0.25, 0, 0.5, 0, 0.5, 1, 0.25, 1, 0.5, // T inward
+        );
         count += 2;
       }
       if (cell == '$') {
-        let [x,y,z] = [j, 1.2, i];
+        let [x,y,z] = [j, 1.25, i];
         vertices.push(
           x, y+1, z, x+1, y+1, z, x, y+1, z+1, x, y+1, z+1, x+1, y+1, z, x+1, y+1, z+1,
         );
         colors.push(...[
           Array(6).fill([102,140,255]).flat(), // T inward
         ].flat());
+        texcoords.push(
+          0, 0.25, 1, 0.25, 0, 0.5, 0, 0.5, 1, 0.25, 1, 0.5, // T inward
+        );
         count += 1;
       }
     });
@@ -585,6 +626,24 @@ function resetMazes(test) {
 
   setAttribute('a_position', new Float32Array(vertices), 3);
   setAttribute('a_color', new Uint8Array(colors), 3, true, gl.UNSIGNED_BYTE);
+  setAttribute('a_texcoord', new Float32Array(texcoords), 2, true, gl.FLOAT);
+  
+  map1.canvas.style.display = minimapCheckbox.checked ? 'block' : 'none';
+  map2.canvas.style.display = minimapCheckbox.checked ? 'block' : 'none';
+  gl.uniform1f(gl.getUniformLocation(program, 'u_usingTexture'), textureCheckbox.checked);
+
+  let texture = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, texture);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([128,0,0,255]));
+
+  let image = new Image();
+  image.src = "tex.png";
+  image.addEventListener('load', () => {
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+    gl.generateMipmap(gl.TEXTURE_2D);
+  });
+
 }
 
 let example = true;
@@ -592,6 +651,7 @@ resetMazes(example);
 
 const button = document.querySelector('button');
 button.addEventListener('click', () => {
+  button.blur();
   if (example) {
     button.textContent = 'Switch to practice maze';
   } else {
@@ -601,10 +661,15 @@ button.addEventListener('click', () => {
   resetMazes(example);
 });
 
-const input = document.querySelector('input');
-input.addEventListener('change', () => {
-  map1.canvas.style.display = input.checked ? 'block' : 'none';
-  map2.canvas.style.display = input.checked ? 'block' : 'none';
+minimapCheckbox.addEventListener('change', () => {
+  minimapCheckbox.blur();
+  map1.canvas.style.display = minimapCheckbox.checked ? 'block' : 'none';
+  map2.canvas.style.display = minimapCheckbox.checked ? 'block' : 'none';
+});
+
+textureCheckbox.addEventListener('change', () => {
+  textureCheckbox.blur();
+  gl.uniform1f(gl.getUniformLocation(program, 'u_usingTexture'), textureCheckbox.checked);
 });
 
 let then = 0;
@@ -618,11 +683,11 @@ requestAnimationFrame(function loop(now) {
           vertices[i * 18 + j] += dt;
         }
       }
-      if (position[1] >= 1.7) {
-        position[1] = 1.7;
+      if (position[1] >= 1.85) {
+        position[1] = 1.85;
         for (let i of elevatorVs) {
           for (let j = 1; j < 18; j += 3) {
-            vertices[i * 18 + j] = 1.2;
+            vertices[i * 18 + j] = 1.25;
           }
         }
         swapping = false;
@@ -635,8 +700,8 @@ requestAnimationFrame(function loop(now) {
           vertices[i * 18 + j] -= dt;
         }
       }
-      if (position[1] <= 0.5) {
-        position[1] = 0.5;
+      if (position[1] <= 0.6) {
+        position[1] = 0.6;
         for (let i of elevatorVs) {
           for (let j = 1; j < 18; j += 3) {
             vertices[i * 18 + j] = 0;
@@ -656,26 +721,26 @@ requestAnimationFrame(function loop(now) {
     }
     if (keys.has('ARROWUP') || keys.has('W')) {
       let newx =  position[0] + dt * Math.sin(angle);
-      if (!walls.some(([j,k,i]) => (newx|0) == j && (position[1]|0) == k && (position[2]|0) == i)) {
+      if (!walls.some(([j,k,i]) => Math.floor(newx) == j && Math.floor(position[1]) == k && Math.floor(position[2]) == i)) {
         position[0] = newx;
       }
       let newz =  position[2] + dt * Math.cos(angle);
-      if (!walls.some(([j,k,i]) => (position[0]|0) == j && (position[1]|0) == k && (newz|0) == i)) {
+      if (!walls.some(([j,k,i]) => Math.floor(position[0]) == j && Math.floor(position[1]) == k && Math.floor(newz) == i)) {
         position[2] = newz;
       }
     }
     if (keys.has('ARROWDOWN') || keys.has('S')) {
       let newx =  position[0] - dt * Math.sin(angle);
-      if (!walls.some(([j,k,i]) => (newx|0) == j && (position[1]|0) == k && (position[2]|0) == i)) {
+      if (!walls.some(([j,k,i]) => Math.floor(newx) == j && Math.floor(position[1]) == k && Math.floor(position[2]) == i)) {
         position[0] = newx;
       }
       let newz =  position[2] - dt * Math.cos(angle);
-      if (!walls.some(([j,k,i]) => (position[0]|0) == j && (position[1]|0) == k && (newz|0) == i)) {
+      if (!walls.some(([j,k,i]) => Math.floor(position[0]) == j && Math.floor(position[1]) == k && Math.floor(newz) == i)) {
         position[2] = newz;
       }
     }
     if (keys.has(' ') || keys.has('E')) {
-      if (elevators.some(([j,i]) => (position[0]|0) == j && (position[2]|0) == i)) {
+      if (elevators.some(([j,i]) => Math.floor(position[0]) == j && Math.floor(position[2]) == i)) {
         keys.delete('E');
         keys.delete(' ');
         swapping = true;
@@ -697,8 +762,8 @@ requestAnimationFrame(function loop(now) {
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
   gl.drawArrays(gl.TRIANGLES, 0, count * 6);
 
-  if (!covered.some(([px, py, pz]) => (position[0]|0) == px && (position[1]|0) == py && (position[2]|0) == pz)) {
-    covered.push([(position[0]|0),(position[1]|0),(position[2]|0)]);
+  if (!covered.some(([px, py, pz]) => Math.floor(position[0]) == px && Math.floor(position[1]) == py && Math.floor(position[2]) == pz)) {
+    covered.push([Math.floor(position[0]),Math.floor(position[1]),Math.floor(position[2])]);
   }
 
   function drawMap(level) {
@@ -749,7 +814,8 @@ requestAnimationFrame(function loop(now) {
 <body>
   <aside>
     <button>Switch to full maze</button>
-    <p><label><input type="checkbox" checked>Toggle minimap</label></p>
+    <p><label><input type="checkbox" class="minimap" checked>Toggle minimap</label></p>
+    <p><label><input type="checkbox" class="texture">Use textures</label></p>
     <p>Keys: WASD + E for elevator</p>
     <p>Or arrow keys + space</p>
     <p><a href="practice_maze.mp4">Watch a practice maze walkthough</a></p>
