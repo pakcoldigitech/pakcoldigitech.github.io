@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+
+    color: #333;
+    background-image: url(../images/NHXMxuq3.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Heading Styles */
+h1 {
+    color: #007bff;
+    padding: 50px;
+}
+
+h2 {
+    color: #939600;
+}
+main {
+    background-image: linear-gradient(90deg,rgb(200, 224, 64),rgb(109, 128, 0));                                         
+width: 75%;
+margin: auto;
+padding: 20px;
+
+border: 2px solid #4c00ff;
+border-radius: 30px;
+
+box-shadow: 10px 10px 10px grey;
+}
+form{
+    background-color: #4c00ff;
+    padding: 20px;
+    color: aliceblue;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+button:hover{
+    background-color: aquamarine;
+}

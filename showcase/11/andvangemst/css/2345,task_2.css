@@ -1,0 +1,181 @@
+nav {
+    background-color: #000000;
+    padding: 0px;
+  }
+  nav a {
+    display: inline-block;  
+    color: white;  
+    margin-left: -5px;  
+    padding: 20px 20px; 
+    transition-duration: 0.3s;
+    text-decoration: none;
+  }
+  nav a:hover{
+    background-color: #888888;
+  }
+  nav a:active{
+    background-color: #888888;
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    /* background-color:rgb(50, 105, 119); */
+    background-color: antiquewhite;
+    color:#333;
+
+    background-image: url(../images/what_the_sigma.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* page 2 */
+
+main.page2 {
+  background-image: radial-gradient(rgb(0, 0, 0), rgb(99, 32, 93));
+
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+
+  border: 2px solid black;
+  border-radius: 30px;
+
+  box-shadow: 10px 10px 10px grey;
+}
+
+h1.page2 {
+  color:rgb(255, 255, 255);
+  background-color:rgb(77, 20, 74);
+  font-family:'Times New Roman', Times, serif;
+  font-size: 50;
+}
+
+h3.page2 {
+  color:rgb(255, 255, 255);
+  background-color:rgb(119, 99, 192);
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 25;
+}
+
+p.page2 {
+  color:rgb(255, 255, 255);
+  background-color:rgb(146, 52, 81);
+  font-family:sans-serif;
+  font-size: 15;
+}
+
+img.page2 {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* page 3 */
+
+main.page3 {
+  background-image: radial-gradient(rgb(64, 179, 224), rgb(48, 11, 212));
+
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+
+  border: 2px solid black;
+  border-radius: 30px;
+
+  box-shadow: 10px 10px 10px grey;
+}
+
+h1.page3 {
+  color:rgb(255, 255, 255);
+  background-color:rgb(36, 19, 114);
+  font-family:'Times New Roman', Times, serif;
+  font-size: 50;
+}
+
+h3.page3 {
+  color:rgb(255, 255, 255);
+  background-color:rgb(38, 22, 94);
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 25;
+}
+
+p.page3 {
+  color:rgb(255, 255, 255);
+  background-color:rgb(57, 16, 124);
+  font-family:sans-serif;
+  font-size: 15;
+}
+
+/* page 4 */
+
+main.page4 {
+  background-image: radial-gradient(rgb(173, 90, 165), rgb(160, 135, 54));
+
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+
+  border: 2px solid black;
+  border-radius: 30px;
+
+  box-shadow: 10px 10px 10px grey;
+}
+
+h1.page4 {
+  color:rgb(255, 255, 255);
+  background-color:rgb(134, 133, 79);
+  font-family:'Times New Roman', Times, serif;
+  font-size: 50;
+}
+
+h3.page4 {
+  color:rgb(255, 255, 255);
+  background-color:rgb(221, 190, 15);
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 25;
+}
+
+p.page4 {
+  color:rgb(255, 255, 255);
+  background-color:rgb(187, 130, 7);
+  font-family:sans-serif;
+  font-size: 15;
+}
+
+/* page 5 */
+
+main.page5 {
+  background-image: radial-gradient(rgb(66, 60, 66), rgb(165, 162, 175));
+
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+
+  border: 2px solid black;
+  border-radius: 30px;
+
+  box-shadow: 10px 10px 10px grey;
+}
+
+h1.page5 {
+    color:rgb(255, 255, 255);
+    background-color:rgb(117, 116, 126);
+    font-family:'Times New Roman', Times, serif;
+    font-size: 50;
+}
+
+h3.page5 {
+    color:rgb(255, 255, 255);
+    background-color:rgb(165, 162, 175);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25;
+}
+
+p.page5 {
+    color:rgb(255, 255, 255);
+    background-color:rgb(80, 74, 88);
+    font-family:sans-serif;
+    font-size: 15;
+}

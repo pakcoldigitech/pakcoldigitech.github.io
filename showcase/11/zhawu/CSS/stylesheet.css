@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    padding: 0;
+
+    color: #333;
+    background-image:url(../images/xiaocaoshen.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Heading Styles */
+h1 {
+    color: #007bff;
+    padding: 40px 50px;
+}
+
+h2 {
+    color: #009688;
+}
+
+nzv{
+    background-color: rgb(163, 151, 151);
+    padding: 0px;
+}
+
+nav a{
+    display: inline-block;
+    color:black;
+    text-decoration: none;
+    padding:20px 20px;
+    transition-duration: 0.3s;
+    margin-left: -5px;
+}
+main {
+    background-image: linear-gradient(90deg, turquoise, green);
+ 
+    width: 74%;
+    margin: auto;
+    padding: 20px;
+
+    border: 2px solid black;
+    border-radius: 30px;
+
+    box-shadow: 10px 10px 10px grey;
+}
+form{
+    background-color: #333;
+    padding:20px;
+    width: 100%;
+    color: white;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+button:hover{
+    background-color: #009688;
+}

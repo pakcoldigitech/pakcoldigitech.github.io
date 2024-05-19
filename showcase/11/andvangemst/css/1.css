@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color:rgb(0, 0, 0);
+    color:rgb(20, 7, 135);
+}
+
+h1 {
+    color:rgb(255, 255, 255);
+    background-color:rgb(100, 0, 100);
+    font-family:'Times New Roman', Times, serif;
+    font-size: 50;
+}
+
+h3 {
+    color:rgb(255, 255, 255);
+    background-color:rgb(150, 0, 200);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25;
+}
+
+p {
+    color:rgb(255, 255, 255);
+    background-color:rgb(0, 0, 0);
+    font-family:sans-serif;
+    font-size: 15;
+}

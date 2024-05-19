@@ -1,0 +1,71 @@
+h1{
+    color: rgb(123, 30, 210);
+     text-shadow: 9px 9px 9px black ;
+}
+
+body{
+       background-color: burlywood;
+
+}
+
+h2{
+    color: purple;
+}
+p{
+    color: brown;
+}
+
+footer {
+    background-color: black;
+    text-align: center;
+    padding: 20px;
+}
+footer p {
+    color: white;
+}
+nav{
+
+    background-color: green (126, 150 ,120);
+    color: blueviolet;
+
+}
+nav a{
+   color: brown;
+   display: inline-block;
+   text-decoration: none;
+   padding: 20px 20px;
+   transition-duration: 0.3s;
+   margin-left: -5px;
+}
+
+main{
+    background-image: linear-gradient(90deg, green, goldenrod,green);
+    /* background-image: radial-gradient(goldenrod,green); */
+
+    
+
+    border: 2px solid black;
+    border-radius: 6px;
+
+    box-shadow: 10px 10px 10px grey;
+
+}
+
+
+form{
+    background-color:black ;
+    padding: 20px;
+    width: 98%;
+    color:white;
+    display: block;
+    margin: auto;
+    text-align: center;
+    
+}
+
+button:hover{
+
+    background-color:aqua ;
+
+}
+

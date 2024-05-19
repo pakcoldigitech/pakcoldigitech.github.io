@@ -1,0 +1,62 @@
+body {
+margin: 0;
+padding: 0;
+/* background-color:antiquewhite; */
+background-image: url(../Images/Japanese-Mountains-Mount-Fuji.jpg);
+background-size:cover;
+background-repeat: no-repeat;
+color: #50f006a8;
+
+}
+
+/* Heading Styles */
+h1 {
+    color: #107203;
+    padding: top 200px;
+}
+
+h2 {
+color: #e70a0a;
+}
+
+
+nav{
+    background-color: rgb(84, 37, 99);
+    padding: 0px;
+    
+}
+
+nav a{
+    display: inline-block;
+    color:rgb(7, 154, 212);
+    text-decoration: none; 
+    padding:20px 20px; 
+    transition-duration: 0.3s;
+    margin-left: -5px;
+}
+
+nav a:hover{
+    background-color: rgb(165, 107, 107);
+    color: white;
+}
+
+nav a:active{
+    background-color: brown;
+    color: white;
+}
+
+form{
+    background-color: #333;
+    padding: 20px;
+    width: 100%;
+    color: white;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+button:hover{
+    background-color: #009688;
+}
+
+main{}
+

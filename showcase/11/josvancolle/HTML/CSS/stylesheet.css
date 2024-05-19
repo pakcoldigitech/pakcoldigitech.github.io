@@ -1,0 +1,80 @@
+body  {
+    margin: 0;
+    padding: 0;
+    color: #333;
+    animation: blingkingBackground 0.1s infinite;
+}   
+
+#WARNING{
+    font-size: 1px;
+}
+@keyframes blingkingBackground{
+    0%		{ background-color: #000000;}
+	25%		{ background-color: #ffffff;}
+	50%		{ background-color: #000000;}
+	75%		{ background-color: #ffffff;}
+	100%	{ background-color: #000000;}
+	}
+h1     {
+    color: #ffffff;
+    padding-top: 50px;
+
+}
+
+
+h2     {
+    color: #000000;
+}
+
+
+p      {
+    color: #000000
+}
+
+
+h3     {
+    color: #000000;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+p{
+    font-size: 30px;
+}
+
+h3{
+    font-size: 60px;
+}
+
+h1{
+    font-size: 70px;
+}
+
+form{
+    background-color: #333;
+    padding: 20px;
+    width: 100%;
+    color: white;
+    display: block;
+    margin: auto;
+    text-align: center;
+}

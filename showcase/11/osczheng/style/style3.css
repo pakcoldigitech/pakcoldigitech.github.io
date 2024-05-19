@@ -1,0 +1,15 @@
+body {
+    font-size: small;
+    h2{color: aliceblue;}
+    p{color: aliceblue;}
+    margin: 0;
+    padding: 0;
+    background-color: antiquewhite;
+    text-align: left;
+    background-image: url('https://www.firstlighttravel.com/sites/default/files/styles/max_768_width/public/2018-06/new-zealand-travel-map.jpg?itok=neNHldhr');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    backdrop-filter: blur(3px);
+}

@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(69, 124, 124);
+    color: black;
+}
+
+h1 {
+    color: rgb(55, 87, 87);
+    padding-top: 50px;
+}
+
+h2 {
+    color:cadetblue;
+    background-color: darkslategray;
+}
+
+
+h3 {
+    color: cadetblue;
+    background-color: darkslategray;
+
+
+}
+
+p {
+    color: darkslategrey;
+    background-color: rgb(78, 119, 121);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
