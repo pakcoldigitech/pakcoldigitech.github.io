@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Waves</title>
+  <style>
+body {
+  margin: 0;
+}
+.wrapper {
+  overflow: hidden;
+  position: relative;
+}
+.outer {
+  position: absolute;
+}
+.waves {
+  display: flex;
+  width: 300%;
+  margin-left: -100%;
+}
+.wave {
+  min-height: 200px;
+  background-image: linear-gradient(lightseagreen, teal);
+  /* clip-path: path('M0,50C36,50 64,0 100,0C136,0 164,50 200,50L200,100 0,100Z'); */
+  clip-path: url('#wave');
+  position: relative;
+  width: 100%;
+  margin-inline: -1px;
+  animation: wave 10s linear infinite;
+  overflow: hidden;
+}
+.inner {
+  position: absolute;
+  width: 100%;
+  animation: unwave 10s linear infinite;
+}
+.wave:first-child .inner {
+  animation-delay: -5s;
+}
+.wave:last-child .inner {
+  animation-delay: 5s;
+}
+@keyframes wave {
+  0% { left: 33.333%; }
+  50% { left: 0; }
+  100% { left: -33.333% }
+}
+@keyframes unwave {
+  0% { left: -100% }
+  50% { left: 0; }
+  100% { left: 100%; }
+}
+
+.outer {
+  color: black;
+}
+.inner {
+  color: white;
+}
+.inner, .outer {
+  padding: 20px;
+  font-size: 30px;
+}
+.wave {
+  min-height: 200px;
+}
+body {
+  background-image: linear-gradient(#effc, #effc), url("https://www.sketchuptextureclub.com/public/texture_m/0045-sea-water-texture-seamless.jpg");
+}
+
+  </style>
+</head>
+<body>
+  <h1>Waves</h1>
+  <h2>Text before</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <div class="wrapper">
+    <div class="outer">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+    <div class="waves">
+      <div class="wave">
+        <div class="inner">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+      </div>
+      <div class="wave">
+        <div class="inner">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+      </div>
+      <div class="wave">
+        <div class="inner">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+      </div>
+    </div>
+  </div>
+  <svg width="0" height="0" viewBox="0 0 1 1" style="display:block">
+    <clipPath id="wave" clipPathUnits="objectBoundingBox">
+      <path d="M0,.5C.18,.5 .32,0 0.5,0C.68,0 .82,.5 1,.5L1,1 0,1Z" />
+    </clipPath>
+  </svg>
+  <h2>Text after</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</body>
+</html>
