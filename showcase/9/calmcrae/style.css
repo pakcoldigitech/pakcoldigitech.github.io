@@ -1,0 +1,48 @@
+P {
+    color: rgb(53, 50, 230);
+    font-size: 20px;
+    text-align: center;
+    font-family: Open sans;
+}
+
+p.subheading {
+    text-align: center;
+    font-weight: bold;
+}
+
+h2 {
+    color: rgb(190, 41, 41);
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+    background-image: url(https://images.pond5.com/glitch-and-vhs-effect-static-footage-168365400_iconl.jpg);
+    background-size: contain;
+    background-attachment: fixed;
+}
+
+h1 {
+    font-size: 80px;
+    text-align: center;
+    text-shadow: -4px 9px 8px #555555;
+    color: rgb(255, 0, 0);
+}
+
+main {
+    background-color: aliceblue;
+    background-image: radial-gradient(rgb(255, 252, 252), rgb(141, 141, 141));
+    width: 70%;
+    margin: auto;
+    padding: 20px;
+    box-shadow: -4px 9px 8px #555555;
+    
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+ul {
+    font-family: Open sans;
+}

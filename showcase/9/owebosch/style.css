@@ -1,0 +1,52 @@
+p {
+    color:rgb(32, 32, 32);
+    font-size: 25px;
+    text-align: center;
+}
+
+    h1 {
+        color:rgb(255, 255, 255);
+        font-size: 60px;
+        text-align: center;
+        text-shadow: 5px 5px 10px;
+        font-style: italic;
+}
+
+h3 {
+    color:rgb(255, 255, 255);
+    font-size: 30px;
+    text-align: center;
+}
+
+h2{
+    color:rgb(0, 0, 0);
+    font-size: 30px;
+    text-align: center;
+}
+
+ul {
+    color:rgb(0, 0, 0);
+    font-size: 25px;
+    text-align: center;
+}
+li {
+    font-size: 25px;
+    text-align: center;
+}
+
+main {
+    background-color: rgb(255, 255, 255);
+    width: 800px;
+    margin: auto;
+    border-width: 5px;
+    border-radius: 20px;
+    border-color: black;
+    border-style:double;
+}
+
+body{
+    background-color: rgb(44, 105, 29);
+    background-image: url(https://images.theconversation.com/files/433499/original/file-20211123-17-199wbff.jpg?ixlib=rb-4.1.0&rect=0%2C296%2C5982%2C2991&q=45&auto=format&w=1356&h=668&fit=crop);
+    background-size: cover;
+    background-attachment: fixed;
+}

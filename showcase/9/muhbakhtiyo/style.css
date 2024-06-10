@@ -1,0 +1,110 @@
+p { color:rgb(32, 32, 32); 
+    font-size: 25px;
+    font-family:"Lexend", sans-serif; 
+    text-align: center; }
+
+h1 { color:rgb(0, 0, 0);
+     font-size: 60px;
+      text-align: center; 
+      font-family:"Lexend", sans-serif;
+      text-shadow: 5px 5px 10px; }
+ 
+h3 { color:rgb(0, 0, 0);
+     font-size: 30px; 
+     font-family:"Lexend", sans-serif;
+     text-align: center; }
+ 
+h2{ color:rgb(0, 0, 0);
+     font-size: 30px;
+     font-family:"Lexend", sans-serif;
+       font-optical-sizing: auto;
+       font-weight: <weight>;
+       font-style: normal;
+       text-align: center; }
+     };
+ 
+ul { color:rgb(0, 0, 0);
+     font-size: 25px;
+     font-family:"Lexend", sans-serif;
+      text-align: center; }
+
+li { font-size: 25px;
+     font-family:"Lexend", sans-serif;
+     text-align: center; }
+ 
+main { background-color: rgb(253, 253, 253);
+     width: 1500px;
+      margin: auto;
+     padding: 20px;
+     box-shadow: 5px 5px 10px gray;
+     
+     background-image: linear-gradient(white, rgb(62, 187, 12) );
+     border-width: 800px;
+     border-style: dashed;
+     border-color: gray;
+     border: 2px solid black;
+     border-radius: 20px;
+}
+
+
+
+body{ background-color: rgb(120, 206, 39);
+background-image: url(https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-nature-scenery-free-photo.jpg?w=2210&quality=70);>
+background-size: cover;
+background-attachment: fixed;
+
+}
+
+
+nav {
+background-color: white;
+padding: 20px;
+position: fixed;
+left: 0;
+top: 0;
+width: fit-content;
+box-shadow: 2px 2px 2px gray;
+}
+
+a {
+     background-color: purple;
+     color: white;
+     padding: 10px;
+     text-decoration: dashed;
+     border-radius: 5px;
+     display: inline-block;
+     transition-duration: 300ms;
+}
+
+
+a:hover {
+background-color: palevioletred;
+translate: 0 -4px;
+
+}
+
+body.cats {
+     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAIn_1py1tu13BQ-OIM33mFAf3ZWUrdfOYOVNlABvCrQ&s);>
+
+}
+
+body.cats p {
+     color: white;
+}
+
+body.cats h2 {
+     color:rgb(255, 255, 255);
+}
+
+body.cats h1 {
+     color: white;
+}
+
+body.cats main {
+background-image: linear-gradient(rgb(4, 1, 211), rgb(255, 0, 242), rgb(0,255,255));
+border-width: 1000px;
+     border-style: dashed;
+     border-color: gray;
+     border: 2px solid black;
+     border-radius: 20px;
+}

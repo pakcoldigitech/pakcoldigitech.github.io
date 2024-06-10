@@ -1,0 +1,73 @@
+p {
+    font-size: 15px;
+    font-weight: bolder;text-align: center;}
+
+    h2 { 
+        font-size: 25px;
+        text-align: center;}
+    h4{ 
+        font-size: 20px;
+        text-align: center;
+        font-weight: bolder;
+    }
+
+    h1 { font: bolder;
+    font-size: 110px;
+    text-align: center;
+    text-shadow: 9px 4px 5px rgb(226, 89, 226) ;
+     font-style: italic;}
+    
+    ul { font-size: 15px; 
+    font: bolder;
+    }
+
+    li { font-weight: bolder;
+    font-size: 15px;
+    }
+
+    h3 { font-size: 20px;
+    font-weight: bolder;text-align: center;}
+
+    body {
+      background-image: url(https://cdn.mos.cms.futurecdn.net/xaycNDmeyxpHDrPqU6LmaD.jpg);
+      background-size: cover; 
+      background-attachment: fixed;
+      }
+    nav { 
+     text-align: center;
+    padding: 20px;
+    background-color: black;
+    border-radius: 8px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+   
+    }
+
+    a {
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        padding: 10px;
+        background-color: darkblue;
+        border-radius: 8px;
+        transition-duration: 300ms;
+         display: inline-block;
+    }
+      a:hover { 
+        background-color: aqua;
+       
+        translate: 0 -4px;
+    }
+      
+
+    main { 
+        width: 70%;
+        margin: auto;
+        padding: 20px;
+        border: 2px solid;
+        background-color:rgb(194, 88, 194)
+    }
+
+    

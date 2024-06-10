@@ -1,0 +1,70 @@
+body {
+    background-color: palegreen;
+    background-image: url("https://autodealsjapan.com/blog/wp-content/uploads/2023/06/desktop-wallpaper-japan-cars-modified-tuning-camber.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+nav {
+    background-color: pink;
+    padding: 20px
+}
+
+p {
+    color: red;
+    font-size: 20px;
+    font-family: "Moon Dance"
+}
+
+
+p {
+     color:rgb(255, 0, 0);
+     font-size: 50px;
+     text-shadow: 5px 7px 9px rgb(0, 38, 255)
+     /* background-color: rgb(0, 162, 255); */
+}
+p.subheading {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+
+}
+
+h2 {
+    color:rgb(30, 255, 0);
+    font-size: 45px;
+    /* background-color: rgb(0, 204, 255); */
+    text-shadow: 5px 7px 9px black
+}
+
+h1 {
+    color:rgb(0, 0, 0);
+   font-size:100px;
+   text-align: center;
+   text-shadow: 5px 7px 9px red
+}
+
+ul{
+    color:rgb(255, 0, 0);
+    font-size:50px;
+    text-shadow: 5px 7px 9px rgb(76, 0, 255);
+}   
+
+body {
+    background-color: rgb(255, 255, 255);
+    text-shadow: 5px 7px 9px black;
+}
+
+main {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    box-shadow: -5px 5px 10px rgb(255, 0, 0);
+    
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border: 10px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    background-image:  radial-gradient(rgb(0, 255, 234), rgb(0, 4, 255), rgb(0, 2]55, 55));
+}

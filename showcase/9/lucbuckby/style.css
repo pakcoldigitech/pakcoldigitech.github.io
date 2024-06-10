@@ -1,0 +1,71 @@
+p{
+    color: black;
+    font-family: cursive;
+}
+
+h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 100px;
+    color: black;
+}
+ul{
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h2{
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+}
+
+body{
+    background-color: rgb(136, 202, 150);
+    background-attachment: fixed;
+    background-size: contain;
+    background-image:url(https://img.freepik.com/free-photo/morning-light-sonoran-desert-scottsdale-arizona_181624-48339.jpg?t=st=1715040326~exp=1715043926~hmac=9d089f093a5186bfafa8c3094337abe49785d05be7ad8f144aae98d87bbc8158&w=1380) ;
+}
+p.subheading{
+    
+    color: black;
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    font:size
+tex
+
+}
+
+main{
+    width: 70%;
+    margin: auto;
+    padding:20px;
+    background-color: rgb(241, 152, 35);
+    
+
+border-width: 20px;
+border-style: groove;
+border-color: black;
+border-radius: 10px;
+}
+
+nav{
+    padding: 10px;
+    
+    text-decoration: double;
+    
+} 
+a{
+    background-color: darkgoldenrod;
+    color: black;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline;
+    transition-duration: 1sec;
+    border-style: groove;
+    border-color: black;
+    border-width: 5px;
+    position: fixed;
+    
+}

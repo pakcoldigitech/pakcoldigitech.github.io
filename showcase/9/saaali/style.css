@@ -1,0 +1,105 @@
+body {
+    background-color: rgb(122, 204, 159);
+    background-image: url(https://extension.usu.edu/createbetterhealth/images/kiwifunfacts.png);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body.cats {
+    background-image: url(https://t4.ftcdn.net/jpg/02/08/91/51/240_F_208915106_jhW4j7pyHJJJDJ1TxzO8tqLN1ofsBKpk.jpg);
+}
+
+body{
+    margin-top: 150px;
+}
+nav{
+    background-color: blanchedalmond;
+    padding: 20px;
+
+    border-width: 6px;
+    border-color: black;
+    border-style: solid;
+    background-color: blanchedalmond;
+    box-shadow: 4px 4px 5px black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    a{
+        background-color: aqua;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        transition-duration: 300px;
+
+        border-width: 3px;
+        border-color: black;
+        border-style: solid;
+        background-color: aqua;
+        box-shadow: 4px 4px 5px black;
+    }
+
+    a:hover{
+        background-color: blueviolet;
+        translate: 0 -4px;
+    }
+}
+p {
+    color:rgb(108, 8, 238);
+    font-size: 20px;
+    font-family: "Briem Hand", cursive;
+}
+
+p.subheading {
+    text-align: center;
+    font-weight: bold;
+    color: black;
+
+    border-width: 6px;
+    border-style: solid;
+    border-color: black;
+    background-color: rgb(228, 148, 161);
+    box-shadow: 4px 4px 5px black;
+}
+
+main {
+    background-color: rgb(228, 148, 161);
+    background-image: linear-gradient( lightgreen , rgb(31, 202, 31), rgb(3, 82, 3)  );
+    width: 600px;
+    margin: auto;
+    padding:20px;
+    box-shadow: 4px 4px 5px black;
+
+    border-width: 6px;
+    border-style: solid;
+    border-color: black;
+}
+
+body.cat{
+    background-image:linear-gradient( yellow, orange, red) ;
+}
+
+h1 {
+    font-size: 80px;
+    text-align: center;
+    background-color: rgb(218, 102, 121);
+    text-shadow: 3px 3px 5px black;
+    margin-bottom: 30px;
+    box-shadow: 4px 4px 5px black;
+
+    border-width: 5px;
+    border-style: solid;
+    border-color: black;
+}
+
+h2{
+    color:rgb(15, 75, 75);
+}
+
+ul {
+    color: rgb(108, 8, 238);
+    font-size: 20px;
+    font-family:"Briem Hand", cursive;

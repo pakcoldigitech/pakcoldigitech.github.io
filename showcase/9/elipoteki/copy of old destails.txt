@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rugby Website</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Set your desired background color here */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Rugby Website</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#teams">Teams</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <!-- Add more navigation items as needed -->
+        </ul>
+    </nav>
+
+
+    <main>
+        <!-- Content will go here -->
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Rugby Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+body{
+    background-color:red;
+    
+}

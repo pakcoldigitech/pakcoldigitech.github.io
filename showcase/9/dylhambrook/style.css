@@ -1,0 +1,81 @@
+p {
+    color: rgba(228, 13, 13, 0.822); 
+    font-size: 30px;
+
+        font-family: ".edu-vic-wa-nt-beginner"
+       
+
+}
+
+p.subheading {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 3px 4px 6px rgb(179, 116, 116);
+}
+p.mechanics {
+    text-align: center;
+    Font-size: 35px;
+    color: rgba(0, 225, 255, 0.74)
+}
+
+h2 {
+    color: darkolivegreen;
+    font-size: 40;
+    text-shadow: 5px 7px 9px limegreen;
+}
+
+h2.Gpt {
+    Font-size: 60px;
+    text-shadow: 5px 7px 11 rgba(148, 179, 91, 0.815);
+}
+
+
+
+h1 {
+    color: gold;
+    font-size: 50px;
+    text-align: center;
+    background-color: rgb(175, 111, 122);
+    text-shadow: 5px 7px 9px blanchedalmond;
+}
+h1.robot {
+    color: cyan;
+    text-shadow: 5px 7px 9px rgb(53, 158, 158);
+    background-color: rgb(161, 161, 161);
+}
+
+ul{
+    color:red; 
+    font-size: 30px;
+}
+
+body {
+    background-image: linear-gradient(pink, rgb(175, 111, 122), rgb(119, 39, 39));
+}
+
+body.Mech {
+    background-color: rgb(170, 221, 189);
+    background-image: none;
+}
+
+main {
+    width: 75%;
+    margin: auto;
+    
+    border: 2px solid lightsalmon;
+    border-radius: 20px;
+}
+main.yes {
+    border: 2px solid cyan;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+Nav { 
+    background-color: aliceblue;
+    font-size: 70px;
+}

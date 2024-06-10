@@ -1,0 +1,70 @@
+    p {
+        color: rgb(73, 66, 66);
+        font-family: "Libre Franklin", sans-serif;
+    }
+    
+    h1 { 
+          font-family: "times new roman", sans-serif;
+        color: rgb(65, 60, 60);
+        font-size: 100px;
+        text-shadow: 1px 1px 4px;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+    body {
+        background-color: lightcyan;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-image: url(https://media.cntraveler.com/photos/5eb18e42fc043ed5d9779733/16:9/w_1920%2Cc_limit/BlackForest-Germany-GettyImages-147180370.jpg);
+    }
+    ul { 
+          font-family: "Oxygen", sans-serif;
+        color: rgb(85,84,84);
+
+    }
+    h2 {
+        color: rgb(85, 84, 84);
+          font-family: "Oxygen", sans-serif;
+        font-size: 50px;
+        text-align: center;
+
+    }
+    p.subheading { 
+        color: rgb(65, 60, 60);
+        font: size 50px;
+          font-family: "Oxygen", sans-serif;
+        font-size: 50px;
+        text-align: center;
+        text-shadow: 2px 2px 5px;
+    }   
+    main { 
+        width: 70%;
+    margin: auto;
+    padding: 20px;
+    background-color: beige;
+       border-color: black;
+       border-width: 20px;
+       border-style: groove;
+       border-radius: 10px;
+       background-image: linear-gradient(beige, rgb(247, 247, 151));
+      }
+
+    a{
+      color: white; 
+      font-size: x-large;
+      padding: 15px;
+      background-color: lightsalmon ;
+      text-decoration: none;
+      display: inline-block;
+      transition-duration: 300ms;
+      border-radius: 10px;
+      position: fixed;
+      top: 10px;
+    }
+      a:hover {
+        background-color: orangered;
+        translate: 0 -4px;
+        
+      }
+

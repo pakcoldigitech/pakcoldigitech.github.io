@@ -1,0 +1,115 @@
+p.subheading {
+      color: rgb(49, 7, 77);
+      font-size: 22;
+      text-align: center
+}
+
+h2 {
+      color: rgb(42, 9, 58)
+}
+
+ul  {
+       color:rgb(39, 14, 54);
+       font-size: 19px;
+}
+
+title {
+        color:rgb(90, 23, 110) ;
+        text-shadow: -7px 3px 10px  rgb(139, 42, 158);
+}
+
+h1  {
+      font-size: 100px;
+      text-align: center;
+      background-color: rgba(101, 23, 124, 0.842) ;
+}
+
+body  { 
+        background-color: rgba(159, 80, 196, 0.61);
+        background-image: url("https://www.nikkisplate.com/wp-content/uploads/2022/10/Purple-Aesthetic-Wallpaper-Desktop-15.png");
+        background-size: cover;
+      }
+
+
+main {
+      background-color: rgba(97, 45, 117, 0.78);
+      width: 900px;
+      margin: auto;
+      padding: 20px;
+      box-shadow: 5px 5px 10px  rgb(66, 13, 87);
+
+      border: 2px solid rgb(56, 6, 71);
+      border-width: 2px;
+      border-style: solid;
+      border-radius: 20px;
+}
+
+body.K-pop {
+      background-color: rgb(35, 49, 61);
+      background-image: url("https://images8.alphacoders.com/134/1347632.jpeg");
+
+}
+
+main.K-pop  {
+      background-color: rgba(60, 52, 133, 0.699);
+      width: 900px;
+      margin: auto;
+      padding: 20px;
+      box-shadow: 5px 5px 10px  rgba(62, 55, 165, 0.76);
+
+      border: 2px solid rgb(20, 7, 80);
+      border-width: 2px;
+      border-style: solid;
+      border-radius: 20px;
+}
+
+p.subheading {
+      color: rgba(255, 255, 255, 0.829);
+      font-size: 22;
+      text-align: center
+}
+
+h1  {
+      font-size: 100px;
+      text-align: center;
+      background-color: rgba(28, 21, 92, 0.842) ;
+}
+
+title.K-pop  {
+      color:rgb(41, 26, 124) ;
+      text-shadow: -7px 3px 10px  rgb(63, 42, 158);
+}
+
+h2.K-pop  {
+      color: rgba(7, 7, 68, 0.76);
+}
+
+ul.K-pop  {
+      color:rgb(16, 7, 65);
+      font-size: 19px;
+}
+
+a  {
+      background-color: rgb(124, 124, 177);
+      color: rgb(255, 255, 255);
+      padding: 10px; 
+      text-decoration: none;
+      border-radius: 10px;
+      display: inline-block;
+      transition-duration: 350ms;
+}
+
+a:hover  {
+      background-color: rgb(56, 56, 150);
+      translate: 0 -4px;
+}
+
+nav  {
+      background-color: rgba(44, 38, 119, 0.664);
+      padding: 10px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      box-shadow: 2px 2px 2px rgba(53, 42, 145, 0.603);
+}

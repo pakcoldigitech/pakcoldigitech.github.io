@@ -1,0 +1,82 @@
+p {
+    color:rgb(32, 32, 32);
+    font-size: 25px;
+    text-align: center;
+}
+
+    h1 {
+        color:rgb(255, 255, 255);
+        font-size: 60px;
+        text-align: center;
+        text-shadow: 5px 5px 10px;
+        font-style: italic;
+}
+
+h3 {
+    color:rgb(255, 255, 255);
+    font-size: 30px;
+    text-align: center;
+}
+
+h2{
+    color:rgb(0, 0, 0);
+    font-size: 30px;
+    text-align: center;
+}
+
+ul {
+    color:rgb(0, 0, 0);
+    font-size: 25px;
+    text-align: center;
+}
+li {
+    font-size: 25px;
+    text-align: center;
+}
+
+main {
+    background-color: brown;
+    width: 600px; 
+    border-radius: 20px; 
+    border-width: 5px;
+    border-color: black;
+    border-style:double;
+}
+
+body{
+    background-color: rgb(255, 255, 255);
+    background-image: url(https://images4.alphacoders.com/721/721397.jpg);
+    background-position: 530px;
+    background-size:calc(100% - 530px) 100% ;
+    background-attachment: fixed;
+}
+   
+nav {
+    background-color: brown;
+    padding: 10px;
+    border-radius: 20px;
+    width: 580px;
+    border-width: 5px;
+    border-color: black;
+    border-style: double;
+    border-left: -200;
+
+}  
+        
+    
+
+a{
+    background-color: brown;
+    color:white;
+    padding:10px;
+    margin:5px;
+    border-radius: 5px;
+    text-decoration: none;
+    display:inline-block;
+    transition-duration: 300ms;
+}
+
+a:hover {
+    background-color: orange;
+    translate: 0 -4px;
+}

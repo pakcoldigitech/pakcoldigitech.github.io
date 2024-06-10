@@ -1,0 +1,64 @@
+body {
+    background-color: palegreen;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTewpV_jUKRn1Fp4HF3TKR0pb08Csz1JoLunzS_rSVo8Q&s");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body.cats {
+    background-image: url("https://content.assets.pressassociation.io/2017/07/18153241/17_7_5_WildcatKitten_SA_11.jpg");
+}
+
+body.cats main {
+    background-image: none;
+}
+
+nav {
+    background-color: pink;
+    padding: 20px;
+}
+
+a {
+    background-color: crimson;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+
+
+p {
+    color: red;
+    font-size: 20px;
+    font-family: "Dancing Script", cursive;
+}
+
+p.subheading {
+    text-align: center;
+    font-weight: bold;
+}
+
+main {
+    background-color: pink;
+    background-image: linear-gradient(pink, lime, teal);
+    width: 70%;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 5px 5px 10px green;
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+h1 {
+    font-size: 80px;
+    text-align: center;
+    text-shadow: 5px 5px 10px green;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: blue;
+}

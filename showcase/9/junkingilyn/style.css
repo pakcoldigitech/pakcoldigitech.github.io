@@ -1,0 +1,13 @@
+body {
+    color: red;
+}
+
+body {
+    color: white;
+ background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8XJbMcISjS2VIobbHc789-POuW77SlFLl0Q&usqp=CA");
+ background-size: cover;
+ background-attachment: fixed;
+}
+p {
+    text-shadow: 3px 3px 2px black;
+}

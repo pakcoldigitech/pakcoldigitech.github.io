@@ -1,0 +1,75 @@
+p {
+    color:rgb(255, 255, 255);
+    font-size: larger;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   
+    
+}
+body {
+    background-color: black;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBMMUQCkUNzahHA61wyjU4mA2T0kcd0Y1RVw&usqp=CAU);
+     background-size: cover;
+
+}
+
+body.turtles {
+    background-image: url(https://www.roger-munns.com/wp-content/uploads/2020/05/A001_C007_1127EH.0000369-862x485.jpg;);
+    
+}
+
+nav {
+    background-color: rgb(22, 121, 121);
+    padding: 20px;
+    width: fit-content;
+}
+
+a:hover {
+    background-color: rgb(31, 163, 119);
+    translate: 0 -4px;
+}
+a {
+    background-color: rgb(36, 102, 81);
+    color: aliceblue;
+    padding: 20px;
+    text-decoration: double;
+    display: inline-block;
+    transition-duration: 300ms;
+}
+h2 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: left;
+    color: aliceblue;
+}
+h1 {
+    text-align: center;
+    color: aliceblue;
+    font-size: 100px;
+    text-shadow: 11px 5px 11px hsl(103, 177%, 97%);
+}
+p.subheading {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+}
+main {
+    width: 60%;
+    margin: auto;
+   background-color: rgb(124, 202, 100);
+   padding: 20px;
+   border: 5px solid black;
+   border-radius: 50px;
+
+   border-width: 2px;
+}
+
+body.turtles main {
+    background-color: rgb(46, 57, 129);
+}
+
+ul {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:aliceblue;
+    font-size: larger;
+}
+

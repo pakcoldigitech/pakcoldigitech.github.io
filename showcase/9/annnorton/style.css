@@ -1,0 +1,86 @@
+p {
+    color:rgb(32, 31, 31);
+    font-size: 20px;
+    font-family: "Sedan SC", serif;
+}
+
+p.subheading {
+    text-align: center;
+    font-weight: bold;
+    color: aliceblue;
+}
+
+main {
+  background-color: rgba(120, 177, 158, 0.699);
+    width:70%;
+    margin:auto;
+    padding:20px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(54, 78, 70);
+    border-radius: 15px;
+}
+
+
+a {
+background-color: rgba(253, 218, 218, 0.685);
+color: aliceblue;
+padding: 10px;
+text-decoration: none;
+border-radius: 20px;
+display: inline-block;
+transition-duration: 350ms;
+}
+
+a:hover {
+    background-color: rgba(150, 107, 107, 0.795);
+   translate: 0 -4px;
+}
+
+main.chess {
+    background-color: rgba(207, 189, 189, 0.486);
+    width:70%;
+    margin:auto;
+    padding:20px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(114, 85, 85);
+    border-radius: 15px;
+}
+
+nav {
+position: fixed;
+top: 0;
+left: 0;
+width:100%;
+}
+
+ul {
+    color:rgb(0, 0, 0);
+    font-size: 19px;
+    font-family: "Sedan SC", serif;
+}
+
+h1 {
+    font-size: 70px;
+    text-align: center;
+    text-shadow: -7px 3px 10px rgb(43, 43, 43);
+    background-color: rgb(29, 151, 110);
+    margin-bottom: 30px;
+}
+
+h1.chess {
+    background-color: rgba(172, 138, 138, 0.829);
+}
+
+body.chess { 
+    background-image: url("https://c1.wallpaperflare.com/preview/752/127/707/battle-blur-board-game-challenge.jpg");
+}
+
+body {
+    background-color: rgb(196, 230, 218);
+  background-size: cover;
+  background-attachment: fixed;
+    background-image: url("https://img.freepik.com/free-photo/natural-background-filling-green-fern-leaves-top-view-wallpaper-idea_166373-2588.jpg?size=626&ext=jpg&ga=GA1.1.1700460183.1708387200&semt=ais");
+}
+
