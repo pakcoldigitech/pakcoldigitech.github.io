@@ -1,0 +1,78 @@
+body{
+    background-color: pink;
+    background-image: url("https://images.squarespace-cdn.com/content/v1/5bd547b77a1fbd17120b0ae2/1594030229834-MP2Z2OXR9KKHKP4QI843/029-Queen-Charlotte-Track-Chris-McLennan.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+
+nav{
+    background-color:aqua ;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+
+
+a{
+    display: inline-block;
+    background-color: darkorchid;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition-duration: 300ms;
+}
+
+a:hover{
+    background-color: red;
+    translate: 0 -3px;
+}
+
+h1{
+    font-family: Jokerman, sans-serif;
+    color: red;
+    font-size: 100px;
+    text-align: center;
+    text-shadow: 10px 8px 6px black;
+    margin-bottom: 10px;
+}
+
+p {
+    color: blue;
+}
+p.subheading{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+div.main{
+    background-color: lightblue;
+    background-image: radial-gradient(white,rgb(234, 165, 243),cornflowerblue);
+    background-image: linear-gradient(white,rgb(234,165,243),cornflowerblue);
+    width: 75%;
+    margin: auto;
+    margin-bottom: 50px;
+    padding: 30px;
+    border-color: purple;
+    border-style: solid;
+    border-width: 8px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px black;
+}
+
+
+
+
+
+
+
+
+

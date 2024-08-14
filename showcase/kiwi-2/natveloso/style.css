@@ -1,0 +1,39 @@
+p {
+    color: red;
+}
+
+body {
+    background-color: darkgreen;
+}
+
+nav {
+    background-color:aqua;
+    padding: 10px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+a {
+    display: inline-block;
+    background-color: darkorchid;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+
+    transition-duration: 300ms;
+}
+a:hover {
+    background-color: red;
+    translate: 0 -3px;
+}
+
+div {
+    background-color: aliceblue;
+
+    width: 75%;
+    margin: auto;
+}

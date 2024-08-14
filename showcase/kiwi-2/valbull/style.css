@@ -1,0 +1,66 @@
+body {
+    background-color: pink;
+
+    background-image: url();
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+nav {
+    background-color: rgb(250, 215, 221);
+    padding: 10px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+a {
+    display: inline-block;
+    background-color: rgb(250, 215, 221);
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    transition-duration: 300ms;
+}
+
+a:hover {
+    background-color: rgb(143, 64, 113);
+    translate: 0 -3px;
+}
+
+
+
+h1  {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:rgb(143, 64, 113);
+    font-size: 100px;
+    text-align: center;
+    text-shadow: 5px 11px 20px rgb(143, 64, 113);
+}
+
+p {
+    color:rgb(143, 64, 113)
+}
+p.subheading {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+div.main {
+    background-color: cornsilk;
+    width: 75%;
+    margin: auto;
+    padding: 30px;
+    border-color: ghostwhite;
+    border-style: solid;
+    border-width: 8px;
+    border-radius: 20px;
+    box-shadow: 0 0 0 gray;
+}

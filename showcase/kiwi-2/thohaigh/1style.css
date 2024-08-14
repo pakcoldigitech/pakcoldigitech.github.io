@@ -1,0 +1,39 @@
+body {
+    background-color: rgb(223, 81, 81);
+    background-image: url("https://media.istockphoto.com/id/846075492/photo/ice-texture-background.webp?b=1&s=170667a&w=0&k=20&c=6aWE7yAlG67jCZMNHQMjSfySVYcptacOK4B-WKe7GVI=");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    color: blue;
+    font-size: 100px;
+    text-align: center;
+    text-shadow:8px 5px 10px black;
+    margin-bottom: 30px;
+}
+
+p {
+    color: black;
+}
+
+p.subheading {
+    font-size: 50px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+div.main{
+    background-color: green;
+    background-image: linear-gradient(cyan, blue);
+    width: 75%;
+    margin: auto;
+    padding: 30px;
+    border-color: #082d9d;
+    border-style: solid;
+    border-width: 12px;
+    border-radius: 50px;
+    box-shadow: 9px 9px 10px black;
+}

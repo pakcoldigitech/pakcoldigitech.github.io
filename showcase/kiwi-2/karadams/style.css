@@ -1,0 +1,52 @@
+body {
+    background-color: violet;
+    background-image: url("https://www.worldatlas.com/r/w1200/upload/a1/1e/83/north-island-brown-kiwi-new-zealand-lakeview-images.jpg");
+}
+
+body.cats {
+    background-image: url("https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187.jpg");
+}
+
+
+
+h1 {
+    font-family: Jokerman, sans-serif;
+    color:lawngreen;
+    font-size: 100px;
+    text-align: center;
+    text-shadow: 10px 8px 6px red;
+}
+p {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: lightblue;
+}
+h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: peru;
+}
+
+ul {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: lightblue;
+}
+
+p.subheading {
+    font-size: 50px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+div.main {
+    background-color: aliceblue;
+    background-image: linear-gradient(teal, orange);
+
+    width: 75%;
+    margin: auto;
+    padding: 30px;
+    border-color: brown ;
+    border-style: solid;
+    border-width: 8px;
+    border-radius: 20px;
+    box-shadow: 0 0 0 black;
+}

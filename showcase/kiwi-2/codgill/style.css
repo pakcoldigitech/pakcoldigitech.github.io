@@ -1,0 +1,79 @@
+body {
+background-color: bisque;
+background-image: url("https://e0.pxfuel.com/wallpapers/548/778/desktop-wallpaper-the-kiwi-bird-new-zealand-kiwi-night.jpg");
+background-attachment: fixed;
+background-attachment: fixed;
+background-size: 1500px;
+}
+
+body.dogs {
+  background-image: url("https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg");
+}
+body.dogs div.main {
+  background-image: linear-gradient(beige, gold);
+  border-color: bisque;
+  
+}
+
+h1 {
+  font-family:"Playwrite BE WAL", sans-serif; 
+ color: red; 
+ font-size:  100px;
+ text-align: center;
+ text-shadow: 10px 8px 6px black;
+ margin-bottom: 30px;
+}
+p {
+    color: rgb(36, 136, 136);
+  } 
+  h2 { 
+    color: Teal;
+      
+  }
+  p.subheading {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom:50px ;
+  }
+
+  div.main {
+ background-color: rgb(221, 234, 238);
+background-image: linear-gradient( mintcream, teal, cornflowerblue);
+background-image: radial-gradient( mintcream, teal, cornflowerblue);
+ width: 80%;
+ margin: auto;
+ padding: 30px;
+ border-color: forestgreen;
+ border-style: solid;
+ border-width: 8px;
+ border-radius: 20px; 
+ box-shadow: 10px 10px 10px darkolivegreen; 
+  }
+  ul {
+    color: blueviolet;
+  }
+  nav { background-color: silver;
+    padding: 10px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+ a {
+  display: inline-block;
+  background-color: brown;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition-duration: 1s;
+}
+a.hover {
+  background-color: red;
+  translate: 0 -3px;
+}
+
+

@@ -1,0 +1,56 @@
+
+body{
+    background-image: url("https://www.nationalkiwihatchery.org.nz/assets/Uploads/Home/home-featured-img-1.jpg");
+    background-attachment: fixed;
+    background-size: 1000px;
+    background-size: cover;
+        font-family: "Fontdiner Swanky", serif;
+        font-weight: 400;
+        font-style: normal;
+      
+}
+
+body.cars {
+    background-image: url(https://cdn.freebiesupply.com/logos/thumbs/2x/chevy-camaro-logo.png);
+
+}
+
+body.cars div.main {
+    background-image: linear-gradient(black, white);
+}
+
+nav {
+    background-color: aqua;
+    padding: 10px;
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+a {
+    display: inline-block;
+    background-color: blueviolet;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+
+    text-decoration: none;
+    transition transition-duration: 300ms;
+}
+
+a:hover {
+    background-color: rgb(255, 0, 0);
+    translate: 0 -3px;
+}
+
+
+
+
+
+h1{
+    color:red;
+}
+p {
+    color: blue;
+}

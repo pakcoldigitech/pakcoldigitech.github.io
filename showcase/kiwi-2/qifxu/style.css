@@ -1,0 +1,98 @@
+body {
+    background-color: rgb(240, 156, 170);
+    
+
+}
+h1 {
+    color: rgb(96, 218, 14);
+    font-size: 100px;
+    text-align: center;
+    text-shadow: 10px 10px 10px rgb(15, 83, 230);
+    margin-bottom: 10px;
+}
+p {
+    color: blue;
+}
+p.subheading {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+div.main {
+    background-color: lightblue;
+    width: 75%;
+    margin: auto;
+    margin-bottom: 50px;
+    padding: 30px;
+    
+    border-color: purple;
+    border-style: solid;
+    border-width: 8px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px black;
+}
+
+nav {
+    background-color: aqua;
+<a>}
+ {
+    background-color: blueviolet;
+    padding: 10px;
+
+
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+
+}
+a{
+    display: inline-block;
+    background-color: darkorchid;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    text-align: none;
+
+    transition-duration: 300ms;
+}
+body {
+    background-color: pink;
+}
+h1 {
+    color: red;
+    font-size: 100px;
+    text-align: center;
+    text-shadow: 10px 10px 10px black;
+    margin-bottom: 10px;
+}
+p {
+    color: blue;
+}
+p.subheading {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+div.main {
+    background-color: lightblue;
+    width: 75%;
+    margin: auto;
+    margin-bottom: 50px;
+    padding: 30px;
+    
+    border-color: purple;
+    border-style: solid;
+    border-width: 8px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px black;
+}
+
+
+
+
