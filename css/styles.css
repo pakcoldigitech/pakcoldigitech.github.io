@@ -1,0 +1,157 @@
+@font-face {
+    font-family: Inter;
+    src: url(/Inter/Inter-VariableFont_opsz\,wght.ttf);
+}
+
+html {
+    box-sizing: border-box;
+}
+* {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: inherit;
+}
+body {
+    margin: 0;
+    background: #6a9fee;
+    background-image: linear-gradient(#fccc00 50%, #007c5a 50%);
+    /* Flag of the Hague */
+    background-image: linear-gradient(#86cdf2, #6a9fee);
+    min-width: 100dvw;
+    min-height: 100dvh;
+}
+body > svg {
+    width: 100dvw;
+    height: 100dvh;
+    display: block;
+    position: fixed;
+}
+#ck {
+    opacity: 0;
+    transition: 1s;
+}
+#ck:hover {
+    opacity: 1;
+}
+#rs, #poster {
+    opacity: 1;
+    transition: 1s;
+}
+#rs:hover, #poster:hover {
+    opacity: 0;
+}
+nav {
+    background-color: #080708;
+    color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    max-width: 50vw;
+    width: 400px;
+    padding: 30px;
+}
+h1 {
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    line-height: 1.25;
+    text-align: center;
+}
+a:not(.github) {
+    display: block;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.25rem;
+    padding: 0.75rem 0;
+    transition: all 0.3s ease;
+    border: none;
+    border-radius: 5px;
+    &:hover, &:focus-visible {
+        background-color: #171717;
+        border-color: #171717;
+        color: #86cdf2;
+    }
+    &:focus-visible {
+        outline: 2px solid yellow;
+        border-radius: 1px;
+    }
+    &:active {
+        background-color: #555;
+        border-color: #777;
+        color: dodgerblue;
+    }
+    span {
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+    &:hover span, &:focus-visible span {
+        transform: translateY(-2px);
+    }
+    span::after {
+        content: "";
+        border-bottom: 1px solid currentColor;
+        display: block;
+        margin: auto;
+        transition: width 0.3s ease;
+        width: 0;
+    }
+    &:hover span::after, &:focus-visible span::after {
+        width: 100%;
+    }
+    svg {
+        width: 1rem;
+        height: 1rem;
+        display: inline;
+        position: unset;
+        margin-left: 0.5ch;
+    }
+    &:hover svg {
+        animation: spin 0.6s ease;
+    }
+}
+@keyframes spin {
+    0% {
+        transform: perspective(8rem)rotateY(0deg);
+    }
+    50% {
+        transform: perspective(8rem)rotateY(270deg)scale(1.5);
+    }
+    100% {
+        transform: perspective(8rem)rotateY(360deg);
+    }
+}
+.github {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 1rem;
+    transition: background-size 0.3s;
+    border-radius: 50%;
+    background-image: radial-gradient(circle at center, rebeccapurple 1%, transparent 1%);
+    background-position: center;
+    background-size: 0;
+    &:hover, &:focus-visible {
+        background-size: 8000%;
+    }
+    &:focus-visible {
+        outline: 2px solid yellow;
+    }
+    svg {
+        display: block;
+        position: relative;
+        z-index: 1;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    nav {
+        top: 0;
+        left: 0;
+        right: 0;
+        max-width: 100vw;
+        height: auto;
+        width: 100vw !important;
+    }
+}
