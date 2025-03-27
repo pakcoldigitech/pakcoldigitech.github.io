@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Snake Game</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <style>
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-light">
+        <div class="container-fluid">
+            <h1>Introducing The AI Snake</h1>
+        </div>
+        
+    </nav>
+        <div class="container">
+            <h3>Imagine if your friend challenged you to a snake game competition. highest score wins. i win. this is a snake game that is not perfect but uses an algorithim called A* so it will play for you. at first i was thinking of using q-learning to make the snake learn but it wouldnt work so i stuck with A*. i was also thinking of using the hamiltonian cycle which is a cycle that makes the snake always go in one path in a cylcle so it will never die but thats boring. i stuck with A* and added in stuff like "panic mode" so it will panic if it cant calculate the path to the apple. it is still stupid. by the way the way the Hamiltonian Cycle works is that the game will generate a maze that the snake will follow infinitely that covers the entire area making it impossible for the snake to die. problem with it is that it sucks. it takes way too long to finish and the script that i put in cant control the snake in the game that i made. so thats the story of how my snake cant beat the game completely. its good enough to impress you little children though. The A* is a program that makes the snake go for the apple in the quickest path. i had to make some tweaks of course, for example the sname was just going for the apple at the start with absolutely no care in the world about dying. i fixed it by giving it a tracker so it will not die but then another issue come in. when the snake gets too big it will get the head trapped in its own body and will not be able to calculate the route to the apple so it just gives up. thats where the panic mode comes in. it is still terrible and will still mostly fail but it can still get the snake out of some situations. cheers, bye
+            </h3>
+        </div>
+
+
+    <canvas id="gameCanvas" width="500" height="500" class="container-sm"></canvas>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

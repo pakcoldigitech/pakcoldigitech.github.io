@@ -1,0 +1,14 @@
+body { 
+    font-family: Arial, sans-serif; 
+    padding-top: 70px; 
+    background-color: #f8f9fa;
+}
+
+.section-alt { 
+    background-color: #e9ecef; /* Light gray section */
+    padding: 40px 0; 
+}
+
+.container { 
+    max-width: 1100px; 
+}

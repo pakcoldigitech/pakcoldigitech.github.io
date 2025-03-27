@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iracing Series</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="Iracing.css" rel="stylesheet">
+    <style>
+        nav a {
+            transition: transform 0.9s ease-in-out, background-color 0.9s ease-in-out;
+        }
+        nav a:hover {
+            transform: scale(1.15);
+            background-color: #bfbfbf;
+        }
+        .scrolling-wrapper {
+            display: flex;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        .scrolling-content {
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+        .card {
+            flex: 0 0 auto;
+            width: 300px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body class="bg-dark text-white">
+    <header class="custom-bg text-center py-4">
+        <h1>iRacing: The Most Realistic Racing Simulator</h1>
+        <nav>
+            <a href="Iracing.html" class="btn btn-light m-2">Home</a>
+            <a href="racing-series.html" class="btn btn-light m-2">Racing Series</a>
+        </nav>
+    </header>
+    <div class="container mt-5">
+        <div class="scrolling-wrapper">
+            <div class="scrolling-content">
+                <div class="card"><img src="images/dirt1.jpg" class="card-img-top" alt="Dirt Stock Car"><div class="card-body"><h5 class="card-title">Dirt - Street Stock</h5><p class="card-text">Entry-level dirt car.</p></div></div>
+                <div class="card"><img src="images/dirt2.jpg" class="card-img-top" alt="Dirt Late Model"><div class="card-body"><h5 class="card-title">Dirt - Late Model</h5><p class="card-text">Fast oval dirt car.</p></div></div>
+                <div class="card"><img src="images/dirt3.jpg" class="card-img-top" alt="Dirt Truck"><div class="card-body"><h5 class="card-title">Dirt - Craftsman Truck</h5><p class="card-text">NASCAR dirt truck.</p></div></div>
+                <div class="card"><img src="images/formula1.jpg" class="card-img-top" alt="Dallara IndyCar"><div class="card-body"><h5 class="card-title">IndyCar - Dallara IR-18</h5><p class="card-text">Modern IndyCar.</p></div></div>
+                <div class="card"><img src="images/formula2.jpg" class="card-img-top" alt="Dallara F3"><div class="card-body"><h5 class="card-title">Formula 3 - Dallara</h5><p class="card-text">Entry formula car.</p></div></div>
+                <div class="card"><img src="images/formula3.jpg" class="card-img-top" alt="Mercedes F1"><div class="card-body"><h5 class="card-title">Formula 1 - Mercedes</h5><p class="card-text">Elite F1 car.</p></div></div>
+                <div class="card"><img src="images/nascar1.jpg" class="card-img-top" alt="NASCAR Truck"><div class="card-body"><h5 class="card-title">NASCAR - Truck</h5><p class="card-text">Stock car truck.</p></div></div>
+                <div class="card"><img src="images/nascar2.jpg" class="card-img-top" alt="NASCAR Modified"><div class="card-body"><h5 class="card-title">NASCAR - Modified</h5><p class="card-text">Short track racer.</p></div></div>
+                <div class="card"><img src="images/nascar3.jpg" class="card-img-top" alt="NASCAR Next Gen"><div class="card-body"><h5 class="card-title">NASCAR - Next Gen</h5><p class="card-text">Modern NASCAR car.</p></div></div>
+                <div class="card"><img src="images/offroad1.jpg" class="card-img-top" alt="Pro 2 Truck"><div class="card-body"><h5 class="card-title">Off-Road - Pro 2</h5><p class="card-text">Dirt racing truck.</p></div></div>
+                <div class="card"><img src="images/offroad2.jpg" class="card-img-top" alt="Pro 4 Truck"><div class="card-body"><h5 class="card-title">Off-Road - Pro 4</h5><p class="card-text">High-power truck.</p></div></div>
+                <div class="card"><img src="images/offroad3.jpg" class="card-img-top" alt="Offroad 3"><div class="card-body"><h5 class="card-title">Off-Road - Pro Lite</h5><p class="card-text">Light off-road truck.</p></div></div>
+                <div class="card"><img src="images/pro1.jpg" class="card-img-top" alt="Prototype 1"><div class="card-body"><h5 class="card-title">Prototype - LMP3</h5><p class="card-text">Entry LMP racer.</p></div></div>
+                <div class="card"><img src="images/pro2.jpg" class="card-img-top" alt="Prototype 2"><div class="card-body"><h5 class="card-title">Prototype - LMP2</h5><p class="card-text">High-speed LMP.</p></div></div>
+                <div class="card"><img src="images/pro3.jpg" class="card-img-top" alt="Ferrari Hypercar"><div class="card-body"><h5 class="card-title">Hypercar - Ferrari</h5><p class="card-text">Top-tier endurance.</p></div></div>
+                <div class="card"><img src="images/sport.jpg" class="card-img-top" alt="Supercars"><div class="card-body"><h5 class="card-title">Supercars - V8</h5><p class="card-text">V8 touring beast.</p></div></div>
+                <div class="card"><img src="images/sport1.jpg" class="card-img-top" alt="Mazda MX-5"><div class="card-body"><h5 class="card-title">Mazda - MX-5</h5><p class="card-text">Rookie road racer.</p></div></div>
+                <div class="card"><img src="images/sport2.jpg" class="card-img-top" alt="Porsche GT3"><div class="card-body"><h5 class="card-title">GT3 - Porsche 911</h5><p class="card-text">Elite GT racer.</p></div></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

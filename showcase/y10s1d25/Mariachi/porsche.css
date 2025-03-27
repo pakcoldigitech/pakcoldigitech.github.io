@@ -1,0 +1,53 @@
+body {
+  background-color: rgb(0, 0, 0); 
+  scroll-behavior: smooth;
+}
+
+/* Carousel image settings */
+.carousel img {
+  max-height: 500px;
+  object-fit: cover;
+}
+
+/* Feature and History Box styles */
+.feature-box, .history-box {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Video Box styling */
+.video-box {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: #2c2c2c; /* Gray color for navbar */
+}
+
+.navbar .navbar-brand, .navbar .nav-link {
+  color: #ffd700; /* Yellow color for text */
+}
+
+.navbar .nav-link:hover {
+  color: #fff; /* White color on hover */
+}
+
+/* Carousel caption styles */
+.carousel-caption h2, .carousel-caption p {
+  color: #ffd700; /* Yellow text for captions */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Added shadow for better readability */
+}
+
+/* Responsive Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .feature-box, .history-box, .video-box {
+    padding: 15px;
+  }
+}

@@ -1,0 +1,43 @@
+body{
+    background-image: url('images/background image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    color:white;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+p {
+    color:white;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.jumbotron-custom h1 {
+    color:rgb(238, 204, 95);
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.intro-section img.img-fluid {
+    max-width: 55%;
+    height:auto;
+}
+
+.gameplay-section img.img-fluid {
+  max-width: 55%;
+  height:auto;
+}
+
+
+.experience-section img.img-fluid {
+  max-width: 55%;
+  height:auto;
+}
+
+

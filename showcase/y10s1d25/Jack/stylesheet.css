@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    overflow: hidden;
+    background-color: black;
+}
+
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+h3{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 17px;
+    border-color: white;
+    margin-top: -150px;
+}
+
+canvas {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 90vh; /* Full width */
+    height: 90vh; /* Full height */
+
+    border: 1px solid white;
+    z-index: -1;
+    object-fit: contain; /* Ensures the aspect ratio is maintained */
+    margin-top: -450px;
+}
+
+.container{
+    text-align: left;
+    width: 400px;
+    height: 500px;
+    border: 1px;
+   
+    margin-top: 100px; 
+    
+}
+
+

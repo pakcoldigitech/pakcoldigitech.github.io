@@ -1,0 +1,251 @@
+/* General Styles */
+body {
+    background-color: rgb(34, 34, 34);
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    color: #ffd700; /* Yellow color for headers */
+}
+
+p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #2c2c2c;
+}
+
+.navbar .navbar-brand, .navbar .nav-link {
+    color: #ffd700;
+}
+
+.navbar .nav-link:hover {
+    color: #fff;
+}
+
+/* Homepage Section */
+#home {
+    background-color: #1a1a1a;
+    padding: 100px 0;
+    background-image: url('path-to-your-background-image.jpg'); /* Optional: Add a background image if needed */
+    background-size: cover;
+    background-position: center;
+}
+
+#home h1 {
+    font-size: 3rem;
+    color: #ffd700;
+}
+
+#home p {
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+/* About Me Section */
+#about {
+    background-color: #222;
+    padding: 50px 0;
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffd700;
+}
+
+#about p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Porsche 911 Section */
+#911 {
+    background-color: #333;
+    padding: 50px 0;
+}
+
+#911 h2 {
+    font-size: 2.5rem;
+    color: #ffd700;
+}
+
+#911 img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+#911 ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#911 ul li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+/* Porsche 918 Spyder Section */
+#918 {
+    background-color: #333;
+    padding: 50px 0;
+}
+
+#918 h2 {
+    font-size: 2.5rem;
+    color: #ffd700;
+}
+
+#918 img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+/* Porsche Taycan Section */
+#taycan {
+    background-color: #333;
+    padding: 50px 0;
+}
+
+#taycan h2 {
+    font-size: 2.5rem;
+    color: #ffd700;
+}
+
+#taycan img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+#taycan ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#taycan ul li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+/* Gallery Section */
+#gallery {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+}
+
+#gallery h2 {
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 30px;
+}
+
+#gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+#gallery .col-md-4 {
+    margin-bottom: 30px;
+}
+
+/* Contact Section */
+#contact {
+    background-color: #222;
+    padding: 50px 0;
+}
+
+#contact h2 {
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 30px;
+}
+
+#contact form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contact .form-label {
+    font-size: 1.2rem;
+    color: #ffd700;
+}
+
+#contact .form-control {
+    padding: 15px;
+    font-size: 1rem;
+    background-color: #333;
+    border: 1px solid #444;
+    color: #fff;
+}
+
+#contact .btn-primary {
+    background-color: #ffd700;
+    border: none;
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    margin-top: 20px;
+}
+
+#contact .btn-primary:hover {
+    background-color: #e6c200;
+}
+
+/* Footer Section */
+.footer {
+    background-color: #2c2c2c;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer p {
+    color: #ccc;
+}
+
+.footer a {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #home h1 {
+        font-size: 2.5rem;
+    }
+
+    #about h2 {
+        font-size: 2rem;
+    }
+
+    #contact .form-control {
+        font-size: 1rem;
+    }
+
+    #contact .btn-primary {
+        padding: 10px 25px;
+    }
+
+    .gallery img {
+        max-width: 100%;
+    }
+}

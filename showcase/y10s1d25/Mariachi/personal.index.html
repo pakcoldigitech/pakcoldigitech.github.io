@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Favorite Porsches</title>
+    <link rel="stylesheet" href="personal.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+      }
+      h1, h2 {
+        font-family: 'Lora', serif;
+        color: white;
+      }
+      p {
+        font-size: 1.1rem;
+        color: #ccc;
+      }
+      #navbar {
+        background-color: #333;
+      }
+      #navbar a, #navbar .nav-link {
+        color: white;
+      }
+      #navbar .nav-link:hover {
+        color: #ddd;
+      }
+      section {
+        background-color: black;
+        padding: 60px 0;
+      }
+      footer {
+        background-color: #111;
+        color: #777;
+        padding: 20px 0;
+      }
+      .container {
+        max-width: 1200px;
+      }
+      .img-fluid {
+        border-radius: 8px;
+      }
+      .btn-primary {
+        background-color: #444;
+        border-color: #333;
+      }
+      .btn-primary:hover {
+        background-color: #555;
+        border-color: #444;
+      }
+      #home {
+        background-color: #111;
+        padding: 100px 0;
+      }
+      .gallery img {
+        margin-bottom: 20px;
+        border-radius: 10px;
+      }
+      .gallery .col-md-4 {
+        margin-bottom: 20px;
+      }
+      .gallery h2 {
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar Section -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="Porsche.index.html">Homepage</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Homepage Section -->
+    <header id="home">
+      <div class="container text-center my-5">
+        <h1 class="display-4">Welcome to My Favorite Porsches</h1>
+        <p class="lead">Explore the cars I admire the most from Porsche, their history, specs, and what makes them special!</p>
+      </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="about">
+      <div class="container">
+        <h2 class="display-4">About Me</h2>
+        <p>Hello! My name is Mariachi, and I’ve always had a passion for cars, particularly the Porsche brand. I created this website to share my love for Porsches with others who appreciate the beauty, performance, and history behind these legendary machines.</p>
+        <p>From the classic Porsche 911 to the futuristic Porsche Taycan, I find each model to be a work of art that represents engineering excellence and a commitment to innovation. On this site, you’ll find details about my favorite Porsche models, their specifications, and why I find them fascinating!</p>
+        <p>When I’m not exploring the world of Porsche, you can find me [insert a hobby or interest here]!</p>
+      </div>
+    </section>
+
+    <!-- Porsche 911 Section -->
+    <section id="911">
+      <div class="container my-5">
+        <h2>Porsche 911</h2>
+        <img src="porsche gallary/911.jpg" alt="Porsche 911" class="img-fluid">
+        <p>The Porsche 911 is an iconic sports car with over 50 years of history. Known for its powerful engine and exceptional handling, it remains one of the most respected and admired cars in the world.</p>
+        <ul>
+          <li><strong>Engine:</strong> 3.0L Turbocharged 6-cylinder</li>
+          <li><strong>Power:</strong> 443 hp</li>
+          <li><strong>Top Speed:</strong> 191 mph</li>
+          <li><strong>Acceleration:</strong> 0-60 mph in 3.4 seconds</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Porsche 918 Spyder Section -->
+    <section id="918">
+      <div class="container my-5">
+        <h2>Porsche 918 Spyder</h2>
+        <img src="porsche gallary/918.jpg" alt="Porsche 918 Spyder" class="img-fluid">
+        <p>The Porsche 918 Spyder is a hybrid supercar that combines incredible performance with cutting-edge technology. It’s a rare and exceptional car, representing Porsche’s push into the future of hybrid technology.</p>
+        <ul>
+          <li><strong>Engine:</strong> 4.6L V8 Hybrid</li>
+          <li><strong>Power:</strong> 887 hp</li>
+          <li><strong>Top Speed:</strong> 214 mph</li>
+          <li><strong>Acceleration:</strong> 0-60 mph in 2.2 seconds</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Porsche Taycan Section -->
+    <section id="taycan">
+      <div class="container my-5">
+        <h2>Porsche Taycan</h2>
+        <img src="porsche gallary/taycan.jpg" alt="Porsche Taycan" class="img-fluid">
+        <p>The Porsche Taycan is Porsche’s first fully electric sports sedan. With its futuristic design and impressive range, it marks a new era for the brand.</p>
+        <ul>
+          <li><strong>Engine:</strong> Dual Electric Motors</li>
+          <li><strong>Power:</strong> 616 hp (Turbo version: 750 hp)</li>
+          <li><strong>Top Speed:</strong> 161 mph</li>
+          <li><strong>Acceleration:</strong> 0-60 mph in 2.6 seconds</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="bg-light py-5">
+      <div class="container">
+        <h2 class="text-center">Gallery</h2>
+        <div class="row gallery">
+          <div class="col-md-4">
+            <img src="porsche gallary/personal1.jpg" alt="Porsche Car 1" class="img-fluid">
+          </div>
+          <div class="col-md-4">
+            <img src="porsche gallary/personal2.jpg" alt="Porsche Car 2" class="img-fluid">
+          </div>
+          <div class="col-md-4">
+            <img src="porsche gallary/personal4.jpg" alt="Porsche Car 3" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <h2>Contact Me</h2>
+        <p>If you want to talk about Porsches or have any questions, feel free to reach out!</p>
+        <form action="https://formspree.io/f/{your_form_id}" method="POST">
+          <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Your Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Your Email" required />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea id="message" name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer text-center mt-5">
+      <p>&copy; 2025 My Favorite Porsches. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

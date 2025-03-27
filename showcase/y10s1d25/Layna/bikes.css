@@ -1,0 +1,17 @@
+body {
+  background-color: rgba(8, 8, 70, 0.993);
+  color:rgb(25, 24, 51);
+}
+
+
+
+
+@media (max-width: 768px) {
+  nav ul {
+      flex-direction: column; /* Stack items vertically on small screens */
+  }
+}
+
+
+
+

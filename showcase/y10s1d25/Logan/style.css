@@ -1,0 +1,257 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body - Flexbox layout for centering */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f4f8; /* Soft off-white background */
+  color: #333;
+  display: flex;
+  justify-content: center;  /* Center horizontally */
+  align-items: center;      /* Center vertically */
+  min-height: 100vh;        /* Ensure the body takes up full height */
+  padding: 20px;            /* Optional padding to prevent content from touching the edges */
+  line-height: 1.6;         /* Improve readability */
+}
+
+/* Main Container for Centering Content */
+.main-container {
+  display: flex;
+  max-width: 1200px;         /* Limit width of content */
+  width: 100%;               /* Allow it to stretch on smaller screens */
+  background-color: #040b6d; /* Clean white background */
+  border-radius: 12px;       /* Slightly more rounded corners */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Deeper shadow for depth */
+  overflow: hidden;
+  flex-direction: row;      /* Sidebar and content next to each other */
+  transition: all 0.5s ease-in-out; /* Smooth transition for layout change */
+  animation: fadeInUp 1s ease-out; /* Fade in and slide up */
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  padding: 30px;  /* Increased padding for better spacing */
+  background-color: #000000; /* Darker blue-gray for sidebar */
+  color: #ecf0f1; /* Light grayish-white for text */
+  animation: slideIn 0.5s ease-in-out;
+}
+
+.sidebar h3 {
+  font-size: 1.8rem; /* Increased font size */
+  margin-bottom: 20px; /* Better spacing */
+  color: #ecf0f1;
+  font-weight: 700; /* Stronger heading */
+  animation: slideInUp 0.6s ease-out;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 12px;
+}
+
+.sidebar ul li a {
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.sidebar ul li a:hover {
+  color: #000000; /* Blue color on hover */
+  padding-left: 10px; /* Slight indentation effect */
+  transform: scale(1.05); /* Slight grow effect on hover */
+}
+
+/* Main Content Styles */
+main {
+  flex: 1;
+  padding: 30px;
+  opacity: 0;
+  animation: fadeInMain 1s forwards;
+}
+
+/* Content Section Styles */
+.content-section {
+  margin-bottom: 30px;
+  padding: 25px;
+  background-color: #ffffff; /* White background for content */
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  opacity: 0;
+  animation: fadeInUp 1.2s forwards; /* Add slide-up and fade-in effect */
+  transition: transform 0.3s ease; /* Smooth transition on hover */
+}
+
+.content-section:hover {
+  transform: scale(1.02); /* Slight zoom effect on hover */
+}
+
+.content-section:nth-child(even) {
+  animation-delay: 0.2s;
+}
+
+.content-section:nth-child(odd) {
+  animation-delay: 0.5s;
+}
+
+/* Image Hover Animation */
+.image-hover {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add box-shadow transition */
+}
+
+.image-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Add a subtle shadow on hover */
+}
+
+/* Sidebar Slide-In Animation */
+@keyframes slideIn {
+  0% {
+      opacity: 0;
+      transform: translateX(-100%);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+/* Sidebar Slide-In Up Animation for Heading */
+@keyframes slideInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(50px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Main Content Fade-In Animation */
+@keyframes fadeInMain {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+/* Content Section Fade-In and Slide-Up */
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .main-container {
+      flex-direction: column; /* Stack elements vertically on smaller screens */
+      padding: 10px;
+  }
+
+  .sidebar {
+      width: 100%;
+      position: relative;
+      padding: 15px; /* Reduce padding for smaller screens */
+      animation: none; /* Disable animation for mobile */
+  }
+
+  main {
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+
+  .content-section {
+      margin-bottom: 20px; /* Adjust margin for mobile */
+      padding: 20px; /* Adjust padding for mobile */
+  }
+
+  .image-hover {
+      max-width: 100%; /* Ensure images are responsive */
+  }
+}
+
+/* Button Styles */
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  animation: bounceIn 1.2s ease-out;
+}
+
+button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+  transform: translateY(-3px); /* Slight lift effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Adding shadow on hover */
+}
+
+/* Footer Styles */
+footer {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 50px;
+  animation: fadeInFooter 1s ease-out;
+}
+
+footer a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #2980b9; /* Darker blue on hover */
+}
+
+/* Footer Fade-In Animation */
+@keyframes fadeInFooter {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+/* Button Bounce In Animation */
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.indent{
+ line-height: 8;
+}

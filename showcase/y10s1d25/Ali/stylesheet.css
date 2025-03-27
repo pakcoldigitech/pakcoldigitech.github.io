@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(230, 255, 243);
+
+}
+
+.bg-primary {
+    background-color: rgb(97, 168, 131) !important;
+}
+
+p{
+    color: rgb(255, 255, 255);
+
+}
+
+.card-body {
+    background-color: rgb(215, 224, 248); 
+}
+
+.custom-navbar .nav-link {
+    color: white; /* Changes link text color */
+}
+
+.custom-navbar .nav-link:hover {
+    color: rgb(0, 0, 0); /* Changes hover color */
+}
+.custom-navbar {
+    background-color: #b6ecc8; /* Replace with any color code you want */
+}
+

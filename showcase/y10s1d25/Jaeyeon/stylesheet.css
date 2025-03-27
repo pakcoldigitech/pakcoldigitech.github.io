@@ -1,0 +1,89 @@
+.custom-background {
+    background-color: transparent;
+    background-size: cover;
+    background-position: center;
+}
+
+body {
+    background-image: url('images/palace.jpg');
+    background-size: cover;  
+    background-position: center;  
+    background-attachment: fixed;  
+    min-height: 100vh;  
+    margin: 0;  
+}
+
+
+.jumbotron-custom {
+    padding-top: 100px;
+    padding-bottom: 100px; 
+}
+
+.jumbotron-custom h1 {
+    font-size: 3.5rem;  
+    font-weight: bold;
+    color: #ff6d89;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: 2px;
+
+}
+
+.jumbotron-custom h3 {
+    font-size: 1.8rem;  
+    color: #ff6d89;
+}
+
+
+.games-section h2 {
+    font-size: 2.5rem;  
+    font-weight: normal;
+    color: #FFF8E1;
+    font-family:'Noto Sans KR', sans-serif;
+}
+
+
+.games-section p {  
+    font-weight: normal;
+    color: #FFF8E1;
+    font-family:'Noto Sans', sans-serif;
+
+}
+
+
+.games-section h3 { 
+    font-weight: normal;
+    color: #FFF8E1;
+    font-family:'Noto Sans', sans-serif;
+}
+
+
+.games-section img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+
+.games-section img {
+    transition: transform 0.3s ease;
+}
+
+
+.games-section img:hover{
+    transform: scale(1.05);
+}
+
+
+.games-section img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+
+
+.text-background {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px 15px;
+    border-radius: 5px;
+}

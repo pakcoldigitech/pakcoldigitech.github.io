@@ -1,0 +1,116 @@
+#igl,
+.quote {
+  margin-top: 20px;
+}
+#igl {
+  margin-top: 10px;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.hello {
+  color: #f1f1f1;
+}
+.fade-in {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+/* Slide-in effect for images */
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideIn 1s ease-out forwards;
+}
+
+/* Card sliding effect */
+@keyframes slideCard {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.card-body {
+  animation: slideCard 1s ease-out forwards;
+}
+
+/* Smooth transitions for images */
+img {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Add animation to columns when they come into view */
+.column-animate {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 1s ease-in-out;
+}
+
+.column-animate.visible {
+  opacity: 5;
+  transform: translateY(0);
+}
+#test {
+  z-index: 7;
+}
+.test {
+  margin-top: 20px;
+}
+#myVideo {
+  position: fixed; /* Ensures video stays in place */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full width */
+  height: 100vh; /* Full height */
+  object-fit: cover; /* Ensures the video covers the entire screen */
+  z-index: -1; /* Places the video behind content */
+}
+
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+#huracanCarousel {
+  margin-bottom: 50px;
+}
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
