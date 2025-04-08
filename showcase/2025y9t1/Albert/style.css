@@ -1,0 +1,55 @@
+h1 {
+    color:red;
+    text-align: center;
+font-size: 50px;
+text-shadow: 2px 2px 5px black;
+}
+
+body {background-color: rgb(127, 140, 255);
+
+}
+
+h2 { text-align: center;}
+P, u1 {
+    color: crimson;
+    background-color: aliceblue;
+    padding: 20px;
+    box-shadow: 2px 2px 5px darkred;
+width: 70%;
+margin:auto;
+
+border-style:solid;
+border-width: 5px;
+border-radius: 20px;
+
+}
+
+iframe {
+    display: block;
+    margin:auto;
+}
+
+nav {
+    background-color: cadetblue;
+    translate: 0 -3px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+a {
+    background-color: chartreuse;
+    padding: inline-block;
+    margin: 5px;
+    color: blueviolet;
+    text-decoration: none;
+    transition-duration: 300ms;
+}
+
+a:hover{
+    background-color: blue;
+    translate: 0 -3px;
+} 
+
+

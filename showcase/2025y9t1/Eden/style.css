@@ -1,0 +1,40 @@
+h1{
+text-align: center;
+
+}
+h3{
+    text-align: center;
+}
+body{
+    color: aliceblue;
+    background-color: black;
+    font-family: "Winky Sans", sans-serif;
+}
+
+
+
+nav{
+    background: rgb(48, 48, 48);
+    padding: 10px;
+}
+a{
+    background: rgb(48, 48, 48);
+    padding: 10px;
+    margin: 5px;
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    transition-duration: 300ms;
+}
+a:hover{
+    background-color: rgb(158, 158, 158);
+    translate: 0 -5px;
+}
+
+p{
+    background-color: rgb(48, 48, 48
+    );
+    padding: 20px;
+  
+    margin: auto;
+}

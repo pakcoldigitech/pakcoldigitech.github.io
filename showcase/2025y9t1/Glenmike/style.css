@@ -1,0 +1,18 @@
+h1 {
+    color: red;
+}
+body {
+    background-color: rgb(46, 46, 126);
+    color: white;
+}
+.red {
+    color: red;
+    animation-name: wobble;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+}
+@keyframes wobble {
+    0% { rotate: -2deg; }
+    50% { rotate:  2deg; }
+    100% { rotate: -2deg; }
+}

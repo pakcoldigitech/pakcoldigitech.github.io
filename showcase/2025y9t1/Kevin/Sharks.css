@@ -1,0 +1,56 @@
+h1 
+  {color: rgb(0, 255, 42);
+   font-size: 50px;
+    text-align: center;   
+    text-shadow: 2px 2px 5px black;
+    font-family: EB Garamond;
+}
+
+
+body {
+    background-image: url( 'Water.jpg');
+    background-size: cover;
+    height: 100vh;
+    background-position: center;
+    }
+
+    p, ul {
+        color: rgb(0, 0, 0);
+        background-color: rgb(255, 86, 86);
+        padding: 20px;
+        box-shadow: 2px 2px 5px;
+        width: 70%;
+        margin: auto;
+      }
+        
+        h2 { 
+          text-align: center;
+        }
+
+        nav {
+          background: rgb(141, 161, 23) 
+          padding 10px;
+        }
+        
+        
+        a{ 
+          background: purple;
+          padding: 10px;
+          margin: 5px;
+          display: inline-block;
+          text-decoration: none;
+          color: black;
+          transition-duration: 300ms;
+        }
+        
+        a:hover {
+        background: red;
+         translate: 0 -5px;
+        }
+
+        
+
+
+        
+      
+    

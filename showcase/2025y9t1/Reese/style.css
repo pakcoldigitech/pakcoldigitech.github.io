@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(227, 243, 8);
+}
+
+h1 {
+    color: rgba(193, 201, 79, 0.767);
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 2px 2px 5px ;
+    font-family: kablamo black;
+}
+
+h2 { text-align: center; }
+p, ul{
+    color :rgb(13, 2, 24);
+    background-color :rgb(255, 187, 0);
+    padding : 20px ;
+    box-shadow: 2px 2px 5px black;
+    width : 70%;
+    margin: auto;
+
+}
+
+iframe { 
+
+    display: block ;
+    margin : auto;
+}
+
+

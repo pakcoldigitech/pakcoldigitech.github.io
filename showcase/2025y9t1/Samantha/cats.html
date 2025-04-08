@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All About Cats</title>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4, #fad0c4, #ffdde1);
+            text-align: left;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        h1, h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            font-family: 'Times New Roman', serif;
+            animation: fadeIn 1s ease-in-out;
+        }
+        img {
+            display: block;
+            margin: 10px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        video {
+            display: block;
+            margin: 10px auto;
+            max-width: 100%;
+            border-radius: 5px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        ul {
+            text-align: left;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        button, .button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #ff9a9e;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            animation: bounce 2s infinite;
+            width: fit-content;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        button:hover, .button:hover {
+            background-color: #ff6f7d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>All About Cats</h1>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/320px-Cat03.jpg" alt="A cute cat">
+        
+        <h2>Cat Responsibilities</h2>
+        <p>Cats may seem independent, but they have responsibilities too! Here are some of the things they do:</p>
+        <ul>
+            <li>Grooming themselves to stay clean</li>
+            <li>Keeping their humans entertained</li>
+            <li>Hunting (even if it’s just toy mice!)</li>
+            <li>Claiming the comfiest spot in the house</li>
+            <li>Communicating through meows and purrs</li>
+        </ul>
+        
+        <h2>Fun Cat Facts</h2>
+        <p>Cats are fascinating creatures with unique traits. Here are some interesting facts:</p>
+        <ul>
+            <li>Cats sleep for around 13-16 hours a day.</li>
+            <li>They have a third eyelid called a haw.</li>
+            <li>Cats can rotate their ears 180 degrees.</li>
+            <li>Whiskers help cats sense their surroundings.</li>
+            <li>The oldest recorded cat lived to be 38 years old!</li>
+        </ul>
+        
+        <h2>The Beauty of Cats</h2>
+        <p>Cats come in various colors, patterns, and eye shapes, making each one unique. Some have dazzling blue eyes, while others have enchanting green or golden hues. Their fur can be short, long, striped, spotted, or solid-colored. No matter their appearance, cats always manage to captivate with their charm and grace.</p>
+        
+        <h2>Common Cat Breeds</h2>
+        <p>There are many different cat breeds, each with distinct personalities and characteristics:</p>
+        <ul>
+            <li><b>Persian:</b> Known for their long, luxurious fur and calm demeanor.</li>
+            <li><b>Siamese:</b> Highly vocal and social cats with striking blue eyes.</li>
+            <li><b>Maine Coon:</b> One of the largest cat breeds, known for their friendly nature.</li>
+            <li><b>Bengal:</b> Wild-looking cats with a leopard-like pattern and high energy levels.</li>
+            <li><b>Scottish Fold:</b> Easily recognizable due to their adorable folded ears.</li>
+        </ul>
+        
+        <h2>Watch a Cat in Action</h2>
+<video controls>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+
+<iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/pBUTaoYVgXc" 
+    title="YouTube video player" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+</iframe>
+        <li><b> did you know?</li>
+
+        <h2>Why We Love Cats</h2>
+        <p>Cats bring joy and comfort to our lives. Their gentle purring has a calming effect, and their playful antics provide endless entertainment. Whether curled up in a cozy corner or dashing around the house in a burst of energy, cats make every moment special.</p>
+        
+           <a href="https://docs.google.com/presentation/d/1Ah3st8sBWBpSYSuTlBaVUuju5H_MOuwbL1tnVG8z-iw/view" target="_blank" class="button">
+                        Two animals, different species.</a>
+        
+            
+
+
+    <button onclick="alert('cats are really cute')">Click for a cat fact</button>
+
+ </div>
+
+</body>
+
+</html>

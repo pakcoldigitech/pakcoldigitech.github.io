@@ -1,0 +1,69 @@
+
+h1 {
+    color: aquamarine;
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif  ;
+}
+
+body {
+    background: linear-gradient(turquoise,rgb(123, 0, 238) ) ;
+    
+}
+
+p {color: whitesmoke;
+background-color:  rgb(140, 167, 255);
+padding: 20px;
+box-shadow: 2px 2px 5px black;
+width: 70%; ;
+margin: auto;
+font-family:Verdana, Geneva, Tahoma, sans-serif;}
+
+h2 {color: aquamarine;} 
+
+ul {color: whitesmoke;
+    background-color: rgb(140, 167, 255);
+    padding: 20px;
+    box-shadow: 2px 2px 5px black;}
+    
+img {background-color: rgb(140, 167, 255);
+    padding: 20px;
+    box-shadow: 2px 2px 5px black}   
+iframe {color: black;
+    background-color: rgb(140, 167, 255);
+    padding: 20px;
+    box-shadow: 2px 2px 5px black;}     
+
+a {color: rgb(255, 105, 105);
+    margin: auto;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;}
+
+    h3 {color: whitesmoke;
+    padding: 20px;
+box-shadow: 2px 2px 5px ;
+background-color: turquoise;}
+
+nav {
+    background-color: purple;
+    padding: 10px;
+
+    position: fixed;   /* This fixes the navigation bar to the top of the page */
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+a {
+    display: inline-block;   /* This makes margin, padding and translate work properly */
+    background-color: pink;
+    padding: 10px;
+    margin: 5px;
+    color: black;
+    text-decoration: none;   /* This removes the underline */
+    transition-duration: 300ms;   /* This controls how long it takes to change styles */
+}
+a:hover {   /* These styles are only applied when you are hovering on the <a> */
+    background-color: red;
+    translate: 0 -3px;   /* Move upwards */
+}
+h1 {
+    margin-top: 100px;   /* This adds space to the top of the <h1> so it appears under the fixed navigation bar */
+}

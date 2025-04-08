@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kiwi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>The Kiwi</h1>
+
+<p>New Zealand's national bird.</p>
+
+<h2>Features</h2>
+
+<p>
+
+</p>
+
+<h2>Senses</h2>
+
+<p>
+
+</p>
+
+<h2>Eggs</h2>
+
+<p>
+
+</p>
+
+<h2>Species</h2>
+
+<p>There are five species of kiwi:</p>
+
+<ul>
+    <li>the tokoeka,</li>
+    <li>the rowi,</li>
+    <li>the roroa or great spotted kiwi,</li>
+    <li>the pukapuka or little spotted kiwi,</li>
+    <li>and the North Island brown kiwi.</li>
+</ul>
+
+<img src="https://assets3.thrillist.com/v1/image/2624055/1584x912/scale.jpg" height="200" >
+
+<img src="https://www.doc.govt.nz/thumbs/hero/contentassets/a450e32f0b824531858d566404c21884/southern-brown-kiwi-tokoeka-stewart-island-photo-credit-alina-thiebes1920.jpg" height="200">
+
+</body>
+</htm

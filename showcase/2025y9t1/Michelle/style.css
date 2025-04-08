@@ -1,0 +1,60 @@
+h1 {
+    color:black;
+    font-size: 70px;
+    text-align: center;
+    font-family: Rage Italic;
+
+
+
+}
+
+body {
+      background-color:rgb(139, 96, 83);
+}
+
+p, ul{
+   background-color: rgb(102, 78, 55);
+   padding: 20px;
+   box-shadow: 2px 2px 5px black ;
+    font-family:pacifico ;
+}
+
+body.dogs{
+    background-color:rgb(162, 205, 230);
+}
+
+body.dogs {
+ p, ul {
+    background-color: rgb(174, 233, 204);
+    padding: 20px;
+    box-shadow: 2px 2px 5px black ;
+     font-family:pacifico ;
+ }
+}
+
+nav {
+  background-color: purple;
+  padding: 10px;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+a {
+    display: inline-block; 
+    background-color: pink;
+    padding: 10px;
+    margin: 5px;
+    color: black;
+    text-decoration: none;  
+    transition-duration: 300ms;  
+}
+
+a:hover {   /* These styles are only applied when you are hovering on the <a> */
+    background-color: red;
+    translate: 0 -3px;   /* Move upwards */
+}
+
+
+  

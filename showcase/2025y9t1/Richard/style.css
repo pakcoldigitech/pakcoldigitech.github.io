@@ -1,0 +1,38 @@
+h1 {
+    color: brown;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: blueviolet;
+}
+
+
+nav {
+    background-color: purple;
+    padding: 10px;
+
+    position: fixed;   /* This fixes the navigation bar to the top of the page */
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+H1 {
+    margin-top: 100px;
+}
+a {
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    color: blanchedalmond;
+    text-decoration: none;
+    transition-duration: 300ms;
+}
+
+a:hover{
+    background-color:Red;
+    translate: 0 -3px;
+    
+}
+
+

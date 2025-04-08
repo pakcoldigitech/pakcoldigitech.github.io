@@ -1,0 +1,32 @@
+h1
+{color: rgb(255, 255, 255);
+text-align: center;
+font-size: 60px;
+text-shadow: 2px 2px 5px;
+
+}
+
+
+body
+
+{background:black;
+    background-image: url(LeBron-James-scaled.jpg);
+background-size: contain ;
+background-repeat: no-repeat;
+
+
+}
+
+p,ul,ol{
+color: rgb(255, 255, 255);
+font-family: "Cormorant Garamond", serif;
+
+}
+
+h2 {
+    color: rgb(255, 255, 255);
+}
+
+iframe {
+    float: right    ;
+}
