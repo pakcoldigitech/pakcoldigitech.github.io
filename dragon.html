@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon</title>
+    <link rel="icon" href="data:,">
+    <style>
+:root {
+    color-scheme: light dark;
+}
+body {
+    margin: 0;
+}
+svg {
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    max-height: 100vh;
+    display: block;
+}
+path {
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+label {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 8px;
+}
+    </style>
+    <script type="module">
+Object.defineProperty(Array.prototype, 'x', { get() { return this[0]; } });
+Object.defineProperty(Array.prototype, 'y', { get() { return this[1]; } });
+
+let path = document.querySelector('path');
+let g = document.querySelector('g');
+let input = document.querySelector('input');
+// First 2 points for normal dragon, all 4 for twindragon.
+let points = [[100,200],[400,200],[400,200],[100,200]];
+
+let iteration = 0;
+requestAnimationFrame(function iterate() {
+    let ms = [];
+    let ns = [];
+    points.forEach((p, i) => {
+        if (i < points.length - 1) {
+            let q = points[i + 1];
+            ms.push([(p.x + q.x)/2, (p.y + q.y)/2]);
+            let dist = (((p.x - q.x)**2 + (p.y - q.y)**2)/2)**0.5;
+            let theta = Math.atan2(q.y - p.y, q.x - p.x) + ((-1)**(i+1))*Math.PI/4;
+            ns.push([p.x + dist*Math.cos(theta), p.y + dist*Math.sin(theta)]);
+        }
+    });
+    ms.push(points.at(-1));
+    ns.push(points.at(-1));
+
+    let t = 0, duration = 1000, start = 0;
+    requestAnimationFrame(async function loop(now) {
+        start = start || now;
+        t = (now - start) / duration;
+        if (t > 1) { t = 1; }
+        t = (Math.acos((1-t)*2-1)/Math.PI + t)/2;
+
+        let ps = points.map((p, i) => [p, [ns[i].x*t + ms[i].x*(1-t), ns[i].y*t + ms[i].y*(1-t)]]).flat();
+        if (!input.checked) {
+            path.setAttribute('d', `M${ps.flat().join(' ')}`);
+            g.innerHTML = '';
+        } else {
+            // Remove duplicates
+            // ps = ps.reduce((acc, p, i) => (p.x == ps[i+1]?.x && p.y == ps[i+1]?.y) ? acc : acc.concat([p]), []);
+            g.innerHTML = ps.slice(0,-1).map((p, i) => `<path stroke="rgb(${255*(1-i/ps.length)},0,${255*(i/ps.length)})"" d="M${p.x},${p.y} ${ps[i+1].x},${ps[i+1].y}"></path>`).join('');
+            path.setAttribute('d', '');
+        }
+
+        if(now - start > duration) {
+            if (iteration < 16) {
+                iteration++;
+                points = points.map((p, i) => [p, ns[i]]).flat();
+            } else {
+                iteration = 0;
+                points = [[100,200],[400,200],[400,200],[100,200]];
+                await new Promise(r=>setTimeout(r,1000))
+            }
+            requestAnimationFrame(iterate);
+        } else {
+            requestAnimationFrame(loop);
+        }
+    });
+});
+    </script>
+</head>
+<body>
+<svg viewBox="0 0 500 400">
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="red"/>
+            <stop offset="100%" stop-color="blue"/>
+        </linearGradient>
+    </defs>
+    <path d="M100,200 400,200" stroke="url(#gradient)"></path>
+    <g></g>
+</svg>
+<label><input type="checkbox">Gradient follows path (SLOW!)</label>
+</body>
+</html>
