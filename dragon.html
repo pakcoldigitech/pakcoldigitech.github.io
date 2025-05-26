@@ -46,16 +46,12 @@ requestAnimationFrame(function iterate() {
     let ms = [];
     let ns = [];
     points.forEach((p, i) => {
-        if (i < points.length - 1) {
-            let q = points[i + 1];
-            ms.push([(p.x + q.x)/2, (p.y + q.y)/2]);
-            let dist = (((p.x - q.x)**2 + (p.y - q.y)**2)/2)**0.5;
-            let theta = Math.atan2(q.y - p.y, q.x - p.x) + ((-1)**(i+1))*Math.PI/4;
-            ns.push([p.x + dist*Math.cos(theta), p.y + dist*Math.sin(theta)]);
-        }
+        let q = points[(i + 1) % points.length];
+        ms.push([(p.x + q.x)/2, (p.y + q.y)/2]);
+        let dist = (((p.x - q.x)**2 + (p.y - q.y)**2)/2)**0.5;
+        let theta = Math.atan2(q.y - p.y, q.x - p.x) + ((-1)**(i+1))*Math.PI/4;
+        ns.push([p.x + dist*Math.cos(theta), p.y + dist*Math.sin(theta)]);
     });
-    ms.push(points.at(-1));
-    ns.push(points.at(-1));
 
     let t = 0, duration = 1000, start = 0;
     requestAnimationFrame(async function loop(now) {
