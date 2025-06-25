@@ -1,0 +1,93 @@
+body{
+    background-color:#e4b51d;
+}
+   
+body.kiwi {
+    background-image: url( https://cdn.wikifarmer.com/images/detailed/2024/12/11%20Interesting%20Facts%20about%20Kiwifruit.png ); 
+    background-size:cover ;
+}
+
+body.India{
+    background-image: url(https://static.vecteezy.com/system/resources/thumbnails/029/549/927/small/taj-mahal-with-fireworks-in-the-background-new-delhi-india-ai-generated-pro-photo.jpg);
+    background-size: cover;
+}
+
+
+
+
+h1{
+    color:blue; 
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 2px 2px 5px black;
+    font-style: italic;
+    
+}
+
+p,ul {
+    color:black;
+    font-size: 30px;
+    font-style: italic;
+}
+
+p.subheading {
+    text-align: center;
+    font-size: 30px;
+    font-style: oblique;
+ }
+
+h2{
+    color:blueviolet;
+    font-size: 40px;
+    text-shadow: 1px 1px 2px;
+    font-style: italic;
+}
+
+div.main {
+    background-color: rgb(78, 184, 211);
+
+    background-image:linear-gradient(rgb(64, 194, 194), rgb(25, 123, 204), rgb(0, 102, 255));
+
+    width: 70%;
+    margin: auto;
+    padding: 30px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: rgb(216, 27, 99);
+    border-radius: 20px;
+
+    box-shadow: 5px 5px 5px black;
+}
+
+h1{
+    margin-top: 100px; /* New! */
+}
+
+nav {
+    background-color:rgb(231, 235, 22);
+    padding: 20px;
+
+    position: fixed; /* New! */
+    top: 0px;
+    left: 0px;
+    width: 100%
+}
+
+nav a {
+    background-color:rgb(43, 226, 217);
+    color:rgb(235, 36, 22);
+    padding : 10px;
+    border-radius :5px;
+
+    text-decoration: none;
+
+    transition-duration: 500ms;
+
+    display: inline-block; /* New! */
+}
+
+nav a:hover {
+    background-color:chartreuse ;
+
+    translate: 0px -4px; /* New! */
+}

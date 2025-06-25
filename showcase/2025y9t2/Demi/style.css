@@ -1,0 +1,74 @@
+h1{
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 2px 2px 5px rgb(236, 147, 147);
+    margin-top: 100px; /* NEW!*/
+}
+
+div.main {
+    background-color: rgb(255, 255, 255);
+    width: 70%;
+
+    margin: auto;
+    padding: 30px;
+
+    border-style: solid;
+    border-width: 4px;
+    border-color: rgb(2, 2, 2);
+    border-radius: 20px;
+
+    box-shadow: 2px 2px 5px rgb(236, 147, 147);
+}
+
+p.subheading {
+    text-align: center;
+    font-size: 30px;
+    text-shadow: 2px 2px 5px rgb(236, 147, 147);
+}
+
+body {
+    background-image:url(https://media.istockphoto.com/id/599986814/photo/xmas-new-year-winter-blurred-lights-illustration-background.jpg?b=1&s=612x612&w=0&k=20&c=T-7CDY-ujCmEZqU8N5B_CgTfuxnMIwHveThB-s5gh5E=);
+}
+
+nav a{
+    background-color: rgb(247, 163, 163);
+    color: white;
+    padding: 10px;
+    border-radius: 5xp;
+    text-decoration: none;
+    transition-duration: 500ms;
+
+    display: inline-block; /* NEW! */
+}
+
+a {
+    background-color: lightblue;
+    color: white;
+    padding: 10xp;
+    border-radius: 5xp;
+
+    text-decoration: none;
+
+    transition-duration: 300mm;
+}
+
+a:hover {
+    background-color: lightskyblue;
+}
+
+nav {
+    background-color: white;
+    padding: 20px;
+
+    position: fixed; /* NEW! */
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+nav a:hover {
+    background-color: lightblue;
+
+    translate: 0xp  -4xp; /* NEW! */
+}

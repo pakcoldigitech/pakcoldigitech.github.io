@@ -1,0 +1,41 @@
+body {
+    background-color:rgb(14, 13, 13);
+    background-image: url("https://mcdonalds.co.nz/sites/mcdonalds.co.nz/files/content-module-images/MAC0922_share-box_meal.png");
+}
+
+h1 {
+    color: red;
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 2px 2px 5px black;
+    margin-bottom: 100px; 
+}
+
+p, ul {
+    color: blue;
+    font-size: 20px;
+}
+
+p.subheading {
+    text-align: center;
+    font-size: 30px;
+}
+
+h2 {
+    color: green;
+}
+
+div {
+    background-color: aquamarine;
+    width: 70%;
+
+    margin: auto;
+    padding: 30px;
+
+    border-style: solid;
+    border-width: 5px;
+    border-color: purple;
+    border-radius: 20px;
+
+    box-shadow: 5px 5px 5px grey;
+}

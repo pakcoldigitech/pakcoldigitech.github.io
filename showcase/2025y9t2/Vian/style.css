@@ -1,0 +1,58 @@
+body {
+    background-color: rgb(70, 70, 70);
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    font-size: 70px;
+    text-shadow: 2px 2px 2px;
+    margin: auto;
+}
+
+p, ul {
+    color: black;
+    font-size: 24px;
+    text-shadow: 1px 1px 1px;
+}
+
+p.subheading {
+    text-align: center;
+    font-size: 35px;
+}
+
+h2 {
+    color: aliceblue;
+    font-size: 40px;
+    text-shadow: 2px 2px 2px;
+}
+
+li {
+    color: black;
+    text-shadow: 1px 1px 1px;
+}
+
+div {
+    background-color: grey;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 10px;
+
+    font-size: medium;
+
+    padding: 30px;
+    width: 70%;
+    margin: auto;
+
+    box-shadow: 10px, 10px, 10px black;
+}
+
+h4 {
+    text-align: left;
+    font-size: 34px;
+    text-shadow: 1px 1px 1px;
+}
+
+body { background-image: url(https://cdn.wikifarmer.com/images/detailed/2024/12/11%20Interesting%20Facts%20about%20Kiwifruit.png); }
+
+div.main { background-image: linear-gradient(red orange lime); }

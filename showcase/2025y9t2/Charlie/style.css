@@ -1,0 +1,40 @@
+body 
+    
+
+
+h1 {
+    color: red;
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 2px 2px 5px black;
+    margin-bottom: 100px; 
+}
+
+p, ul {
+    color: rgb(0, 255, 255);
+    font-size: 20px;
+}
+
+p.subheading {
+    text-align: center;
+    font-size: 30px;
+}
+
+h2 {
+    color: rgb(255, 0, 0);
+}
+
+div.main {
+    background-color: rgb(55, 0, 255);
+    width: 70%;
+
+    margin: auto;
+    padding: 30px;
+
+    border-style: solid;
+    border-width: 5px;
+    border-color: purple;
+    border-radius: 20px;
+
+    box-shadow: 5px 5px 5px rgb(0, 0, 0);
+}

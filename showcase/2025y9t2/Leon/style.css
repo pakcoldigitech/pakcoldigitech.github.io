@@ -1,0 +1,15 @@
+body {
+    background-color: rgb(25, 231, 52);
+}
+
+h1 {
+    color: red;
+}
+
+p {
+    color: rgb(255, 145, 0);
+}
+
+div {
+    background-color: aquamarine;
+}

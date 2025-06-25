@@ -1,0 +1,24 @@
+h1 {color: #114726d2;}
+body {background-color: #b6be8ed2;}
+div {
+font-size: 15px;
+border-style: solid;
+border-width: 10px;
+border-color: #e9eba6d2;
+}
+
+div.main {
+    background-color: aquamarine;
+    width: 70%;
+
+    margin: auto;
+    padding: 30px;
+
+    border-style: solid;
+    border-width: 5px;
+    border-color: rgb(255, 247, 180);
+    border-radius: 20px;
+
+    box-shadow: 5px 5px 5px rgb(128, 128, 128);
+    font-style: italic;
+}

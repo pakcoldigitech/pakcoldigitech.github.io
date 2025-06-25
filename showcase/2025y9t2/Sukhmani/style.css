@@ -1,0 +1,99 @@
+body {
+    background-color: rgb(51, 100, 119);
+}
+    
+    body.kiwi {
+        background-image: url(https://cdn.wikifarmer.com/images/detailed/2024/12/11%20Interesting%20Facts%20about%20Kiwifruit.png );
+        background-size: cover;
+    }
+
+    body.India {
+        background-image: url("https://img.freepik.com/free-vector/watercolor-india-independence-day-background_23-2149495604.jpg");
+        background-size: cover;
+    }
+
+h1 {
+    color: #101650;
+    text-align: center;
+    font-size: 60px;
+    text-shadow: 2px 2px 5px black;
+    font-style: italic;
+}
+
+p,ul {
+
+    color: #1c0a46;
+    font-size: 25px 
+}
+
+p.subheading {
+    text-align: center;
+    font-size: 30px;
+    font-style: oblique;
+}
+
+h2{
+    color: #101650;
+    font-size: 30px;
+    text-shadow: 1px 1px 2px;
+    font-style: italic;
+}
+
+div.main {
+    background-color: rgb(78, 184, 211);
+    background-image:linear-gradient(rgb(189, 187, 101), rgb(140, 185, 130), rgb(46, 87, 13));
+    
+    width: 70%;
+    margin: auto;
+    padding: 30px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: antiquewhite;
+    border-radius: 20px;
+
+    box-shadow: 5px 5px 5px black
+
+}
+
+h1{
+    margin-top: 100px; /* New! */
+}
+
+nav {
+    background-color: #105019;
+    padding: 20px;
+
+    position: fixed; /* NEW! */
+    top: 0px;
+    left: 0px;
+    width: 100%;
+
+}
+
+nav a {
+    background-color: aliceblue;
+    color: #ffbb00;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition-duration: 500ms;
+
+    display: inline-block;/* NEW! */
+}
+
+a{
+    background-color: #101650;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+
+    text-decoration: none;
+
+}
+
+nav a:hover {
+    background-color: aliceblue;
+
+    translate: 0px -4px; /*NEW! */
+}
+
