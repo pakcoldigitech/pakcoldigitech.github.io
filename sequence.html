@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simon-derivative memory game with shuffling tiles.">
+    <title>Sequence Shuffle | Haque.rs</title>
+    <link rel="icon" href="data:,">
+    <style>
+* {
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    margin: 10px;
+}
+main {
+    position: relative;
+    width: calc(100vmin - 20px);
+    height: calc(100vmin - 20px);
+    flex-shrink: 0;
+}
+main.yes {
+    animation: yes 1s ease;
+}
+main.no {
+    animation: no 1s ease;
+}
+div {
+    width: 28%;
+    aspect-ratio: 1;
+    border-radius: 10%;
+    background-color: rebeccapurple;
+    box-shadow: 2px 2px 5px black;
+    position: absolute;
+    transition-duration: 1s;
+    transition-property: left, top;
+    color: transparent;
+    user-select: none;
+    text-align: center;
+    align-content: center;
+    font-size: 10vmin;
+}
+div.sel {
+    background-color: cyan;
+}
+div.on {
+    background-color: red;
+}
+div:nth-child(1) { left: 4%; top: 4%; }
+div:nth-child(2) { left: 36%; top: 4%; }
+div:nth-child(3) { left: 68%; top: 4%; }
+div:nth-child(4) { left: 4%; top: 36%; }
+div:nth-child(5) { left: 36%; top: 36%; }
+div:nth-child(6) { left: 68%; top: 36%; }
+div:nth-child(7) { left: 4%; top: 68%; }
+div:nth-child(8) { left: 36%; top: 68%; }
+div:nth-child(9) { left: 68%; top: 68%; }
+aside {
+    margin: 20px;
+    font-size: 50px;
+    white-space: nowrap;
+}
+@media (orientation: portrait) {
+    body {
+        flex-direction: column;
+    }
+}
+@keyframes yes {
+    from { background-color: lime; }
+    to { background-color: transparent; }
+}
+@keyframes no {
+    from { background-color: red; }
+    to { background-color: transparent; }
+}
+    </style>
+    <script type="module">
+let main = document.querySelector('main');
+let divs = Array.from(document.querySelectorAll('div'));
+let aside = document.querySelector('aside');
+
+let clicks = [];
+let lights = [];
+let playing = false;
+let current = 0;
+let record = 0;
+
+divs.forEach((div, i) => div.addEventListener('pointerdown', async () => {
+    if (playing) { return; }
+    clicks.push(i);
+
+    div.classList.add('sel');
+    await new Promise(resolve => addEventListener('pointerup', resolve, { once: true }));
+    div.classList.remove('sel');
+
+    let done = lights.every((light, i) => clicks[i] == light);
+    if (done) {
+        playing = true;
+        main.classList.add('yes');
+        current++;
+        if (current > record) { record = current; }
+        aside.innerHTML = `Current: ${current}<br>Record: ${record}`;
+        await new Promise(r => setTimeout(r, 1000));
+        play();
+        return;
+    }
+    let wrong = clicks.some((click, i) => click != lights[i]);
+    if (wrong) {
+        playing = true;
+        lights = [];
+        current = 0;
+        aside.innerHTML = `Current: ${current}<br>Record: ${record}`;
+        main.classList.add('no');
+        await new Promise(r => setTimeout(r, 1000));
+        play();
+        return;
+    }
+}));
+
+async function play() {
+    playing = true;
+    main.classList.remove('yes');
+    main.classList.remove('no');
+
+    clicks = [];
+    lights.push(Math.random()*9|0);
+
+    for (let light of lights) {
+        await new Promise(r => setTimeout(r, 500));
+        divs[light].classList.add('on');
+        await new Promise(r => setTimeout(r, 1000));
+        divs[light].classList.remove('on');
+    }
+
+    for (let i = 0; i < lights.length; i += 2) {
+        let move1 = divs[Math.random()*9|0];
+        let move2 = divs[Math.random()*9|0];
+        while (move1 == move2) { move2 = divs[Math.random()*9|0]; }
+
+        move1.style.top = getComputedStyle(move1).top;
+        move1.style.left = getComputedStyle(move1).left;
+        move2.style.top = getComputedStyle(move2).top;
+        move2.style.left = getComputedStyle(move2).left;
+
+        await new Promise(requestAnimationFrame);
+
+        let temp = move1.nextSibling;
+        main.insertBefore(move1, move2);
+        main.insertBefore(move2, temp);
+        
+        await new Promise(requestAnimationFrame);
+
+        move1.style.top = '';
+        move1.style.left = '';
+        move2.style.top = '';
+        move2.style.left = '';
+
+        await new Promise(resolve => move1.addEventListener('transitionend', resolve, { once: true }));
+    }
+
+    playing = false;
+}
+
+play();
+    </script>
+</head>
+<body>
+    <main>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </main>
+    <aside>Current: 0<br>Record: 0</aside>
+</body>
+</html>
