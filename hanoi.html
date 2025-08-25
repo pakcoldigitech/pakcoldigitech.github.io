@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Drag & Drop</title>
+  <link rel="icon" href="data:,">
+  <style>
+.piece {
+  background: rebeccapurple;
+  border-radius: 999px;
+  height: 40px;
+  margin: 1px;
+  cursor: pointer;
+  user-select: none;
+}
+.tower {
+  height: 500px;
+  width: 400px;
+  margin: 10px;
+  padding-bottom: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  background:
+    linear-gradient(transparent calc(100% - 30px), grey calc(100% - 30px)),
+    linear-gradient(90deg, transparent calc(50% - 15px), grey calc(50% - 15px),
+                         grey calc(50% + 15px), transparent calc(50% + 15px));
+}
+.tower:hover {
+  background-color: lightgrey;
+}
+main {
+  display: flex;
+}
+label {
+  display: block;
+}
+  </style>
+</head>
+<body>
+  <aside>
+    <label>Pieces: <input id="numpieces" type="number" value="8" min="1" autocomplete="off"></label>
+    <label><input id="coloured" type="checkbox" autocomplete="off">Coloured</label>
+    <output></output>
+    <button>Auto-solve</button>
+  </aside>
+  <main>
+    <div class="tower"></div>
+    <div class="tower"></div>
+    <div class="tower"></div>
+  </main>
+  <script>
+let numpieces = document.querySelector('#numpieces');
+let coloured = document.querySelector('#coloured');
+let output = document.querySelector('output');
+
+let towers = document.querySelectorAll('.tower');
+
+let steps = 0;
+let frame;
+
+function resetTowers() {
+  cancelAnimationFrame(frame);
+  document.querySelectorAll('.piece').forEach(piece => piece.remove());
+  let amount = +numpieces.value;
+  towers[0].innerHTML = Array(amount).fill(1).map((_, i) => `
+    <div class="piece" data-nth="${i}" style="width:${amount < 8 ? (i+1) * 50 + 20 : (i / amount) * 330 + 70}px; ${
+      coloured.checked ? `background-color: hsl(${i / amount * 360}deg 100% 50%);` : ''
+    }${
+      amount > 30 ? (amount > 100 ? ( amount > 255 ? 'margin: 0' : `margin: ${100/amount}px 0 0;`) : 'margin: 1px 0 0;') : ''
+    }"></div>
+  `).join('');
+  // Done in 2 steps because setting the height one at a time changes the heights
+  let heights = Array.from(towers[0].querySelectorAll('.piece')).map(piece => piece.getBoundingClientRect().height);
+  towers[0].querySelectorAll('.piece').forEach((piece, i) => piece.style.height = heights[i] + 'px');
+  steps = 0;
+  output.textContent = 'Steps: 0';
+}
+
+numpieces.addEventListener('input', resetTowers);
+
+resetTowers();
+
+coloured.addEventListener('input', () => {
+  if (coloured.checked) {
+    document.querySelectorAll('.piece').forEach(piece => piece.style.backgroundColor = `hsl(${+piece.dataset.nth / +numpieces.value * 360}deg 100% 50%)`);
+  } else {
+    document.querySelectorAll('.piece').forEach(piece => piece.style.backgroundColor = '');
+  }
+});
+
+towers.forEach(tower => {
+  tower.addEventListener('pointerdown', event => {
+    let piece = tower.querySelector('.piece');
+    if (!piece) { return; }
+
+    let pos = piece.getBoundingClientRect();
+    let startingX = event.clientX - pos.x;
+    let startingY = event.clientY - pos.y;
+    
+    document.body.append(piece);
+    
+    piece.style.pointerEvents = 'none';
+    piece.style.position = 'absolute';
+
+    piece.dataset.startx = event.pageX - startingX;
+    piece.dataset.starty = event.pageY - startingY;
+    piece.dataset.destx = event.pageX - pos.width / 2;
+    piece.dataset.desty = event.pageY - pos.height / 2;
+
+    let t = 0, duration = 100, start = 0;
+    frame = requestAnimationFrame(function move(now) {
+      start = start || now;
+      t = (now - start) / duration;
+      if (t > 1) { t = 1; }
+
+      piece.style.left = piece.dataset.startx * (1-t) + piece.dataset.destx * t + 'px';
+      piece.style.top = piece.dataset.starty * (1-t) + piece.dataset.desty * t + 'px';
+
+      frame = requestAnimationFrame(move);
+    });
+
+    document.addEventListener('pointermove', pointermove);
+    document.addEventListener('pointerup', pointerup);
+
+    function pointermove(event) {
+      piece.dataset.destx = event.pageX - pos.width / 2;
+      piece.dataset.desty = event.pageY - pos.height / 2;
+    }
+
+    function pointerup(event) {
+      cancelAnimationFrame(frame);
+      document.removeEventListener('pointermove', pointermove);
+      document.removeEventListener('pointerup', pointerup);
+
+      let target = document.elementFromPoint(event.clientX, event.clientY)?.closest('.tower');
+      if (!target) {
+        goHome();
+        return;
+      }
+
+      let smallest = target.querySelector('.piece');
+
+      if (!smallest || piece.dataset.nth < smallest.dataset.nth) {
+        piece.style.pointerEvents = '';
+        piece.style.position = '';
+        piece.style.left = '';
+        piece.style.top = '';
+
+        target.insertBefore(piece, smallest);
+
+        steps++;
+        output.textContent = `Steps: ${steps}`;
+      } else {
+        goHome();
+      }
+    }
+
+    function goHome() {
+      let t = 0, duration = 100, start = 0;
+      requestAnimationFrame(function move(now) {
+        start = start || now;
+        t = (now - start) / duration;
+        if (t > 1) {
+          piece.style.pointerEvents = '';
+          piece.style.position = '';
+          piece.style.left = '';
+          piece.style.top = '';
+          tower.insertBefore(piece, tower.querySelector('.piece'));
+          return;
+        }
+
+        piece.style.left = piece.dataset.startx * (t) + piece.dataset.destx * (1-t) + 'px';
+        piece.style.top = piece.dataset.starty * (t) + piece.dataset.desty * (1-t) + 'px';
+
+        requestAnimationFrame(move);
+      });
+    }
+  });
+});
+
+document.querySelector('button').addEventListener('click', async () => {
+  resetTowers();
+
+  async function solveForN(n, from, to) {
+    if (n == 1) {
+      await pieceToTower(0, to);
+    } else {
+      let other = [0, 1, 2].filter(n => ![from, to].includes(n))[0];
+      await solveForN(n - 1, from, other);
+      await pieceToTower(n - 1, to);
+      await solveForN(n - 1, other, to);
+    }
+  }
+  
+  solveForN(+numpieces.value, 0, 2);
+
+  function pieceToTower(nth, th) {
+    let piece = document.querySelector(`.piece[data-nth="${nth}"]`);
+    let tower = document.querySelectorAll('.tower')[th];
+
+    let start = piece.getBoundingClientRect();
+
+    let temp = document.querySelector('.piece').cloneNode(true);
+    tower.insertBefore(temp, tower.querySelector('.piece'));
+    let dest = temp.getBoundingClientRect();
+    temp.remove();
+
+    piece.dataset.startx = start.x;
+    piece.dataset.starty = start.y;
+    piece.dataset.destx = dest.x;
+    piece.dataset.desty = dest.y;
+
+    piece.style.left = piece.dataset.startx + 'px';
+    piece.style.top = piece.dataset.starty + 'px';
+    piece.style.pointerEvents = 'none';
+    piece.style.position = 'absolute';
+
+    document.body.append(piece);
+    
+    return new Promise(resolve => {
+      let t = 0, duration = 100, startT = 0;
+      frame = requestAnimationFrame(function move(now) {
+        startT = startT || now;
+          t = (now - startT) / duration;
+          if (t > 1) {
+            piece.style.pointerEvents = '';
+            piece.style.position = '';
+            piece.style.left = '';
+            piece.style.top = '';
+            tower.insertBefore(piece, tower.querySelector('.piece'));
+            
+            steps++;
+            let total = 2 ** numpieces.value - 1;
+            if (+numpieces.value < 54) {
+              total = total.toLocaleString();
+            } else {
+              total = total.toExponential().replace('e+', '×10<sup>') + '</sup>';
+            }
+            output.innerHTML = `Steps: ${steps} / ${total}`;
+
+            resolve();
+            return;
+          }
+          piece.style.left = piece.dataset.startx * (1-t) + piece.dataset.destx * t + 'px';
+          piece.style.top = piece.dataset.starty * (1-t) + piece.dataset.desty * t + 'px';
+          frame = requestAnimationFrame(move);
+      });
+    });
+  }
+});
+  </script>
+</body>
+</html>
