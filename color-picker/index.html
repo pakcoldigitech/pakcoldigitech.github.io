@@ -66,6 +66,39 @@ aside {
         translate: -50% calc(-100% - 10px);
     }
 }
+main {
+    position: relative;
+    svg.picker * {
+        transition: fill-opacity 1s;
+        &:hover {
+            transition: none;
+            fill-opacity: 1;
+        }
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-image: radial-gradient(circle at 50% 44%, white, transparent 232px), conic-gradient(from 90deg at 50% 44% in hsl longer hue, red, red);
+        mask-image: radial-gradient(circle at 50% 44%, black 232px, transparent 232px);
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-image: conic-gradient(from 45deg at 50% 44%, black, white 270deg);
+        mask-image: radial-gradient(circle at 50% 44%, transparent 245px, black 245px, black 292px, transparent 292px);
+    }
+}
+:has(input:checked) svg.picker * {
+    fill-opacity: 0;
+    &:hover {
+        transition: none;
+        fill-opacity: 1;
+    }
+}
     </style>
     <script type="module">
 let picker = document.querySelector('svg.picker');
@@ -96,6 +129,7 @@ document.body.addEventListener('click', async e => {
     </script>
 </head>
 <body>
+<main>
 <svg class="picker" viewBox="-152 -16 1329 1193" xmlns="http://www.w3.org/2000/svg" version="1.1" stroke="black" stroke-width="1" stroke-linejoin="round">
   <path fill="DarkViolet" d="M510,0L530,63 583,74 623,12A512,512 0 0 0 510,0z"></path>
   <path fill="Indigo" d="M368,21L389,86 443,101 445,100 455,3A512,512 0 0 0 368,21z"></path>
@@ -238,6 +272,7 @@ document.body.addEventListener('click', async e => {
   <path fill="WhiteSmoke" d="M-13,371 -114,344A648,648 0 0 0 -114,680L-13,653A544,544 0 0 1 -13,371Z"></path>
   <path fill="White" d="M127,127 54,54A648,648 0 0 0 -114,344L-13,371A544,544 0 0 1 127,127Z"></path>
 </svg>
+</main>
 
 <aside>
     <svg class="palette" fill="transparent" version="1.0" viewBox="0 0 1170 1179" xmlns="http://www.w3.org/2000/svg">
@@ -246,6 +281,8 @@ document.body.addEventListener('click', async e => {
     <output></output>
     <figure></figure>
 </aside>
+
+<label><input type="checkbox">Peek colour wheel</label>
 
 <div class="copied">Copied!</div>
 </body>
