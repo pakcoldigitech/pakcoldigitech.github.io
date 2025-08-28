@@ -122,14 +122,16 @@ picker.addEventListener('pointerover', e => {
         figure.style.backgroundImage = `linear-gradient(${e.target.getAttribute('fill')}`;
     }
 });
+let copyTimeout;
 document.body.addEventListener('click', async e => {
     let el = document.elementFromPoint(event.clientX, event.clientY);
     if (el instanceof SVGPathElement && el.closest('svg').classList.contains('picker')) {
         await navigator.clipboard.writeText(el.getAttribute('fill').toLowerCase());
         copied.style.left = e.clientX + 'px';
         copied.style.top = e.clientY + 'px';
+        clearTimeout(copyTimeout);
         copied.classList.add('show');
-        await new Promise(r => setTimeout(r, 1000));
+        await new Promise(r => copyTimeout = setTimeout(r, 1000));
         copied.classList.remove('show');
     }
 });
