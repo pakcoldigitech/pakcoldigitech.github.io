@@ -1,0 +1,81 @@
+body {
+    background-color: pink;
+    margin: 0;
+    background-image: url("https://thenationalkiwicentre.co.nz/wp-content/uploads/2023/04/Southern-Brown-Kiwi.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body.trump {
+    background-image: url(https://i.ytimg.com/vi/tKLe7ATBLgs/maxresdefault.jpg);
+}
+
+h1 {
+    color: red;
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 1px 1px 4px black;
+
+    font-family: "Playwrite CA", cursive;
+}
+h2 {
+    text-align: center;
+    background-color: lime;
+    padding: 20px;
+}
+p, ul {
+    color: blue;
+}
+
+p.subheading {
+    text-align: center;
+    font-size: 25px;
+    color: white;
+
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+    background-image: linear-gradient(90deg in hsl longer hue, red, red);
+    width: fit-content;
+    margin: auto;
+    background-clip: text;
+    color: transparent;
+}
+
+div.header {
+    background-color: rebeccapurple;
+    padding: 30px;
+    background-image: url("https://cdn.wikifarmer.com/images/thumbnail/2024/12/11%20Interesting%20Facts%20about%20Kiwifruit-1200x630.png");
+    background-size: cover;
+}
+
+div.header.trump {
+    background-image: url(https://img.pastemagazine.com/wp-content/suploads/2025/04/trump_cabinet_hegseth_resignations_firings.jpg);
+    background-position: 0 14%;
+}
+
+div.outer {
+    display: flex;
+    flex-wrap: wrap;
+}
+div.inner {
+    margin: 20px;
+}
+
+div.main {
+    width: 80%;
+    background-color: teal;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 20px;
+
+    border-color: red;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 20px;
+    box-shadow: 2px 2px 8px black;
+
+    background-image: linear-gradient(red, yellow);
+    background-image: radial-gradient(aqua, teal);
+}

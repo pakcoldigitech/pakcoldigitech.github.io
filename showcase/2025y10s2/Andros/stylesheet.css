@@ -1,0 +1,21 @@
+body {background-color: rgb(255, 196, 0);}
+h3 {text-align: center;}
+p {text-align: center;}
+.card {
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    box-shadow: rgb(20, 18, 7);
+    transition: 0;
+}
+header {background: linear-gradient(90deg, rgb(0, 0, 0)
+    rgb(235, 196, 24));
+}
+header h1 {
+    margin: 0;
+    color: rgb(3, 3, 3);
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+.card :hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgb(22, 22, 22);
+}

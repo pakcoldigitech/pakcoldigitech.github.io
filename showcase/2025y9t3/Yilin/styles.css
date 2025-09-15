@@ -1,0 +1,66 @@
+body {
+    background-color: rgb(160, 211, 255);
+    margin: 0;
+}
+
+h1 {
+    color:hsl(207, 54%, 53%);
+    text-align:center;
+    font-size: 50px;
+}
+
+h2{
+    text-align: center;
+    background-color: aliceblue;
+}
+
+p, ul {
+    color: hsl(207, 54%, 53%);
+}
+p.subheading{
+    text-align: center;
+    font-size: 25px;
+    color: rgb(0, 247, 255);
+}
+
+div{
+    background-color: rgb(160, 211, 255);
+    padding: 30px;
+}
+
+div.main{
+    width: 80%;
+    background-color: rgb(160, 211, 255);
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 20px;
+
+    border-color: rgb(255, 255, 255);
+    border-width: 5px;
+    border-style: solid;
+
+    border-radius: 20px;
+}
+
+div.header{
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Forest-floor076.jpg/1280px-Forest-floor076.jpg");
+    background-size: cover;
+    background-position: 0 37%;
+    padding: 30px;
+}
+
+a{
+    font-size: 25px;
+    background-color: aquamarine;
+    padding: 20px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    margin: 10px 5px;
+}
+
+a:hover {
+    background-color: aqua;
+    translate: 0 -4px;
+}

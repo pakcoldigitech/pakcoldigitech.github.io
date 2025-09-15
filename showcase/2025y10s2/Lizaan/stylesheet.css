@@ -1,0 +1,50 @@
+h1{
+    color: rgba(107, 194, 67, 0.651);
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 2px 5px 4px;
+    text-align: center;
+  } 
+
+    p, ul {
+        color:bkack;
+        background-color: white;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    div.heading {
+        background-color:white;
+        width:78%;
+        margin: auto;
+        padding: 20px;
+        margin-bottom: 20px;
+
+        border-width: 4px;
+        border-style: dashed;
+        border-color: rgb(255, 95, 95);
+        border-radius: 20px;
+
+        box-shadow: 3px 3px 10px;
+    }
+
+    div.main{
+        background-color: white;
+        width:78%;
+        margin: auto;
+        padding: 20px;
+        margin-bottom: 20px;
+        height: 100%;
+
+        border-width: 4px;
+        border-style: dashed;
+        border-color: rgb(86, 185, 252);
+        border-radius: 20px;
+
+        box-shadow: 3px 3px 10px;
+    }
+
+    img{ 
+      display: block;
+      margin: auto;
+    }

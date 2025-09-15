@@ -1,0 +1,83 @@
+h1{
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 50px;
+
+    font-family: "Karla", sans-serif;
+  }  
+
+
+
+body {
+    background-color:burlywood
+}h2 {
+    color: rgb(0, 0, 0);
+    font-family: "Karla", sans-serif;
+}h3 {
+    color: rgb(0, 0, 0); 
+    font-family: "Karla", sans-serif;
+}
+h4 {
+    color: rgb(0, 0, 0);
+    font-family: "Karla", sans-serif;
+}
+p4 {
+    color: black;
+    font-family: "Karla", sans-serif;
+}
+h5 {
+    color:rgb(0, 0, 0);
+    font-family: "Karla", sans-serif;
+    text-size-adjust: 500p;
+}
+p6 {    
+    color: black;
+    font-family: "Karla", sans-serif;
+}    
+p.subheading {
+    text-align: center;
+    font-size: 50px;
+    font-family: "Karla", sans-serif;
+    color:rgb(0, 0, 0)
+}
+
+div.header {
+    background-image: url("https://www.thepost.co.nz/media/images/9Tzi8ywRz924XE3uHaD6DZ3Ef+IdbOiYlvIROR5vlqUeRrexTocZGobKRJ9od%2Fgnk3B%2FCeKTmTAsIjj6Q0YaYR3YYOFJJRZuxKdWYlufcmVGvoX6+vheRo9JDt4LcoTQG65iVLQSNvcdoM8twQT+cT8lzFo%2FsTqm18L0GScTVHUFn84Gnz%2FZPiwvrTc2KVBScBU3OFBIbODbOvw6+LJJbg==?resolution=620x350");
+}  
+div.header.dogs {
+    background-image: none;
+}
+
+div.main {
+    width: 80%;
+    margin: auto;
+}
+
+p1 {font-family: "Karla", sans-serif;
+}
+
+nav {
+    background-color: burlywood;
+    padding: 10px;
+}
+a {
+    display: inline-block;
+
+    font-size: 24px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 20px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    transition-duration: 400ms;
+}
+
+a:hover {
+    background-color: rgba(148, 0, 211, 0.801);
+    translate: 0 -4px;
+}
+
+c {
+    text-align: center;
+}

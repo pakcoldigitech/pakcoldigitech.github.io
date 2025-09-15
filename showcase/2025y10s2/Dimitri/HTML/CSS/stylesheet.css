@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-position: center;
+    background-image: linear-gradient(olive, darkcyan, brown);
+ }
+div.title {
+    color: brown;
+    text-align: center;
+    text-shadow: 0rlh;
+    text-decoration: wavy;
+    text-decoration: darkcyan;
+    padding: 50px;
+    text-size-adjust: 10;
+    font-size: larger;
+    font-style: italic;
+    background-color: darkcyan;
+    background-size: 600%;
+    width: 147%;
+    margin-top: 5cm;
+    margin-left: 9cm;       
+    margin-right: 4cm;
+}
+div.shitle {
+    background-color: rgb(255, 255, 0);
+    padding: 20px;
+    color: aqua;
+}
+div.heading {
+    background-color: chartreuse;
+    padding: 0%;
+    color: rgb(184, 144, 144);
+}
+div.main {
+    padding: 30px;
+    margin: 50px;
+    background-image: linear-gradient(chartreuse, red, blue, orange, brown, purple, yellow)
+}
+div.img {
+    text-align: center;     
+}

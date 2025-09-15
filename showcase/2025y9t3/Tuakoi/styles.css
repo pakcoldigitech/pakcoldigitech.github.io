@@ -1,0 +1,66 @@
+h1 {
+      font-family: "UnifrakturMaguntia", cursive;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-top: 200px;
+} 
+
+h2 {
+    color:rgb(95, 0, 0)
+}
+h3 {
+    color:rgb(95, 0, 0)
+}
+h4 {
+    color:rgb(95, 0, 0)
+}
+h5 {
+    color:rgb(95, 0, 0)
+}
+
+p {
+    font-family: "Orbitron", sans-serif;
+}
+
+body {
+    background-color: maroon;
+}
+
+div.section {
+    width: 80%;
+    margin: auto;
+
+    line-height: 1.5;
+
+
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+nav {
+    background-color: red;
+    padding: 10px;
+    box-shadow: 2px 2px 4px black;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+a {
+    display: inline-block;
+
+    font-size: 20px;
+    background-color: pink;
+    color: black;
+    text-decoration: none;
+    padding: 20px;
+    margin: 10px 5px;
+    border-radius: 5px;
+
+    transition-duration: 300ms;
+}
+a:hover {
+    background-color: violet;
+    translate: 0 -4px;
+}

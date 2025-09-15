@@ -1,0 +1,13 @@
+body {
+    background-color: rgb(158, 185, 169);
+  }
+
+  p{font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
+
+  .topnav {
+    height: 200px;
+    background-image: url("cars/long_jdm_pic.webp");
+  }
+  .navbar{
+    opacity: 0.8;
+    background-color: white;}

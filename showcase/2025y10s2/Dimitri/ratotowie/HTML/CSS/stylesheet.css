@@ -1,0 +1,51 @@
+body {
+    background-position: center;
+    padding: 0%;
+    margin: 0%;
+    min-height: 100vh;
+    background-image: linear-gradient(rgb(223, 221, 203), rgb(197, 181, 161)) 
+}
+
+div.container {
+    border: 2px;
+    border-color: black;
+    margin-top: 20px;
+}
+div.title {
+  padding: 20px;
+  text-align: center;
+  background-image: linear-gradient(rgb(223, 76, 9), rgb(253, 171, 19));
+}
+div.titletext {
+  text-align: center;
+}
+div.card {
+  padding: 10px;
+  margin-bottom: 20px;
+  margin: 30px;
+  margin-left: 160px;
+}
+div.row {
+  padding-bottom: 20px;
+  margin: 40px;
+  
+}
+div.col {
+  margin: 20px;
+  background-color: rgb(219, 219, 219);
+}
+div.emptybox {
+  margin-right: 180px;
+}
+.carousel-item img {
+  aspect-ratio: 16/9;
+  height: 500px;
+  object-fit: cover;
+  margin: auto;
+}
+div.mt-4 {
+  background-color: rgb(255, 235, 210);
+  margin: 40px;
+  border-color: black;
+  border-style: dashed;
+}

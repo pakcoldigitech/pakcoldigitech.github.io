@@ -1,0 +1,92 @@
+h1{
+    text-align: center;
+    color: #e4c22e;
+    font-size: 50px;
+    text-shadow: 1px 1px 4px black;
+
+    margin-top: 100px;
+
+    font-family: "Audiowide", sans-serif;
+
+}
+
+h2{
+    text-align: center;
+    color: rgb(230, 230, 230);
+    background-color: rgb(145, 62, 145);
+
+}
+
+p{
+    text-align: center;
+    font-size: 20px;
+}
+
+ul{
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+    font-size: 20px;
+}
+
+body{
+    background-image: url(https://www.brickfanatics.com/wp-content/uploads/2023/10/LEGO-ninjago-dragons-rising-part-2-poster-featured.jpg);
+    margin: 0;
+    background-size:cover;
+    background-attachment:fixed;
+}
+
+
+p.Subheading{
+    text-align:center;
+    font-size:35px;
+    color:rgb(255, 255, 255);
+
+    font-family: "Audiowide", sans-serif;
+}
+
+div.Header{
+    padding: 30px;
+    background-image: url(https://i.pinimg.com/1200x/49/f2/99/49f2992c43aa31b88b76ca2270272663.jpg);
+    background-size: cover;
+}
+
+div.Main{
+    width:80%;
+    background-color:rgb(161, 204, 226);
+    margin:auto;
+
+    border-color:black;
+    border-width:2px;
+    border-style:solid;
+
+    border-radius:20px;
+
+background-image:linear-gradient(rgb(111, 191, 216), rgb(133, 216, 133))
+}
+
+nav{
+    background-color:rgb(84, 199, 122);
+    padding:10px;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    box-shadow:2px 2px 2px black;
+}
+
+a{
+   display:inline-block;
+   
+    text-decoration: none;
+    font-size:24px;
+    color:rgb(71, 116, 116);
+    padding:20px;
+    margin:10px 5px;
+    border-radius:5px;
+}
+
+a:hover{
+    background-color: azure;
+    translate:0 -4px;
+}

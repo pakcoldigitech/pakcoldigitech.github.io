@@ -1,0 +1,88 @@
+h1{
+    color:rgb(184, 151, 214);
+    text-align:center;
+    font-size: 50px;
+    text-shadow: 1px 1px 4px black;
+
+    margin-top:100px;
+
+    font-family: "Kranky", serif;
+}
+
+h2{
+    color:rgb(159, 201, 226);
+    text-align: center;
+    background-color: aliceblue;
+}
+
+p{ 
+    color:black;
+    text-align:center;
+}
+
+body{
+    background-color:rgb(29, 93, 131);
+    margin:0;
+    background-image:url(https://cdn.prod.website-files.com/64ae6bfffeb3d7240900d428/67e0c5f1c3c788c599c7c361_Siuslaw-NF_Drift-Creek_Sam-Beebe-1200x800-qual30.jpg);
+    background-size:cover;
+    background-attachment:fixed;
+}
+
+li{
+    text-align:center;
+}
+
+p.subheading{
+    text-align:center;
+    font-size:35px;
+    color:rgb(111, 179, 243);
+
+    font-family: "Kranky", serif;
+}
+
+div.header{
+    background-color:beige;
+    padding:30px;
+    background-image:url(https://cdn.wikifarmer.com/images/thumbnail/2024/12/11%20Interesting%20Facts%20about%20Kiwifruit-1200x630.png);
+    background-size:cover;
+}
+
+div.main{
+    width:80%;
+    background-color:rgb(161, 204, 226);
+    margin:auto;
+
+    border-color:black;
+    border-width:2px;
+    border-style:solid;
+
+    border-radius:20px;
+
+background-image:linear-gradient(rgb(111, 191, 216), rgb(133, 216, 133))
+}
+
+nav{
+    background-color:aquamarine;
+    padding:10px;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    box-shadow:2px 2px 2px black;
+}
+
+a{
+   display:inline-block;
+   
+    text-decoration: none;
+    font-size:24px;
+    color:rgb(71, 116, 116);
+    padding:20px;
+    margin:10px 5px;
+    border-radius:5px;
+}
+
+a:hover{
+    background-color: azure;
+    translate:0 -4px;
+}

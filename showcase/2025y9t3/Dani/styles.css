@@ -1,0 +1,43 @@
+h1 {
+    color: rgb(253, 255, 133);
+    font-family: 'Meltdog';
+}
+
+p.subheading {
+    text-align: center;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+
+}
+
+
+div.header {
+    background-color :rgb(0, 0, 0) ;
+    padding: 30px;
+}
+
+div.main{
+  width: 67%;
+   background-color:rgb(255, 255, 255);
+ margin:auto;
+ margin-top: 50px;
+ margin-bottom: 100Px;
+ padding:20px;
+
+
+border-color: white;
+border-width: 6px;
+border-style: solid;
+
+border-radius: 20px;
+
+box-shadow: 2px 2px 8px rgb(202, 196, 112);
+
+background-image: radial-gradient(rgb(255, 247, 138), rgb(255, 253, 160));
+
+}
+
+@font-face {
+  font-family: 'Meltdog';
+  src: url(WrmeltdogdemoRegular-3l89G.otf) format('opentype');
+}

@@ -1,0 +1,66 @@
+
+body{
+ background-image: linear-gradient( rgb(232, 167, 145) , rgb(249,205,130) , rgb(255,252,172) );
+min-height: 100vh;
+}
+
+nav {
+    background-color: rgb(242, 191, 255);
+    color: rgb(0, 0, 0);
+    font-family: sans-serif;
+    text-align: left;
+    padding: 10px 0;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav li {
+    display: inline;
+    margin: 0 20px;
+}
+nav a {
+    text-decoration: none;
+    color: rgb(231, 37, 37);
+    font-weight: bold;
+}
+
+h4 {color: rgb(0, 0, 0);}
+h4 {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+
+div.container {
+    text-align: center;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgb(242, 191, 255);
+    border: #ffffff;
+    border-width: medium;
+
+}
+
+.card-img-top {
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.carousel-item img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+/* Fix scrolling on Bootstrap carousels: */
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-item {
+        transition: transform 600ms ease-in-out !important;
+    }
+}
+
+footer {
+    background-color:rgb(242, 191, 255);
+    color: black;
+    text-align: center;
+    padding: 10px;
+}
+

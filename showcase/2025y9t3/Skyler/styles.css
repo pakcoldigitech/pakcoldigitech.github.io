@@ -1,0 +1,36 @@
+h1 {
+    color: rgb(248, 243, 165);
+}
+
+p.subheading {
+    text-align: center;
+    font-size: 25px;
+    color: white ;
+}
+
+
+div.header {
+    background-color: 
+    rgb(255, 45, 115);
+    padding: 30px;
+}
+
+div.main {
+    width: 80%;
+    background-color:rgb(255, 255, 255);
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 20px;
+
+border-color: white;
+border-width: 6px; 
+border-style: solid;
+
+border-radius: 20px; 
+
+
+box-shadow: 2px 2px 8px white; 
+
+background-image: radial-gradient(rgba(233, 166, 65, 0.986),rgb(250, 27, 120));
+}

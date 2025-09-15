@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chinese Food</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fffaf0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #b71c1c;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        p.subtitle {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .dish {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .dish img {
+            width: 100%;
+            max-width: 400px;
+            object-fit: cover;
+        }
+
+        .dish-content {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .dish h2 {
+            color: #b71c1c;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+            font-size: 14px;
+            color: #777;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .dish {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Chinese Food</h1>
+        <p class="subtitle"></p>
+    </header>
+
+    <div class="container">
+
+        <div class="dish">
+            <img src="images/Peking duck.webp" alt="Peking Duck">
+            <div class="dish-content">
+                <h2>Peking Duck</h2>
+                <p>Peking Duck, also known as Beijing Roast Duck, is a famous dish from Beijing, China, with a history
+                    dating back centuries. It's known for its crispy skin and tender meat, and is traditionally served
+                    with thin pancakes, scallions, and a sweet bean sauce. The dish has evolved from a royal delicacy to
+                    a widely enjoyed culinary experience, both in China and internationally.</p>
+            </div>
+        </div>
+
+        <div class="dish">
+            <img src="images/Chinese dumpling.webp" alt="Chinese dumpling">
+            <div class="dish-content">
+                <h2>Chinese dumpling</h2>
+                <p>Chinese dumplings, known as jiaozi, are a staple in Chinese cuisine and culture, especially during
+                    celebrations like the Lunar New Year. They typically consist of a thin dough wrapper filled with
+                    meat and/or vegetables, and are enjoyed boiled, steamed, pan-fried, or in soup.</p>
+            </div>
+        </div>
+
+        <div class="dish">
+            <img src="images/Chou doufu.webp" alt="Chou Tofu">
+            <div class="dish-content">
+                <h2>Chou Tofu</h2>
+                <p>Chou doufu, also known as stinky tofu, is a traditional Chinese snack with a strong, pungent odor but
+                    a surprisingly pleasant taste. It's a form of fermented tofu, typically deep-fried and served with a
+                    sauce and pickled vegetables. It's a popular street food.</p>
+            </div>
+        </div>
+
+        <div class="dish">
+            <img src="images/Chinese huoguo.webp" alt="Chinese huoguo">
+            <div class="dish-content">
+                <h2>Chinese hot pot</h2>
+                <p>Chinese hot pot, or huoguo, is a communal dining experience where diners cook various ingredients in
+                    a simmering pot of broth at the center of the table. It's a popular and social meal, with guests
+                    adding and cooking their chosen ingredients, like meats, vegetables, and noodles, directly in the
+                    broth. The meal is often accompanied by dipping sauces and is enjoyed for its interactive and
+                    flavorful nature.
+                </p>
+            </div>
+        </div>
+
+        <div class="dish">
+            <img src="images/Chinese tangyuan.webp" alt="Chinese tangyuan">
+            <div class="dish-content">
+                <h2>Chinese Tangyuan</h2>
+                <p>Tangyuan is a traditional Chinese dessert made of glutinous rice flour, shaped into balls, and often
+                    filled with sweet or savory fillings. They are traditionally eaten during the Lantern Festival and
+                    Winter Solstice, symbolizing family reunion and completeness due to their round shape. Tangyuan can
+                    be served in sweet syrup, a savory broth, or even fried.</p>
+            </div>
+        </div>
+
+    </div>
+
+    
+</body>
+
+</html>

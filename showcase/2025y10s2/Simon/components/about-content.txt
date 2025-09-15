@@ -1,0 +1,4 @@
+<main>
+  <h1>About This Site</h1>
+  <p>This website was assembled from parts like a jigsaw puzzle!</p>
+</main>

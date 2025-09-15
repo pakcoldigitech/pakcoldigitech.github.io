@@ -1,0 +1,78 @@
+body {
+    background-color: pink;
+    margin: 0;
+   background-image: url("https://i.ytimg.com/vi/Wj4K3M0mXoA/maxresdefault.jpg");
+    background-size: contain;
+    background-attachment: fixed;
+}
+body.kiwi {
+background-image: url("https://thumb.ac-illust.com/86/86a41406165778153fad67143d78929a_w.jpeg");
+}
+
+h1 {
+    color: red;
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 1px 1px 4px black;
+
+    font-family: "Playwrite CA", cursive;
+}
+h2 {
+    text-align: center;
+    background-color: rgb(212, 0, 255);
+    padding: 20px;
+}
+p, ul {
+    color: rgb(38, 0, 255);
+}
+
+p.subheading { color: #ec18ff;
+    text-align: center;
+    font-size: 25px;
+    color: rgb(225, 0, 255);
+
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+    background-image: linear-gradient(90deg in hsl longer hue, red, red);
+    width: fit-content;
+    margin: auto;
+    background-clip: text;
+    color: transparent;
+}
+
+div.header {
+    background-color: rebeccapurple;
+    padding: 30px;
+    background-image: URL("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7ehCtSBPzybecZK8b9WySur2wbgp1lYtM1A&s");
+    background-size: contain;
+}
+
+body.kiwi div.header {
+    background-image: url("https://i.ytimg.com/vi/Wj4K3M0mXoA/maxresdefault.jpg");
+}
+
+div.main {
+    width: 80%;
+    background-color: teal;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 20px;
+
+    border-color: rgb(255, 0, 179);
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 20px;
+    box-shadow: 2px 2px 8px rgb(34, 33, 33);
+
+    background-image: linear-gradient(rgba(255, 0, 0, 0.219), rgb(255, 115, 0));
+    background-image: radial-gradient(rgb(0, 255, 21), rgb(0, 255, 255));
+
+    transition-duration: 5s;
+
+}
+
+div.main:hover {
+    transform: perspective(2000px)rotateX(360deg)rotateY(360deg);
+}   

@@ -1,0 +1,361 @@
+h1.kiwi {
+margin-top: 100px;
+color: rgb(5, 0, 95);
+font-size:50px;
+}
+
+h2.kiwi {
+color: rgb(170, 48, 0);
+text-align: center;
+font: 100;
+text-shadow: 0.25px 0.25px 0.25px black;
+background-color: rgb(255, 164, 164);
+padding: 10px;
+
+border-color: rgb(182, 0, 0);
+border-width: 5px;
+border-style: solid;
+border-radius: 10px;
+}
+
+h3.kiwi {
+color: rgb(139, 0, 86);
+background-color: rgb(255, 219, 178);
+padding: 15px;
+text-align: center;
+
+border-color: rgb(182, 134, 0);
+border-width: 4px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+body.kiwi {
+font-family: "Gloria Hallelujah", cursive;
+
+background-image: url(https://static.vecteezy.com/system/resources/thumbnails/026/128/525/small_2x/trendy-fresh-fruit-seamless-pattern-whole-kiwi-fruit-and-kiwi-slices-with-juicy-pulp-and-seeds-bright-exotic-background-illustration-for-wallpapers-textile-web-print-case-wrapping-paper-vector.jpg);
+}
+
+li {
+color: rgb(92, 63, 0);
+text-align: center;
+background-color: rgb(255, 184, 184);
+padding: 15px;
+
+border-color: rgb(121, 0, 0);
+border-width: 1px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+img.kiwi {
+background-color: rgb(255, 243, 178);
+padding: 15px;
+
+border-color: rgb(255, 198, 91);
+border-width: 3px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+iframe.kiwi {
+background-color: rgb(255, 243, 178);
+padding: 15px;
+
+border-color: rgb(255, 198, 91);
+border-width: 3px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+div.MainKIWI {
+width: 80%;
+color: rgb(66, 43, 0);
+margin: auto;
+margin-top: 10px;
+margin-bottom: 100px;
+background-color: rgb(255, 241, 161);
+padding: 15px;
+
+border-color: rgb(182, 124, 0);
+border-width: 5px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+div.HeadKIWI {
+width: 90%;
+color: rgb(212, 96, 1);
+text-align: center;
+margin: auto;
+margin-top: 5px;
+margin-bottom: 50px;
+font: 200;
+text-shadow: 0.25px 0.25px 0.25px black;
+background-color: rgb(255, 228, 141);
+padding-top: 1px;
+
+border-color: rgb(9, 0, 110);
+border-width: 7.5px;
+border-style: solid;
+border-radius: 10px;
+}
+
+nav.kiwi {
+background-color: rgb(138, 214, 255);
+padding: 5px;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+box-shadow: 2px 2px 4px black;
+}
+
+a.kiwi {
+font-size: 30px;
+text-align: center;
+color: black;
+text-decoration: none;
+display: inline-block;
+padding: 10px;
+margin: 10px;
+border-radius: 10px;
+transition-duration: 250ms;
+}
+
+a:hover {
+translate: 0 -4px;
+color: white;
+}
+
+
+
+
+
+
+
+
+
+
+h1.OR {
+margin-top: 150px;
+color: rgb(88, 0, 146);
+background-color: rgb(204, 110, 255);
+}
+
+h2.OR {
+color: rgb(91, 0, 170);
+text-align: center;
+font: 100;
+text-shadow: 0.25px 0.25px 0.25px black;
+background-color: rgb(187, 168, 255);
+padding: 10px;
+
+border-color: rgb(72, 1, 91);
+border-width: 2.5px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+h3.OR {
+color: rgb(172, 0, 188);
+background-color: rgb(249, 177, 255);
+padding: 15px;
+text-align: center;
+
+border-color: rgb(74, 0, 131);
+border-width: 4px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+body.OR {
+font-family: "Gloria Hallelujah", cursive;
+
+background-image: url(https://i.pinimg.com/736x/a9/35/09/a93509d24bf0d6e9be77f36ac201d5bb.jpg);
+}
+
+li.OR {
+color: rgb(66, 0, 86);
+text-align: center;
+background-color: rgb(181, 71, 255);
+padding: 15px;
+
+border-color: rgb(0, 0, 0);
+border-width: 1px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+img.OR {
+background-color: rgb(195, 110, 255);
+padding: 15px;
+
+border-color: rgb(128, 1, 232);
+border-width: 3px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+iframe.OR {
+background-color: rgb(255, 178, 246);
+padding: 15px;
+
+border-color: rgb(76, 0, 138);
+border-width: 3px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+div.MainOR {
+width: 80%;
+color: rgb(66, 43, 0);
+margin: auto;
+margin-top: 10px;
+margin-bottom: 100px;
+background-color: rgb(157, 130, 238);
+padding: 15px;
+
+border-color: rgb(103, 0, 182);
+border-width: 5px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+div.SOUR {
+width: 80%;
+color: rgb(66, 43, 0);
+margin: auto;
+margin-top: 10px;
+margin-bottom: 100px;
+background-color: rgb(175, 149, 255);
+padding: 15px;
+
+border-color: rgb(110, 30, 172);
+border-width: 5px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+div.GUTS {
+width: 80%;
+color: rgb(255, 255, 255);
+margin: auto;
+margin-top: 10px;
+margin-bottom: 100px;
+background-color: rgb(72, 0, 127);
+padding: 15px;
+
+border-color: rgb(33, 0, 58);
+border-width: 5px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+div.spilled {
+width: 80%;
+color: rgb(255, 255, 255);
+margin: auto;
+margin-top: 10px;
+margin-bottom: 100px;
+background-color: rgb(153, 0, 191);
+padding: 15px;
+
+border-color: rgb(87, 0, 90);
+border-width: 5px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+div.Next {
+width: 80%;
+color: rgb(255, 255, 255);
+margin: auto;
+margin-top: 10px;
+margin-bottom: 100px;
+background-color: rgb(132, 0, 0);
+padding: 15px;
+
+border-color: rgb(100, 0, 0);
+border-width: 5px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+div.Listen {
+width: 80%;
+color: rgb(66, 43, 0);
+margin: auto;
+margin-top: 10px;
+margin-bottom: 100px;
+background-color: rgb(163, 64, 255);
+padding: 15px;
+text-align:center;
+
+border-color: rgb(103, 0, 182);
+border-width: 5px;
+border-style: solid;
+
+border-radius: 10px;
+}
+
+div.HeadOR {
+width: 90%;
+color: rgb(79, 0, 116);
+text-align: center;
+margin: auto;
+margin-top: 5px;
+margin-bottom: 50px;
+font: 200;
+text-shadow: 0.25px 0.25px 0.25px black;
+background-color: rgb(221, 141, 255);
+padding-top: 1px;
+
+border-color: rgb(9, 0, 110);
+border-width: 7.5px;
+border-style: solid;
+border-radius: 10px;
+}
+
+nav.OR {
+background-color: rgb(219, 181, 255);
+padding: 5px;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+box-shadow: 2px 2px 4px black;
+}
+
+a.OR {
+font-size: 30px;
+text-align: center;
+color: rgb(122, 0, 133);
+text-decoration: none;
+display: inline-block;
+padding: 10px;
+margin: 10px;
+border-radius: 10px;
+transition-duration: 250ms;
+}
+
+a:hover {
+translate: 0 -4px;
+color: white;
+}
+

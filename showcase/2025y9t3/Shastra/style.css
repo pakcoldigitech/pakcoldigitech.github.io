@@ -1,0 +1,88 @@
+h1 {
+color: rgb(0, 12, 12);
+text-align:center;
+font-family:"Libertinus Sans", sans-serif;
+font-size: 50px; 
+}
+
+
+h2 { 
+    text-align:center;
+    background-color:aliceblue;
+padding: 20px;
+}
+
+
+
+body { 
+    background-color: aliceblue;
+margin: 0%;
+
+
+}
+
+
+p.subheading {
+    text-align: center;
+    font-size: 15px;
+}
+
+div.header {
+    background-color:rgb(247, 249, 250);
+    padding:50px;
+    margin-top: 100px;
+}
+
+
+
+
+div.main {
+
+background-image: linear-gradient(rgb(158, 197, 231) white);
+}
+
+
+nav {
+    background-color: rgb(182, 217, 245);
+    padding:10px;
+    position: fixed;
+    top: 0;    left: 0;
+    width:     100%;
+    box-shadow:2px 2px 4px black; 
+} 
+
+
+
+
+
+a { 
+    display: inline-block;
+
+    font-size: 24px;
+    background-color: whitesmoke;
+    color: black;
+    text-decoration: none;
+    padding: 20px;
+    margin:10px 5px;
+    border-radius: 5px;
+
+transition-duration:300ms;
+
+}
+
+a:hover {
+    background-color: cornsilk;
+    translate: 0 -4px;
+
+}
+
+    
+
+
+
+
+
+
+
+
+

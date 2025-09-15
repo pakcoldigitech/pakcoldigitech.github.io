@@ -1,0 +1,26 @@
+body{
+    background-color: rgb(209, 195, 3)
+     ul {
+        background-color: rgb(209, 195, 3)
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: rgb(219, 223, 0);
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      li a:hover {
+        background-color: #111;
+      }
+      img {
+        border: 5px solid #555;
+      }
+    
+}

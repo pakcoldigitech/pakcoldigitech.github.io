@@ -1,0 +1,53 @@
+body {
+    background-color:rgb(225, 225, 225);
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgLrIUbtzFGPdegg4r7FrVu__b9KBrLuG4cQ&s)
+}
+
+h1{color: rgb(27, 20, 20); text-align: center;font-size:100px;
+background-color:orange
+}
+
+h2 {color: rgb(0, 0, 0);
+    padding:20px;
+    margin:auto;
+    width:70%;
+}
+
+h3 {color: rgb(0, 0, 0);
+    padding:20px;
+    margin:auto;
+    width:70%;
+}
+
+p, ul {color:rgb(0, 0, 0); background-color:transparent;
+    padding:20px;
+    margin:auto;
+    width:70%;
+    font-size: 25px;  
+}
+
+div.body {Background-color:orange;
+padding:20px;
+margin:auto;
+width:70%;
+
+border-radius: 30px;
+border: 4px solid rgb(0, 0, 0)
+}
+
+img {
+ display: block;
+ margin: auto;
+ width: 50%;
+}
+
+a {
+    background-color:orange;
+    font-size: 20px;
+    margin: 10px;
+    border-radius: 4px;
+    display: inline-block; 
+    text-decoration: none;
+    padding: 8px;       
+    color:black;
+}

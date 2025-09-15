@@ -1,0 +1,62 @@
+body 
+    background-color: pink;
+    margin: 0;
+ 
+    background-size: cover;
+    background-attachment: fixed;
+}
+h1 {
+    color: rgb(211, 16, 169);
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 1px 1px 4px black;
+    font-family: "Playwrite CA", cursive;
+}
+h2 {
+    text-align: center;
+    background-color: rgb(204, 32, 190);
+    padding: 20px;
+}
+p, ul {
+    color: rgb(211, 15, 218);
+}
+
+p.subheading {
+    text-align: center;
+    font-size: 25px;
+    color: rgb(199, 12, 12);
+
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+    background-image: linear-gradient(90deg in hsl longer hue, red, red);
+    width: fit-content;
+    margin: auto;
+    background-clip: text;
+    color: transparent;
+}
+
+div.header {
+    background-color: rebeccapurple;
+    padding: 30px;
+    background-image: url("https://cdn.wikifarmer.com/images/thumbnail/2024/12/11%20Interesting%20Facts%20about%20Kiwifruit-1200x630.png");
+    background-size: cover;
+}
+
+div.main {
+    width: 80%;
+    background-color: rgb(0, 0, 0);
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 20px;
+
+    border-color: rgb(35, 245, 7);
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 20px;
+    box-shadow: 2px 2px 8px black;
+
+    background-image: linear-gradient(red, yellow);
+    background-image: radial-gradient(aqua, teal);
+}

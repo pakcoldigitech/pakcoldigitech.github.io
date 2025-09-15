@@ -1,0 +1,93 @@
+body {
+    background-color: rgb(168, 105, 23);
+    margin: 0;
+
+    background-size: cover;
+    background-attachment: fixed;
+}
+h1 {
+    color: rgb(139, 79, 9);
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 1px 1px 4px rgb(255, 255, 255);
+
+    margin-top: 100px;
+
+    font-family: "Epunda Slab", serif;
+}
+h2 {
+    text-align: center;
+    background-color: rgb(145, 112, 22);
+    padding: 20px;
+}
+p, ul {
+    color: rgb(148, 88, 9);
+}
+
+p.subheading {
+    text-align: center;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+    background-image: linear-gradient(90deg in hsl longer hue, rgb(255, 255, 255), rgb(255, 255, 255));
+    width: fit-content;
+    margin: auto;
+    background-clip: text;
+    color: transparent;
+}
+
+div.header {
+    background-color: rgb(255, 115, 0);
+    padding: 30px;
+
+    background-size: cover;
+}
+
+div.main {
+    width: 80%;
+    background-color: rgb(146, 91, 9);
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 20px;
+
+    border-color: rgb(255, 136, 0);
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 20px;
+    box-shadow: 2px 2px 8px black;
+
+    background-image: linear-gradient(rgb(255, 153, 0), rgb(160, 102, 14));
+    background-image: radial-gradient(rgb(150, 97, 0), rgb(247, 168, 0));
+}
+
+nav {
+    background-color: rgb(255, 115, 0);
+    padding: 10px;
+    box-shadow: 2px 2px 4px rgb(102, 62, 3);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+a {
+    display: inline-block;
+
+    font-size: 20px;
+    background-color: rgb(156, 95, 3);
+    color: black;
+    text-decoration: none;
+    padding: 20px;
+    margin: 10px 5px;
+    border-radius: 5px;
+
+    transition-duration: 300ms;
+}
+a:hover {
+    background-color: rgb(252, 144, 4);
+    translate: 0 -4px;
+}

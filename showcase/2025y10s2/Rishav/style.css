@@ -1,0 +1,37 @@
+body {
+    background-color: rgb(158, 189, 140);
+    background-image: url(https://cdn.wikifarmer.com/images/detailed/2024/12/11%20Interesting%20Facts%20about%20Kiwifruit.png)
+}
+
+h1{
+   color: rgb(255, 255, 255);
+   text-align: center;
+   font-size: 50px;
+   text-shadow: 3px 3px 5px black;
+   margin-top: 0;
+}
+
+h2 {
+    color: rgb(11, 107, 124);
+    background-color: cadetblue;
+}
+
+p, ul {
+    color: rgb(10, 119, 119);
+    background-color: cadetblue;
+    padding: 20px;
+    font-size: 20px;
+}
+
+div.main {
+    background-color: burlywood;
+    padding: 20px;
+    margin: auto;
+width: 70%;
+}
+
+img {
+    display: block;
+    margin: auto;
+    text-align: center;
+}

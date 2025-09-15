@@ -1,0 +1,67 @@
+body {
+    background-color: pink;
+    margin: 0;
+    background-image: url("https://images.ctfassets.net/r65x6q43xsmv/4tJOebCzdWqZzfMg5nUlWi/a48375500659419db6949491428b7989/v2-EDG---MACCAS-MCFLURRY.png?fm=webp&w=1536&q=75&f=center&h=1536&fit=fill");
+    background-size: cover;
+    background-attachment: fixed;
+}
+h1 {
+    color: rgb(255, 80, 80);
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 1px 1px 4px rgb(255, 255, 255);
+
+    font-family: "Playwrite CA", cursive;
+}
+h2 {
+    text-align: center;
+    background-color: rgb(47, 0, 255);
+    padding: 20px;
+}
+p, ul {
+    color: rgb(0, 0, 0);
+}
+
+p.subheading {
+    text-align: center;
+    font-size: 25px;
+    color: white;
+
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+    background-image: linear-gradient(90deg in hsl longer hue, red, red);
+    width: fit-content;
+    margin: auto;
+    background-clip: text;
+    color: transparent;
+}
+
+div.header {
+    background-color: rebeccapurple;
+    padding: 30px;
+    background-image: url("https://i.pinimg.com/736x/4e/40/52/4e4052c32d744c7c6e4f6b649d4e2b9f.jpg");
+    background-size: contain;
+}
+div.header.maccas {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFGdNXfeHkT5IFvtVPRWlqnifykTf57oS4Uw&s");
+}
+
+
+div.main {
+    width: 80%;
+    background-color: rgb(176, 38, 194);
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 20px;
+
+    border-color: rgb(43, 255, 0);
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 20px;
+    box-shadow: 2px 2px 8px black;
+
+    background-image: linear-gradient(red, yellow);
+    background-image: radial-gradient(aqua, teal);
+}

@@ -1,0 +1,85 @@
+h1 {
+    color: rgb(73, 53, 40);
+    text-align:  center;
+    font-size:  50px;
+    font-style: oblique;
+    widows: 1px 1px 1px rgb(0, 0, 0);
+
+    font-style: italic;
+    font-family: "Imperial Script", cursive;
+}
+body {
+    background-color: rgb(247, 235, 224);
+}
+h2   {
+    color: rgb(104, 72, 42);
+    text-align: center;
+    font-size: 32px;
+    font-style: italic;
+    background-color: rgb(112, 83, 57);
+    background-image: radial-gradient(rgb(206, 183, 163), rgb(163, 128, 99));
+}
+p {
+    color: rgb(59, 47, 29);
+    text-align: center;
+    font-size: 17px;
+    font-style: italic;
+}
+
+ul, li {
+    color: rgb(58, 45, 33);
+    text-align: center;
+    font-style: oblique;
+}
+
+p.subheading {
+    text-align:center;
+    font-size: 25px;
+    color: rgb(240, 215, 186);
+}
+
+div.header {
+    background-color: rgb(170, 147, 127);
+    padding: 30px;
+    margin: 80px;
+}
+
+div.main {
+    width: 80%;
+    background-color: rgb(250, 240, 230);
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+
+    border-color: rgb(129, 98, 69);
+    border-width: 5px;
+    border-style: solid;
+
+    border-radius: 20px;
+
+    box-shadow: 2px 2px 8px rgb(107, 86, 53);
+}
+nav {
+    background-color: rgb(126, 95, 75);
+    padding: 4px;
+    position: fixed;
+    top: 0;      left: 0;
+    width: 100%;
+}
+a {
+    display: inline-block;
+
+    font-size: 18px;
+    background-color: rgb(110, 78, 51);
+    color: rgb(255, 240, 226);
+    text-decoration: none;
+    padding: 6px 16px;
+    margin: 10px 5px;
+    border-radius: 5px;
+
+    transition-duration: 300ms;
+}
+a:hover {
+    background-color: rgb(71, 49, 23);
+    translate: 0 -4px;
+}

@@ -1,0 +1,75 @@
+h1 {
+    color: blue;
+    text-align: center;
+    font-size: 55px;
+    font-family: "Edu NSW ACT Cursive", cursive;
+}
+p, ul {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 25px;
+    font-family: "Edu NSW ACT Cursive", cursive;
+}
+h2 {
+    color: rgb(255, 255, 255);
+    background-color: rgb(179, 21, 0);
+    text-align: center;
+    font-size: 35px;
+    font-family: "Edu NSW ACT Cursive", cursive;
+}
+body {
+    font-family: "Edu NSW ACT Cursive", cursive;
+    background-image: url(https://hips.hearstapps.com/hmg-prod/images/livestock-dogs-farm-dogs-german-shepherd-66e8667aed873.jpg?crop=0.6669811320754717xw:1xh;center,top&resize=980:*)
+
+}
+div.Header {
+    background-color: rgba(193, 59, 255, 0.747);
+    padding: 25px;
+    font-family: "Edu NSW ACT Cursive", cursive;
+}
+p.subheading {
+    background-color: color-mix(in srgb, rgb(206, 134, 0)  43%, rgb(206, 2, 2) 57%)
+}
+
+div.main {
+    width: 80%;
+    background-color: rgb(153, 180, 0);
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 20px;
+
+    border-color: rgba(110, 2, 2, 0.747);
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 20px;
+    box-shadow: 2px 2px 8px black;
+
+    background-image: linear-gradient(red, rgb(141, 0, 0));
+   }
+nav {
+    padding: 10px;
+    box-shadow: 2px 2px 4px black;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+a {
+    display: inline-block;
+
+    font-size: 20px;
+    background-color: pink;
+    color: black;
+    text-decoration: none;
+    padding: 20px;
+    margin: 10px 5px;
+    border-radius: 5px;
+
+    transition-duration: 300ms;
+}
+a:hover {
+    background-color: rgb(214, 0, 0);
+    translate: 0 -4px;
+}

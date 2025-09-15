@@ -1,0 +1,40 @@
+body {background-image: url("images/Arsenal-Background.png");
+    background-size: 300px;
+    background-size: cover;
+    }
+
+nav {
+    background-color: darkred;
+    border: solid 4px black;
+    padding: 10px;
+    margin-right: 1625px;
+    word-spacing: 25px
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    background-color: darkred;
+    margin-right: 200px;
+    margin-left: 200px;
+    margin-top: 100px;
+    border: solid 4px black;
+    border-radius: 20px;
+}
+
+h3 {
+    text-align: center;
+}
+div.col-md {
+    background-color: white;
+}
+
+p {
+    text-align: center;
+    background-color: darkred;
+    color: white;
+    border: solid 4px black;
+    border-radius: 20px;
+    margin-right: 100px;
+    margin-left: 100px;
+}

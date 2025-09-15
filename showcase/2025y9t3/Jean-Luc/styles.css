@@ -1,0 +1,163 @@
+h1 {
+    color: Orange;
+    text-align: center;
+    font-size: 50px;
+    background-color: rgb(93, 93, 243) ;
+
+    /* font-family: ; */
+}
+
+h2 {
+    color: blue;
+    text-align: center;
+    font-size: 40px;
+}
+
+h3 {
+    color: red;
+    text-align: center;
+    font-size: 30px;
+}
+
+h4 {
+    color: yellowgreen;
+    text-align: center;
+    font-size: 30px;
+}
+
+p {
+    color: black;
+    font-size: 15px;
+}
+
+body {
+    background-color: rgb(119, 170, 190);
+    background-image: url("https://nomadsworld.com/.netlify/images?url=https%3A%2F%2Fapi.nomadsworld.com%2Fwp-content%2Fuploads%2F2018%2F06%2Fplane-pixabay.jpg&w=1920&h=1080");
+    Background-size: cover;
+
+      font-family: "Edu NSW ACT Cursive", cursive;
+}
+
+body.kiwi {
+    background-image: url("https://newzealandtrails.com/assets/Uploads/_resampled/FillWyIxMjAwIiwiNjMwIl0/Image-for-Destination-Queenstown4.jpg");
+}
+
+li {
+    color: white
+}
+
+div.header {
+    background-color: rgba(137, 43, 226, 0.637);
+    width: 90%;
+    margin: auto;
+    margin-top: 150px;
+    padding: 30px;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPx_tlndkX-VeNz4YLDeotPDHUNgXPsJFkGg&s);
+
+    border-color: skyblue;
+    border-style: solid;
+    border-radius: 20px;
+
+    box-shadow: 3px 3px 8px black;
+    
+    Background-size: cover;
+    background-position: center;
+}
+
+body.kiwi div.header {
+    Background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmkSrRQXnXetTB3pK8EQIxwTpvo4EF52peDg&s);
+}
+
+div.main {
+    width: 80%;
+    background-color: rgba(0, 128, 128, 0.747);
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+
+    border-color: yellow;
+    border-width: 5px;
+    border-style: dashed;
+    border-radius: 20px;
+    box-shadow: 1px 1px 4px black;
+
+    background-image: linear-gradient(rgba(0, 0, 255, 0.705), rgba(255, 0, 0, 0.699));
+    background-image: radial-gradient(rgba(135, 207, 235, 0.527), rgba(255, 255, 0, 0.712));
+}
+
+nav {
+    background-color: rgba(139, 0, 0, 0.774);
+    padding: 10px;
+    position: fixed;
+    top: 0;   left:0;
+    width: 100%;
+    box-shadow: 2px 2px 5px gray;
+}
+
+a {
+    font-size: 25px;
+    background-color: black;
+    color: blue;
+    text-decoration: none;
+    display: inline-block;
+    padding: 20px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    transition-duration: 300ms;
+}
+
+a:hover {
+    background-color: black;
+    translate: 0-4px;
+}
+
+div.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+img {
+    border-color: green;
+    border-width: 5px;
+    border-style: dotted;
+    border-radius: 20px;
+    box-shadow: 1px 1px 4px black;
+}
+
+
+form {
+    float: right;
+    margin: 20px;
+}
+
+
+input {
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
+button {
+    background-color: pink;
+    border: 0;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 4px;
+}
+button:hover {
+    background-color: crimson;
+}
+
+::target-text {
+    background-color: yellow;
+    color: black;
+}
+
+iframe {
+     border-color: gold;
+    border-width: 5px;
+    border-style: initial;
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px black;
+}

@@ -1,0 +1,55 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: red;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg') center/cover no-repeat fixed;
+}
+
+.container-custom {
+  background: rgba(77, 74, 74, 0.9);
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  color: red; 
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: red; 
+  font-family: "Bitcount", sans-serif;
+  font-weight: lighter;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: red; 
+  padding-bottom: 20px;
+}
+
+nav {
+  background-color: #8d8787;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: red; 
+  font-weight: lighter;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+
+

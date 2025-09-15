@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+    padding: 24px;
+}
+
+body {
+    background-color: rgb(241, 238, 238);
+}
+
+p {
+    font-family: cursive;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-family: cursive;
+}
