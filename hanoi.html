@@ -77,11 +77,7 @@ function resetTowers() {
   `).join('');
   // Done in 2 steps because setting the height one at a time changes the heights
   let heights = Array.from(towers[0].querySelectorAll('.piece')).map(piece => piece.getBoundingClientRect().height);
-  towers[0].querySelectorAll('.piece').forEach((piece, i) => {
-    piece.style.height = heights[i] + 'px';
-    // Prevent touchstart initiating scroll
-    piece.addEventListener('touchstart', e => e.preventDefault());
-  });
+  towers[0].querySelectorAll('.piece').forEach((piece, i) => piece.style.height = heights[i] + 'px');
   steps = 0;
   output.textContent = 'Steps: 0';
 }
@@ -99,6 +95,7 @@ coloured.addEventListener('input', () => {
 });
 
 towers.forEach(tower => {
+  tower.addEventListener('touchstart', e => e.preventDefault()); // Prevent scroll
   tower.addEventListener('pointerdown', event => {
     let piece = tower.querySelector('.piece');
     if (!piece) { return; }
