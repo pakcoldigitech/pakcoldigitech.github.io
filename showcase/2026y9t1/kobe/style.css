@@ -1,0 +1,87 @@
+h1 {
+    color: rgb(174, 0, 255);
+    text-align: center;
+    font-size: 50px;
+    background-color: rgb(171, 32, 184);
+    box-shadow:10px 5px 10px black;
+    padding: 30px;
+    text-shadow: 5px 5px 5px black;
+}
+h2 {
+    color: blue;
+    font-size: 30px;
+    margin: 30px;
+}
+p, ul {
+    color: green;
+    text-align: justify;
+    background-color: aqua;
+    padding: 30px;
+    margin: 30px;
+    box-shadow: 10px 5px 5px black;
+
+    background-image: linear-gradient(90deg,red,yellow );
+
+    background-image: radial-gradient(red, orange, yellow );
+
+    border-color: rgb(128, 0, 0);
+    border-width: 5px;
+    border-style: solid;
+
+    border-radius:20px;
+}
+
+p.subheading {
+    color: purple;
+    font-size: 20px;
+    text-align: center;
+    
+}
+
+body {
+    font-family: Jokerman;
+    font-family: sans-serif;
+    background-color: rgb(247, 247, 247);
+    background-image: linear-gradient(rgba(170, 211, 250, 0.993), rgb(183, 238, 255), rgb(255, 255, 255)); }
+
+h1 {
+  font-family: "Comic Relief", system-ui;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 100px;
+}
+
+
+
+nav {
+    background-color: rgba(89, 114, 106, 0.61);
+    padding: 5px;
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    a {
+        display: inline-block;
+
+        background-color: rgb(230, 213, 213);
+        color: white;
+        text-decoration: none;
+        padding: 20px;  
+        margin: 5px;
+    
+    transition-duration: 500ms;
+}
+
+    a:hover{
+        background-color: rgb(98, 100, 236);
+        translate: 0 -5px;
+    }
+}
+
+body {
+    margin-top: 100px;
+}
+
+
+

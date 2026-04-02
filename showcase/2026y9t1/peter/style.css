@@ -1,0 +1,110 @@
+@view-transition {
+  navigation: auto;
+}
+
+
+
+h1 {
+    color: rgb(94, 2, 155);
+    text-align: center;
+    font-size: 50px;
+    background-color: rgba(97, 255, 208, 0.178);
+    padding: 30px;
+    margin: 60px;
+    box-shadow: 20px 20px 20px rgba(2, 75, 44, 0.164);
+}
+
+h2 { 
+    color: rgba(6, 6, 161);
+    margin: 30px;
+}
+
+p, ul { 
+    color: rgb(124, 0, 128);
+    padding: 30px;
+    margin: 30px;
+    color: rgb(94, 2, 155);
+    box-shadow: 20px 20px 20px rgba(2, 75, 20, 0.164);
+}
+
+body {
+    background-color: beige;
+    margin: 0;
+    }
+p.subheading {
+    text-align: center;
+    background-color: rgba(97, 255, 208, 0.178);
+    font-size: 25px;
+    box-shadow: 20px 20px 20px rgba(2, 75, 44, 0.164);
+}
+
+div.class1 {
+    box-shadow: 20px 20px 20px rgba(2, 75, 20, 0.164);
+    margin: 30px;
+    p, ul {
+        box-shadow: unset;
+        margin: 0;
+    }
+    p {
+        padding-bottom: 10px;
+    }
+    ul {
+        padding-top: 0px;
+        margin-left: 20px;
+    }
+}
+
+iframe{margin: auto; display: block;}
+img{margin: auto; display: block;}
+
+
+
+h1,h2,p,ul {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+p, ul{
+    font-size: 20px;
+}
+h2{font-size: 30px;}
+
+nav{background-color: rgb(106 90 243); padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+a{
+    display: inline-block;
+    background-color: rgba(43, 20, 253, 0.692);
+    color: rgb(255, 251, 3);
+    text-decoration: none;
+    padding: 20px;
+    margin: 2px;
+    transition-duration: 500ms;
+}
+a:hover{
+    background-color: rgb(0, 110, 255);
+    translate: 0 -5px;
+}
+}
+body.penguin{ 
+        background-color: rgb(208, 253, 253);
+    h1{
+        background-color: rgb(183, 244, 255);
+        color:rgb(54, 117, 96)
+    } 
+    p.subheading{
+        background-color: rgb(183, 244, 255);
+    }
+    p, ul{
+        color:rgb(54, 117, 96)
+    }
+    ul{
+        column-count: 4;
+    }
+    .end_image{
+        margin-bottom: 50px ;
+    }
+}

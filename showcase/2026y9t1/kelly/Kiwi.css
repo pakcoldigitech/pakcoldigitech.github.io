@@ -1,0 +1,23 @@
+h1 {
+     color: hsl(244, 100%, 69%);
+    text-align: center;
+    font-size: 50px;
+}
+
+h2 {
+    color: #6f65ff; 
+    font-size: 30px;
+}
+
+p {
+    color: #675cff; 
+    text-align: justify;
+}
+
+li {
+    color: #7d74ff;
+}
+
+body {
+    background-color: #7499ff4d;
+}

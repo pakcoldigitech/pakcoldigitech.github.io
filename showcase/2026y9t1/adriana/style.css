@@ -1,0 +1,228 @@
+body.kiwi {
+h1 {
+     color: rgb(197, 182, 133);
+     text-align: center;
+     font-size: 50px; 
+     background-color: rgb(155, 131, 98);
+}
+
+h2 {
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    margin: 30px;
+}
+
+p, ul{
+color:rgb(187, 101, 101); 
+text-align: justify;
+background-color: blue; 
+padding: 30px;
+margin: 30px;
+box-shadow: 10px 5px 5px;
+
+border-color: rgb(255, 255, 255);
+
+border-style: solid;
+
+border-radius: 20px;
+
+background-image: linear-gradient(90deg, rgb(94, 75, 57));
+}
+
+p.subheading {
+    color: burlywood;
+    font-size: 20px;
+    text-align: center;
+}
+
+body {  
+
+    background-color: white;
+    background-image: url(https://i.pinimg.com/236x/7e/f1/5f/7ef15f74908330a41bd65d8ccd8e4d82.jpg)
+}
+
+iframe {
+    margin: auto;
+    display: block;
+}
+
+
+
+
+
+
+nav {
+    background-color: rgb(175, 156, 111);
+    padding: 5px;
+
+    a {
+    display: inline-block;
+
+    background-color: rgb(255, 255, 255);
+    color: #86754f;
+    text-decoration: none;
+    padding: 20px;
+    margin: 5px;
+    }
+}
+}
+
+body.tshd {
+background-image: linear-gradient(rgb(255, 255, 255));
+
+
+    h1 {
+    color: rgb(74, 114, 201);
+    background-color: rgb(155, 215, 255);
+    }
+
+    nav {
+    background-color:rgb(116, 200, 214);
+    padding: 1px;
+    margin: 5px;
+    }
+
+    a {
+    display: inline-block;
+    background-color:rgb(255, 255, 255);
+    color: rgb(81, 143, 214);
+    text-decoration: none;
+    padding: 30px;
+    margin: 10px; 
+    }  
+    
+    h1 {
+    text-align: center;
+    font-size: 50px;
+    }
+
+    h2 {
+    color: rgb(100, 132, 158);
+    text-align: center;
+    font-size: 30px;
+    }
+
+    h3 {
+    font-size: 35px;
+    color: rgb(12, 39, 65)
+    }
+
+    h4 {
+    .pixelify-sans {
+    height: 500;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal; }
+    }
+
+    h4 {
+    font-size: 20px;
+    color: rgb(149, 200, 235); 
+    text-align: justify;
+    background-color: blue; 
+    padding: 30px;
+    margin: 30px;
+    box-shadow: 10px 5px 5px;
+
+    border-color: rgb(255, 255, 255);
+
+    border-style: solid;
+
+    border-radius: 20px; 
+    background-image: linear-gradient(90deg, rgb(79, 110, 146)) 
+    }
+
+    h5 {
+    font-size: 40px;
+    text-align: center;
+    background-color:rgb(141, 212, 224);
+    color: rgb(61, 95, 122);
+    padding: 30px;
+    border-color: rgb(105, 150, 163);
+
+    border-style: solid;
+
+    border-radius: 20px; 
+    box-shadow: 20px 10px 10px;
+    }
+
+    
+
+    
+
+    iframe {
+    color: rgb(104, 104, 104);
+    box-shadow: 10px 5px 5px;
+
+    border-color: rgb(240, 98, 98);
+
+    border-style: solid;
+
+    border-radius: 20px; 
+    background-image: linear-gradient(90deg, rgb(79, 110, 146)); 
+    }   
+
+    image {
+     color: black;  
+    } 
+
+    
+
+}
+
+body.Yoshiki {
+background-image: linear-gradient(rgb(255, 255, 255));
+    h1 {
+    color: rgb(74, 114, 201);
+    background-color: rgb(155, 215, 255);
+    }
+
+    nav {
+    background-color:rgb(116, 200, 214);
+    padding: 1px;
+    margin: 5px;
+    }
+
+    a {
+    display: inline-block;
+    background-color:rgb(255, 255, 255);
+    color: rgb(81, 143, 214);
+    text-decoration: none;
+    padding: 30px;
+    margin: 10px; 
+    }  
+    
+    h1 {
+    text-align: center;
+    font-size: 50px;
+    }
+
+    nav {
+    background-color:rgb(255, 255, 255);
+    padding: 1px;
+    margin: 5px;
+    outline color: blue;
+    }
+
+    h2 {
+    color: rgb(100, 132, 158);
+    text-align: center;
+    font-size: 30px;
+}    }
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+

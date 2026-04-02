@@ -1,0 +1,113 @@
+h1 {
+     text-align: center;
+    color: rgb(255, 190, 255);
+    font-size: 100px;
+    background-color: rgb(255, 254, 168);
+    margin: 30px;
+    padding: 5px;
+    text-shadow: 5px 5px 5px rgb(133, 133, 133);
+}
+
+
+body {
+    background-image: url("LemonyCheckerboard.png"); 
+     font-family: 'Lemony', cursive;
+}
+
+p {
+     color: rgb(255, 255, 255);
+    background-color: bisque;
+    background-color: rgb(208, 135, 226);
+    margin: 30px;
+    text-align: center;
+    font-family: comfortaa;
+
+}
+
+@font-face {
+    font-family: 'Lemony';
+    src: url('Lemony Font.ttf');
+}
+
+
+
+nav {
+    background-color: rgb(253, 248, 174);
+    padding: 5px;
+    margin: 30px;
+    font-family: 'Lemony';
+    font-size: 25px;
+    a {
+        display: inline-block;
+        
+        color: white;
+        background-color:  rgb(208, 135, 226);
+        text-decoration: none;
+        padding: 20px;
+        margin: 5px;
+
+        transition-duration: 500ms;
+
+
+    }
+
+    a:hover {
+        background-color: rgb(110, 6, 105);
+        translate: 0 -5px;
+
+    }
+        
+    
+
+
+}
+
+img {
+    margin: 30px;
+    text-align: center;
+}
+
+h2 {
+    margin: 30px;
+    background-color: rgb(208, 135, 226);
+    text-align: center;
+    color: white;
+}
+
+p.buttons{
+    text-align: center;
+    background-color: transparent;
+
+    a {
+        text-decoration: none;
+        display: inline-block;
+        transition-duration: 500ms;
+    }
+    
+}
+
+p.buttons {
+
+    a:hover{
+        translate: 0  -5px;
+        filter: brightness(0.6);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      

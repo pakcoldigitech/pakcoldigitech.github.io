@@ -1,0 +1,89 @@
+h1 {
+    color:bisque;
+    text-align: center;
+    font-size: 100px;
+    background-color: brown;
+    margin: 30px;
+    padding: 5px;
+    box-shadow: 5px 5px 5px black;
+    text-shadow: 5px 5px 5px black;
+    font-family: comfortaa;
+ 
+}
+
+h2 {
+    color:rgb(6, 100, 27);
+    background-color: bisque;
+    margin: 15px;
+    padding: 10px;
+}
+
+p {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: bisque;
+    background-image: linear-gradient(90deg, red, orange);
+    margin: 30px;
+   
+}
+
+ol {
+    color: purple;
+    background-color: bisque;
+    margin: 50px;
+    padding: 5px;
+}
+
+body{
+    background-color: antiquewhite;
+   font-family:cursive;
+   font-size: 14px;
+}
+
+p2 {
+    color: rgb(0, 0, 0);
+    background-image: linear-gradient(90deg, white, purple );
+    background-color: bisque;
+    margin: 30px;
+    text-align: center;
+}
+
+
+a {
+    font-size: 20px;
+    font-family: cursive;
+    text-shadow: 10px;
+    display: block; 
+
+}
+
+nav {
+    background-color: rgb(253, 248, 174);
+    padding: 5px;
+
+    a {
+        display: inline-block;
+        
+        color: white;
+        background-color:  rgb(208, 135, 226);
+        text-decoration: none;
+        padding: 20px;
+        margin: 5px;
+
+        transition-duration: 500ms;
+
+
+    }
+
+    a:hover {
+        background-color: rgb(110, 6, 105);
+        translate: 0 -5px;
+
+    }
+        
+    
+
+}
+
+
+

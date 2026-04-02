@@ -1,0 +1,43 @@
+    h1{color: rgba(10, 108, 221, 0.664);
+font-family: Limelight;
+    text-align: center; }
+
+h2{color:rgb(18, 125, 224);}
+
+p{ color: rgb(0, 128, 202);}
+
+li{color: rgb(0, 128, 202);}
+
+body{background-color: rgba(103, 189, 247, 0.61);}
+
+
+
+
+nav {
+    background-color: rgb(103, 189, 247, 0.61);
+    padding: 5px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    a {
+        display: inline-block;
+        background-color: rgb(13, 58, 182);
+        color: white;
+        text-decoration: none;
+        padding: 20px;
+        margin: 5px;
+        
+        transition-duration: 500ms;
+    }
+    a:hover {
+        background-color: rgb(103, 189, 247, 0.61);
+        translate: 0 -5px;
+    }
+}
+
+body {
+    margin-top: 100px;
+}

@@ -1,0 +1,74 @@
+h1 {
+    color: red;
+    text-align: center;
+    font-size: 50px;
+    background-color: rgb(0, 0, 0);
+    padding: 30px;
+    text-shadow: 5px 5px 5px black;
+}
+h2 {
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    margin: 30px;
+}
+p, ul {
+    color: rgb(255, 255, 255);
+    text-align: justify;
+    background-color: rgb(0, 0, 0);
+    padding: 30px;
+    margin: 30px;
+    box-shadow: 10px 5px 5px black;
+
+    background-image: linear-gradient(90deg, rgb(0, 0, 0), rgb(0, 0, 0));
+    background-image: radial-gradient(red, rgb(248, 248, 248), rgb(0, 0, 0));
+
+    border-color: rgb(0, 0, 0);
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 20px;
+}
+
+p.subheading {
+    color: purple;
+    font-size: 20px;
+    text-align: center;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    /* background-image: url("https://static.vecteezy.com/system/resources/previews/037/130/624/non_2x/kiwi-fruit-seamless-pattern-in-cartoon-style-perfect-for-background-backdrop-wallpaper-and-cover-packaging-vector.jpg"); */
+}
+
+iframe, img {
+    margin: auto;
+    display: block;
+}
+
+h1 {
+  font-family: "Imperial Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+nav {
+    background-color: rgb(0, 0, 0);
+    padding: 5px;
+
+    a {
+        display: inline-block;
+        
+        background-color: red;
+        color: white;
+        text-decoration: none;
+        padding: 20px;
+        margin: 5px;
+
+        transition-duration: 500ms;
+    }
+
+    a:hover {
+        background-color: rgb(255, 255, 255);
+        translate: 0 -5px;
+    }
+}

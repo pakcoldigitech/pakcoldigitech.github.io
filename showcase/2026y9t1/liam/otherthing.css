@@ -1,0 +1,55 @@
+h1{
+    color:rgb(0, 26, 255);
+    font-size: 70px;
+    padding: 30px;
+   margin: 30px;
+   background-color: greenyellow ;
+}
+
+h2{
+    color:rgb(94, 8, 255);
+    font-size: 68;
+    padding: 30px;
+   margin: 30px;
+    background-color:midnightblue ;
+    box-shadow: 5px 5px 5px black;
+}
+
+
+body{
+    background-color:midnightblue ;
+    background-image: url("https://i0.wp.com/gamingrespawn.com/wp-content/uploads/2026/02/Poppy-Playtime-Key-Art.jpg?fit=960%2C540&ssl=1.jpg");
+
+}
+p {
+    color:lch(52.61% 103.64 40);
+   
+    Font-size: 50px;
+   padding: 30px;
+   margin: 30px;
+   box-shadow: 5px 5px 5px black;
+    background-color:rgb(25, 25, 112);
+}
+
+nav {
+    background-color: rgba(0, 128, 6, 0.76);
+     padding: 30px;
+        margin: 5px;
+
+    a {
+        background-color: red;
+       
+       
+       
+        padding: 20px;
+        margin: 5px;
+    }
+
+}
+
+
+a:hover{
+background-color: blue
+;translate: 0 -5px;
+
+}

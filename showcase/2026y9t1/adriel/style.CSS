@@ -1,0 +1,30 @@
+h1 { color:rgba(0, 128, 0, 0.829);text-align: center;background-color: antiquewhite;font-size: 40px; border-color: green; }
+
+h2 {color:rgba(255, 0, 0, 0.61);margin: 30px;}
+
+p {color: white;margin:30px;background-color: burlywood;padding: 10px;
+    border-color: rgb(129, 104, 104);border-width: 8px;border-style:solid;}
+
+body {background-color: black;}
+
+li {color:white;margin: 30px;}
+
+box-shadow: 10px 5px 10px black;padding:30px ;background-color: blanchedalmond
+
+p.subheading{text-align: center}
+
+iframe{ margin: auto;
+display: block;}
+
+nav {
+    background-color: rgba(128, 128, 128, 0.74);padding-bottom: 25px;
+a {display:inline-block;background-color: azure;padding:9px ;margin: 7px ; transition-duration: 500ms; box-shadow: 5px;};
+a:hover 
+    {background-color: brown;
+    translate: 0 -10px;}
+
+padding: 11px; position: fixed;top: 0 ;left: 0; width: 100%;}
+body {margin-top: 80px;}
+
+img {display:block}
+

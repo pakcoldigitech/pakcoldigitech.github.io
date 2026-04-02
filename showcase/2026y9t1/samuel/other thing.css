@@ -1,0 +1,27 @@
+h1{ color: red;
+text-align: center;font-size: 100px;padding: 10px;}
+h2{ color: blue;font-size: 40px;}
+p,ol{ color: rgb(255, 255, 255);font-size: 15x;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
+body {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Mansoor_Ahmed_photos_of_Team_USA_basketball_at_London_2012_Olympics.jpg/250px-Mansoor_Ahmed_photos_of_Team_USA_basketball_at_London_2012_Olympics.jpg");
+   background-repeat
+
+: no-repeat;background-size: 100%;
+p.subheading {color: white;font-size: 40px;text-align: center;padding: 40px;}
+p,ol{
+  font-family: "Audiowide", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(0, 38, 255);
+}
+
+nav{top: 0;
+  left: 0;
+  width: 100%; text-align: center;}
+  a{text-align:center; padding: 51px;background-color: rgba(102, 255, 0, 0);margin: 10px;color: white;transition-duration: 1000ms;
+  padding: 50px;background-color: rgb(255, 0, 0);font-size: 25px;display: inline-block;}
+ 
+
+  a:hover{background-color: blue;  translate: 0-5px;}
+  }
