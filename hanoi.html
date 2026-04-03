@@ -47,6 +47,7 @@ label {
     <label>Pieces: <input id="numpieces" type="number" value="8" min="1" autocomplete="off"></label>
     <label><input id="coloured" type="checkbox" autocomplete="off">Coloured</label>
     <output></output>
+    <br>
     <button>Auto-solve</button>
   </aside>
   <main>
@@ -243,7 +244,46 @@ document.querySelector('button').addEventListener('click', async () => {
             } else {
               total = total.toExponential().replace('e+', '×10<sup>') + '</sup>';
             }
-            output.innerHTML = `Steps: ${steps} / ${total}`;
+
+            let seconds = (2 ** numpieces.value - 1) / 10;
+            let time = `${seconds} seconds`;
+            if (seconds > 31556952*13787000_000_000_000_000_000_000_000) {
+              time = `${(seconds/31556952/13787000).toExponential(3).replace('e+', '×10<sup>') + '</sup>'} lifetimes of the universe`;
+            } else if (seconds > 31556952*13787000_000_000_000_000_000_000) {
+              time = `${+(seconds/31556952/13787000_000_000_000_000_000_000).toFixed(3)} quintillion lifetimes of the universe`;
+            } else if (seconds > 31556952*13787000_000_000_000_000_000) {
+              time = `${+(seconds/31556952/13787000_000_000_000_000_000).toFixed(3)} quadrillion lifetimes of the universe`;
+            } else if (seconds > 31556952*13787000_000_000_000_000) {
+              time = `${+(seconds/31556952/13787000_000_000_000_000).toFixed(3)} trillion lifetimes of the universe`;
+            } else if (seconds > 31556952*13787000_000_000_000) {
+              time = `${+(seconds/31556952/13787000_000_000_000).toFixed(3)} billion lifetimes of the universe`;
+            } else if (seconds > 31556952*13787000_000_000) {
+              time = `${+(seconds/31556952/13787000_000_000).toFixed(3)} million lifetimes of the universe`;
+            } else if (seconds > 31556952*13787000) {
+              time = `${(+(seconds/31556952/13787000).toFixed(2)).toLocaleString()} lifetimes of the universe`;
+            } else if (seconds > 31556952*4500000) {
+              time = `${+(seconds/31556952/4500000).toFixed(2)} lifetimes of the earth`;
+            } else if (seconds > 31556952*1000*10) {
+              time = `${(+(seconds/31556952/1000).toFixed(2)).toLocaleString()} millenia`;
+            } else if (seconds > 31556952) {
+              time = `${(+(seconds/31556952).toFixed(2)).toLocaleString()} years`;
+            } else if (seconds > 2629746) {
+              time = `${+(seconds/2629746).toFixed(2)} months`;
+            } else if (seconds > 604800) {
+              time = `${+(seconds/604800).toFixed(2)} weeks`;
+            } else if (seconds > 86400) {
+              time = `${+(seconds/86400).toFixed(2)} days`;
+            } else if (seconds > 3600) {
+              time = `${+(seconds/3600).toFixed(2)} hours`;
+            } else if (seconds > 60) {
+              time = `${+(seconds/60).toFixed(2)} minutes`;
+            }
+
+            if (+numpieces.value < 1024) {
+              output.innerHTML = `Steps: ${steps} / ${total} (${time} to solve)`;
+            } else {
+              output.innerHTML = `Steps: ${steps} / ${total} (number of steps too big to be stored on a computer)`;
+            }
 
             resolve();
             return;
