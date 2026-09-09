@@ -1,0 +1,38 @@
+body {
+    background-color: rgb(9, 109, 167);
+background-image: url("https://img.magnific.com/premium-vector/blue-background-indian-festival-deepavali-background_958026-71.jpg");
+background-size: cover;
+background-attachment: fixed;
+border-style: solid;
+border-width: 4px;
+border-color: red;
+margin: 40px;
+border: shadow 5px;
+}
+
+h1 {
+    background-color: rgb(228, 199, 38);
+}
+
+p {
+    text-align: left;
+}
+
+img.header {
+    width: 100%;
+    object-fit: cover;
+    object-position: left 50% top 70%;
+}
+nav a{
+    background-color: rgb(223, 90, 216);
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition-duration: 500ms;
+}
+
+nav a:hover{
+    background-color: rgb(54, 35, 52);
+    translate: 0px -4px;
+}
