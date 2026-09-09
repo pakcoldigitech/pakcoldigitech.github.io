@@ -1,0 +1,84 @@
+
+body {
+   background-color: #fffcf8; 
+   
+}
+
+h1 {
+     background-color: #fff9f2;
+    color: #3e322c;
+}
+
+p {
+    color:#5c504a
+}
+ 
+div.travel-card {
+     border-radius: 8px; padding: 20px; 
+    height: 100%; box-shadow: 0 3px 10px rgba(92, 80, 74, 0.08); 
+    transition: all 0.3s ease;
+}
+
+div.travel-card:hover { 
+    transform: translateY(-6px); 
+    box-shadow: 0 8px 18px rgba(92, 80, 74, 0.12);
+ }
+ .back-cover-btn 
+{ 
+    position: fixed; 
+    top: 22px;
+    left: 22px;
+     z-index: 999;
+     display: inline-block;
+     color: #5c504a; 
+     text-decoration: none;
+     padding:9px 22px; 
+     border: 1px solid #ddcfc0; 
+     border-radius: 40px;
+     background-color: rgba(255,252,248,0.85); 
+     backdrop-filter: blur(4px);
+     transition: 0.3s ease all; 
+} 
+    .back-cover-btn:hover { 
+        background-color: #5c504a;
+         color: #fffcf8;
+         transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(92, 80, 74, 0.18); 
+          border-color:#5c504a;
+        } 
+        @media(max-width:768px) {
+             .back-cover-btn{ 
+                top:12px;
+                left:12px;
+                 padding:7px 16px; 
+                 font-size:0.9rem; 
+                } 
+            }
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root) {
+    animation: 0.7s ease-out fadeOutSlow;
+}
+
+::view-transition-new(root) {
+    animation: 0.85s cubic-bezier(0.22, 0.65, 0.25, 1) fadeInZoomUpSlow;
+}
+
+@keyframes fadeOutSlow {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+@keyframes fadeInZoomUpSlow {
+    from {
+        opacity: 0;
+        transform: scale(0.97) translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+

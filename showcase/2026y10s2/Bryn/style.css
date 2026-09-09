@@ -1,0 +1,41 @@
+body {
+    background-color: rgb(255, 203, 246);
+    background-image: url(images/tavistock.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-blend-mode: multiply
+}
+
+div.bg-custom {
+background-color: hotpink;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #bb53a4;
+}
+
+ul li {
+  float: left;
+}
+
+ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  background-color: #7d4385;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-item {
+        transition: transform 600ms ease-in-out !important;
+    }
+}

@@ -1,0 +1,75 @@
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    font-size: 20px;
+}
+
+nav li {
+    float: left;
+    margin-left: 10px;
+  
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px 16px;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+nav li a:hover {
+    background-color: #111;
+}
+
+div.heading {
+
+    text-align: left;
+    height: 500px;
+    color: white;
+    padding: 30px;
+    background-image: url("images/kindness-sacap-e1731052489192.jpg");
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-position: center;
+}
+
+div.heading p {
+    margin-top: 15px;
+    font-weight:100;
+    width: 1000px;
+}
+
+h2 {
+    padding-left: 20px;
+}
+
+p {
+    text-align: left;
+}
+
+span {
+    font-size: 20px;
+    line-height: 1;
+}
+
+body {
+    
+}
+
+.tight-line {
+  display: inline-block;
+  line-height: 1.2; 
+  vertical-align: middle; 
+}
+
+button {
+
+
+}
+
+

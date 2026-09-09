@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(91, 255, 247);
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4jYgd_Ul-P1wesbs6KMbsSMwhXrE14MJNeb9EfvLVoA&s=10");
+ background-size:cover;
+background-blend-mode:multiply;
+background-attachment:fixed;
+}
+
+h1{
+color:rgb(13, 13, 14);
+text-align:center;
+}
+
+h2{
+color: aqua;
+
+}
+
+
+div.col {
+    background-color: rgb(241, 234, 241);
+    border-radius: 10px;
+    margin: 10px;
+    box-shadow: 4px 4px 4px black;
+}

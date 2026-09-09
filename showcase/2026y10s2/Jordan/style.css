@@ -1,0 +1,21 @@
+
+
+
+.carousel-item img {
+height: 500px;
+object-fit: cover;
+
+
+}
+.carousel {
+
+    margin-bottom: 80px;
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-item {
+        transition: transform 600ms ease-in-out !important;
+    }
+}

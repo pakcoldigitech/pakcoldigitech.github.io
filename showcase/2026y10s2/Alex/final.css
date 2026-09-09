@@ -1,0 +1,68 @@
+h1 {
+  font-family: "Bangers", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 10rem;
+}
+
+.cen {
+  display: block;
+  margin: auto;
+  width: 50%;
+}
+
+.container {
+  background-color: lightgray;
+}
+
+body {
+  background-image: url("background.jpg");
+}
+
+h3 {
+  font-family: "Tektur", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; 
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+    margin-top: 0.5rem;
+}
+
+h1{
+  font-size: 100px;
+}
+
+img{
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+p{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-family: "Tektur", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600; 
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+    margin-top: 0.5rem;
+}
+
+nav {
+  font-family: "Tektur", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600; 
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+    margin-top: 0.5rem;
+}
+
+.large{
+ font-size: x-large;
+}

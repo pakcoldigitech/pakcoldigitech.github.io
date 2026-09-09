@@ -1,0 +1,28 @@
+@media (prefers-reduced-motion: reduce) {
+  .carousel-item {
+    transition: transform 0.6s ease-in-out !important;
+  }
+}
+body {
+  background-color: rgb(164, 201, 250);
+  color: white;
+  background-image: url(images/bcg.png);
+  background-size: cover;
+  background-attachment: fixed;
+  background-blend-mode:luminosity;
+}
+
+
+h1{
+  font-size: 50px   ; 
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 0px;
+  position:relative;
+  /* text-align: center;
+  margin-top: -125px;
+  margin-bottom: 125px;
+  position:relative; */
+
+}
+

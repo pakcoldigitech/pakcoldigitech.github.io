@@ -1,0 +1,47 @@
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-item {
+    transition: transform 1000ms ease-in-out !important;
+  }
+}
+
+
+.carousel-item img {
+  height: 550px;
+  object-fit: cover;
+}
+
+body {
+  font-family: Roboto;
+}
+
+#darkmode {
+  display: none;
+}
+
+:has(#darkmode:checked) {
+
+  color-scheme: dark;
+
+  body {
+    background-color: rgb(46, 46, 46);
+    color: white;
+    h1{
+color: white;
+
+    }
+     p{
+color: white;
+
+    }
+
+}
+
+
+@media (prefers-color-scheme: dark) {
+
+body {
+  background-color: rgb(38, 38, 39);
+  color: white;
+}
+

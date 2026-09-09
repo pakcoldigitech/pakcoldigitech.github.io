@@ -1,0 +1,47 @@
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fredoka', sans-serif !important;
+}
+body {
+    background-image: url('Backround.jpg');
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    color: #ffffff;
+}
+
+div.col-md-4 {
+    background-color: #ffffff42;
+    border-radius: 15px;                        
+    padding: 20px;                               
+    margin-bottom: 24px; 
+}
+
+.ascii-art {
+    font-family: monospace !important; 
+    font-size: 22px;                  
+    line-height: 1.1;                  
+    font-weight: bold;                 
+    color: #ffffff;                    
+    
+   
+    text-align: center;
+    display: block;
+    margin: 0 auto 30px auto;         
+  
+    overflow: hidden !important;;                  
+}
+
+div.custom {
+    background-color: rgb(31, 29, 90);
+}
+
+
+.planet-img {
+    width: 160px;             
+    height: 160px;
+    object-fit: cover;        
+
+    border-radius: 20px;      
+    display: block;
+    margin: 0 auto 15px auto;

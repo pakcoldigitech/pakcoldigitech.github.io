@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kea</title>
+    <link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css rel="stylesheet">
+    <link rel="stylesheet" href="moon.css">
+</head>
+<nav> 
+The Kea
+By Riley Cunningham
+<ul>
+        <li><a href="uhkeavids.html">Kea videos</a></li>
+       
+
+    </ul>
+</nav>
+    
+<body>
+
+<h1> 
+Kea
+</h1> 
+<p> The kea is a species of mountain parrot found in new zealands south island</p>
+<p> windscreen wiper consumption </P>
+
+
+  
+    <img src="kea-removebg-preview.png"  
+         alt="Flying Bird" 
+         id="bird" 
+         class="bird-follower">
+
+    <script>
+        const bird = document.getElementById('bird');
+
+      
+        document.addEventListener('mousemove', (e) => {
+            bird.style.left = e.pageX + 'px';
+            bird.style.top = e.pageY + 'px';
+        });
+        
+    </script>
+<p>
+   <div id="number-box">0</div>
+   
+
+    <script>
+        function decreaseNumber() {
+           
+            const box = document.getElementById('number-box');
+            const wipers = document.getElementById('wipers');
+         
+            let currentNum = parseInt(box.innerText);
+            
+            wipers.style.position = 'fixed';
+            wipers.style.top = (Math.random() * 85) + '%';
+            wipers.style.right = (Math.random() * 85) + '%';
+            
+            if (currentNum > -6700) {
+                box.innerText = currentNum + 1;
+            }
+        }
+    </script>
+
+
+    
+   
+
+   
+</p> 
+
+<img src="image-removebg-preview.png" alt="tree" class="first-tree" draggable="false">
+<img src="image-removebg-preview.png" alt="tree" class="last-tree"  draggable="false">
+<img src="pngtree-cars-windshield-wipers-garage-png-image_11231709.png" id="wipers" onmouseenter="decreaseNumber()" alt="mm yummy" width="300">
+
+</body>
+</html>
