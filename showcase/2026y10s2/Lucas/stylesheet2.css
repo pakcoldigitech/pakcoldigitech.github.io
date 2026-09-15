@@ -1,0 +1,80 @@
+/* 1. Reset default browser margins */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. Center the slide inside the browser viewport */
+body {
+    background-color: #111111; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; 
+}
+
+/* 3. The 16:9 Google Slide container */
+.slide-container {
+    width: 100vw;
+    height: calc(100vw * 9 / 16); 
+    max-width: calc(100vh * 16 / 9); 
+    max-height: 100vh;
+    background-image: url('backrooms2.png'); 
+    background-size: contain; 
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); 
+}
+
+/* 4. Safe overlay zone for text/content */
+.slide-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 4%; 
+    color: #ffffff;
+    font-family: sans-serif;
+}
+
+/* --- LINK 1 (Custom Perspective & Position) --- */
+.link-one {
+    position: absolute;
+    font-weight: bold;
+    text-align: center;
+    align-content: center;
+    text-decoration: none;
+    color: white;
+    
+    /* Position & Size */
+    top: 64%;
+    left: 68%;
+    width: 16%;
+    height: 11%;
+    font-size: 39px;
+    outline: 1px solid #7e9799;
+
+    /* Change these individual angles for Link 1 */
+    transform: perspective(1000px) rotateY(39deg) rotateX(351deg) rotateZ(353deg);
+}
+
+/* --- LINK 2 (Custom Perspective & Position) --- */
+.link-two {
+    position: absolute;
+    top: 29%;
+    left: 11%;
+    width: 60%;
+    height: 65%;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    align-content: center;
+    text-decoration: none;
+    color: white;
+    transform: perspective(1000px) rotateY(18deg) rotateX(358deg) rotateZ(0deg);
+    outline: 1px solid #000000;
+}
