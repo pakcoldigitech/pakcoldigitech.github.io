@@ -129,6 +129,7 @@ towers.forEach(tower => {
 
     document.addEventListener('pointermove', pointermove);
     document.addEventListener('pointerup', pointerup);
+    document.addEventListener('pointerleave', pointerup);
 
     function pointermove(event) {
       piece.dataset.destx = event.pageX - pos.width / 2;
@@ -139,6 +140,7 @@ towers.forEach(tower => {
       cancelAnimationFrame(frame);
       document.removeEventListener('pointermove', pointermove);
       document.removeEventListener('pointerup', pointerup);
+      document.removeEventListener('pointerleave', pointerup);
 
       let target = document.elementFromPoint(event.clientX, event.clientY)?.closest('.tower');
       if (!target) {
