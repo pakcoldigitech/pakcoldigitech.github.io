@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="Example of the Piggy dice game">
+  <title>Piggy | Haque.rs</title>
+  <link rel="shortcut icon" href="data:,"/>
+  <style>
+body {
+  margin: 0;
+  background: #903;
+}
+.wrap {
+  --width: 100px;
+  --halfwidth: calc(var(--width) / 2);
+  perspective: 800px;
+  perspective-origin: 50% var(--halfwidth);
+  
+  margin: 80px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+.cube {
+  position: relative;
+  width: var(--width);
+  height: var(--width);
+  transform-style: preserve-3d;
+}
+.face {
+  position: absolute;
+  width: var(--width);
+  height: var(--width);
+  /* opacity: 0.5; */
+  pointer-events: none;
+
+  background: ivory;
+  font-size: 50px;
+  text-align: center;
+  line-height: var(--width);
+}
+.front {
+  transform: translateZ(var(--halfwidth));
+}
+.right {
+  transform: rotateY(90deg) translateZ(var(--halfwidth));
+}
+.back {
+  transform: rotateY(180deg) translateZ(var(--halfwidth));
+}
+.left {
+  transform: rotateY(270deg) translateZ(var(--halfwidth));
+}
+.top {
+  transform: rotateX(90deg) translateZ(var(--halfwidth));
+}
+.bottom {
+  transform: rotateX(270deg) translateZ(var(--halfwidth));
+}
+button {
+  display: block;
+  margin: auto;
+  cursor: pointer;
+
+  background-color: maroon;
+  color: gold;
+  border: 2px solid gold;
+  border-radius: 0.25em;
+  padding: 0.33em 1em;
+  font-family: serif;
+  font-size: 30px;
+  transition-duration: 200ms;
+}
+button:hover {
+  background-color: darkred;
+  translate: 0 -2px;
+}
+button:active {
+  translate: 0;
+}
+output {
+  display: block;
+  margin: 30px;
+  text-align: center;
+  font-size: 50px;
+  color: limegreen;
+}
+  </style>
+  <script type="module">
+const [die1, die2] = document.querySelectorAll('.cube');
+const button = document.querySelector('button');
+const output = document.querySelector('output');
+
+const rolls = [{ x: 0, y: 0, n: 6 }, { x: 0, y: 0, n: 6 }] ;
+const orientations = [
+  { x: 0, y: 0 },
+  { x: 0, y: 180 },
+  { x: 0, y: 90 },
+  { x: 90, y: 0 },
+  { x: 270, y: 0 },
+  { x: 0, y: 270 },
+];
+var money = 0;
+
+button.addEventListener('click', e => {
+  button.disabled = true;
+
+  var roll = 6 * Math.random() + 1 | 0;
+  var r = { ...orientations[roll % 6], n: roll };
+  var dir = Array(3).fill(1).map(Math.random).join();
+  die1.animate([
+    { transform: `translateZ(0)rotate3d(${dir}, 0deg)rotateX(${rolls[0].x}deg)rotateY(${rolls[0].y}deg)` }, 
+    { transform: `translateZ(100px)rotate3d(${dir}, 180deg)rotateX(${(rolls[0].x + r.x)/2}deg)rotateY(${(rolls[0].y + r.y)/2}deg)`, offset: 0.5 }, 
+    { transform: `translateZ(0)rotate3d(${dir}, 360deg)rotateX(${r.x}deg)rotateY(${r.y}deg)` }, 
+  ], {
+    duration: 1000,
+    easing: 'linear',
+    fill: 'both',
+  });
+  rolls[0] = r;
+
+  roll = 6 * Math.random() + 1 | 0;
+  r = { ...orientations[roll % 6], n: roll };
+  dir = Array(3).fill(1).map(Math.random).join();
+  die2.animate([
+    { transform: `translateZ(0)rotate3d(${dir}, 0deg)rotateX(${rolls[1].x}deg)rotateY(${rolls[1].y}deg)` }, 
+    { transform: `translateZ(100px)rotate3d(${dir}, 180deg)rotateX(${(rolls[1].x + r.x)/2}deg)rotateY(${(rolls[1].y + r.y)/2}deg)`, offset: 0.5 }, 
+    { transform: `translateZ(0)rotate3d(${dir}, 360deg)rotateX(${r.x}deg)rotateY(${r.y}deg)` }, 
+  ], {
+    duration: 1000,
+    easing: 'linear',
+    fill: 'both',
+  });
+  rolls[1] = r;
+
+  setTimeout(() => {
+    if (rolls[0].n == rolls[1].n) {
+      money = 0;
+      output.textContent = `You lose it all!`;
+    } else {
+      money += rolls[0].n + rolls[1].n
+      output.textContent = `$${money}`;
+    }
+    button.disabled = false;
+  }, 1000);
+});
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="cube">
+      <div class="face front">6</div>
+      <div class="face back">1</div>
+      <div class="face left">2</div>
+      <div class="face right">5</div>
+      <div class="face top">3</div>
+      <div class="face bottom">4</div>
+    </div>
+    <div class="cube">
+      <div class="face front">6</div>
+      <div class="face back">1</div>
+      <div class="face left">2</div>
+      <div class="face right">5</div>
+      <div class="face top">3</div>
+      <div class="face bottom">4</div>
+    </div>
+  </div>
+  <button>Roll</button>
+  <output></output>
+</body>
+</html>
