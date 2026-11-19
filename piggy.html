@@ -98,22 +98,22 @@ const orientations = [
   { x: 0, y: 0 },
   { x: 0, y: 180 },
   { x: 0, y: 90 },
-  { x: 270, y: 0 },
+  { x: -90, y: 0 },
   { x: 90, y: 0 },
-  { x: 0, y: 270 },
+  { x: 0, y: -90 },
 ];
 var money = 0;
 
 button.addEventListener('click', e => {
   button.disabled = true;
 
-  var roll = 6 * Math.random() + 1 | 0;
-  var r = { ...orientations[roll % 6], n: roll };
-  var dir = Array(3).fill(1).map(Math.random).join();
+  let roll = 6 * Math.random() + 1 | 0;
+  let r = { ...orientations[roll % 6], n: roll };
+  let dir = Array(3).fill(1).map(Math.random).join();
   die1.animate([
-    { transform: `translateZ(0)rotate3d(${dir}, 0deg)rotateX(${rolls[0].x}deg)rotateY(${rolls[0].y}deg)` }, 
-    { transform: `translateZ(100px)rotate3d(${dir}, 180deg)rotateX(${(rolls[0].x + r.x)/2}deg)rotateY(${(rolls[0].y + r.y)/2}deg)`, offset: 0.5 }, 
-    { transform: `translateZ(0)rotate3d(${dir}, 360deg)rotateX(${r.x}deg)rotateY(${r.y}deg)` }, 
+    { transform: `translateZ(0)rotate3d(${dir}, 0deg)rotateX(${rolls[0].x}deg)rotateY(${rolls[0].y}deg)` },
+    { transform: `translateZ(100px)rotate3d(${dir}, 180deg)rotateX(${(rolls[0].x + r.x)/2}deg)rotateY(${(rolls[0].y + r.y)/2}deg)`, offset: 0.5 },
+    { transform: `translateZ(0)rotate3d(${dir}, 360deg)rotateX(${r.x}deg)rotateY(${r.y}deg)` },
   ], {
     duration: 1000,
     easing: 'linear',
@@ -125,9 +125,9 @@ button.addEventListener('click', e => {
   r = { ...orientations[roll % 6], n: roll };
   dir = Array(3).fill(1).map(Math.random).join();
   die2.animate([
-    { transform: `translateZ(0)rotate3d(${dir}, 0deg)rotateX(${rolls[1].x}deg)rotateY(${rolls[1].y}deg)` }, 
-    { transform: `translateZ(100px)rotate3d(${dir}, 180deg)rotateX(${(rolls[1].x + r.x)/2}deg)rotateY(${(rolls[1].y + r.y)/2}deg)`, offset: 0.5 }, 
-    { transform: `translateZ(0)rotate3d(${dir}, 360deg)rotateX(${r.x}deg)rotateY(${r.y}deg)` }, 
+    { transform: `translateZ(0)rotate3d(${dir}, 0deg)rotateX(${rolls[1].x}deg)rotateY(${rolls[1].y}deg)` },
+    { transform: `translateZ(100px)rotate3d(${dir}, 180deg)rotateX(${(rolls[1].x + r.x)/2}deg)rotateY(${(rolls[1].y + r.y)/2}deg)`, offset: 0.5 },
+    { transform: `translateZ(0)rotate3d(${dir}, 360deg)rotateX(${r.x}deg)rotateY(${r.y}deg)` },
   ], {
     duration: 1000,
     easing: 'linear',
